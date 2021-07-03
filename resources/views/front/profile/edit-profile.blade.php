@@ -254,129 +254,129 @@
                             <select name="highestQualification" class="selecthide">
                         <optgroup id="educationlevel-optgroup--ENGINEERING-" label="-ENGINEERING-">
       </optgroup>
-      <option value="B.E / B.Tech" label="B.E / B.Tech">B.E / B.Tech</option>
-      <option value="M.E / M.Tech" label="M.E / M.Tech">M.E / M.Tech</option>
-      <option value="M.S Engineering" label="M.S Engineering">M.S Engineering</option>
-      <option value="B.Eng (Hons)" label="B.Eng (Hons)">B.Eng (Hons)</option>
-      <option value="M.Eng (Hons)" label="M.Eng (Hons)">M.Eng (Hons)</option>
-      <option value="Engineering Diploma" label="Engineering Diploma">Engineering Diploma</option>
-      <option value="AE" label="AE">AE</option>
-      <option value="AET" label="AET">AET</option>
+      <option @if($education->highestQualification == 1) selected @endif value="1" label="B.E / B.Tech">B.E / B.Tech</option>
+      <option @if($education->highestQualification == 2) selected @endif value="2" label="M.E / M.Tech">M.E / M.Tech</option>
+      <option @if($education->highestQualification == 3) selected @endif value="3" label="M.S Engineering">M.S Engineering</option>
+      <option @if($education->highestQualification == 4) selected @endif value="4" label="B.Eng (Hons)">B.Eng (Hons)</option>
+      <option @if($education->highestQualification == 5) selected @endif value="5" label="M.Eng (Hons)">M.Eng (Hons)</option>
+      <option @if($education->highestQualification == 6) selected @endif value="6" label="Engineering Diploma">Engineering Diploma</option>
+      <option @if($education->highestQualification == 7) selected @endif value="7" label="AE">AE</option>
+      <option @if($education->highestQualification == 8) selected @endif value="8" label="AET">AET</option>
       <optgroup id="educationlevel-optgroup--ARTS / DESIGN-" label="-ARTS / DESIGN-">
       </optgroup>
-      <option value="B.A" label="B.A">B.A</option>
-      <option value="B.Ed" label="B.Ed">B.Ed</option>
-      <option value="BJMC" label="BJMC">BJMC</option>
-      <option value="BFA" label="BFA">BFA</option>
-      <option value="B.Arch" label="B.Arch">B.Arch</option>
-      <option value="B.Des" label="B.Des">B.Des</option>
-      <option value="BMM" label="BMM">BMM</option>
-      <option value="MFA" label="MFA">MFA</option>
-      <option value="M.Ed" label="M.Ed">M.Ed</option>
-      <option value="M.A" label="M.A">M.A</option>
-      <option value="MSW" label="MSW">MSW</option>
-      <option value="MJMC" label="MJMC">MJMC</option>
-      <option value="M.Arch" label="M.Arch">M.Arch</option>
-      <option value="M.Des" label="M.Des">M.Des</option>
-      <option value="BA (Hons)" label="BA (Hons)">BA (Hons)</option>
-      <option value="B.Arch (Hons)" label="B.Arch (Hons)">B.Arch (Hons)</option>
-      <option value="DFA" label="DFA">DFA</option>
-      <option value="D.Ed" label="D.Ed">D.Ed</option>
-      <option value="D.Arch" label="D.Arch">D.Arch</option>
-      <option value="AA" label="AA">AA</option>
-      <option value="AFA" label="AFA">AFA</option>
+      <option @if($education->highestQualification == 9) selected @endif value="9" label="B.A">B.A</option>
+      <option @if($education->highestQualification == 10) selected @endif value="10" label="B.Ed">B.Ed</option>
+      <option @if($education->highestQualification == 11) selected @endif value="11" label="BJMC">BJMC</option>
+      <option @if($education->highestQualification == 12) selected @endif value="12" label="BFA">BFA</option>
+      <option @if($education->highestQualification == 13) selected @endif value="13" label="B.Arch">B.Arch</option>
+      <option @if($education->highestQualification == 14) selected @endif value="14" label="B.Des">B.Des</option>
+      <option @if($education->highestQualification == 15) selected @endif value="15" label="BMM">BMM</option>
+      <option @if($education->highestQualification == 16) selected @endif value="16" label="MFA">MFA</option>
+      <option @if($education->highestQualification == 17) selected @endif value="17" label="M.Ed">M.Ed</option>
+      <option @if($education->highestQualification == 18) selected @endif value="18" label="M.A">M.A</option>
+      <option @if($education->highestQualification == 19) selected @endif value="19" label="MSW">MSW</option>
+      <option @if($education->highestQualification == 20) selected @endif value="20" label="MJMC">MJMC</option>
+      <option @if($education->highestQualification == 21) selected @endif value="21" label="M.Arch">M.Arch</option>
+      <option @if($education->highestQualification == 22) selected @endif value="22" label="M.Des">M.Des</option>
+      <option @if($education->highestQualification == 23) selected @endif value="23" label="BA (Hons)">BA (Hons)</option>
+      <option @if($education->highestQualification == 24) selected @endif value="24" label="B.Arch (Hons)">B.Arch (Hons)</option>
+      <option @if($education->highestQualification == 25) selected @endif value="25" label="DFA">DFA</option>
+      <option @if($education->highestQualification == 26) selected @endif value="26" label="D.Ed">D.Ed</option>
+      <option @if($education->highestQualification == 27) selected @endif value="27" label="D.Arch">D.Arch</option>
+      <option @if($education->highestQualification == 28) selected @endif value="28" label="AA">AA</option>
+      <option @if($education->highestQualification == 29) selected @endif value="29" label="AFA">AFA</option>
       <optgroup id="educationlevel-optgroup--FINANCE / COMMERCE-" label="-FINANCE / COMMERCE-">
       </optgroup>
-      <option value="B.Com" label="B.Com">B.Com</option>
-      <option value="CA / CPA" label="CA / CPA">CA / CPA</option>
-      <option value="CFA" label="CFA">CFA</option>
-      <option value="CS" label="CS">CS</option>
-      <option value="BSc / BFin" label="BSc / BFin">BSc / BFin</option>
-      <option value="M.Com" label="M.Com">M.Com</option>
-      <option value="MSc / MFin / MS" label="MSc / MFin / MS">MSc / MFin / MS</option>
-      <option value="BCom (Hons)" label="BCom (Hons)">BCom (Hons)</option>
-      <option value="PGD Finance" label="PGD Finance">PGD Finance</option>
+      <option @if($education->highestQualification == 30) selected @endif value="30" label="B.Com">B.Com</option>
+      <option @if($education->highestQualification == 31) selected @endif value="31" label="CA / CPA">CA / CPA</option>
+      <option @if($education->highestQualification == 32) selected @endif value="32" label="CFA">CFA</option>
+      <option @if($education->highestQualification == 33) selected @endif value="33" label="CS">CS</option>
+      <option @if($education->highestQualification == 34) selected @endif value="34" label="BSc / BFin">BSc / BFin</option>
+      <option @if($education->highestQualification == 35) selected @endif value="35" label="M.Com">M.Com</option>
+      <option @if($education->highestQualification == 36) selected @endif value="36" label="MSc / MFin / MS">MSc / MFin / MS</option>
+      <option @if($education->highestQualification == 37) selected @endif value="37" label="BCom (Hons)">BCom (Hons)</option>
+      <option @if($education->highestQualification == 38) selected @endif value="38" label="PGD Finance">PGD Finance</option>
       <optgroup id="educationlevel-optgroup--COMPUTERS / IT-" label="-COMPUTERS / IT-">
       </optgroup>
-      <option value="BCA" label="BCA">BCA</option>
-      <option value="B.IT" label="B.IT">B.IT</option>
-      <option value="BCS" label="BCS">BCS</option>
-      <option value="BA Computer Science" label="BA Computer Science">BA Computer Science</option>
-      <option value="MCA" label="MCA">MCA</option>
-      <option value="PGDCA" label="PGDCA">PGDCA</option>
-      <option value="IT Diploma" label="IT Diploma">IT Diploma</option>
-      <option value="ADIT" label="ADIT">ADIT</option>
+      <option @if($education->highestQualification == 39) selected @endif value="39" label="BCA">BCA</option>
+      <option @if($education->highestQualification == 40) selected @endif value="40" label="B.IT">B.IT</option>
+      <option @if($education->highestQualification == 41) selected @endif value="41" label="BCS">BCS</option>
+      <option @if($education->highestQualification == 42) selected @endif value="42" label="BA Computer Science">BA Computer Science</option>
+      <option @if($education->highestQualification == 43) selected @endif value="43" label="MCA">MCA</option>
+      <option @if($education->highestQualification == 44) selected @endif value="44" label="PGDCA">PGDCA</option>
+      <option @if($education->highestQualification == 45) selected @endif value="45" label="IT Diploma">IT Diploma</option>
+      <option @if($education->highestQualification == 46) selected @endif value="46" label="ADIT">ADIT</option>
       <optgroup id="educationlevel-optgroup--SCIENCE-" label="-SCIENCE-">
       </optgroup>
-      <option value="B.Sc" label="B.Sc">B.Sc</option>
-      <option value="M.Sc" label="M.Sc">M.Sc</option>
-      <option value="BSc (Hons)" label="BSc (Hons)">BSc (Hons)</option>
-      <option value="DipSc" label="DipSc">DipSc</option>
-      <option value="AS" label="AS">AS</option>
-      <option value="AAS" label="AAS">AAS</option>
+      <option @if($education->highestQualification == 47) selected @endif value="47" label="B.Sc">B.Sc</option>
+      <option @if($education->highestQualification == 48) selected @endif value="48" label="M.Sc">M.Sc</option>
+      <option @if($education->highestQualification == 49) selected @endif value="49" label="BSc (Hons)">BSc (Hons)</option>
+      <option @if($education->highestQualification == 50) selected @endif value="50" label="DipSc">DipSc</option>
+      <option @if($education->highestQualification == 51) selected @endif value="51" label="AS">AS</option>
+      <option @if($education->highestQualification == 52) selected @endif value="52" label="AAS">AAS</option>
       <optgroup id="educationlevel-optgroup--MEDICINE-" label="-MEDICINE-">
       </optgroup>
-      <option value="MBBS" label="MBBS">MBBS</option>
-      <option value="BDS" label="BDS">BDS</option>
-      <option value="BPT" label="BPT">BPT</option>
-      <option value="BAMS" label="BAMS">BAMS</option>
-      <option value="BHMS" label="BHMS">BHMS</option>
-      <option value="B.Pharma" label="B.Pharma">B.Pharma</option>
-      <option value="BVSc" label="BVSc">BVSc</option>
-      <option value="BSN / BScN" label="BSN / BScN">BSN / BScN</option>
-      <option value="MDS" label="MDS">MDS</option>
-      <option value="MCh" label="MCh">MCh</option>
-      <option value="M.D" label="M.D">M.D</option>
-      <option value="M.S Medicine" label="M.S Medicine">M.S Medicine</option>
-      <option value="MPT" label="MPT">MPT</option>
-      <option value="DM" label="DM">DM</option>
-      <option value="M.Pharma" label="M.Pharma">M.Pharma</option>
-      <option value="MVSc" label="MVSc">MVSc</option>
-      <option value="MMed" label="MMed">MMed</option>
-      <option value="PGD Medicine" label="PGD Medicine">PGD Medicine</option>
-      <option value="ADN" label="ADN">ADN</option>
+      <option @if($education->highestQualification == 53) selected @endif value="53" label="MBBS">MBBS</option>
+      <option @if($education->highestQualification == 54) selected @endif value="54" label="BDS">BDS</option>
+      <option @if($education->highestQualification == 55) selected @endif value="55" label="BPT">BPT</option>
+      <option @if($education->highestQualification == 56) selected @endif value="56" label="BAMS">BAMS</option>
+      <option @if($education->highestQualification == 57) selected @endif value="57" label="BHMS">BHMS</option>
+      <option @if($education->highestQualification == 58) selected @endif value="58" label="B.Pharma">B.Pharma</option>
+      <option @if($education->highestQualification == 59) selected @endif value="59" label="BVSc">BVSc</option>
+      <option @if($education->highestQualification == 60) selected @endif value="60" label="BSN / BScN">BSN / BScN</option>
+      <option @if($education->highestQualification == 61) selected @endif value="61" label="MDS">MDS</option>
+      <option @if($education->highestQualification == 62) selected @endif value="62" label="MCh">MCh</option>
+      <option @if($education->highestQualification == 63) selected @endif value="63" label="M.D">M.D</option>
+      <option @if($education->highestQualification == 64) selected @endif value="64" label="M.S Medicine">M.S Medicine</option>
+      <option @if($education->highestQualification == 65) selected @endif value="65" label="MPT">MPT</option>
+      <option @if($education->highestQualification == 66) selected @endif value="66" label="DM">DM</option>
+      <option @if($education->highestQualification == 67) selected @endif value="67" label="M.Pharma">M.Pharma</option>
+      <option @if($education->highestQualification == 68) selected @endif value="68" label="MVSc">MVSc</option>
+      <option @if($education->highestQualification == 69) selected @endif value="69" label="MMed">MMed</option>
+      <option @if($education->highestQualification == 70) selected @endif value="70" label="PGD Medicine">PGD Medicine</option>
+      <option @if($education->highestQualification == 71) selected @endif value="71" label="ADN">ADN</option>
       <optgroup id="educationlevel-optgroup--MANAGEMENT-" label="-MANAGEMENT-">
       </optgroup>
-      <option value="BBA" label="BBA">BBA</option>
-      <option value="BHM" label="BHM">BHM</option>
-      <option value="BBM" label="BBM">BBM</option>
-      <option value="MBA" label="MBA">MBA</option>
-      <option value="PGDM" label="PGDM">PGDM</option>
-      <option value="ABA" label="ABA">ABA</option>
-      <option value="ADBus" label="ADBus">ADBus</option>
+      <option @if($education->highestQualification == 72) selected @endif value="72" label="BBA">BBA</option>
+      <option @if($education->highestQualification == 73) selected @endif value="73" label="BHM">BHM</option>
+      <option @if($education->highestQualification == 74) selected @endif value="74" label="BBM">BBM</option>
+      <option @if($education->highestQualification == 75) selected @endif value="75" label="MBA">MBA</option>
+      <option @if($education->highestQualification == 76) selected @endif value="76" label="PGDM">PGDM</option>
+      <option @if($education->highestQualification == 77) selected @endif value="77" label="ABA">ABA</option>
+      <option @if($education->highestQualification == 78) selected @endif value="78" label="ADBus">ADBus</option>
       <optgroup id="educationlevel-optgroup--LAW-" label="-LAW-">
       </optgroup>
-      <option value="BL / LLB" label="BL / LLB">BL / LLB</option>
-      <option value="ML / LLM" label="ML / LLM">ML / LLM</option>
-      <option value="LLB (Hons)" label="LLB (Hons)">LLB (Hons)</option>
-      <option value="ALA" label="ALA">ALA</option>
+      <option @if($education->highestQualification == 79) selected @endif value="79" label="BL / LLB">BL / LLB</option>
+      <option @if($education->highestQualification == 80) selected @endif value="80" label="ML / LLM">ML / LLM</option>
+      <option @if($education->highestQualification == 81) selected @endif value="81" label="LLB (Hons)">LLB (Hons)</option>
+      <option @if($education->highestQualification == 82) selected @endif value="82" label="ALA">ALA</option>
       <optgroup id="educationlevel-optgroup--DOCTORATE-" label="-DOCTORATE-">
       </optgroup>
-      <option value="Ph.D" label="Ph.D">Ph.D</option>
-      <option value="M.Phil" label="M.Phil">M.Phil</option>
+      <option @if($education->highestQualification == 83) selected @endif value="83" label="Ph.D">Ph.D</option>
+      <option @if($education->highestQualification == 84) selected @endif value="84" label="M.Phil">M.Phil</option>
       <optgroup id="educationlevel-optgroup--OTHERS-" label="-OTHERS-">
       </optgroup>
-      <option value="Bachelor" label="Bachelor">Bachelor</option>
-      <option value="Master" label="Master" >Master</option>
-      <option value="Diploma" label="Diploma">Diploma</option>
-      <option value="Honours" label="Honours">Honours</option>
-      <option value="Doctorate" label="Doctorate">Doctorate</option>
-      <option value="Associate" label="Associate">Associate</option>
+      <option @if($education->highestQualification == 85) selected @endif value="85" label="Bachelor">Bachelor</option>
+      <option @if($education->highestQualification == 86) selected @endif value="86" label="Master" >Master</option>
+      <option @if($education->highestQualification == 87) selected @endif value="87" label="Diploma">Diploma</option>
+      <option @if($education->highestQualification == 88) selected @endif value="88" label="Honours">Honours</option>
+      <option @if($education->highestQualification == 89) selected @endif value="89" label="Doctorate">Doctorate</option>
+      <option @if($education->highestQualification == 90) selected @endif value="90" label="Associate">Associate</option>
       <optgroup id="educationlevel-optgroup--NON-GRADUATE-" label="-NON-GRADUATE-">
       </optgroup>
-      <option value="High school" label="High school">High school</option>
-      <option value="Less than high school" label="Less than high school">Less than high school</option>
+      <option @if($education->highestQualification == 91) selected @endif value="91" label="High school">High school</option>
+      <option @if($education->highestQualification == 92) selected @endif value="92" label="Less than high school">Less than high school</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Working With</label>
                             <select name="workingWith" class="selecthide">
                               <option value="" label="Select">Select</option>
-         <option value="Private Company" label="Private Company" >Private Company</option>
-         <option value="Government / Public Sector" label="Government / Public Sector">Government / Public Sector</option>
-         <option value="Defense / Civil Services" label="Defense / Civil Services">Defense / Civil Services</option>
-         <option value="Business / Self Employed" label="Business / Self Employed">Business / Self Employed</option>
-         <option value="Non Working" label="Not Working">Not Working</option>
+         <option @if($education->workingWith == 1) selected @endif value="1" label="Private Company" >Private Company</option>
+         <option @if($education->workingWith == 2) selected @endif value="2" label="Government / Public Sector">Government / Public Sector</option>
+         <option @if($education->workingWith == 3) selected @endif value="3" label="Defense / Civil Services">Defense / Civil Services</option>
+         <option @if($education->workingWith == 4) selected @endif value="4" label="Business / Self Employed">Business / Self Employed</option>
+         <option @if($education->workingWith == 5) selected @endif value="5" label="Not Working">Not Working</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
