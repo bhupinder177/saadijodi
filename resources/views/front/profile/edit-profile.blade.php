@@ -254,6 +254,7 @@
                             <select name="highestQualification" class="selecthide">
                         <optgroup id="educationlevel-optgroup--ENGINEERING-" label="-ENGINEERING-">
       </optgroup>
+      <option value="">Select</option>
       <option @if($education->highestQualification == 1) selected @endif value="1" label="B.E / B.Tech">B.E / B.Tech</option>
       <option @if($education->highestQualification == 2) selected @endif value="2" label="M.E / M.Tech">M.E / M.Tech</option>
       <option @if($education->highestQualification == 3) selected @endif value="3" label="M.S Engineering">M.S Engineering</option>
@@ -385,145 +386,145 @@
                               <option value="" label="Select">Select</option>
         <optgroup id="occupation-optgroup-Accounting, Banking &amp; Finance" label="Accounting, Banking &amp; Finance">
         </optgroup>
-        <option value="Banking Professional" label="Banking Professional">Banking Professional</option>
-        <option value="Chartered Accountant" label="Chartered Accountant">Chartered Accountant</option>
-        <option value="Company Secretary" label="Company Secretary">Company Secretary</option>
-        <option value="Finance Professional" label="Finance Professional">Finance Professional</option>
-        <option value="Investment Professional" label="Investment Professional">Investment Professional</option>
-        <option value="Accounting Professional (Others)" label="Accounting Professional (Others)">Accounting Professional (Others)</option>
+        <option @if($education->workingAs == 1) selected @endif value="1" label="Banking Professional">Banking Professional</option>
+        <option @if($education->workingAs == 2) selected @endif value="2" label="Chartered Accountant">Chartered Accountant</option>
+        <option @if($education->workingAs == 3) selected @endif value="3" label="Company Secretary">Company Secretary</option>
+        <option @if($education->workingAs == 4) selected @endif value="4" label="Finance Professional">Finance Professional</option>
+        <option @if($education->workingAs == 5) selected @endif value="5" label="Investment Professional">Investment Professional</option>
+        <option @if($education->workingAs == 6) selected @endif value="6" label="Accounting Professional (Others)">Accounting Professional (Others)</option>
         <optgroup id="occupation-optgroup-Administration &amp; HR" label="Administration &amp; HR">
         </optgroup>
-        <option value="Admin Professional" label="Admin Professional">Admin Professional</option>
-        <option value="Human Resources Professional" label="Human Resources Professional">Human Resources Professional</option>
+        <option @if($education->workingAs == 7) selected @endif value="7" label="Admin Professional">Admin Professional</option>
+        <option @if($education->workingAs == 8) selected @endif value="8" label="Human Resources Professional">Human Resources Professional</option>
         <optgroup id="occupation-optgroup-Advertising, Media &amp; Entertainment" label="Advertising, Media &amp; Entertainment">
         </optgroup>
-        <option value="Actor" label="Actor">Actor</option>
-        <option value="Advertising Professional" label="Advertising Professional">Advertising Professional</option>
-        <option value="Entertainment Professional" label="Entertainment Professional">Entertainment Professional</option>
-        <option value="Event Manager" label="Event Manager">Event Manager</option>
-        <option value="Journalist" label="Journalist">Journalist</option>
-        <option value="Media Professional" label="Media Professional">Media Professional</option>
-        <option value="Public Relations Professional" label="Public Relations Professional">Public Relations Professional</option>
+        <option @if($education->workingAs == 9) selected @endif value="9">Actor</option>
+        <option @if($education->workingAs == 10) selected @endif value="10">Advertising Professional</option>
+        <option @if($education->workingAs == 11) selected @endif value="11">Entertainment Professional</option>
+        <option @if($education->workingAs == 12) selected @endif value="12" value="Event Manager" label="Event Manager">Event Manager</option>
+        <option @if($education->workingAs == 13) selected @endif value="13" value="Journalist" label="Journalist">Journalist</option>
+        <option @if($education->workingAs == 14) selected @endif value="14" value="Media Professional" label="Media Professional">Media Professional</option>
+        <option @if($education->workingAs == 15) selected @endif value="15" value="Public Relations Professional" label="Public Relations Professional">Public Relations Professional</option>
         <optgroup id="occupation-optgroup-Agriculture" label="Agriculture">
         </optgroup>
-        <option value="Farming" label="Farming">Farming</option>
-        <option value="Horticulturist" label="Horticulturist">Horticulturist</option>
-        <option value="Agricultural Professional (Others)" label="Agricultural Professional (Others)">Agricultural Professional (Others)</option>
+        <option @if($education->workingAs == 16) selected @endif value="16">Farming</option>
+        <option @if($education->workingAs == 17) selected @endif value="17">Horticulturist</option>
+        <option @if($education->workingAs == 18) selected @endif value="18">Agricultural Professional (Others)</option>
         <optgroup id="occupation-optgroup-Airline &amp; Aviation" label="Airline &amp; Aviation">
         </optgroup>
-        <option value="Air Hostess / Flight Attendant" label="Air Hostess / Flight Attendant">Air Hostess / Flight Attendant</option>
-        <option value="Pilot / Co-Pilot" label="Pilot / Co-Pilot">Pilot / Co-Pilot</option>
-        <option value="Other Airline Professional" label="Other Airline Professional">Other Airline Professional</option>
+        <option @if($education->workingAs == 19) selected @endif value="19">Air Hostess / Flight Attendant</option>
+        <option @if($education->workingAs == 20) selected @endif value="20">Pilot / Co-Pilot</option>
+        <option @if($education->workingAs == 21) selected @endif value="21">Other Airline Professional</option>
         <optgroup id="occupation-optgroup-Architecture &amp; Design" label="Architecture &amp; Design">
         </optgroup>
-        <option value="Architect" label="Architect">Architect</option>
-        <option value="Interior Designer" label="Interior Designer">Interior Designer</option>
-        <option value="Landscape Architect" label="Landscape Architect">Landscape Architect</option>
+        <option @if($education->workingAs == 22) selected @endif value="22">Architect</option>
+        <option @if($education->workingAs == 23) selected @endif value="23">Interior Designer</option>
+        <option @if($education->workingAs == 24) selected @endif value="24">Landscape Architect</option>
         <optgroup id="occupation-optgroup-Artists, Animators &amp; Web Designers" label="Artists, Animators &amp; Web Designers">
         </optgroup>
-        <option value="Animator" label="Animator">Animator</option>
-        <option value="Commercial Artist" label="Commercial Artist">Commercial Artist</option>
-        <option value="Web / UX Designers" label="Web / UX Designers">Web / UX Designers</option>
-        <option value="Artist (Others)" label="Artist (Others)">Artist (Others)</option>
+        <option @if($education->workingAs == 25) selected @endif value="25">Animator</option>
+        <option @if($education->workingAs == 26) selected @endif value="26">Commercial Artist</option>
+        <option @if($education->workingAs == 27) selected @endif value="27">Web / UX Designers</option>
+        <option @if($education->workingAs == 28) selected @endif value="28">Artist (Others)</option>
         <optgroup id="occupation-optgroup-Beauty, Fashion &amp; Jewellery Designers" label="Beauty, Fashion &amp; Jewellery Designers">
         </optgroup>
-        <option value="Beautician" label="Beautician">Beautician</option>
-        <option value="Fashion Designer" label="Fashion Designer">Fashion Designer</option>
-        <option value="Hairstylist" label="Hairstylist">Hairstylist</option>
-        <option value="Jewellery Designer" label="Jewellery Designer">Jewellery Designer</option>
-        <option value="Designer (Others)" label="Designer (Others)">Designer (Others)</option>
+        <option @if($education->workingAs == 29) selected @endif value="29">Beautician</option>
+        <option @if($education->workingAs == 30) selected @endif value="30">Fashion Designer</option>
+        <option @if($education->workingAs == 31) selected @endif value="31">Hairstylist</option>
+        <option @if($education->workingAs == 32) selected @endif value="32">Jewellery Designer</option>
+        <option @if($education->workingAs == 33) selected @endif value="33">Designer (Others)</option>
         <optgroup id="occupation-optgroup-BPO, KPO, &amp; Customer Support" label="BPO, KPO, &amp; Customer Support">
         </optgroup>
-        <option value="Customer Support / BPO / KPO Professional" label="Customer Support / BPO / KPO Professional">Customer Support / BPO / KPO Professional</option>
+        <option @if($education->workingAs == 34) selected @endif value="34">Customer Support / BPO / KPO Professional</option>
         <optgroup id="occupation-optgroup-Civil Services / Law Enforcement" label="Civil Services / Law Enforcement">
         </optgroup>
-        <option value="IAS / IRS / IES / IFS" label="IAS / IRS / IES / IFS">IAS / IRS / IES / IFS</option>
-        <option value="Indian Police Services (IPS)" label="Indian Police Services (IPS)">Indian Police Services (IPS)</option>
-        <option value="Law Enforcement Employee (Others)" label="Law Enforcement Employee (Others)">Law Enforcement Employee (Others)</option>
+        <option @if($education->workingAs == 35) selected @endif value="35">IAS / IRS / IES / IFS</option>
+        <option @if($education->workingAs == 36) selected @endif value="36">Indian Police Services (IPS)</option>
+        <option @if($education->workingAs == 37) selected @endif value="37">Law Enforcement Employee (Others)</option>
         <optgroup id="occupation-optgroup-Defense" label="Defense">
         </optgroup>
-        <option value="Airforce" label="Airforce">Airforce</option>
-        <option value="Army" label="Army">Army</option>
-        <option value="Navy" label="Navy">Navy</option>
-        <option value="Defense Services (Others)" label="Defense Services (Others)">Defense Services (Others)</option>
+        <option @if($education->workingAs == 38) selected @endif value="38">Airforce</option>
+        <option @if($education->workingAs == 39) selected @endif value="39">Army</option>
+        <option @if($education->workingAs == 40) selected @endif value="40">Navy</option>
+        <option @if($education->workingAs == 41) selected @endif value="41">Defense Services (Others)</option>
         <optgroup id="occupation-optgroup-Education &amp; Training" label="Education &amp; Training">
         </optgroup>
-        <option value="Lecturer" label="Lecturer">Lecturer</option>
-        <option value="Professor" label="Professor">Professor</option>
-        <option value="Research Assistant" label="Research Assistant">Research Assistant</option>
-        <option value="Research Scholar" label="Research Scholar">Research Scholar</option>
-        <option value="Teacher" label="Teacher">Teacher</option>
-        <option value="Training Professional (Others)" label="Training Professional (Others)">Training Professional (Others)</option>
+        <option @if($education->workingAs == 42) selected @endif value="42">Lecturer</option>
+        <option @if($education->workingAs == 43) selected @endif value="43">Professor</option>
+        <option @if($education->workingAs == 44) selected @endif value="44">Research Assistant</option>
+        <option @if($education->workingAs == 45) selected @endif value="45">Research Scholar</option>
+        <option @if($education->workingAs == 46) selected @endif value="46">Teacher</option>
+        <option @if($education->workingAs == 47) selected @endif value="47">Training Professional (Others)</option>
         <optgroup id="occupation-optgroup-Engineering" label="Engineering">
         </optgroup>
-        <option value="Civil Engineer" label="Civil Engineer">Civil Engineer</option>
-        <option value="Electronics / Telecom Engineer" label="Electronics / Telecom Engineer">Electronics / Telecom Engineer</option>
-        <option value="Mechanical / Production Engineer" label="Mechanical / Production Engineer">Mechanical / Production Engineer</option>
-        <option value="Non IT Engineer (Others)" label="Non IT Engineer (Others)">Non IT Engineer (Others)</option>
+        <option @if($education->workingAs == 48) selected @endif value="48">Civil Engineer</option>
+        <option @if($education->workingAs == 49) selected @endif value="49">Electronics / Telecom Engineer</option>
+        <option @if($education->workingAs == 50) selected @endif value="50">Mechanical / Production Engineer</option>
+        <option @if($education->workingAs == 51) selected @endif value="51">Non IT Engineer (Others)</option>
         <optgroup id="occupation-optgroup-Hotel &amp; Hospitality" label="Hotel &amp; Hospitality">
         </optgroup>
-        <option value="Chef / Sommelier / Food Critic" label="Chef / Sommelier / Food Critic">Chef / Sommelier / Food Critic</option>
-        <option value="Catering Professional" label="Catering Professional">Catering Professional</option>
-        <option value="Hotel &amp; Hospitality Professional (Others)" label="Hotel &amp; Hospitality Professional (Others)">Hotel &amp; Hospitality Professional (Others)</option>
+        <option @if($education->workingAs == 52) selected @endif value="52">Chef / Sommelier / Food Critic</option>
+        <option @if($education->workingAs == 53) selected @endif value="53">Catering Professional</option>
+        <option @if($education->workingAs == 54) selected @endif value="54">Hotel &amp; Hospitality Professional (Others)</option>
         <optgroup id="occupation-optgroup-IT &amp; Software Engineering" label="IT &amp; Software Engineering">
         </optgroup>
-        <option value="Software Developer / Programmer" label="Software Developer / Programmer" >Software Developer / Programmer</option>
-        <option value="Software Consultant" label="Software Consultant">Software Consultant</option>
-        <option value="Hardware &amp; Networking professional" label="Hardware &amp; Networking professional">Hardware &amp; Networking professional</option>
-        <option value="Software Professional (Others)" label="Software Professional (Others)">Software Professional (Others)</option>
+        <option @if($education->workingAs == 55) selected @endif value="55">Software Developer / Programmer</option>
+        <option @if($education->workingAs == 56) selected @endif value="56">Software Consultant</option>
+        <option @if($education->workingAs == 57) selected @endif value="57">Hardware &amp; Networking professional</option>
+        <option @if($education->workingAs == 58) selected @endif value="58">Software Professional (Others)</option>
         <optgroup id="occupation-optgroup-Legal" label="Legal">
         </optgroup>
-        <option value="Lawyer" label="Lawyer">Lawyer</option>
-        <option value="Legal Assistant" label="Legal Assistant">Legal Assistant</option>
-        <option value="Legal Professional (Others)" label="Legal Professional (Others)">Legal Professional (Others)</option>
+        <option @if($education->workingAs == 59) selected @endif value="59">Lawyer</option>
+        <option @if($education->workingAs == 60) selected @endif value="60">Legal Assistant</option>
+        <option @if($education->workingAs == 61) selected @endif value="61">Legal Professional (Others)</option>
         <optgroup id="occupation-optgroup-Medical &amp; Healthcare" label="Medical &amp; Healthcare">
         </optgroup>
-        <option value="Dentist" label="Dentist">Dentist</option>
-        <option value="Doctor" label="Doctor">Doctor</option>
-        <option value="Medical Transcriptionist" label="Medical Transcriptionist">Medical Transcriptionist</option>
-        <option value="Nurse" label="Nurse">Nurse</option>
-        <option value="Pharmacist" label="Pharmacist">Pharmacist</option>
-        <option value="Physician Assistant" label="Physician Assistant">Physician Assistant</option>
-        <option value="Physiotherapist / Occupational Therapist" label="Physiotherapist / Occupational Therapist">Physiotherapist / Occupational Therapist</option>
-        <option value="Psychologist" label="Psychologist">Psychologist</option>
-        <option value="Surgeon" label="Surgeon">Surgeon</option>
-        <option value="Veterinary Doctor" label="Veterinary Doctor">Veterinary Doctor</option>
-        <option value="Therapist (Others)" label="Therapist (Others)">Therapist (Others)</option>
-        <option value="Medical / Healthcare Professional (Others)" label="Medical / Healthcare Professional (Others)">Medical / Healthcare Professional (Others)</option>
+        <option @if($education->workingAs == 62) selected @endif value="62">Dentist</option>
+        <option @if($education->workingAs == 63) selected @endif value="63">Doctor</option>
+        <option @if($education->workingAs == 64) selected @endif value="64">Medical Transcriptionist</option>
+        <option @if($education->workingAs == 65) selected @endif value="65">Nurse</option>
+        <option @if($education->workingAs == 66) selected @endif value="66">Pharmacist</option>
+        <option @if($education->workingAs == 67) selected @endif value="67">Physician Assistant</option>
+        <option herapist" label="Physiotherapist / Occupational Therapist">Physiotherapist / Occupational Therapist</option>
+        <option @if($education->workingAs == 68) selected @endif value="68">Psychologist</option>
+        <option @if($education->workingAs == 69) selected @endif value="69">Surgeon</option>
+        <option @if($education->workingAs == 70) selected @endif value="70">Veterinary Doctor</option>
+        <option @if($education->workingAs == 71) selected @endif value="71">Therapist (Others)</option>
+        <option @if($education->workingAs == 72) selected @endif value="72">Medical / Healthcare Professional (Others)</option>
         <optgroup id="occupation-optgroup-Merchant Navy" label="Merchant Navy">
         </optgroup>
-        <option value="Merchant Naval Officer" label="Merchant Naval Officer">Merchant Naval Officer</option>
-        <option value="Mariner" label="Mariner">Mariner</option>
+        <option @if($education->workingAs == 73) selected @endif value="73">Merchant Naval Officer</option>
+        <option @if($education->workingAs == 74) selected @endif value="74">Mariner</option>
         <optgroup id="occupation-optgroup-Sales &amp; Marketing" label="Sales &amp; Marketing">
         </optgroup>
-        <option value="Marketing Professional" label="Marketing Professional">Marketing Professional</option>
-        <option value="Sales Professional" label="Sales Professional">Sales Professional</option>
+        <option @if($education->workingAs == 75) selected @endif value="75">Marketing Professional</option>
+        <option @if($education->workingAs == 76) selected @endif value="76">Sales Professional</option>
         <optgroup id="occupation-optgroup-Science" label="Science">
         </optgroup>
-        <option value="Biologist / Botanist" label="Biologist / Botanist">Biologist / Botanist</option>
-        <option value="Physicist" label="Physicist">Physicist</option>
-        <option value="Science Professional (Others)" label="Science Professional (Others)">Science Professional (Others)</option>
+        <option @if($education->workingAs == 73) selected @endif value="73">Biologist / Botanist</option>
+        <option @if($education->workingAs == 74) selected @endif value="74">Physicist</option>
+        <option @if($education->workingAs == 75) selected @endif value="75">Science Professional (Others)</option>
         <optgroup id="occupation-optgroup-Corporate Professionals" label="Corporate Professionals">
         </optgroup>
-        <option value="CxO / Chairman / Director / President" label="CxO / Chairman / Director / President">CxO / Chairman / Director / President</option>
-        <option value="VP / AVP / GM / DGM" label="VP / AVP / GM / DGM">VP / AVP / GM / DGM</option>
-        <option value="Sr. Manager / Manager" label="Sr. Manager / Manager">Sr. Manager / Manager</option>
-        <option value="Consultant / Supervisor / Team Leads" label="Consultant / Supervisor / Team Leads">Consultant / Supervisor / Team Leads</option>
-        <option value="Team Member / Staff" label="Team Member / Staff">Team Member / Staff</option>
+        <option @if($education->workingAs == 76) selected @endif value="76">CxO / Chairman / Director / President</option>
+        <option @if($education->workingAs == 77) selected @endif value="77">VP / AVP / GM / DGM</option>
+        <option @if($education->workingAs == 78) selected @endif value="78">Sr. Manager / Manager</option>
+        <option @if($education->workingAs == 79) selected @endif value="79">Consultant / Supervisor / Team Leads</option>
+        <option @if($education->workingAs == 80) selected @endif value="80">Team Member / Staff</option>
         <optgroup id="occupation-optgroup-Others" label="Others">
         </optgroup>
-        <option value="Agent / Broker / Trader / Contractor" label="Agent / Broker / Trader / Contractor">Agent / Broker / Trader / Contractor</option>
-        <option value="Business Owner / Entrepreneur" label="Business Owner / Entrepreneur">Business Owner / Entrepreneur</option>
-        <option value="Politician" label="Politician">Politician</option>
-        <option value="Social Worker / Volunteer / NGO" label="Social Worker / Volunteer / NGO">Social Worker / Volunteer / NGO</option>
-        <option value="Sportsman" label="Sportsman">Sportsman</option>
-        <option value="Travel &amp; Transport Professional" label="Travel &amp; Transport Professional">Travel &amp; Transport Professional</option>
-        <option value="Writer" label="Writer">Writer</option>
+        <option @if($education->workingAs == 81) selected @endif value="81">Agent / Broker / Trader / Contractor</option>
+        <option @if($education->workingAs == 82) selected @endif value="82">Business Owner / Entrepreneur</option>
+        <option @if($education->workingAs == 83) selected @endif value="83">Politician</option>
+        <option @if($education->workingAs == 84) selected @endif value="84">Social Worker / Volunteer / NGO</option>
+        <option @if($education->workingAs == 85) selected @endif value="85">Sportsman</option>
+        <option @if($education->workingAs == 86) selected @endif value="86">Travel &amp; Transport Professional</option>
+        <option @if($education->workingAs == 87) selected @endif value="87">Writer</option>
         <optgroup id="occupation-optgroup-Non Working" label="Non Working">
         </optgroup>
-        <option value="Student" label="Student">Student</option>
-        <option value="Retired" label="Retired">Retired</option>
-        <option value="Not working" label="Not working">Not working</option>
+        <option @if($education->workingAs == 88) selected @endif value="88">Student</option>
+        <option @if($education->workingAs == 89) selected @endif value="89">Retired</option>
+        <option @if($education->workingAs == 90) selected @endif value="90">Not working</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
