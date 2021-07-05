@@ -63,108 +63,113 @@
                     <div class="pr_details">
                       <div class="flex_details_span">
                         <span class="quest">Age / Height</span>
-                        <span class="answr">:22 /
+                        <span class="answr">:
+                          22
+                          @if(!empty($detail))
+                          /
                           @if($detail->height == 1)
-                            4' 5"
-                            @endif
-                            @if($detail->height == 2)
-                            4' 6"
-                            @endif
-                            @if($detail->height == 3)
-                            4' 7"
-                            @endif
-                            @if($detail->height == 4)
-                            4' 8"
-                            @endif
-                            @if($detail->height == 5)
-                            4' 9"
-                            @endif
-                            @if($detail->height == 6)
-                            4' 10"
-                            @endif
-                            @if($detail->height == 7)
-                            4' 11"
-                            @endif
-                            @if($detail->height == 8)
-                            5'
-                            @endif
-                            @if($detail->height == 9)
-                            5' 1"
-                            @endif
-                            @if($detail->height == 10)
-                            5' 2"
-                            @endif
-                            @if($detail->height == 11)
-                            5' 3"
-                            @endif
-                            @if($detail->height == 12)
-                            5' 4"
-                            @endif
-                            @if($detail->height == 13)
-                            5' 5"
-                            @endif
-                            @if($detail->height == 14)
-                            5' 6"
-                            @endif
-                            @if($detail->height == 15)
-                            5' 7"
-                            @endif
-                            @if($detail->height == 16)
-                            5' 8"
-                            @endif
-                            @if($detail->height == 17)
-                            5' 9"
-                            @endif
-                            @if($detail->height == 18)
-                            5' 10"
-                            @endif
-                            @if($detail->height == 19)
-                            5' 11"
-                            @endif
-                            @if($detail->height == 20)
-                            6'
-                            @endif
-                            @if($detail->height == 21)
-                            6' 1"
-                            @endif
-                            @if($detail->height == 22)
-                            6' 2"
-                            @endif
-                            @if($detail->height == 23)
-                            6' 3"
-                            @endif
-                            @if($detail->height == 24)
-                            6' 4"
-                            @endif
-                            @if($detail->height == 25)
-                            6' 5"
-                            @endif
-                            @if($detail->height == 26)
-                            6' 6"
-                            @endif
-                            @if($detail->height == 27)
-                            6' 7"
-                            @endif
-                            @if($detail->height == 28)
-                            6' 8"
-                            @endif
-                            @if($detail->height == 29)
-                            6' 9"
-                            @endif
-                            @if($detail->height == 30)
-                            6' 10"
-                            @endif
-                            @if($detail->height == 31)
-                            6' 11"
-                            @endif
-                            @if($detail->height == 32)
-                            7'
-                            @endif
+            4' 5"
+            @endif
+            @if($detail->height == 2)
+            4' 6"
+            @endif
+            @if($detail->height == 3)
+            4' 7"
+            @endif
+            @if($detail->height == 4)
+            4' 8"
+            @endif
+            @if($detail->height == 5)
+            4' 9"
+            @endif
+            @if($detail->height == 6)
+            4' 10"
+            @endif
+            @if($detail->height == 7)
+            4' 11"
+            @endif
+            @if($detail->height == 8)
+            5'
+            @endif
+            @if($detail->height == 9)
+            5' 1"
+            @endif
+            @if($detail->height == 10)
+            5' 2"
+            @endif
+            @if($detail->height == 11)
+            5' 3"
+            @endif
+            @if($detail->height == 12)
+            5' 4"
+            @endif
+            @if($detail->height == 13)
+            5' 5"
+            @endif
+            @if($detail->height == 14)
+            5' 6"
+            @endif
+            @if($detail->height == 15)
+            5' 7"
+            @endif
+            @if($detail->height == 16)
+            5' 8"
+            @endif
+            @if($detail->height == 17)
+            5' 9"
+            @endif
+            @if($detail->height == 18)
+            5' 10"
+            @endif
+            @if($detail->height == 19)
+            5' 11"
+            @endif
+            @if($detail->height == 20)
+            6'
+            @endif
+            @if($detail->height == 21)
+            6' 1"
+            @endif
+            @if($detail->height == 22)
+            6' 2"
+            @endif
+            @if($detail->height == 23)
+            6' 3"
+            @endif
+            @if($detail->height == 24)
+            6' 4"
+            @endif
+            @if($detail->height == 25)
+            6' 5"
+            @endif
+            @if($detail->height == 26)
+            6' 6"
+            @endif
+            @if($detail->height == 27)
+            6' 7"
+            @endif
+            @if($detail->height == 28)
+            6' 8"
+            @endif
+            @if($detail->height == 29)
+            6' 9"
+            @endif
+            @if($detail->height == 30)
+            6' 10"
+            @endif
+            @if($detail->height == 31)
+            6' 11"
+            @endif
+            @if($detail->height == 32)
+            7'
+            @endif
+            @endif
                         </span>
                       </div>
                       <div class="flex_details_span">
                         <span class="quest">Marital Status</span>
                         <span class="answr">:
+                          @if(!empty($detail))
                           @if($detail->maritalStatus == 1)
                           Never Married
                           @endif
@@ -174,11 +179,13 @@
                           @if($detail->maritalStatus == 3)
                           Awaiting Divorce
                           @endif
+                          @endif
                         </span>
                       </div>
                       <div class="flex_details_span">
                         <span class="quest">Posted by</span>
                         <span class="answr">:
+                          @if(!empty($detail))
                           @if($detail->profileCreatedBy == 1)
                           Self
                           @endif
@@ -197,6 +204,7 @@
                           @if($detail->profileCreatedBy == 6)
                           Other
                           @endif
+                          @endif
                         </span>
                       </div>
                       <div class="flex_details_span">
@@ -206,6 +214,7 @@
                       <div class="flex_details_span">
                         <span class="quest">Mother Tongue</span>
                         <span class="answr">:
+                          @if(!empty($religion))
                           @if($religion->motherTongue == 1)
                           Hindi
                           @endif
@@ -224,12 +233,14 @@
                           @if($religion->motherTongue == 6)
                           Urdu
                           @endif
+                          @endif
 
                         </span>
                       </div>
                       <div class="flex_details_span">
                         <span class="quest">Religion / Community</span>
                         <span class="answr">:
+                          @if(!empty($religion))
                           @if($religion->religion == 1)
                           Hindu
                           @endif
@@ -254,19 +265,22 @@
                           @if($religion->community == 3)
                           / Awaiting Divorce
                           @endif
+                          @endif
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              @if(!empty($detail->about))
                   <div class="profile_sec_one">
                     <div class="edit_Wrapp">
                       <a href="{{URL::to('/edit-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
                     </div>
               <h3>Personality, Family Details, Career, Partner Expectations etc.</h3>
-              <p>{{ $detail->about }}</p>
+              <p>@if(!empty($detail)){{ $detail->about }} @endif</p>
             </div>
+            @endif
 
             <div class="profile_sec_one">
                     <div class="edit_Wrapp">
@@ -282,11 +296,16 @@
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Date of Birth</span>
-                      <span class="answr">:{{ $d = date("d-M-Y", strtotime($detail->dateOfBirth)) }}</span>
+                      <span class="answr">:
+                        @if(!empty($detail))
+                        {{ $d = date("d-M-Y", strtotime($detail->dateOfBirth)) }}
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Marital Status</span>
                       <span class="answr">:
+                        @if(!empty($detail))
                         @if($detail->maritalStatus == 1)
                         Never Married
                         @endif
@@ -296,11 +315,13 @@
                         @if($detail->maritalStatus == 3)
                         Awaiting Divorce
                         @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Height</span>
                       <span class="answr">:
+                        @if(!empty($detail))
                                     @if($detail->height == 1)
                       4' 5" (135cm)
                       @endif
@@ -397,6 +418,7 @@
                       @if($detail->height == 32)
                       7' (213cm)
                       @endif
+                      @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
@@ -410,6 +432,7 @@
                     <div class="flex_details_span">
                       <span class="quest">Diet</span>
                       <span class="answr">:
+                        @if(!empty($detail))
                         @if($detail->diet == 1)
                         Veg
                         @endif
@@ -428,6 +451,7 @@
                         @if($detail->diet == 6)
                         Vegan
                         @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
@@ -441,8 +465,10 @@
                     <div class="flex_details_span">
                       <span class="quest">Blood Group</span>
                       <span class="answr">:
+                        @if(!empty($detail))
                         @if(isset($detail->bloodGroup))
                         {{ $detail->bloodGroup }}
+                        @endif
                         @endif
                       </span>
                     </div>
@@ -470,6 +496,7 @@
                     <div class="flex_details_span">
                       <span class="quest">Religion</span>
                       <span class="answr">:
+                        @if(!empty($religion))
                         @if($religion->religion == 1)
                         Hindu
                         @endif
@@ -485,12 +512,14 @@
                         @if($religion->religion == 5)
                         Parsi
                         @endif
+                        @endif
 
                       </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Community</span>
                       <span class="answr">:
+                        @if(!empty($religion))
                         @if($religion->community == 1)
                         Rajput
                         @endif
@@ -499,6 +528,7 @@
                         @endif
                         @if($religion->community == 3)
                         Awaiting Divorce
+                        @endif
                         @endif
                       </span>
                     </div>
@@ -510,6 +540,7 @@
                     <div class="flex_details_span">
                       <span class="quest">Mother Tongue</span>
                       <span class="answr">:
+                        @if(!empty($religion))
                         @if($religion->motherTongue == 1)
                         Hindi
                         @endif
@@ -528,6 +559,7 @@
                         @if($religion->motherTongue == 6)
                         Urdu
                         @endif
+                        @endif
                       </span>
                     </div>
                   </div>
@@ -537,7 +569,11 @@
                   <div class="pr_details">
                     <div class="flex_details_span">
                       <span class="quest">Date of Birth</span>
-                      <span class="answr">:{{ $d = date("d-M-Y", strtotime($detail->dateOfBirth)) }}</span>
+                      <span class="answr">:
+                        @if(!empty($detail))
+                        {{ $d = date("d-M-Y", strtotime($detail->dateOfBirth)) }}
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Time of Birth</span>
@@ -563,6 +599,7 @@
                     <div class="flex_details_span">
                       <span class="quest">Father's Status</span>
                       <span class="answr">:
+                        @if(!empty($family))
                         @if($family->fatherStatus == 1)
                         Employed
                         @endif
@@ -575,11 +612,13 @@
                         @if($family->fatherStatus == 4)
                         Not Employed
                         @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Mother's Status</span>
                       <span class="answr">:
+                        @if(!empty($family))
                         @if($family->motherStatus == 1)
                         Employed
                         @endif
@@ -592,15 +631,24 @@
                         @if($family->motherStatus == 4)
                         Not Employed
                         @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Family Location</span>
-                      <span class="answr">: {{ $family->familyLocation }}</span>
+                      <span class="answr">:
+                        @if(!empty($family))
+                        {{ $family->familyLocation }}
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Native Place</span>
-                      <span class="answr">: {{ $family->nativePlace }}</span>
+                      <span class="answr">:
+                        @if(!empty($family))
+                        {{ $family->nativePlace }}
+                        @endif
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -608,11 +656,16 @@
                   <div class="pr_details">
                     <div class="flex_details_span">
                       <span class="quest">No. of Siblings</span>
-                      <span class="answr">:{{ $family->sibling }} </span>
+                      <span class="answr">:
+                        @if(!empty($family))
+                        {{ $family->sibling }}
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Family Type</span>
                       <span class="answr">:
+                        @if(!empty($family))
                         @if($family->familyType == 1)
                         Joint
                         @endif
@@ -621,6 +674,7 @@
                         @endif
                         @if($family->familyType == 3)
                         Joint
+                        @endif
                         @endif
 
                       </span>
@@ -641,6 +695,7 @@
                     <div class="flex_details_span">
                       <span class="quest">Highest Qualification</span>
                       <span class="answr">:
+                        @if(!empty($education))
                         @if($education->highestQualification == 1) B.E / B.Tech @endif
                         @if($education->highestQualification == 2) M.E / M.Tech @endif
                         @if($education->highestQualification == 3) M.S Engineering @endif
@@ -683,15 +738,15 @@
                         @if($education->highestQualification == 40) B.IT @endif
                         @if($education->highestQualification == 41) BCS @endif
                         @if($education->highestQualification == 42) BA Computer Science @endif
-                        @if($education->highestQualification == 43) MCA @endif 
+                        @if($education->highestQualification == 43) MCA @endif
                         @if($education->highestQualification == 44) PGDCA @endif
                         @if($education->highestQualification == 45) IT Diploma @endif
                         @if($education->highestQualification == 46) ADIT @endif
                         @if($education->highestQualification == 47) B.Sc @endif
                         @if($education->highestQualification == 48) M.Sc @endif
                         @if($education->highestQualification == 49) BSc (Hons) @endif
-                        @if($education->highestQualification == 50) DipSc @endif 
-                        @if($education->highestQualification == 51) AS @endif 
+                        @if($education->highestQualification == 50) DipSc @endif
+                        @if($education->highestQualification == 51) AS @endif
                         @if($education->highestQualification == 52) AAS @endif
                         @if($education->highestQualification == 53) MBBS @endif
                         @if($education->highestQualification == 54) BDS @endif
@@ -706,7 +761,7 @@
                         @if($education->highestQualification == 63) M.D @endif
                         @if($education->highestQualification == 64) M.S Medicine @endif
                         @if($education->highestQualification == 65) MPT @endif
-                        @if($education->highestQualification == 66) DM @endif 
+                        @if($education->highestQualification == 66) DM @endif
                         @if($education->highestQualification == 67) M.Pharma @endif
                         @if($education->highestQualification == 68) MVSc @endif
                         @if($education->highestQualification == 69) MMed @endif
@@ -717,13 +772,13 @@
                         @if($education->highestQualification == 74) BBM @endif
                         @if($education->highestQualification == 75) MBA @endif
                         @if($education->highestQualification == 76) PGDM @endif
-                        @if($education->highestQualification == 77) ABA @endif 
+                        @if($education->highestQualification == 77) ABA @endif
                         @if($education->highestQualification == 78) ADBus @endif
                         @if($education->highestQualification == 79) BL / LLB @endif
                         @if($education->highestQualification == 80) ML / LLM @endif
                         @if($education->highestQualification == 81) LLB (Hons) @endif
                         @if($education->highestQualification == 82) ALA @endif
-                        @if($education->highestQualification == 83) Ph.D @endif 
+                        @if($education->highestQualification == 83) Ph.D @endif
                         @if($education->highestQualification == 84) M.Phil @endif
                         @if($education->highestQualification == 85) Bachelor @endif
                         @if($education->highestQualification == 86) Master @endif
@@ -733,15 +788,20 @@
                         @if($education->highestQualification == 90) Associate @endif
                         @if($education->highestQualification == 91) High school @endif
                         @if($education->highestQualification == 92) Less than high school @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
-                      <span class="quest">College(s) Attended</span>
-                      <span class="answr">: Enter Now</span>
-                    </div>
-                    <div class="flex_details_span">
                       <span class="quest">Annual Income</span>
-                      <span class="answr">: INR 4 Lakh to 7 Lakh</span>
+                      <span class="answr">:
+                        @if(!empty($education))
+                        @if($education->income == 1) Upto INR 1 Lakh @endif
+                        @if($education->income == 2) INR 1 Lakh to 2 Lakh @endif
+                        @if($education->income == 3) INR 2 Lakh to 4 Lakh @endif
+                        @if($education->income == 4) INR 4 Lakh to 7 Lakh @endif
+                        @if($education->income == 5) INR 7 Lakh to 10 Lakh @endif
+                        @endif
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -749,17 +809,20 @@
                   <div class="pr_details">
                     <div class="flex_details_span">
                       <span class="quest">Working With</span>
-                      <span class="answr">: 
+                      <span class="answr">:
+                        @if(!empty($education))
                         @if($education->workingWith == 1) Private Company @endif
                         @if($education->workingWith == 2) Government / Public Sector @endif
                         @if($education->workingWith == 3) Defense / Civil Services @endif
                         @if($education->workingWith == 4) Business / Self Employed @endif
                         @if($education->workingWith == 5) Not Working @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Working As</span>
-                      <span class="answr">: 
+                      <span class="answr">:
+                        @if(!empty($education))
                         @if($education->workingAs == 1) Banking Professional @endif
                         @if($education->workingAs == 2) Chartered Accountant @endif
                         @if($education->workingAs == 3) Company Secretary @endif
@@ -854,6 +917,7 @@
                         @if($education->workingAs == 92) Student @endif
                         @if($education->workingAs == 93) Retired @endif
                         @if($education->workingAs == 94) Not working @endif
+                        @endif
                       </span>
                     </div>
                     <div class="flex_details_span">
@@ -898,7 +962,7 @@
               </div>
             </div>
 
-            <div class="profile_sec_one">
+            <!-- <div class="profile_sec_one">
                     <div class="edit_Wrapp">
                   <a href="{{URL::to('/edit-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
                     </div>
@@ -945,7 +1009,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
               </div>
 
               <div id="pane-B" class="tab-pane fade">
@@ -1042,13 +1106,7 @@
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Annual income</span>
-                      <span class="answr">: 
-                        @if($user->income == 1) Upto INR 1 Lakh @endif
-                        @if($user->income == 2) INR 1 Lakh to 2 Lakh @endif
-                        @if($user->income == 3) INR 2 Lakh to 4 Lakh @endif
-                        @if($user->income == 4) INR 4 Lakh to 7 Lakh @endif                    
-                        @if($user->income == 5) INR 7 Lakh to 10 Lakh @endif value="4">
-                      </span>
+                      <span class="answr">: INR less than 1 lakh to 7 lakhs.</span>
                     </div>
                   </div>
                 </div>

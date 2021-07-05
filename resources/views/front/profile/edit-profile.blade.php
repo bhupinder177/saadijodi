@@ -485,7 +485,7 @@
         <option @if($education->workingAs == 65) selected @endif value="65">Nurse</option>
         <option @if($education->workingAs == 66) selected @endif value="66">Pharmacist</option>
         <option @if($education->workingAs == 67) selected @endif value="67">Physician Assistant</option>
-        <option herapist" label="Physiotherapist / Occupational Therapist">Physiotherapist / Occupational Therapist</option>
+        <option label="Physiotherapist / Occupational Therapist">Physiotherapist / Occupational Therapist</option>
         <option @if($education->workingAs == 68) selected @endif value="68">Psychologist</option>
         <option @if($education->workingAs == 69) selected @endif value="69">Surgeon</option>
         <option @if($education->workingAs == 70) selected @endif value="70">Veterinary Doctor</option>
@@ -539,7 +539,7 @@
                         <option @if($family->income == 2) selected @endif value="2">INR 1 Lakh to 2 Lakh</option>
                         <option @if($family->income == 3) selected @endif value="3">INR 2 Lakh to 4 Lakh</option>
                         <option @if($family->income == 4) selected @endif value="4">INR 4 Lakh to 7 Lakh</option>
-                        <option @if($family->income == 5) selected @endif value="4">INR 7 Lakh to 10 Lakh</option>
+                        <option @if($family->income == 5) selected @endif value="5">INR 7 Lakh to 10 Lakh</option>
                     </select>
                           </div>
                         </div>
@@ -569,6 +569,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="card">
                 <div class="card-header" id="faqhead2">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
