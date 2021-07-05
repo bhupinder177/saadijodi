@@ -39,7 +39,8 @@ class ProfileController extends Controller
         $detail = UserBasicDetails::where('userId',Auth::User()->id)->first();
         $family = UserFamilyDetails::where('userId',Auth::User()->id)->first();
         $religion = UserReligious::where('userId',Auth::User()->id)->first();
-        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion]);
+        $education = UserEducations::where('userId',Auth::User()->id)->first();
+        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function edit()
