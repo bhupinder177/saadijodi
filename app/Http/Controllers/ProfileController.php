@@ -8,6 +8,11 @@ use App\Model\UserBasicDetails;
 use App\Model\UserFamilyDetails;
 use App\Model\UserEducations;
 use App\Model\UserReligious;
+use App\Model\UserLocations;
+use App\Model\Country;
+use App\Model\States;
+use App\Model\Cities;
+use App\Model\UserContactDetails;
 use Validator;
 use Session;
 use Curl;
@@ -40,7 +45,9 @@ class ProfileController extends Controller
         $family = UserFamilyDetails::where('userId',Auth::User()->id)->first();
         $religion = UserReligious::where('userId',Auth::User()->id)->first();
         $education = UserEducations::where('userId',Auth::User()->id)->first();
-        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+        $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
+
+        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact]);
     }
 
     public function edit()
@@ -50,8 +57,17 @@ class ProfileController extends Controller
       $family = UserFamilyDetails::where('userId',Auth::User()->id)->first();
       $religion = UserReligious::where('userId',Auth::User()->id)->first();
       $education = UserEducations::where('userId',Auth::User()->id)->first();
+      $location = UserLocations::where('userId',Auth::User()->id)->first();
+      $allcountry = Country::get();
+      $states = array();
+      $city = array();
+      if(!empty($location))
+      {
+      $states = States::where('country_id',$location->country)->get();
+      $city = Cities::where('state_id',$location->state)->get();
+      }
 
-      return view('front.profile.edit-profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+      return view('front.profile.edit-profile',['states'=>$states,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function update(Request $request)
@@ -62,7 +78,9 @@ class ProfileController extends Controller
        $detail['gender'] = $request->gender;
        $detail['diet'] = $request->diet;
        $detail['about'] = $request->about;
+       $detail['bloodGroup'] = $request->bloodGroup;
        $detail['dateOfBirth'] = date("Y-m-d", strtotime($request->dateOfBirth));
+
        $res = UserBasicDetails::updateOrCreate(array("userId"=>Auth::User()->id),$detail);
        if($res)
        {
@@ -91,6 +109,14 @@ class ProfileController extends Controller
         $religion['subCommunity'] = $request->subCommunity;
         $rupdate = UserReligious::updateOrCreate(array("userId"=>Auth::User()->id),$religion);
        }
+       if($rupdate)
+       {
+         $location['country'] = $request->country;
+         $location['state'] = $request->state;
+         $location['city'] = $request->city;
+         $location['pincode'] = $request->pincode;
+        $locationupdate =  UserLocations::updateOrCreate(array("userId"=>Auth::User()->id),$location);
+       }
        if($res)
        {
          $output['success'] ="true";
@@ -104,5 +130,102 @@ class ProfileController extends Controller
          $output['errors'] ="Profile Is not update";
        }
        return response($output);
+    }
+
+    public function getState(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+              'countryId' => 'required|string',
+          ]);
+
+        if ($validator->fails())
+        {
+           $errors = $validator->errors();
+          $output['validation']     = false;
+          $output['errors']      = $errors;
+        }
+        else
+       {
+         $result = States::where('country_id',$request->countryId)->get();
+         if($result)
+           {
+             $output['success'] ="true";
+             $output['result'] = $result;
+          }
+          else
+          {
+             $output['formErrors'] ="true";
+             $output['errors'] ="Register Is Not Successfully";
+          }
+
+       }
+       echo json_encode($output);
+       exit;
+    }
+
+    public function getCity(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+              'stateId' => 'required|string',
+          ]);
+
+        if ($validator->fails())
+        {
+           $errors = $validator->errors();
+          $output['validation']     = false;
+          $output['errors']      = $errors;
+        }
+        else
+       {
+         $result = Cities::where('state_id',$request->stateId)->get();
+         if($result)
+           {
+             $output['success'] ="true";
+             $output['result'] = $result;
+          }
+          else
+          {
+             $output['formErrors'] ="true";
+          }
+          echo json_encode($output);
+          exit;
+       }
+    }
+
+
+    public function partnerProfile(Request $request)
+    {
+      return view('front.profile.partner-profile');
+    }
+
+    public function contactdetails(Request $request)
+    {
+      $detail = UserContactDetails::where('userId',Auth::User()->id)->first();
+      return view('front.profile.contact-detail',['detail'=>$detail]);
+    }
+
+    public function contactDetailUpdate(Request $request)
+    {
+      $detail['mobile'] = $request->mobile;
+      $detail['nameContactPerson'] = $request->nameContactPerson;
+      $detail['relationWithMember'] = $request->relationWithMember;
+
+
+     $cupdate =  UserContactDetails::updateOrCreate(array("userId"=>Auth::User()->id),$detail);
+
+    if($cupdate)
+    {
+      $output['success'] ="true";
+      $output['success_message'] ="Contact Details Updated Successfully";
+      $output['delayTime'] = 3000;
+      $output['url'] = url('profile');
+    }
+    else
+    {
+      $output['formErrors'] ="true";
+      $output['errors'] ="Contact details is not update";
+    }
+    return response($output);
+
     }
 }

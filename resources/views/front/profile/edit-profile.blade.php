@@ -72,7 +72,7 @@
                           </div>
                           <div class="form_group_wrap">
                             <label>Date of Birth </label>
-                            <input value="{{ $d = date("d-m-Y", strtotime($detail->dateOfBirth)) }}" placeholder="Please select date of birth" class="selecthide" type="text" name="dateOfBirth">
+                            <input value="@if($detail->dateOfBirth){{ $d = date("d-m-Y", strtotime($detail->dateOfBirth)) }}@endif" placeholder="Please select date of birth" class="selecthide" type="text" name="dateOfBirth">
                           </div>
                           <div class="form_group_wrap">
                             <label>Marital status</label>
@@ -126,9 +126,9 @@
                             <label>Blood Group</label>
                             <select name="bloodGroup" id="bloodGroup" class="selecthide">
       <option value="" label="Select">Select</option>
-      <option @if($detail->bloodGroup == 'Don t Know') selected @endif value="Don't Know" label="Don't Know">Don't Know</option>
+      <option @if($detail->bloodGroup == 'Don t Know') selected @endif value="Don t Know" label="Don't Know">Don't Know</option>
       <option @if($detail->bloodGroup == 'A+') selected @endif value="A+" label="A+">A+</option>
-      <option @if($detail->bloodGroup == 'A-') selected @endif value="A-" label="A-" selected="selected">A-</option>
+      <option @if($detail->bloodGroup == 'A-') selected @endif value="A-" label="A-" >A-</option>
       <option @if($detail->bloodGroup == 'B+') selected @endif value="B+" label="B+">B+</option>
       <option @if($detail->bloodGroup == 'B-') selected @endif value="B-" label="B-">B-</option>
       <option @if($detail->bloodGroup == 'AB+') selected @endif value="AB+" label="AB+">AB+</option>
@@ -529,17 +529,17 @@
                           </div>
                           <div class="form_group_wrap">
                             <label>Employer Name</label>
-                            <input name="employerName" class="selecthide" type="text" placeholder="Please enter employer Name">
+                            <input name="employerName" value="{{ $education->employerName }}" class="selecthide" type="text" placeholder="Please enter employer Name">
                           </div>
                           <div class="form_group_wrap">
                             <label>Annual Income</label>
                             <select name="income" class="selecthide">
                         <option value="">Select income</option>
-                        <option @if($family->income == 1) selected @endif value="1">Upto INR 1 Lakh</option>
-                        <option @if($family->income == 2) selected @endif value="2">INR 1 Lakh to 2 Lakh</option>
-                        <option @if($family->income == 3) selected @endif value="3">INR 2 Lakh to 4 Lakh</option>
-                        <option @if($family->income == 4) selected @endif value="4">INR 4 Lakh to 7 Lakh</option>
-                        <option @if($family->income == 5) selected @endif value="5">INR 7 Lakh to 10 Lakh</option>
+                        <option @if($education->income == 1) selected @endif value="1">Upto INR 1 Lakh</option>
+                        <option @if($education->income == 2) selected @endif value="2">INR 1 Lakh to 2 Lakh</option>
+                        <option @if($education->income == 3) selected @endif value="3">INR 2 Lakh to 4 Lakh</option>
+                        <option @if($education->income == 4) selected @endif value="4">INR 4 Lakh to 7 Lakh</option>
+                        <option @if($education->income == 5) selected @endif value="5">INR 7 Lakh to 10 Lakh</option>
                     </select>
                           </div>
                         </div>
@@ -569,7 +569,64 @@
                     </div>
                 </div>
             </div>
-            
+
+            <div class="card">
+                <div class="card-header" id="faqhead212">
+                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq232"
+                    aria-expanded="true" aria-controls="faq2">Location Of Groom</a>
+                </div>
+
+                <div id="faq232" class="collapse show" aria-labelledby="faqhead212" data-parent="#faq">
+                    <div class="card-body">
+
+                        <div class="col-md-12">
+                          <div class="form_group_wrap">
+                            <label>Country Living in</label>
+                            <select name="country" id="country" class="selecthide">
+                        <option value="">Select Country</option>
+                        @if(count($allcountry) > 0)
+                        @foreach($allcountry as $c)
+                        <option @if(!empty($location->country))@if($c->id == $location->country) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                        @endforeach
+                        @endif
+                    </select>
+                          </div>
+
+                          <div class="form_group_wrap">
+                            <label>State</label>
+                            <select name="state" id="states" class="selecthide">
+                            <option value="">Select State</option>
+                            @if(count($states) > 0)
+                            @foreach($states as $s)
+                            <option @if(!empty($location->state))@if($s->id == $location->state) selected @endif @endif value="{{ $c->id }}" >{{ $s->name }}</option>
+                            @endforeach
+                            @endif
+
+
+                    </select>
+                          </div>
+                          <div class="form_group_wrap">
+                            <label>City</label>
+                            <select id="cities" name="city" class="selecthide">
+                        <option value="">Select City</option>
+                        @if(count($city) > 0)
+                        @foreach($city as $c)
+                        <option @if(!empty($location->city))@if($c->id == $location->city) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                        @endforeach
+                        @endif
+
+                    </select>
+                          </div>
+                          <div class="form_group_wrap">
+                            <label>Pincode</label>
+                            <input name="pincode" value="@if(!empty($location)){{ $location->pincode }}@endif" placeholder="Please enter pincode" class="selecthide" type="text" >
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header" id="faqhead2">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
@@ -583,38 +640,38 @@
                           <div class="form_group_wrap">
                             <label>Religion</label>
                             <select name="religion" class="selecthide">
-                        <option value="">Select religion</option>
-                        <option value="1" >Hindu</option>
-                        <option value="2">Muslim</option>
-                        <option value="3">Christian</option>
-                        <option value="4">Sikh</option>
-                        <option value="5">Parsi</option>
+                        <option  value="">Select religion</option>
+                        <option @if($religion->religion == 1) selected @endif value="1" >Hindu</option>
+                        <option @if($religion->religion == 2) selected @endif value="2">Muslim</option>
+                        <option @if($religion->religion == 3) selected @endif value="3">Christian</option>
+                        <option @if($religion->religion == 4) selected @endif value="4">Sikh</option>
+                        <option @if($religion->religion == 5) selected @endif value="5">Parsi</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Mother Tongue</label>
                             <select name="motherTongue" class="selecthide">
                         <option value="">Select Mother Tongue</option>
-                        <option value="1">Hindi</option>
-                        <option value="2">Marathi</option>
-                        <option value="3">Punjabi</option>
-                        <option value="4">Bengali</option>
-                        <option value="5">Gujarati</option>
-                        <option value="6">Urdu</option>
+                        <option @if($religion->motherTongue == 1) selected @endif value="1">Hindi</option>
+                        <option @if($religion->motherTongue == 2) selected @endif value="2">Marathi</option>
+                        <option @if($religion->motherTongue == 3) selected @endif value="3">Punjabi</option>
+                        <option @if($religion->motherTongue == 4) selected @endif value="4">Bengali</option>
+                        <option @if($religion->motherTongue == 5) selected @endif value="5">Gujarati</option>
+                        <option @if($religion->motherTongue == 6) selected @endif value="6">Urdu</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Community</label>
                             <select name="community" class="selecthide">
                         <option value="">Select</option>
-                        <option value="1">Rajput</option>
-                        <option value="2">Punjabi</option>
-                        <option value="3">Awaiting Divorce</option>
+                        <option @if($religion->community == 1) selected @endif value="1">Rajput</option>
+                        <option @if($religion->community == 2) selected @endif value="2">Punjabi</option>
+                        <option @if($religion->community == 3) selected @endif value="3">Awaiting Divorce</option>
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Sub-Community</label>
-                            <input name="subCommunity" class="selecthide" type="text" name="">
+                            <input name="subCommunity" value="{{ $religion->subCommunity }}" placeholder="Please enter sub community" class="selecthide" type="text" >
                           </div>
                         </div>
 

@@ -931,7 +931,8 @@
 
             <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
+                      <a href="{{URL::to('/edit-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+
                     </div>
               <h3>Location of Groom</h3>
               <div class="row">
@@ -1016,7 +1017,7 @@
 
                   <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                    <a href="{{URL::to('/edit-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+                    <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
                     </div>
               <h3>Basic Info</h3>
               <div class="row">
@@ -1053,7 +1054,8 @@
 
             <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
+                      <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+
                     </div>
               <h3>Location Details</h3>
               <div class="row">
@@ -1078,7 +1080,8 @@
 
             <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
+                      <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+
                     </div>
               <h3>Education & Career</h3>
               <div class="row">
@@ -1115,7 +1118,9 @@
 
             <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
+                      <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+
+
                     </div>
               <h3>Other Details</h3>
               <div class="row">
@@ -1144,7 +1149,9 @@
 
                 <div class="profile_sec_one">
                     <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
+                      <a href="{{URL::to('/contact-details')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+
+
                     </div>
               <h3>My Contact detail</h3>
               <div class="row">
@@ -1152,24 +1159,48 @@
                   <div class="pr_details">
                     <div class="flex_details_span">
                       <span class="quest">Mobile</span>
-                      <span class="answr">: +91-9876543210</span>
+                      <span class="answr">: @if(!empty($contact->mobile)){{ $contact->mobile }} @endif</span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Contact Person</span>
-                      <span class="answr">: +91-9876543210</span>
+                      <span class="answr">: @if(!empty($contact->nameContactPerson)){{ $contact->nameContactPerson }} @endif</span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Relationship with the member</span>
-                      <span class="answr">: +91-9876543210</span>
+                      <span class="answr">:
+                        @if(!empty($contact->relationWithMember))
+                        @if($contact->relationWithMember == 1)
+                         Self
+                        @endif
+                        @if($contact->relationWithMember == 2)
+                         Parent
+                        @endif
+                        @if($contact->relationWithMember == 3)
+                         Guardian
+                        @endif
+                        @if($contact->relationWithMember == 4)
+                         Sibling
+                        @endif
+                        @if($contact->relationWithMember == 5)
+                         Friend
+                        @endif
+                        @if($contact->relationWithMember == 6)
+                         Relative
+                        @endif
+                        @if($contact->relationWithMember == 7)
+                         Other
+                        @endif
+                        @endif
+                      </span>
                     </div>
-                    <div class="flex_details_span">
+                    <!-- <div class="flex_details_span">
                       <span class="quest">Convenient Time to Call</span>
                       <span class="answr">: Doesn't Matter</span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Display Option</span>
                       <span class="answr">: You have chosen to display your contact details to all premium members.</span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

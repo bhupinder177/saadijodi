@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\Model\User;
+use App\Model\UserBasicDetails;
+use App\Model\UserFamilyDetails;
+use App\Model\UserEducations;
+use App\Model\UserReligious;
 use App\Helpers\GlobalFunctions as CommonHelper;
 
 use Session;
@@ -107,7 +111,25 @@ class RegisterController extends Controller
        ]);
 
       $res =  $user->save();
-//      $user->assignRole('user');
+      if($res)
+      {
+        $basic = new UserBasicDetails([
+            'userId'=>$user->id,
+          ]);
+          $basic->save();
+        $f = new UserFamilyDetails([
+            'userId'=>$user->id,
+          ]);
+          $f->save();
+        $e = new UserEducations([
+            'userId'=>$user->id,
+          ]);
+          $e->save();
+        $rel = new UserReligious([
+            'userId'=>$user->id,
+          ]);
+          $rel->save();
+      }
 
 
       if($res)
@@ -143,7 +165,7 @@ class RegisterController extends Controller
     if($request->token)
     {
       $email = Crypt::decryptString($request->token);
-    
+
       $user = User::where('email',$email)->first();
       if(!empty($user))
       {

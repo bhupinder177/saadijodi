@@ -35,5 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/profile','ProfileController@index');
   Route::get('/edit-profile','ProfileController@edit');
   Route::post('/profileUpdate','ProfileController@update');
+  Route::post('/getState','ProfileController@getState');
+  Route::post('/getCity','ProfileController@getCity');
+  Route::get('/partner-profile','ProfileController@partnerProfile');
+  Route::get('/contact-details','ProfileController@contactdetails');
+  Route::post('/contactDetailUpdate','ProfileController@contactDetailUpdate');
 
 });

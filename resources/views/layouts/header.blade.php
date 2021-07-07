@@ -17,6 +17,8 @@
 
 	</head>
 	<body>
+		<input type="hidden" value="{{ URL::to('/') }}" class="base_url">
+		
 		<div style="display:none" class="preloader">
      <div class="loader"></div>
     </div>

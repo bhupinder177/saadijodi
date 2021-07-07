@@ -248,6 +248,45 @@ rules:
   bloodGroup: {
     required: true,
   },
+  highestQualification: {
+    required: true,
+  },
+  workingWith: {
+    required: true,
+  },
+  workingAs: {
+    required: true,
+  },
+  employerName: {
+    required: true,
+  },
+  income: {
+    required: true,
+  },
+  religion: {
+    required: true,
+  },
+  motherTongue: {
+    required: true,
+  },
+  community: {
+    required: true,
+  },
+  subCommunity: {
+    required: true,
+  },
+  country: {
+    required: true,
+  },
+  state: {
+    required: true,
+  },
+  city: {
+    required: true,
+  },
+  pincode: {
+    required: true,
+  },
 },
 messages:
 {
@@ -293,6 +332,45 @@ messages:
   bloodGroup: {
     required: "Please select blood group",
   },
+  highestQualification: {
+    required: "Please select education",
+  },
+  workingWith: {
+    required: "Please select working with",
+  },
+  workingAs: {
+    required: "Please select working as",
+  },
+  employerName: {
+    required: "Please enter employer name",
+  },
+  income: {
+    required: "Please select income",
+  },
+  religion: {
+    required: "Please select religion",
+  },
+  motherTongue: {
+    required: "Please select mother tongue",
+  },
+  community: {
+    required: "Please select community",
+  },
+  subCommunity: {
+    required: "Please enter sub community",
+  },
+  country: {
+    required: "Please select country",
+  },
+  state: {
+    required: "Please select state",
+  },
+  city: {
+    required: "Please select city",
+  },
+  pincode: {
+    required: "Please enter pincode",
+  },
 },
 submitHandler: function (form)
 {
@@ -302,41 +380,47 @@ submitHandler: function (form)
 
 // profile update
 
-// company
-$("#addcompany").validate({
+// contact update
+
+ $("#contactUpdate").validate({
+   errorClass: "has-error",
+ highlight: function(element, errorClass) {
+     //$(element).parents('.form-group').addClass(errorClass);
+ },
+ unhighlight: function(element, errorClass, validClass) {
+   //  $(element).parents('.form-group').removeClass(errorClass);
+ },
 rules:
 {
- name: {
-   required: true,
- },
- email: {
-   required: true,
-   email:true,
-   regex: "",
- },
- address: {
-   required: true,
- },
+  mobile: {
+    required: true,
+  },
+  nameContactPerson: {
+    required: true,
+  },
+  relationWithMember: {
+    required: true,
+  },
 },
 messages:
 {
- name: {
-   required: "Please company name",
- },
- email: {
-   required: "Please enter email",
- },
- address: {
-   required: "Please enter address",
- },
+  mobile: {
+    required: "Please enter mobile number",
+  },
+  nameContactPerson: {
+    required: "This is required",
+  },
+  relationWithMember: {
+    required: "This is required",
+  },
 },
 submitHandler: function (form)
 {
- formSubmit(form);
+  formSubmit(form);
 }
 });
 
-// company add
+// contact update
 
 // dispatcher
 $("#adddispatcher").validate({
