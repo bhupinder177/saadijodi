@@ -13,6 +13,7 @@ use App\Model\Country;
 use App\Model\States;
 use App\Model\Cities;
 use App\Model\UserContactDetails;
+use App\Model\PartnerPreferences;
 use Validator;
 use Session;
 use Curl;
@@ -46,8 +47,9 @@ class ProfileController extends Controller
         $religion = UserReligious::where('userId',Auth::User()->id)->first();
         $education = UserEducations::where('userId',Auth::User()->id)->first();
         $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
+        $partner = PartnerPreferences::where('userId',Auth::User()->id)->first();
 
-        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact]);
+        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
     }
 
     public function edit()
@@ -195,7 +197,16 @@ class ProfileController extends Controller
 
     public function partnerProfile(Request $request)
     {
-      return view('front.profile.partner-profile');
+      $detail= PartnerPreferences::where('userId',Auth::User()->id)->first();
+      $allcountry = Country::get();
+      $states = array();
+      $city = array();
+      if(!empty($detail->country))
+      {
+      $states = States::where('country_id',$detail->country)->get();
+      $city = Cities::where('state_id',$detail->state)->get();
+      }
+      return view('front.profile.partner-profile',['detail'=>$detail,'states'=>$states,'city'=>$city,'allcountry'=>$allcountry]);
     }
 
     public function contactdetails(Request $request)
