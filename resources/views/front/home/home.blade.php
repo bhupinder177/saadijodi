@@ -58,6 +58,7 @@
       </div>
 
       <div class="col-md-4">
+        
         <div class="box_prnt">
           <div class="box-step">
             <div class="step-number">

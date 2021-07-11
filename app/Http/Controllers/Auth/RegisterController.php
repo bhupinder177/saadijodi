@@ -89,6 +89,7 @@ class RegisterController extends Controller
            'lastName' => 'required|string',
            'password' => 'required|string|confirmed',
            'phone' => 'required',
+           'gender' => 'required',
 
        ]);
 
@@ -100,6 +101,18 @@ class RegisterController extends Controller
      }
      else
     {
+      $last = User::orderby('id','desc')->first();
+      if(!empty($last->uniqueNo))
+      {
+        $uniqueNo = $last->uniqueNo;
+        $uniqueNo = $uniqueNo + 1;
+        $uniqueNo1 = 'Ab'.$uniqueNo;
+      }
+      else
+      {
+         $uniqueNo = 1111;
+         $uniqueNo1 ='AB1111';
+      }
       $user = new User([
            'email' =>$request->email,
            'firstName' =>$request->firstName,
@@ -108,6 +121,8 @@ class RegisterController extends Controller
            'phone' =>$request->phone,
            'type'=>2,
            'status'=>0,
+           'uniqueId'=>$uniqueNo1,
+           'uniqueNo'=>$uniqueNo,
        ]);
 
       $res =  $user->save();
@@ -115,6 +130,7 @@ class RegisterController extends Controller
       {
         $basic = new UserBasicDetails([
             'userId'=>$user->id,
+            'gender'=>$request->gender,
           ]);
           $basic->save();
         $f = new UserFamilyDetails([

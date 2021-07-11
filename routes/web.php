@@ -40,5 +40,6 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/partner-profile','ProfileController@partnerProfile');
   Route::get('/contact-details','ProfileController@contactdetails');
   Route::post('/contactDetailUpdate','ProfileController@contactDetailUpdate');
+  Route::post('/partnerPreferenceUpdate','ProfileController@partnerPreferenceUpdate');
 
 });

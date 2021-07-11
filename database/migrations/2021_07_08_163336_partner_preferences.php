@@ -20,7 +20,7 @@ class PartnerPreferences extends Migration
           $table->integer('ageMax')->nullable();
           $table->integer('heightMin')->nullable();
           $table->integer('heightMax')->nullable();
-          $table->integer('martialStatus')->nullable();
+          $table->integer('maritalStatus')->nullable();
           $table->integer('country')->nullable();
           $table->integer('state')->nullable();
           $table->integer('city')->nullable();

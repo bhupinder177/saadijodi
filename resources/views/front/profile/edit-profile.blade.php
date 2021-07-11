@@ -664,9 +664,24 @@
                             <label>Community</label>
                             <select name="community" class="selecthide">
                         <option value="">Select</option>
-                        <option @if($religion->community == 1) selected @endif value="1">Rajput</option>
-                        <option @if($religion->community == 2) selected @endif value="2">Punjabi</option>
-                        <option @if($religion->community == 3) selected @endif value="3">Awaiting Divorce</option>
+                        <option @if($religion->community == 1) selected @endif value="1">Ahluwalia</option>
+                        <option @if($religion->community == 2) selected @endif value="2">Arora</option>
+                        <option @if($religion->community == 1) selected @endif value="3">Clean Shaven</option>
+                        <option @if($religion->community == 1) selected @endif value="4">Gursikh</option>
+                        <option @if($religion->community == 1) selected @endif value="5">Jatt</option>
+                        <option @if($religion->community == 1) selected @endif value="6">Kamboj</option>
+                        <option @if($religion->community == 1) selected @endif value="7">Kesadhari</option>
+                        <option @if($religion->community == 1) selected @endif value="8">Khatri</option>
+                        <option @if($religion->community == 1) selected @endif value="9">Kshatriya</option>
+                        <option @if($religion->community == 1) selected @endif value="10">Labana</option>
+                        <option @if($religion->community == 1) selected @endif value="11">Mazhbi/Majabi</option>
+                        <option @if($religion->community == 1) selected @endif value="12">Rajput</option>
+                        <option @if($religion->community == 1) selected @endif value="13">Ramdasia</option>
+                        <option @if($religion->community == 1) selected @endif value="14">Ramgharia</option>
+                        <option @if($religion->community == 1) selected @endif value="15">Ravidasia</option>
+                        <option @if($religion->community == 1) selected @endif value="16">Saini</option></select>
+
+
                     </select>
                           </div>
                           <div class="form_group_wrap">

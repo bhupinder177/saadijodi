@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<input type="hidden" value="{{ URL::to('/') }}" class="base_url">
-		
+
 		<div style="display:none" class="preloader">
      <div class="loader"></div>
     </div>
@@ -68,13 +68,15 @@
 						<i class="fa fa-bars"></i>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarResponsive">
-						<ul class="navbar-nav ml-auto custom_cc">
+						<ul class="navbar-nav ml-auto custom_cc_b">
+
+	
 							  @if (!Auth::user())
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/register')}}">Register </a>
+								<a class="nav-link login_rg-b" href="{{URL::to('/register')}}">Register </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/login')}}">Login</a>
+								<a class="nav-link login_rg-b mr-0" href="{{URL::to('/login')}}">Login</a>
 							</li>
 							@else
 							<li class="nav-item">

@@ -23,6 +23,14 @@
                                 <input class="input--style-4" id="lastName" placeholder="Please enter last name" type="text" name="lastName">
                             </div>
                         </div>
+												<div class="col-md-12">
+													<label>Gender</label>
+													<select name="gender" class="input--style-4">
+											<option value="" >Select Gender</option>
+											<option  value="1" >Male</option>
+											<option  value="2">Female</option>
+									</select>
+												</div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="label">Email</label>

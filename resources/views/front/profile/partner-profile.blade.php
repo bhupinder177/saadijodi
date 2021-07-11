@@ -26,7 +26,11 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form_group_wrap">
-                                <label>Age</label>
+                                <label >Age</label>
+                                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                <input type="hidden" class="ageMin" name="ageMin" value="23">
+                                <input type="hidden" class="ageMax" name="ageMax" value="30">
+
                             <div class="selector">
                               <div class="price-slider">
                                   <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
@@ -34,14 +38,12 @@
                                       <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0;"></span>
                                       <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="right: 0;"></span>
                                   </div>
-                                  <span id="min-price" data-currency="€" class="slider-price">0</span>
-                                  <span class="seperator">-</span>
-                                  <span id="max-price" data-currency="€" data-max="3500"  class="slider-price">3500 +</span>
+
                               </div>
                           </div>
                               </div>
 
-                              <div class="form_group_wrap">
+                              <!-- <div class="form_group_wrap">
                                 <label>Height</label>
                             <div class="selector">
                               <div class="price-slider">
@@ -55,7 +57,7 @@
                                   <span id="max-price" data-currency="€" data-max="3500"  class="slider-price">3500 +</span>
                               </div>
                           </div>
-                              </div>
+                              </div> -->
                               <div class="form_group_wrap">
                                 <label>Marital status</label>
                                 <select name="maritalStatus" class="selecthide">
@@ -90,7 +92,7 @@
                           <option value="">Select Country</option>
                           @if(count($allcountry) > 0)
                           @foreach($allcountry as $c)
-                          <option @if(!empty($location->country))@if($c->id == $location->country) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                          <option @if(!empty($detail->country))@if($c->id == $detail->country) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
                           @endforeach
                           @endif
                       </select>
@@ -101,7 +103,7 @@
                               <option value="">Select State</option>
                               @if(count($states) > 0)
                               @foreach($states as $s)
-                              <option @if(!empty($location->state))@if($s->id == $location->state) selected @endif @endif value="{{ $c->id }}" >{{ $s->name }}</option>
+                              <option @if(!empty($detail->state))@if($s->id == $detail->state) selected @endif @endif value="{{ $c->id }}" >{{ $s->name }}</option>
                               @endforeach
                               @endif
 
@@ -114,7 +116,7 @@
                           <option value="">Select City</option>
                           @if(count($city) > 0)
                           @foreach($city as $c)
-                          <option @if(!empty($location->city))@if($c->id == $location->city) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                          <option @if(!empty($detail->city))@if($c->id == $detail->city) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
                           @endforeach
                           @endif
 
@@ -347,12 +349,25 @@
                             </div>
                             <div class="form_group_wrap">
                               <label>Community</label>
-                              <label>Community</label>
                               <select name="community" class="selecthide">
                           <option value="">Select</option>
-                          <option @if(!empty($detail)) @if($detail->community == 1) selected @endif @endif value="1">Rajput</option>
-                          <option @if(!empty($detail)) @if($detail->community == 2) selected @endif @endif value="2">Punjabi</option>
-                          <option @if(!empty($detail)) @if($detail->community == 3) selected @endif @endif value="3">Awaiting Divorce</option>
+                          <option @if($detail->community == 1) selected @endif value="1">Ahluwalia</option>
+                          <option @if($detail->community == 2) selected @endif value="2">Arora</option>
+                          <option @if($detail->community == 1) selected @endif value="3">Clean Shaven</option>
+                          <option @if($detail->community == 1) selected @endif value="4">Gursikh</option>
+                          <option @if($detail->community == 1) selected @endif value="5">Jatt</option>
+                          <option @if($detail->community == 1) selected @endif value="6">Kamboj</option>
+                          <option @if($detail->community == 1) selected @endif value="7">Kesadhari</option>
+                          <option @if($detail->community == 1) selected @endif value="8">Khatri</option>
+                          <option @if($detail->community == 1) selected @endif value="9">Kshatriya</option>
+                          <option @if($detail->community == 1) selected @endif value="10">Labana</option>
+                          <option @if($detail->community == 1) selected @endif value="11">Mazhbi/Majabi</option>
+                          <option @if($detail->community == 1) selected @endif value="12">Rajput</option>
+                          <option @if($detail->community == 1) selected @endif value="13">Ramdasia</option>
+                          <option @if($detail->community == 1) selected @endif value="14">Ramgharia</option>
+                          <option @if($detail->community == 1) selected @endif value="15">Ravidasia</option>
+                          <option @if($detail->community == 1) selected @endif value="16">Saini</option></select>
+
                       </select>
                             </div>
                             <div class="form_group_wrap">
@@ -379,7 +394,7 @@
 
         <div class="col-md-12">
           <div class="profile_submit">
-            <button type="button" class="edit_submit_btn">Submit</button>
+            <button type="submit" class="edit_submit_btn">Submit</button>
           </div>
         </div>
 

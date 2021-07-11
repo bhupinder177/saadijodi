@@ -82,29 +82,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('front/js/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('front/js/jquery.toast.js') }}"></script>
 <script src="{{ asset('front/js/validation.js') }}"></script>
 <script src="{{ asset('front/js/custom.js') }}"></script>
 
 <script>
-  $("#slider-range").slider({
-    range: true,
-    min: 0,
-    max: 45,
-    step: 20,
-    slide: function( event, ui ) {
-      $( "#min-price").html(ui.values[ 0 ]);
-
-      suffix = '';
-      if (ui.values[ 1 ] == $( "#max-price").data('max') ){
-         suffix = ' +';
-      }
-      $( "#max-price").html(ui.values[ 1 ] + suffix);
-    }
-  })
+$( function() {
+ $( "#slider-range" ).slider({
+   range: true,
+   min: 18,
+   max: 45,
+   values: [ 23,30],
+   slide: function( event, ui ) {
+     $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+     $('.ageMin').val(ui.values[0]);
+     $('.ageMax').val(ui.value[1]);
+   }
+ });
+ $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
+   " - " + $( "#slider-range" ).slider( "values", 1 ) );
+} );
 
 </script>
 <script>

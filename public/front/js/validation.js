@@ -93,6 +93,11 @@ $.validator.addMethod("lettersonly", function(value, element) {
    },
    phone: {
      required: true,
+     number:true,
+
+   },
+   gender: {
+     required: true,
 
    },
 
@@ -118,7 +123,9 @@ $.validator.addMethod("lettersonly", function(value, element) {
    phone: {
      required: "Please enter last name",
    },
-
+   gender: {
+     required: "Please select gender",
+   },
  },
  submitHandler: function (form)
  {
@@ -379,6 +386,109 @@ submitHandler: function (form)
 });
 
 // profile update
+
+// partner update
+$("#partnerPreferenceUpdate").validate({
+  errorClass: "has-error",
+highlight: function(element, errorClass) {
+    //$(element).parents('.form-group').addClass(errorClass);
+},
+unhighlight: function(element, errorClass, validClass) {
+  //  $(element).parents('.form-group').removeClass(errorClass);
+},
+rules:
+{
+
+ height: {
+   required: true,
+ },
+ maritalStatus: {
+   required: true,
+ },
+ diet: {
+   required: true,
+ },
+ highestQualification: {
+   required: true,
+ },
+ workingWith: {
+   required: true,
+ },
+ workingAs: {
+   required: true,
+ },
+ income: {
+   required: true,
+ },
+ religion: {
+   required: true,
+ },
+ motherTongue: {
+   required: true,
+ },
+ community: {
+   required: true,
+ },
+ country: {
+   required: true,
+ },
+ state: {
+   required: true,
+ },
+ city: {
+   required: true,
+ },
+},
+messages:
+{
+ height: {
+   required: "Please select height",
+ },
+ maritalStatus: {
+   required: "Please select martial status",
+ },
+ diet: {
+   required: "Please select diet",
+ },
+ highestQualification: {
+   required: "Please select education",
+ },
+ workingWith: {
+   required: "Please select working with",
+ },
+ workingAs: {
+   required: "Please select working as",
+ },
+ income: {
+   required: "Please select income",
+ },
+ religion: {
+   required: "Please select religion",
+ },
+ motherTongue: {
+   required: "Please select mother tongue",
+ },
+ community: {
+   required: "Please select community",
+ },
+ country: {
+   required: "Please select country",
+ },
+ state: {
+   required: "Please select state",
+ },
+ city: {
+   required: "Please select city",
+ },
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+
+// partner update
+
 
 // contact update
 

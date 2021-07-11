@@ -47,9 +47,11 @@ class ProfileController extends Controller
         $religion = UserReligious::where('userId',Auth::User()->id)->first();
         $education = UserEducations::where('userId',Auth::User()->id)->first();
         $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
-        $partner = PartnerPreferences::where('userId',Auth::User()->id)->first();
+        $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
+        $location = UserLocations::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
 
-        return view('front.profile.profile',['detail'=>$detail,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
+
+        return view('front.profile.profile',['detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
     }
 
     public function edit()
@@ -238,5 +240,38 @@ class ProfileController extends Controller
     }
     return response($output);
 
+    }
+
+    public function partnerPreferenceUpdate(Request $request)
+    {
+      $data['country'] = $request->country;
+      $data['state'] = $request->state;
+      $data['city'] = $request->city;
+      $data['maritalStatus'] = $request->maritalStatus;
+      $data['diet'] = $request->diet;
+      $data['highestQualification'] = $request->highestQualification;
+      $data['workingWith'] = $request->workingWith;
+      $data['income'] = $request->income;
+      $data['religion'] = $request->religion;
+      $data['motherTongue'] = $request->motherTongue;
+      $data['community'] = $request->community;
+      $data['ageMin'] = $request->ageMin;
+      $data['ageMax'] = $request->ageMax;
+
+     $update =  PartnerPreferences::updateOrCreate(array("userId"=>Auth::User()->id),$data);
+
+    if($update)
+    {
+      $output['success'] ="true";
+      $output['success_message'] ="Partner Profile Updated Successfully";
+      $output['delayTime'] = 3000;
+      $output['url'] = url('profile');
+    }
+    else
+    {
+      $output['formErrors'] ="true";
+      $output['errors'] ="Partner Profile Is not update";
+    }
+     return response($output);
     }
 }

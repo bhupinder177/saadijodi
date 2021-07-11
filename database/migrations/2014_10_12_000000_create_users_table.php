@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('uniqueId')->nullable();
+            $table->integer('uniqueNo')->nullable();
             $table->integer('type');
             $table->integer('status');
             $table->integer('forgotPasswordExpired')->nullable();
