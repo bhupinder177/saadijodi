@@ -10,7 +10,6 @@
             @if(count($images) > 0)
             <div class="container_image_select">
                <img id="showimages" src="{{ asset('profiles/'.$images[0]->image) }}" style="width:100%">
-
             </div>
             @foreach($images as $i)
             <div class="column">
@@ -51,10 +50,8 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile_pic">
-                      @if(count($images) > 0)
-                      <div class="container_image_select">
+                      @if(count($images) > 0)                    
                          <img src="{{ asset('profiles/'.$images[0]->image) }}" style="width:100%">
-                      </div>
                       @endif
                     </div>
                   </div>

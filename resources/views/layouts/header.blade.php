@@ -62,7 +62,7 @@
 			<nav class="navbar navbar-expand-lg static-top header_bg">
 				<div class="container">
 					<a class="navbar-brand" href="{{URL::to('/')}}">
-						<img src="{{ asset('front/images/logo.jpg') }}" alt="">
+						<img src="{{ asset('front/images/logo.png') }}" alt="">
 					</a>
 					<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarResponsive">
 						<i class="fa fa-bars"></i>
@@ -70,7 +70,7 @@
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto custom_cc_b">
 
-	
+
 							  @if (!Auth::user())
 							<li class="nav-item">
 								<a class="nav-link login_rg-b" href="{{URL::to('/register')}}">Register </a>
@@ -80,10 +80,10 @@
 							</li>
 							@else
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/profile')}}">{{ Auth::user()->firstName }}</a>
+								<a class="nav-link login_rg-b" href="{{URL::to('/profile')}}">{{ Auth::user()->firstName }}</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+								<a class="nav-link login_rg-b mr-0" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
 								</form>

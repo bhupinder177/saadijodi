@@ -80,3 +80,8 @@ z-index: 99999999;
     }
 }
 /* loader */
+
+.form_group_wrap .selecthide.time_edit {
+	width: 15%;
+	margin-right: 10px;
+}

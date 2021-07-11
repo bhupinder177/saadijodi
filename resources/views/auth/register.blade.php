@@ -26,7 +26,7 @@
 												<div class="col-md-12">
 													<div class="form-group">
 													<label>Gender</label>
-													<select name="gender" class="input--style-4">
+													<select name="gender" class="input--style-4 gender_cs">
 											<option value="" >Select Gender</option>
 											<option  value="1" >Male</option>
 											<option  value="2">Female</option>
