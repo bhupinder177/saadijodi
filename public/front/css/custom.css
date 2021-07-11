@@ -88,3 +88,6 @@ z-index: 99999999;
 .gender_cs {
 	padding: 9.2px 20px !important;
 }
+.form-group {
+	margin-bottom: 15px;
+}
