@@ -228,7 +228,7 @@
                                       </div>
                                       <div class="form_group_wrap">
                                         <label>City of Birth</label>
-                                        <input name="birthCity" value="{{ $birth->birthCity }}" placeholder="Please enter city of birth" class="selecthide" type="text" >
+                                        <input name="birthCity" value="@if(!empty($birth->birthCity)) {{ $birth->birthCity }}@endif" placeholder="Please enter city of birth" class="selecthide" type="text" >
                                       </div>
                                       <div class="form_group_wrap">
                                         <label>Manglik</label>
