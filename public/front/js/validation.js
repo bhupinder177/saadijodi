@@ -246,9 +246,6 @@ rules:
   nativePlace: {
     required: true,
   },
-  sibling: {
-    required: true,
-  },
   familyType: {
     required: true,
   },
@@ -277,9 +274,6 @@ rules:
     required: true,
   },
   community: {
-    required: true,
-  },
-  subCommunity: {
     required: true,
   },
   country: {
@@ -342,9 +336,6 @@ messages:
   nativePlace: {
     required: "Please enter native place",
   },
-  sibling: {
-    required: "Please select sibling",
-  },
   familyType: {
     required: "Please select family type",
   },
@@ -374,9 +365,6 @@ messages:
   },
   community: {
     required: "Please select community",
-  },
-  subCommunity: {
-    required: "Please enter sub community",
   },
   country: {
     required: "Please select country",

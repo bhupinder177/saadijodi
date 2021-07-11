@@ -245,6 +245,34 @@
                             </div>
                         </div>
 
+                        <div class="card">
+                            <div class="card-header" id="faqhead5">
+                                <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
+                                aria-expanded="true" aria-controls="faq5">Lifestyle</a>
+                            </div>
+
+                            <div id="faq5" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
+                                <div class="card-body">
+
+                                    <div class="col-md-12">
+                                      <div class="form_group_wrap">
+                                        <label>Diet</label>
+                                  <select name="diet" class="selecthide">
+                                    <option value="" >Select diet</option>
+                                    <option @if($detail->diet == 1) selected @endif value="1">Veg</option>
+                                    <option @if($detail->diet == 2) selected @endif value="2">Non-Veg</option>
+                                    <option @if($detail->diet == 3) selected @endif value="3">Occasionally Non-Veg</option>
+                                    <option @if($detail->diet == 4) selected @endif value="4">Eggetarian</option>
+                                    <option @if($detail->diet == 5) selected @endif value="5">Jain</option>
+                                    <option @if($detail->diet == 6) selected @endif value="6">Vegan</option>
+                                </select>
+                                      </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
         </div>
       </div>
 
@@ -252,33 +280,7 @@
       <div class="col-md-6">
         <div class="accordion" id="faq">
 
-            <div class="card">
-                <div class="card-header" id="faqhead5">
-                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
-                    aria-expanded="true" aria-controls="faq5">Lifestyle</a>
-                </div>
 
-                <div id="faq5" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
-                    <div class="card-body">
-
-                        <div class="col-md-12">
-                          <div class="form_group_wrap">
-                            <label>Diet</label>
-                      <select name="diet" class="selecthide">
-                        <option value="" >Select diet</option>
-                        <option @if($detail->diet == 1) selected @endif value="1">Veg</option>
-                        <option @if($detail->diet == 2) selected @endif value="2">Non-Veg</option>
-                        <option @if($detail->diet == 3) selected @endif value="3">Occasionally Non-Veg</option>
-                        <option @if($detail->diet == 4) selected @endif value="4">Eggetarian</option>
-                        <option @if($detail->diet == 5) selected @endif value="5">Jain</option>
-                        <option @if($detail->diet == 6) selected @endif value="6">Vegan</option>
-                    </select>
-                          </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 
             <div class="card">
                 <div class="card-header" id="faqhead4">
