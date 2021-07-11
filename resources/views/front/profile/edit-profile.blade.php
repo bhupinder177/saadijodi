@@ -24,15 +24,14 @@
                         <div class="row">
                           <div class="col-md-12">
                             <div class="upload_pic">
-                              <form action="upload_file.php" id="img-upload-form" method="post" enctype="multipart/form-data">
                           <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
 
                           <p>
                             <label for="upload_imgs" class="button hollow">Select Your Images +</label>
-                            <input class="show-for-sr" type="file" id="upload_imgs" name="upload_imgs[]" multiple/>
+                            <input class="show-for-sr" type="file" id="upload_imgs" name="images[]" multiple/>
                           </p>
 
-                        </form>
+
                             </div>
                           </div>
                         </div>
