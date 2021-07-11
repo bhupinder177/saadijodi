@@ -24,12 +24,14 @@
                             </div>
                         </div>
 												<div class="col-md-12">
+													<div class="form-group">
 													<label>Gender</label>
 													<select name="gender" class="input--style-4">
 											<option value="" >Select Gender</option>
 											<option  value="1" >Male</option>
 											<option  value="2">Female</option>
 									</select>
+								</div>
 												</div>
                         <div class="col-md-12">
                             <div class="form-group">
