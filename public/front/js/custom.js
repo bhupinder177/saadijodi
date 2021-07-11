@@ -492,7 +492,7 @@ return false;
        },
 
         success: function(response){
-        console.log(response);
+
           $.toast().reset('all');
         var delayTime = 3000;
         if(response.delayTime)
@@ -640,7 +640,7 @@ jQuery('body').on('change', '#country', function()
       	var name = value.name;
       	list +='<option data-text="'+name+'" value="'+id+'">'+name+'</option>';
       });
-      console.log(list);
+
       $('#states').html(list);
       }
       }

@@ -204,6 +204,48 @@
                 </div>
             </div>
 
+
+                        <div class="card">
+                            <div class="card-header" id="faqhead5">
+                                <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq51"
+                                aria-expanded="true" aria-controls="faq5">Birth & Horoscope details</a>
+                            </div>
+
+                            <div id="faq51" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
+                                <div class="card-body">
+
+                                    <div class="col-md-12">
+                                      <div class="form_group_wrap">
+                                        <label>Country of Birth</label>
+                                        <select name="birthCountry" id="country11" class="selecthide">
+                                      <option value="">Select Country</option>
+                                      @if(count($allcountry) > 0)
+                                      @foreach($allcountry as $co)
+                                      <option @if(!empty($birth->birthCountry))@if($co->id == $birth->birthCountry) selected @endif @endif value="{{ $co->id }}" >{{ $co->name }}</option>
+                                      @endforeach
+                                      @endif
+                                      </select>
+                                      </div>
+                                      <div class="form_group_wrap">
+                                        <label>City of Birth</label>
+                                        <input name="birthCity" value="{{ $birth->birthCity }}" placeholder="Please enter city of birth" class="selecthide" type="text" >
+                                      </div>
+                                      <div class="form_group_wrap">
+                                        <label>Manglik</label>
+                                        <select name="manglik" id="country" class="selecthide">
+                                      <option value="">Select</option>
+                                      <option @if(!empty($birth->manglik))@if(1 == $birth->manglik) selected @endif @endif value="1" >Yes</option>
+                                      <option @if(!empty($birth->manglik))@if(2 == $birth->manglik) selected @endif @endif value="2" >No</option>
+                                      <option @if(!empty($birth->manglik))@if(3 == $birth->manglik) selected @endif @endif value="3" >Don't Know</option>
+
+                                      </select>
+                                      </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
         </div>
       </div>
 
@@ -598,7 +640,7 @@
                             <option value="">Select State</option>
                             @if(count($states) > 0)
                             @foreach($states as $s)
-                            <option @if(!empty($location->state))@if($s->id == $location->state) selected @endif @endif value="{{ $c->id }}" >{{ $s->name }}</option>
+                            <option @if(!empty($location->state))@if($s->id == $location->state) selected @endif @endif value="{{ $s->id }}" >{{ $s->name }}</option>
                             @endforeach
                             @endif
 
@@ -610,11 +652,22 @@
                             <select id="cities" name="city" class="selecthide">
                         <option value="">Select City</option>
                         @if(count($city) > 0)
-                        @foreach($city as $c)
-                        <option @if(!empty($location->city))@if($c->id == $location->city) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                        @foreach($city as $ci)
+                        <option @if(!empty($location->city))@if($ci->id == $location->city) selected @endif @endif value="{{ $ci->id }}" >{{ $ci->name }}</option>
                         @endforeach
                         @endif
 
+                    </select>
+                          </div>
+                          <div class="form_group_wrap">
+                            <label>Grew up in</label>
+                            <select name="grewUp" id="grew" class="selecthide">
+                        <option value="">Select Country</option>
+                        @if(count($allcountry) > 0)
+                        @foreach($allcountry as $c)
+                        <option @if(!empty($location->grewUp))@if($c->id == $location->grewUp) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                        @endforeach
+                        @endif
                     </select>
                           </div>
                           <div class="form_group_wrap">
@@ -629,11 +682,11 @@
 
             <div class="card">
                 <div class="card-header" id="faqhead2">
-                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                    aria-expanded="true" aria-controls="faq2">Religious Background</a>
+                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq23421"
+                    aria-expanded="true" aria-controls="faq23421">Religious Background</a>
                 </div>
 
-                <div id="faq2" class="collapse show" aria-labelledby="faqhead2" data-parent="#faq">
+                <div id="faq23421" class="collapse show" aria-labelledby="faqhead2" data-parent="#faq">
                     <div class="card-body">
 
                         <div class="col-md-12">
@@ -666,20 +719,20 @@
                         <option value="">Select</option>
                         <option @if($religion->community == 1) selected @endif value="1">Ahluwalia</option>
                         <option @if($religion->community == 2) selected @endif value="2">Arora</option>
-                        <option @if($religion->community == 1) selected @endif value="3">Clean Shaven</option>
-                        <option @if($religion->community == 1) selected @endif value="4">Gursikh</option>
-                        <option @if($religion->community == 1) selected @endif value="5">Jatt</option>
-                        <option @if($religion->community == 1) selected @endif value="6">Kamboj</option>
-                        <option @if($religion->community == 1) selected @endif value="7">Kesadhari</option>
-                        <option @if($religion->community == 1) selected @endif value="8">Khatri</option>
-                        <option @if($religion->community == 1) selected @endif value="9">Kshatriya</option>
-                        <option @if($religion->community == 1) selected @endif value="10">Labana</option>
-                        <option @if($religion->community == 1) selected @endif value="11">Mazhbi/Majabi</option>
-                        <option @if($religion->community == 1) selected @endif value="12">Rajput</option>
-                        <option @if($religion->community == 1) selected @endif value="13">Ramdasia</option>
-                        <option @if($religion->community == 1) selected @endif value="14">Ramgharia</option>
-                        <option @if($religion->community == 1) selected @endif value="15">Ravidasia</option>
-                        <option @if($religion->community == 1) selected @endif value="16">Saini</option></select>
+                        <option @if($religion->community == 3) selected @endif value="3">Clean Shaven</option>
+                        <option @if($religion->community == 4) selected @endif value="4">Gursikh</option>
+                        <option @if($religion->community == 5) selected @endif value="5">Jatt</option>
+                        <option @if($religion->community == 6) selected @endif value="6">Kamboj</option>
+                        <option @if($religion->community == 7) selected @endif value="7">Kesadhari</option>
+                        <option @if($religion->community == 8) selected @endif value="8">Khatri</option>
+                        <option @if($religion->community == 9) selected @endif value="9">Kshatriya</option>
+                        <option @if($religion->community == 10) selected @endif value="10">Labana</option>
+                        <option @if($religion->community == 11) selected @endif value="11">Mazhbi/Majabi</option>
+                        <option @if($religion->community == 12) selected @endif value="12">Rajput</option>
+                        <option @if($religion->community == 13) selected @endif value="13">Ramdasia</option>
+                        <option @if($religion->community == 14) selected @endif value="14">Ramgharia</option>
+                        <option @if($religion->community == 15) selected @endif value="15">Ravidasia</option>
+                        <option @if($religion->community == 16) selected @endif value="16">Saini</option></select>
 
 
                     </select>

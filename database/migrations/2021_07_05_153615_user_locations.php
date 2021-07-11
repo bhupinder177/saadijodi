@@ -19,6 +19,7 @@ class UserLocations extends Migration
           $table->integer('country')->nullable();
           $table->integer('state')->nullable();
           $table->integer('city')->nullable();
+          $table->integer('grewUp')->nullable();
           $table->string('pincode')->nullable();
           $table->timestamps();
       });

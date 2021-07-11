@@ -14,6 +14,8 @@ use App\Model\States;
 use App\Model\Cities;
 use App\Model\UserContactDetails;
 use App\Model\PartnerPreferences;
+use App\Model\UserBirthDetails;
+use App\Model\UserImages;
 use Validator;
 use Session;
 use Curl;
@@ -48,10 +50,23 @@ class ProfileController extends Controller
         $education = UserEducations::where('userId',Auth::User()->id)->first();
         $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
         $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
-        $location = UserLocations::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
+        $location = UserLocations::with('countrydetail','statedetail','citydetail','grewUpdetail')->where('userId',Auth::User()->id)->first();
+        $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
+        $images = UserImages::where('userId',Auth::User()->id)->get();
 
+        if($detail->dateOfBirth)
+        {
+          $dateOfBirth = $detail->dateOfBirth;
+          $today = date("Y-m-d");
+          $diff = date_diff(date_create($dateOfBirth), date_create($today));
+          $detail->age = $diff->format('%y');
+        }
+        else
+        {
+         $detail->age ='';
+        }
 
-        return view('front.profile.profile',['detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
+        return view('front.profile.profile',['images'=>$images,'detail'=>$detail,'birth'=>$birth,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
     }
 
     public function edit()
@@ -62,16 +77,21 @@ class ProfileController extends Controller
       $religion = UserReligious::where('userId',Auth::User()->id)->first();
       $education = UserEducations::where('userId',Auth::User()->id)->first();
       $location = UserLocations::where('userId',Auth::User()->id)->first();
+      $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
       $allcountry = Country::get();
       $states = array();
       $city = array();
-      if(!empty($location))
+      if(!empty($location->country))
       {
       $states = States::where('country_id',$location->country)->get();
+      }
+      if(!empty($location->state))
+      {
       $city = Cities::where('state_id',$location->state)->get();
       }
 
-      return view('front.profile.edit-profile',['states'=>$states,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+
+      return view('front.profile.edit-profile',['states'=>$states,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function update(Request $request)
@@ -86,6 +106,27 @@ class ProfileController extends Controller
        $detail['dateOfBirth'] = date("Y-m-d", strtotime($request->dateOfBirth));
 
        $res = UserBasicDetails::updateOrCreate(array("userId"=>Auth::User()->id),$detail);
+       if($res)
+       {
+         if($files=$request->file('images'))
+         {
+           foreach($files as $k=>$file)
+           {
+             if(!empty($request->images[$k]))
+             {
+              $file = $request->images[$k];
+              $nameimg = 'profile-'.time().rand(100,999).'.'.$file->extension();
+              $file->move(public_path().'/profiles/', $nameimg);
+               $img = new UserImages([
+                 'userId' =>Auth::User()->id,
+                 'image' =>$nameimg,
+               ]);
+               $imagesUpdate =  $img->save();
+               }
+            }
+          }
+       }
+
        if($res)
        {
          $family['fatherStatus'] = $request->fatherStatus;
@@ -119,7 +160,18 @@ class ProfileController extends Controller
          $location['state'] = $request->state;
          $location['city'] = $request->city;
          $location['pincode'] = $request->pincode;
+         $location['grewUp'] = $request->grewUp;
         $locationupdate =  UserLocations::updateOrCreate(array("userId"=>Auth::User()->id),$location);
+       }
+       if($locationupdate)
+       {
+         $b['birthCountry'] = $request->birthCountry;
+         $b['birthCity'] = $request->birthCity;
+         $b['manglik'] = $request->manglik;
+         // $b['birthHours'] = $request->pincode;
+         // $b['birthminute'] = $request->birthminute;
+         // $b['birthAmPm'] = $request->birthAmPm;
+        $updatebirth = UserBirthDetails::updateOrCreate(array("userId"=>Auth::User()->id),$b);
        }
        if($res)
        {

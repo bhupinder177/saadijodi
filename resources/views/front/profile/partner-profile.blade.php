@@ -103,7 +103,7 @@
                               <option value="">Select State</option>
                               @if(count($states) > 0)
                               @foreach($states as $s)
-                              <option @if(!empty($detail->state))@if($s->id == $detail->state) selected @endif @endif value="{{ $c->id }}" >{{ $s->name }}</option>
+                              <option @if(!empty($detail->state))@if($s->id == $detail->state) selected @endif @endif value="{{ $s->id }}" >{{ $s->name }}</option>
                               @endforeach
                               @endif
 
@@ -115,8 +115,8 @@
                               <select id="cities" name="city" class="selecthide">
                           <option value="">Select City</option>
                           @if(count($city) > 0)
-                          @foreach($city as $c)
-                          <option @if(!empty($detail->city))@if($c->id == $detail->city) selected @endif @endif value="{{ $c->id }}" >{{ $c->name }}</option>
+                          @foreach($city as $co)
+                          <option @if(!empty($detail->city))@if($co->id == $detail->city) selected @endif @endif value="{{ $co->id }}" >{{ $co->name }}</option>
                           @endforeach
                           @endif
 
@@ -328,11 +328,11 @@
 
               <div class="card">
                   <div class="card-header" id="faqhead2">
-                      <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                      aria-expanded="true" aria-controls="faq2">Religious Background</a>
+                      <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2341"
+                      aria-expanded="true" aria-controls="faq2341">Religious Background</a>
                   </div>
 
-                  <div id="faq2" class="collapse show" aria-labelledby="faqhead2" data-parent="#faq">
+                  <div id="faq2341" class="collapse show" aria-labelledby="faqhead2" data-parent="#faq2341">
                       <div class="card-body">
 
                           <div class="col-md-12">
@@ -353,20 +353,20 @@
                           <option value="">Select</option>
                           <option @if($detail->community == 1) selected @endif value="1">Ahluwalia</option>
                           <option @if($detail->community == 2) selected @endif value="2">Arora</option>
-                          <option @if($detail->community == 1) selected @endif value="3">Clean Shaven</option>
-                          <option @if($detail->community == 1) selected @endif value="4">Gursikh</option>
-                          <option @if($detail->community == 1) selected @endif value="5">Jatt</option>
-                          <option @if($detail->community == 1) selected @endif value="6">Kamboj</option>
-                          <option @if($detail->community == 1) selected @endif value="7">Kesadhari</option>
-                          <option @if($detail->community == 1) selected @endif value="8">Khatri</option>
-                          <option @if($detail->community == 1) selected @endif value="9">Kshatriya</option>
-                          <option @if($detail->community == 1) selected @endif value="10">Labana</option>
-                          <option @if($detail->community == 1) selected @endif value="11">Mazhbi/Majabi</option>
-                          <option @if($detail->community == 1) selected @endif value="12">Rajput</option>
-                          <option @if($detail->community == 1) selected @endif value="13">Ramdasia</option>
-                          <option @if($detail->community == 1) selected @endif value="14">Ramgharia</option>
-                          <option @if($detail->community == 1) selected @endif value="15">Ravidasia</option>
-                          <option @if($detail->community == 1) selected @endif value="16">Saini</option></select>
+                          <option @if($detail->community == 3) selected @endif value="3">Clean Shaven</option>
+                          <option @if($detail->community == 4) selected @endif value="4">Gursikh</option>
+                          <option @if($detail->community == 5) selected @endif value="5">Jatt</option>
+                          <option @if($detail->community == 6) selected @endif value="6">Kamboj</option>
+                          <option @if($detail->community == 7) selected @endif value="7">Kesadhari</option>
+                          <option @if($detail->community == 8) selected @endif value="8">Khatri</option>
+                          <option @if($detail->community == 9) selected @endif value="9">Kshatriya</option>
+                          <option @if($detail->community == 10) selected @endif value="10">Labana</option>
+                          <option @if($detail->community == 11) selected @endif value="11">Mazhbi/Majabi</option>
+                          <option @if($detail->community == 12) selected @endif value="12">Rajput</option>
+                          <option @if($detail->community == 13) selected @endif value="13">Ramdasia</option>
+                          <option @if($detail->community == 14) selected @endif value="14">Ramgharia</option>
+                          <option @if($detail->community == 15) selected @endif value="15">Ravidasia</option>
+                          <option @if($detail->community == 16) selected @endif value="16">Saini</option></select>
 
                       </select>
                             </div>

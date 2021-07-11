@@ -7,23 +7,18 @@
       <div class="col-md-4">
         <div class="sidebar-item">
           <div class="make-me-sticky">
-
+            @if(count($images) > 0)
             <div class="container_image_select">
-               <img src="{{ asset('front/images/4.jpeg') }}" style="width:100%">
-            </div>
+               <img id="showimages" src="{{ asset('profiles/'.$images[0]->image) }}" style="width:100%">
 
-            <div class="column">
-              <img src="{{ asset('front/images/3.jpeg') }}" style="width:100%" onclick="myFunction(this);">
             </div>
+            @foreach($images as $i)
             <div class="column">
-              <img src="{{ asset('front/images/3.jpeg') }}" style="width:100%" onclick="myFunction(this);">
+              <img src="{{ asset('profiles/'.$i->image) }}" style="width:100%" onclick="myFunction(this);">
             </div>
-            <div class="column">
-              <img src="{{ asset('front/images/3.jpeg') }}" style="width:100%" onclick="myFunction(this);">
-            </div>
-            <div class="column">
-              <img src="{{ asset('front/images/3.jpeg') }}" style="width:100%" onclick="myFunction(this);">
-            </div>
+            @endforeach
+            @endif
+
           </div>
         </div>
       </div>
@@ -56,7 +51,11 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile_pic">
-                      <img src="{{ asset('front/images/user.jpg') }}">
+                      @if(count($images) > 0)
+                      <div class="container_image_select">
+                         <img src="{{ asset('profiles/'.$images[0]->image) }}" style="width:100%">
+                      </div>
+                      @endif
                     </div>
                   </div>
                   <div class="col-md-8">
@@ -64,7 +63,11 @@
                       <div class="flex_details_span">
                         <span class="quest">Age / Height</span>
                         <span class="answr">:
-                          22
+                          @if(!empty($detail->age))
+                          {{ $detail->age }}
+                          @else
+                          -
+                          @endif
                           /
                           @if(!empty($detail->height))
 
@@ -347,7 +350,13 @@
                   <div class="pr_details">
                     <div class="flex_details_span">
                       <span class="quest">Age</span>
-                      <span class="answr">:22</span>
+                      <span class="answr">:
+                        @if(!empty($detail->age))
+                        {{ $detail->age }}
+                        @else
+                        -
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Date of Birth</span>
@@ -484,7 +493,7 @@
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Grew up in</span>
-                      <span class="answr">:India</span>
+                      <span class="answr">:@if(!empty($location->grewUpdetail)){{ $location->grewUpdetail->name }} @endif</span>
                     </div>
                   </div>
                 </div>
@@ -691,7 +700,24 @@
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">City of Birth</span>
-                      <span class="answr">: Mohali</span>
+                      <span class="answr">: @if(!empty($birth->birthCity)){{ $birth->birthCity  }} @else - @endif</span>
+                    </div>
+                    <div class="flex_details_span">
+                      <span class="quest">Manglik</span>
+                      <span class="answr">:
+                        @if(!empty($birth->manglik))
+                         @if($birth->manglik == 1)
+                          Yes
+                         @endif
+                         @if($birth->manglik == 2)
+                          No
+                         @endif
+                         @if($birth->manglik == 3)
+                         Don't Know
+                         @endif
+                        @else
+                        -
+                        @endif</span>
                     </div>
                   </div>
                 </div>

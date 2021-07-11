@@ -131,14 +131,11 @@ $( function() {
       });
   });
 
-    function myFunction(imgs) {
-      var expandImg = document.getElementById("expandedImg");
-      var expandImg1 = document.getElementById("expandedImg1");
-      expandImg1.hide();
-      var imgText = document.getElementById("imgtext");
-      expandImg.src = imgs.src;
-      imgText.innerHTML = imgs.alt;
-      expandImg.parentElement.style.display = "block";
+    function myFunction(imgs)
+    {
+      var src = imgs.src;
+      var m = document.getElementById("showimages");
+      m.src = src;
     }
 </script>
 </body>

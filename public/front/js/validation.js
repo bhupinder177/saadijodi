@@ -294,6 +294,18 @@ rules:
   pincode: {
     required: true,
   },
+  grewUp: {
+    required: true,
+  },
+  birthCountry: {
+    required: true,
+  },
+  birthCity: {
+    required: true,
+  },
+  manglik: {
+    required: true,
+  },
 },
 messages:
 {
@@ -375,8 +387,20 @@ messages:
   city: {
     required: "Please select city",
   },
+  grewUp: {
+    required: "Please select grew Up in",
+  },
   pincode: {
     required: "Please enter pincode",
+  },
+  birthCountry: {
+    required: "Please select birth country",
+  },
+  birthCity: {
+    required: "Please enter birth city",
+  },
+  manglik: {
+    required: "This is required",
   },
 },
 submitHandler: function (form)
