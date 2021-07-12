@@ -50,7 +50,7 @@
                 <div class="row">
                   <div class="col-md-4">
                     <div class="profile_pic">
-                      @if(count($images) > 0)                    
+                      @if(count($images) > 0)
                          <img src="{{ asset('profiles/'.$images[0]->image) }}" style="width:100%">
                       @endif
                     </div>
@@ -693,7 +693,11 @@
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">Time of Birth</span>
-                      <span class="answr">: 04 :04 AM</span>
+                      <span class="answr">:
+                        @if(!empty($birth->birthHours))
+                        {{ $birth->birthHours }}:{{ $birth->birthminute }} {{ $birth->birthAmPm }}
+                        @endif
+                      </span>
                     </div>
                     <div class="flex_details_span">
                       <span class="quest">City of Birth</span>

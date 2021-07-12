@@ -91,3 +91,10 @@ z-index: 99999999;
 .form-group {
 	margin-bottom: 15px;
 }
+.custom_cc_b .login_rg-b:hover {
+	background: linear-gradient(to right, #f67cab , #fb133b);
+}
+.form_group_wrap .selecthide.time_edit {
+	width: 15%;
+	margin-right: 10px;
+}

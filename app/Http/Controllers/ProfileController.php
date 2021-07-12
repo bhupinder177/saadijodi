@@ -168,9 +168,9 @@ class ProfileController extends Controller
          $b['birthCountry'] = $request->birthCountry;
          $b['birthCity'] = $request->birthCity;
          $b['manglik'] = $request->manglik;
-         // $b['birthHours'] = $request->pincode;
-         // $b['birthminute'] = $request->birthminute;
-         // $b['birthAmPm'] = $request->birthAmPm;
+         $b['birthHours'] = $request->birthHours;
+         $b['birthminute'] = $request->birthminute;
+         $b['birthAmPm'] = $request->birthAmPm;
         $updatebirth = UserBirthDetails::updateOrCreate(array("userId"=>Auth::User()->id),$b);
        }
        if($res)

@@ -230,6 +230,93 @@
                                         <input name="birthCity" value="@if(!empty($birth->birthCity)) {{ $birth->birthCity }}@endif" placeholder="Please enter city of birth" class="selecthide" type="text" >
                                       </div>
                                       <div class="form_group_wrap">
+             <label>Time of Birth</label>
+             <select name="birthHours" class="selecthide time_edit">
+               <option value="">Select</option>
+
+               <option @if(!empty($birth->birthHours))@if($birth->birthHours == 1) selected @endif @endif value="1">01</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 2) selected @endif @endif value="2">02</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 3) selected @endif @endif value="3">03</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 4) selected @endif @endif value="4">04</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 5) selected @endif @endif value="5">05</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 6) selected @endif @endif value="6">06</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 7) selected @endif @endif value="7">07</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 8) selected @endif @endif value="8">08</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 9) selected @endif @endif value="9">09</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 10) selected @endif @endif value="10">10</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 11) selected @endif @endif value="11">11</option>
+  <option @if(!empty($birth->birthHours))@if($birth->birthHours == 12) selected @endif @endif value="12">12</option>
+             </select>
+             <select name="birthminute" class="selecthide time_edit">
+               <option value="">Select</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 1) selected @endif @endif value="1">01</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 2) selected @endif @endif value="2">02</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 3) selected @endif @endif value="3">03</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 4) selected @endif @endif value="4">04</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 5) selected @endif @endif value="5">05</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 6) selected @endif @endif value="6">06</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 7) selected @endif @endif value="7">07</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 8) selected @endif @endif value="8">08</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 9) selected @endif @endif value="9">09</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 10) selected @endif @endif value="10">10</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 11) selected @endif @endif value="11">11</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 12) selected @endif @endif value="12">12</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 13) selected @endif @endif value="13">13</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 14) selected @endif @endif value="14">14</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 15) selected @endif @endif value="15">15</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 16) selected @endif @endif value="16">16</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 17) selected @endif @endif value="17">17</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 18) selected @endif @endif value="18">18</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 19) selected @endif @endif value="19">19</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 20) selected @endif @endif value="20">20</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 21) selected @endif @endif value="21">21</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 22) selected @endif @endif value="22">22</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 23) selected @endif @endif value="23">23</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 24) selected @endif @endif value="24">24</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 25) selected @endif @endif value="25">25</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 26) selected @endif @endif value="26">26</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 27) selected @endif @endif value="27">27</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 28) selected @endif @endif value="28">28</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 29) selected @endif @endif value="29">29</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 30) selected @endif @endif value="30">30</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 31) selected @endif @endif value="31">31</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 32) selected @endif @endif value="32">32</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 33) selected @endif @endif value="33">33</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 34) selected @endif @endif value="34">34</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 35) selected @endif @endif value="35">35</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 36) selected @endif @endif value="36">36</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 37) selected @endif @endif value="37">37</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 38) selected @endif @endif value="38">38</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 39) selected @endif @endif value="39">39</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 40) selected @endif @endif value="40">40</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 41) selected @endif @endif value="41">41</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 42) selected @endif @endif value="42">42</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 43) selected @endif @endif value="43">43</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 44) selected @endif @endif value="44">44</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 45) selected @endif @endif value="45">45</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 46) selected @endif @endif value="46">46</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 47) selected @endif @endif value="47">47</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 48) selected @endif @endif value="48">48</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 49) selected @endif @endif value="49">49</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 50) selected @endif @endif value="50">50</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 51) selected @endif @endif value="51">51</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 52) selected @endif @endif value="52">52</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 53) selected @endif @endif value="53">53</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 54) selected @endif @endif value="54">54</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 55) selected @endif @endif value="55">55</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 56) selected @endif @endif value="56">56</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 57) selected @endif @endif value="57">57</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 58) selected @endif @endif value="58">58</option>
+               <option @if(!empty($birth->birthminute))@if($birth->birthminute == 59) selected @endif @endif value="59">59</option>
+             </select>
+             <select name="birthAmPm" class="selecthide time_edit ">
+               <option value="">Select</option>
+
+                <option @if(!empty($birth->birthAmPm))@if($birth->birthAmPm == "AM") selected @endif @endif value="AM">AM</option>
+                <option @if(!empty($birth->birthAmPm))@if($birth->birthAmPm == "PM") selected @endif @endif value="PM">PM</option>
+             </select>
+          </div>
+                                      <div class="form_group_wrap">
                                         <label>Manglik</label>
                                         <select name="manglik" id="country" class="selecthide">
                                       <option value="">Select</option>
