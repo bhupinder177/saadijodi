@@ -746,7 +746,31 @@ jQuery('body').on('change', '#country', function()
     });
 
     // *********************get states********************
+// images
+    $('body').on('change', '.multipleimageUpload', function(){
+        $('#rc-error').remove();
 
+          var aa = true;
+         if (this.files && this.files[0]) {
+           for (var i = 0; i < this.files.length; i++) {
+             var files = this.files;
+             var type = files[0].type.split("/");
+             if($.inArray(type[1], ['png','jpg','jpeg']) == -1)
+             {
+               aa = false;
+             }
+             else
+             {
+             var reader = new FileReader();
+             reader.onload = rcURL;
+             reader.readAsDataURL(this.files[i]);
+              }
+             }
+            }
+
+       });
+
+// images
 
 
 
@@ -827,3 +851,11 @@ $.ajax({
         reader.readAsDataURL(input.files[0]);
      }
  }
+
+ function rcURL(e) {
+
+   var r = '';
+    r += '<span class="doctype1'+e.loaded+'"><img class="doctype1'+e.loaded+' docimg" height="50" width="50" src=' + e.target.result + '>';
+   r += '<a data-typee="1" data-type="1'+e.loaded+'"  class="removedocument" ><i  class="fa fa-times" aria-hidden="true"></i></a></span>';
+  $('.imagesshow').append(r);
+};

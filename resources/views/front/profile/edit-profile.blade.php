@@ -65,8 +65,8 @@
                           <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
 
                           <p>
-                            <label for="upload_imgs" class="button hollow">Select Your Images +</label>
-                            <input class="show-for-sr" type="file" id="upload_imgs" name="images[]" multiple/>
+                            <label for="upload_imgs1" class="button hollow">Select Your Images +</label>
+                            <input class="show-for-sr multipleimageUpload" type="file" id="upload_imgs1" name="images[]" multiple/>
                           </p>
                           @if(count($images) > 0)
                           <div class="imagesshow">
