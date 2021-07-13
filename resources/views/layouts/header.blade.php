@@ -68,9 +68,28 @@
 						<i class="fa fa-bars"></i>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarResponsive">
+
+						@if (!empty(Auth::user()))
+						<ul class="navbar-nav ml-auto custom_cc">
+							<li class="nav-item">
+								<a class="nav-link" href="{{URL::to('/listing')}}">Lisitng </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#Register">My Profile </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#Register">My Photos </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#Register">Settings </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#Register">Inbox </a>
+							</li>
+						</ul>
+						@endif
+
 						<ul class="navbar-nav ml-auto custom_cc_b">
-
-
 							  @if (!Auth::user())
 							<li class="nav-item">
 								<a class="nav-link login_rg-b" href="{{URL::to('/register')}}">Register </a>
