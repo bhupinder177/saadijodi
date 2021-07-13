@@ -19,13 +19,13 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="label">Email</label>
+                                <label class="label">Email <span class="red-text">*</span></label>
                                 <input class="input--style-4" id="email" placeholder="Please enter email" type="text" name="email">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="label">Password</label>
+                                <label class="label">Password <span class="red-text">*</span></label>
                                 <input class="input--style-4" id="password" placeholder="Please enter password" type="password" name="password">
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-7">
                         	<div class="check_Box_cstm">
-                        		<a class="container_box" href="{{URL::to('/forgot-password')}}">Forget Password</a>
+                        		<a class="container_box" href="{{URL::to('/forgot-password')}}">Forget Password ?</a>
                         	</div>
                         </div>
                 	</div>

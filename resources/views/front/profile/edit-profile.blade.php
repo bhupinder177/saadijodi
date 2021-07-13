@@ -100,7 +100,7 @@
 
                         <div class="col-md-12">
                           <div class="form_group_wrap">
-                            <label>Profile created by</label>
+                            <label>Profile created by <span class="red-text">*</span></label>
                           <select name="profilecreatedby" class="selecthide">
                             <option value="">Select</option>
                         <option @if($detail->profileCreatedBy == 1) selected @endif value="1">Self</option>
@@ -111,7 +111,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Gender</label>
+                            <label>Gender <span class="red-text">*</span></label>
                             <select name="gender" class="selecthide">
                         <option value="" >Select Gender</option>
                         <option @if($detail->gender == 1) selected @endif value="1" >Male</option>
@@ -119,11 +119,11 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Date of Birth </label>
+                            <label>Date of Birth <span class="red-text">*</span></label>
                             <input value="@if($detail->dateOfBirth){{ $d = date("d-m-Y", strtotime($detail->dateOfBirth)) }}@endif" placeholder="Please select date of birth" class="selecthide dateofbirth" type="text" name="dateOfBirth">
                           </div>
                           <div class="form_group_wrap">
-                            <label>Marital status</label>
+                            <label>Marital status <span class="red-text">*</span></label>
                             <select name="maritalStatus" class="selecthide">
                         <option value="">Select</option>
                         <option @if($detail->maritalStatus == 1) selected @endif value="1">Never Married</option>
@@ -132,7 +132,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Height</label>
+                            <label>Height <span class="red-text">*</span></label>
                             <select name="height" class="selecthide">
   <option value="">Select height</option>
   <option @if($detail->height == 1) selected @endif value="1">4ft 5in </option>
@@ -171,7 +171,7 @@
   </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Blood Group</label>
+                            <label>Blood Group <span class="red-text">*</span></label>
                             <select name="bloodGroup" id="bloodGroup" class="selecthide">
       <option value="" label="Select">Select</option>
       <option @if($detail->bloodGroup == 'Don t Know') selected @endif value="Don t Know" label="Don't Know">Don't Know</option>
@@ -201,7 +201,7 @@
 
                         <div class="col-md-12">
                           <div class="form_group_wrap">
-                            <label>Father's Status</label>
+                            <label>Father's Status <span class="red-text">*</span></label>
                             <select name="fatherStatus" class="selecthide">
                         <option value="">Select</option>
                         <option @if($family->fatherStatus == 1) selected @endif value="1">Employed</option>
@@ -211,7 +211,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Mother's Status</label>
+                            <label>Mother's Status <span class="red-text">*</span></label>
                             <select name="motherStatus" class="selecthide">
                               <option value="">Select</option>
                               <option @if($family->motherStatus == 1) selected @endif value="1">Employed</option>
@@ -221,11 +221,11 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Family Location</label>
+                            <label>Family Location <span class="red-text">*</span></label>
                             <input name="familyLocation" value="{{ $family->familyLocation }}" placeholder="Please enter family location" class="selecthide" type="text" >
                           </div>
                           <div class="form_group_wrap">
-                            <label>Native Place</label>
+                            <label>Native Place <span class="red-text">*</span></label>
                             <input name="nativePlace" value="{{ $family->nativePlace }}" placeholder="Please enter native place" class="selecthide" type="text" >
                           </div>
                           <div class="form_group_wrap">
@@ -238,7 +238,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Family Type</label>
+                            <label>Family Type <span class="red-text">*</span></label>
                             <select name="familyType" class="selecthide">
                         <option value="">Select</option>
                         <option  @if($family->familyType == 1) selected @endif value="1">Joint</option>
@@ -264,7 +264,7 @@
 
                                     <div class="col-md-12">
                                       <div class="form_group_wrap">
-                                        <label>Country of Birth</label>
+                                        <label>Country of Birth <span class="red-text">*</span></label>
                                         <select name="birthCountry" id="country11" class="selecthide">
                                       <option value="">Select Country</option>
                                       @if(count($allcountry) > 0)
@@ -275,7 +275,7 @@
                                       </select>
                                       </div>
                                       <div class="form_group_wrap">
-                                        <label>City of Birth</label>
+                                        <label>City of Birth <span class="red-text">*</span></label>
                                         <input name="birthCity" value="@if(!empty($birth->birthCity)) {{ $birth->birthCity }}@endif" placeholder="Please enter city of birth" class="selecthide" type="text" >
                                       </div>
                                       <div class="form_group_wrap">
@@ -366,7 +366,7 @@
              </select>
           </div>
                                       <div class="form_group_wrap">
-                                        <label>Manglik</label>
+                                        <label>Manglik <span class="red-text">*</span></label>
                                         <select name="manglik" id="country" class="selecthide">
                                       <option value="">Select</option>
                                       <option @if(!empty($birth->manglik))@if(1 == $birth->manglik) selected @endif @endif value="1" >Yes</option>
@@ -401,7 +401,7 @@
 
                       <div class="col-md-12">
                         <div class="form_group_wrap">
-                          <label>Diet</label>
+                          <label>Diet <span class="red-text">*</span></label>
                     <select name="diet" class="selecthide">
                       <option value="" >Select diet</option>
                       <option @if($detail->diet == 1) selected @endif value="1">Veg</option>
@@ -429,7 +429,7 @@
 
                         <div class="col-md-12">
                           <div class="form_group_wrap">
-                            <label>Highest Qualification</label>
+                            <label>Highest Qualification <span class="red-text">*</span></label>
                             <select name="highestQualification" class="selecthide">
                         <optgroup id="educationlevel-optgroup--ENGINEERING-" label="-ENGINEERING-">
       </optgroup>
@@ -549,7 +549,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Working With</label>
+                            <label>Working With <span class="red-text">*</span></label>
                             <select name="workingWith" class="selecthide">
                               <option value="" label="Select">Select</option>
          <option @if($education->workingWith == 1) selected @endif value="1">Private Company</option>
@@ -560,7 +560,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Working As</label>
+                            <label>Working As <span class="red-text">*</span></label>
                             <select name="workingAs" class="selecthide">
                               <option value="" label="Select">Select</option>
         <optgroup id="occupation-optgroup-Accounting, Banking &amp; Finance" label="Accounting, Banking &amp; Finance">
@@ -707,11 +707,11 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Employer Name</label>
+                            <label>Employer Name <span class="red-text">*</span></label>
                             <input name="employerName" value="{{ $education->employerName }}" class="selecthide" type="text" placeholder="Please enter employer Name">
                           </div>
                           <div class="form_group_wrap">
-                            <label>Annual Income</label>
+                            <label>Annual Income <span class="red-text">*</span></label>
                             <select name="income" class="selecthide">
                         <option value="">Select income</option>
                         <option @if($education->income == 1) selected @endif value="1">Upto INR 1 Lakh</option>
@@ -760,7 +760,7 @@
 
                         <div class="col-md-12">
                           <div class="form_group_wrap">
-                            <label>Country Living in</label>
+                            <label>Country Living in <span class="red-text">*</span></label>
                             <select name="country" id="country" class="selecthide">
                         <option value="">Select Country</option>
                         @if(count($allcountry) > 0)
@@ -772,7 +772,7 @@
                           </div>
 
                           <div class="form_group_wrap">
-                            <label>State</label>
+                            <label>State <span class="red-text">*</span></label>
                             <select name="state" id="states" class="selecthide">
                             <option value="">Select State</option>
                             @if(count($states) > 0)
@@ -787,7 +787,7 @@
                           <div class="form_group_wrap">
                             <label>City</label>
                             <select id="cities" name="city" class="selecthide">
-                        <option value="">Select City</option>
+                        <option value="">Select City <span class="red-text">*</span></option>
                         @if(count($city) > 0)
                         @foreach($city as $ci)
                         <option @if(!empty($location->city))@if($ci->id == $location->city) selected @endif @endif value="{{ $ci->id }}" >{{ $ci->name }}</option>
@@ -797,7 +797,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Grew up in</label>
+                            <label>Grew up in <span class="red-text">*</span></label>
                             <select name="grewUp" id="grew" class="selecthide">
                         <option value="">Select Country</option>
                         @if(count($allcountry) > 0)
@@ -808,7 +808,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Pincode</label>
+                            <label>Pincode <span class="red-text">*</span></label>
                             <input name="pincode" value="@if(!empty($location)){{ $location->pincode }}@endif" placeholder="Please enter pincode" class="selecthide" type="text" >
                           </div>
                         </div>
@@ -828,7 +828,7 @@
 
                         <div class="col-md-12">
                           <div class="form_group_wrap">
-                            <label>Religion</label>
+                            <label>Religion <span class="red-text">*</span></label>
                             <select name="religion" class="selecthide">
                         <option  value="">Select religion</option>
                         <option @if($religion->religion == 1) selected @endif value="1" >Hindu</option>
@@ -839,7 +839,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Mother Tongue</label>
+                            <label>Mother Tongue <span class="red-text">*</span></label>
                             <select name="motherTongue" class="selecthide">
                         <option value="">Select Mother Tongue</option>
                         <option @if($religion->motherTongue == 1) selected @endif value="1">Hindi</option>
@@ -851,7 +851,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Community</label>
+                            <label>Community <span class="red-text">*</span></label>
                             <select name="community" class="selecthide">
                         <option value="">Select</option>
                         <option @if($religion->community == 1) selected @endif value="1">Ahluwalia</option>

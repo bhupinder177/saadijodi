@@ -26,7 +26,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form_group_wrap">
-                                <label >Age</label>
+                                <label >Age <span class="red-text">*</span></label>
                                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                                 <input type="hidden" class="ageMin" name="ageMin" value="23">
                                 <input type="hidden" class="ageMax" name="ageMax" value="30">
@@ -59,7 +59,7 @@
                           </div>
                               </div> -->
                               <div class="form_group_wrap">
-                                <label>Marital status</label>
+                                <label>Marital status <span class="red-text">*</span></label>
                                 <select name="maritalStatus" class="selecthide">
                             <option value="">Select</option>
                             <option @if(!empty($detail)) @if($detail->maritalStatus == 1) selected @endif @endif value="1">Never Married</option>
@@ -87,7 +87,7 @@
 
                           <div class="col-md-12">
                             <div class="form_group_wrap">
-                              <label>Country living in</label>
+                              <label>Country living in <span class="red-text">*</span></label>
                               <select name="country" id="country" class="selecthide">
                           <option value="">Select Country</option>
                           @if(count($allcountry) > 0)
@@ -98,7 +98,7 @@
                       </select>
                             </div>
                             <div class="form_group_wrap">
-                              <label>State living in</label>
+                              <label>State living in <span class="red-text">*</span></label>
                               <select name="state" id="states" class="selecthide">
                               <option value="">Select State</option>
                               @if(count($states) > 0)
@@ -111,7 +111,7 @@
                       </select>
                             </div>
                             <div class="form_group_wrap">
-                              <label>City / District</label>
+                              <label>City / District <span class="red-text">*</span></label>
                               <select id="cities" name="city" class="selecthide">
                           <option value="">Select City</option>
                           @if(count($city) > 0)
@@ -139,7 +139,7 @@
 
                           <div class="col-md-12">
                             <div class="form_group_wrap">
-                              <label>Qualification</label>
+                              <label>Qualification <span class="red-text">*</span></label>
                               <select name="highestQualification" class="selecthide">
                           <optgroup id="educationlevel-optgroup--ENGINEERING-" label="-ENGINEERING-">
         </optgroup>
@@ -259,7 +259,7 @@
                       </select>
                             </div>
                             <div class="form_group_wrap">
-                              <label>Working With</label>
+                              <label>Working With <span class="red-text">*</span></label>
                               <select name="workingWith" class="selecthide">
                                 <option value="" label="Select">Select</option>
            <option @if(!empty($detail)) @if($detail->workingWith == 1) selected @endif @endif value="1">Private Company</option>
@@ -271,7 +271,7 @@
                             </div>
 
                             <div class="form_group_wrap">
-                              <label>Annual income</label>
+                              <label>Annual income <span class="red-text">*</span></label>
                               <select name="income" class="selecthide">
                           <option value="">Select income</option>
                           <option @if(!empty($detail)) @if($detail->income == 1) selected @endif @endif value="1">Upto INR 1 Lakh</option>
@@ -306,7 +306,7 @@
                           <div class="col-md-12">
 
                             <div class="form_group_wrap">
-                              <label>Diet</label>
+                              <label>Diet <span class="red-text">*</span></label>
                               <select name="diet" class="selecthide">
                                 <option value="" >Select diet</option>
                                 <option @if(!empty($detail)) @if($detail->diet == 1) selected @endif @endif value="1">Veg</option>
@@ -337,7 +337,7 @@
 
                           <div class="col-md-12">
                             <div class="form_group_wrap">
-                              <label>Religion</label>
+                              <label>Religion <span class="red-text">*</span></label>
                               <select name="religion" class="selecthide">
                           <option  value="">Select religion</option>
                           <option @if(!empty($detail))f @if($detail->religion == 1) selected @endif @endif value="1" >Hindu</option>
@@ -348,30 +348,30 @@
                       </select>
                             </div>
                             <div class="form_group_wrap">
-                              <label>Community</label>
+                              <label>Community <span class="red-text">*</span></label>
                               <select name="community" class="selecthide">
                           <option value="">Select</option>
-                          <option @if($detail->community == 1) selected @endif value="1">Ahluwalia</option>
-                          <option @if($detail->community == 2) selected @endif value="2">Arora</option>
-                          <option @if($detail->community == 3) selected @endif value="3">Clean Shaven</option>
-                          <option @if($detail->community == 4) selected @endif value="4">Gursikh</option>
-                          <option @if($detail->community == 5) selected @endif value="5">Jatt</option>
-                          <option @if($detail->community == 6) selected @endif value="6">Kamboj</option>
-                          <option @if($detail->community == 7) selected @endif value="7">Kesadhari</option>
-                          <option @if($detail->community == 8) selected @endif value="8">Khatri</option>
-                          <option @if($detail->community == 9) selected @endif value="9">Kshatriya</option>
-                          <option @if($detail->community == 10) selected @endif value="10">Labana</option>
-                          <option @if($detail->community == 11) selected @endif value="11">Mazhbi/Majabi</option>
-                          <option @if($detail->community == 12) selected @endif value="12">Rajput</option>
-                          <option @if($detail->community == 13) selected @endif value="13">Ramdasia</option>
-                          <option @if($detail->community == 14) selected @endif value="14">Ramgharia</option>
-                          <option @if($detail->community == 15) selected @endif value="15">Ravidasia</option>
-                          <option @if($detail->community == 16) selected @endif value="16">Saini</option></select>
+                          <option @if(!empty($detail)) @if($detail->community == 1) selected @endif @endif value="1">Ahluwalia</option>
+                          <option @if(!empty($detail)) @if($detail->community == 2) selected @endif @endif value="2">Arora</option>
+                          <option @if(!empty($detail)) @if($detail->community == 3) selected @endif @endif value="3">Clean Shaven</option>
+                          <option @if(!empty($detail)) @if($detail->community == 4) selected @endif @endif value="4">Gursikh</option>
+                          <option @if(!empty($detail)) @if($detail->community == 5) selected @endif @endif value="5">Jatt</option>
+                          <option @if(!empty($detail)) @if($detail->community == 6) selected @endif @endif value="6">Kamboj</option>
+                          <option @if(!empty($detail)) @if($detail->community == 7) selected @endif @endif value="7">Kesadhari</option>
+                          <option @if(!empty($detail)) @if($detail->community == 8) selected @endif @endif value="8">Khatri</option>
+                          <option @if(!empty($detail)) @if($detail->community == 9) selected @endif @endif value="9">Kshatriya</option>
+                          <option @if(!empty($detail)) @if($detail->community == 10) selected @endif @endif value="10">Labana</option>
+                          <option @if(!empty($detail)) @if($detail->community == 11) selected @endif @endif value="11">Mazhbi/Majabi</option>
+                          <option @if(!empty($detail)) @if($detail->community == 12) selected @endif @endif value="12">Rajput</option>
+                          <option @if(!empty($detail)) @if($detail->community == 13) selected @endif @endif value="13">Ramdasia</option>
+                          <option @if(!empty($detail))  @if($detail->community == 14) selected @endif @endif value="14">Ramgharia</option>
+                          <option @if(!empty($detail)) @if($detail->community == 15) selected @endif @endif value="15">Ravidasia</option>
+                          <option @if(!empty($detail)) @if($detail->community == 16) selected @endif @endif value="16">Saini</option></select>
 
                       </select>
                             </div>
                             <div class="form_group_wrap">
-                              <label>Mother Tongue</label>
+                              <label>Mother Tongue <span class="red-text">*</span></label>
                               <select name="motherTongue" class="selecthide">
                             <option value="">Select Mother Tongue</option>
                             <option @if(!empty($detail)) @if($detail->motherTongue == 1) selected @endif @endif value="1">Hindi</option>
