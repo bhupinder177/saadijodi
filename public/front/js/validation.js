@@ -520,9 +520,13 @@ rules:
 {
   mobile: {
     required: true,
+    number:true,
+    minlength:10,
+    maxlength:12,
   },
   nameContactPerson: {
     required: true,
+    lettersonly:true,
   },
   relationWithMember: {
     required: true,
@@ -532,6 +536,8 @@ messages:
 {
   mobile: {
     required: "Please enter mobile number",
+    minlength:"Must be a valid mobile number between 10 to 12 digits",
+  maxlength:"Must be a valid mobile number between 10 to 12 digits",
   },
   nameContactPerson: {
     required: "This is required",
