@@ -52,7 +52,8 @@ class ProfileController extends Controller
         $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
         $location = UserLocations::with('countrydetail','statedetail','citydetail','grewUpdetail')->where('userId',Auth::User()->id)->first();
         $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
-        $images = UserImages::where('userId',Auth::User()->id)->get();
+        $images = UserImages::where(array('userId'=>Auth::User()->id,"isProfile"=>0))->get();
+        $profileimage = UserImages::where(array('userId'=>Auth::User()->id,"isProfile"=>1))->first();
 
         if($detail->dateOfBirth)
         {
@@ -66,7 +67,7 @@ class ProfileController extends Controller
          $detail->age ='';
         }
 
-        return view('front.profile.profile',['images'=>$images,'detail'=>$detail,'birth'=>$birth,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
+        return view('front.profile.profile',['images'=>$images,'profileimage'=>$profileimage,'detail'=>$detail,'birth'=>$birth,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
     }
 
     public function edit()
@@ -78,6 +79,8 @@ class ProfileController extends Controller
       $education = UserEducations::where('userId',Auth::User()->id)->first();
       $location = UserLocations::where('userId',Auth::User()->id)->first();
       $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
+      $images = UserImages::where(array("userId"=>Auth::User()->id,"isProfile"=>0))->get();
+      $profileimage = UserImages::where(array("userId"=>Auth::User()->id,"isProfile"=>1))->first();
       $allcountry = Country::get();
       $states = array();
       $city = array();
@@ -91,7 +94,7 @@ class ProfileController extends Controller
       }
 
 
-      return view('front.profile.edit-profile',['states'=>$states,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+      return view('front.profile.edit-profile',['states'=>$states,'profileimage'=>$profileimage,'images'=>$images,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function update(Request $request)
@@ -120,11 +123,32 @@ class ProfileController extends Controller
                $img = new UserImages([
                  'userId' =>Auth::User()->id,
                  'image' =>$nameimg,
+                 'isProfile'=>0,
                ]);
                $imagesUpdate =  $img->save();
                }
             }
           }
+       }
+
+       if($res)
+       {
+         if ($request->hasFile('profile'))
+         {
+           $request->file('data_name');
+           $imgRef     = 'profile-'.time();
+           $files        = $request->file('profile');
+           $name         = $files->getClientOriginalName();
+           $extension2    = $files->extension();
+           $type         = explode('.',$name);
+           $image[] = $name;
+           $files->move(public_path().'/profiles/', $imgRef.'.'.$extension2);
+           $pro['image'] = $imgRef.'.'.$extension2;
+           $pro['userId'] = Auth::User()->id;
+           $pro['isProfile'] = 1;
+           $fupdate = UserImages::updateOrCreate(array("userId"=>Auth::User()->id,"isProfile"=>1),$pro);
+
+         }
        }
 
        if($res)
@@ -324,6 +348,20 @@ class ProfileController extends Controller
       $output['formErrors'] ="true";
       $output['errors'] ="Partner Profile Is not update";
     }
+     return response($output);
+    }
+
+    public function deleteImages(Request $request)
+    {
+     $update =  UserImages::where(array("id"=>$request->id))->delete();
+      if($update)
+      {
+       $output['success'] ="true";
+      }
+      else
+      {
+       $output['formErrors'] ="true";
+      }
      return response($output);
     }
 }

@@ -390,6 +390,76 @@ return false;
 
 // Reset
 
+// delete record
+
+    $('body').on('click','.removedocument',function(){
+      var id = $(this).attr('data-id');
+      var type = $(this).attr('data-type');
+      var type1 = $(this).attr('data-typee');
+
+       if(type1 == 1)
+       {
+         var counting = $('.rcshow span').length;
+
+         if(counting == 1)
+         {
+          $('.rcerror').val('');
+         }
+       }
+       else if(type == 2)
+       {
+         var counting1 = $('.insuranceshow span').length;
+         if(counting1 == 1)
+         {
+          $('.insuranceerror').val('');
+         }
+      }
+       else if(type == 3)
+       {
+         var counting2 = $('.licenceshow span').length;
+         if(counting2 == 1)
+         {
+           $('.licencerror').val('');
+        }
+      }
+      if(!id)
+      {
+        $('.doctype'+type).remove();
+        $(this).remove();
+         //location.reload();
+      }
+      else
+      {
+       $.ajax({
+       type : 'POST',
+       cache : false,
+       url : base_url + '/deleteImages',
+       data:{
+         id:id
+       },
+       headers : {
+       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       },
+       dataType: 'json',
+       beforeSend  : function () {
+         $(".button-disabled").attr("disabled", "disabled");
+         $(".preloader").css('display','block');
+       },
+       complete: function () {
+         $(".preloader").css('display','none');
+           $(".button-disabled").attr("disabled",false);
+       },
+       success:function(response)
+       {
+         $('.docimg'+id).remove();
+         $('.removedocument'+id).remove();
+        //  location.reload();
+       }
+       });
+      }
+    });
+
+
     // **********************only number******************************
     // $(".numberonly").keydown(function (e) {
     $('body').on('keydown', '.numberonly', function(e){
@@ -750,9 +820,9 @@ $.ajax({
         var reader = new FileReader();
         reader.onload = function (e)
          {
-            $('.showprofile').attr('src', e.target.result);
-            $('.showprofile').attr('height','100');
-            $('.showprofile').attr('width','100');
+            $('.profileshow').attr('src', e.target.result);
+            $('.profileshow').attr('height','50');
+            $('.profileshow').attr('width','50');
          }
         reader.readAsDataURL(input.files[0]);
      }

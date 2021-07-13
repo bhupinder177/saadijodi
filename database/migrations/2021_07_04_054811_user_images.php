@@ -17,6 +17,7 @@ class UserImages extends Migration
           $table->increments('id');
           $table->string('userId');
           $table->string('image')->nullable();
+          $table->integer('isProfile')->nullable();
           $table->timestamps();
       });
     }

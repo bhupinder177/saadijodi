@@ -42,5 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/contactDetailUpdate','ProfileController@contactDetailUpdate');
   Route::post('/partnerPreferenceUpdate','ProfileController@partnerPreferenceUpdate');
   Route::get('/listing','ListingController@index');
+  Route::post('/deleteImages','ProfileController@deleteImages');
+
 
 });

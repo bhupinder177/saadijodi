@@ -14,6 +14,44 @@
 
           <div class="card">
                 <div class="card-header" id="faqhead2">
+                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2123"
+                    aria-expanded="true" aria-controls="faq2">Profile Photo</a>
+                </div>
+
+                <div id="faq2123" class="collapse show" aria-labelledby="faqhead2" data-parent="#faq">
+                    <div class="card-body">
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="upload_pic">
+                          <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+
+                          <p>
+                            <label for="upload_imgs" class="button hollow">Select Profile Picture</label>
+                            <input class="show-for-sr profilechange" type="file" id="upload_imgs" name="profile" />
+                          </p>
+                          @if(!empty(($profileimage)))
+                          <div class="imagesshow">
+                          <img class="profileshow" src="{{ asset('profiles/'.$profileimage->image) }}" width="50" height="50">
+                          </div>
+                          @else
+                          <div class="imagesshow">
+                          <img class="profileshow"  >
+                          </div>
+
+                          @endif
+
+
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+          <div class="card">
+                <div class="card-header" id="faqhead2">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
                     aria-expanded="true" aria-controls="faq2">Upload Photo</a>
                 </div>
@@ -30,6 +68,17 @@
                             <label for="upload_imgs" class="button hollow">Select Your Images +</label>
                             <input class="show-for-sr" type="file" id="upload_imgs" name="images[]" multiple/>
                           </p>
+                          @if(count($images) > 0)
+                          <div class="imagesshow">
+                  @foreach($images as $i)
+                  <span class="docimg{{ $i->id }}"><img class="doctype1 docimg{{ $i->id }}" src="{{ asset('profiles/'.$i->image) }}" width="50" height="50">
+                  <a data-typee="1" data-type="1" class="removedocument removedocument{{ $i->id }}" data-id="{{ $i->id }}"><i  class="fa fa-times" aria-hidden="true"></i></a></span>
+                  @endforeach
+                </div>
+                @else
+                <div class="rcshow">
+                </div>
+                @endif
 
 
                             </div>
@@ -332,33 +381,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header" id="faqhead5">
-                                <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
-                                aria-expanded="true" aria-controls="faq5">Lifestyle</a>
-                            </div>
 
-                            <div id="faq5" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
-                                <div class="card-body">
-
-                                    <div class="col-md-12">
-                                      <div class="form_group_wrap">
-                                        <label>Diet</label>
-                                  <select name="diet" class="selecthide">
-                                    <option value="" >Select diet</option>
-                                    <option @if($detail->diet == 1) selected @endif value="1">Veg</option>
-                                    <option @if($detail->diet == 2) selected @endif value="2">Non-Veg</option>
-                                    <option @if($detail->diet == 3) selected @endif value="3">Occasionally Non-Veg</option>
-                                    <option @if($detail->diet == 4) selected @endif value="4">Eggetarian</option>
-                                    <option @if($detail->diet == 5) selected @endif value="5">Jain</option>
-                                    <option @if($detail->diet == 6) selected @endif value="6">Vegan</option>
-                                </select>
-                                      </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
 
         </div>
       </div>
@@ -367,7 +390,33 @@
       <div class="col-md-6">
         <div class="accordion" id="faq">
 
+          <div class="card">
+              <div class="card-header" id="faqhead5">
+                  <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
+                  aria-expanded="true" aria-controls="faq5">Lifestyle</a>
+              </div>
 
+              <div id="faq5" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
+                  <div class="card-body">
+
+                      <div class="col-md-12">
+                        <div class="form_group_wrap">
+                          <label>Diet</label>
+                    <select name="diet" class="selecthide">
+                      <option value="" >Select diet</option>
+                      <option @if($detail->diet == 1) selected @endif value="1">Veg</option>
+                      <option @if($detail->diet == 2) selected @endif value="2">Non-Veg</option>
+                      <option @if($detail->diet == 3) selected @endif value="3">Occasionally Non-Veg</option>
+                      <option @if($detail->diet == 4) selected @endif value="4">Eggetarian</option>
+                      <option @if($detail->diet == 5) selected @endif value="5">Jain</option>
+                      <option @if($detail->diet == 6) selected @endif value="6">Vegan</option>
+                  </select>
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
 
             <div class="card">
                 <div class="card-header" id="faqhead4">

@@ -75,7 +75,7 @@
 								<a class="nav-link" href="{{URL::to('/listing')}}">Lisitng </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#Register">My Profile </a>
+								<a class="nav-link" href="{{URL::to('/profile')}}">My Profile </a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#Register">My Photos </a>
