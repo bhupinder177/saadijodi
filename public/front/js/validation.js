@@ -94,6 +94,8 @@ $.validator.addMethod("lettersonly", function(value, element) {
    phone: {
      required: true,
      number:true,
+    minlength:10,
+    maxlength:12,
 
    },
    gender: {
@@ -121,7 +123,9 @@ $.validator.addMethod("lettersonly", function(value, element) {
      required: "Please enter last name",
    },
    phone: {
-     required: "Please enter last name",
+     required: "Please enter phone number",
+     minlength:"Must be a valid phone number between 10 to 12 digits",
+   maxlength:"Must be a valid phone number between 10 to 12 digits",
    },
    gender: {
      required: "Please select gender",
