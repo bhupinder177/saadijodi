@@ -4,6 +4,23 @@ jQuery(document).ready(function () {
 
 var base_url = $('.base_url').val();
 
+// dateofbirth
+ $( function() {
+  $('.dateofbirth').datepicker({
+     dateFormat: 'dd-mm-yy',
+     maxDate: 0,
+     changeMonth: true,
+     changeYear: true,
+     // yearRange: "1950:2020"
+     yearRange: "1950:"+(new Date().getFullYear()),
+     onSelect: function (e) {
+        var id = $(this).attr('id');
+         $('#'+id+'-error').html('');
+       }
+  });
+ });
+ //dateofbirth
+
 setTimeout(function() {
  $('.alert').hide('fast');
 }, 5000);

@@ -120,7 +120,7 @@
                           </div>
                           <div class="form_group_wrap">
                             <label>Date of Birth </label>
-                            <input value="@if($detail->dateOfBirth){{ $d = date("d-m-Y", strtotime($detail->dateOfBirth)) }}@endif" placeholder="Please select date of birth" class="selecthide" type="text" name="dateOfBirth">
+                            <input value="@if($detail->dateOfBirth){{ $d = date("d-m-Y", strtotime($detail->dateOfBirth)) }}@endif" placeholder="Please select date of birth" class="selecthide dateofbirth" type="text" name="dateOfBirth">
                           </div>
                           <div class="form_group_wrap">
                             <label>Marital status</label>
