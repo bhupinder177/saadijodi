@@ -41,10 +41,11 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->get();
 
-        return view('front.listing.listing');
+        return view('front.listing.listing',['user'=>$user]);
     }
 
 
