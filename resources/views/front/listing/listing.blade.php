@@ -248,7 +248,8 @@
 									</div>
 								</div>
 							<?php } } ?>
-							<div class="pagination1">{{ $users->links() }}</div>
+
+							<div class="pagination">{{ $users->links() }}</div>
 
 
 

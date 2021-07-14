@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/listing','ListingController@index');
   Route::post('/deleteImages','ProfileController@deleteImages');
   Route::get('/user-profile/{id}','ProfileController@userProfile');
+  Route::get('/notification','ProfileController@notification');
 
 
 });
