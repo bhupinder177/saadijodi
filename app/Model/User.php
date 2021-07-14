@@ -36,4 +36,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function UserBasicDetail()
+    {
+        return $this->hasOne('App\Model\UserBasicDetails','userId','id');
+    }
+    public function UserBirthDetail()
+    {
+        return $this->hasOne('App\Model\UserBirthDetails','userId','id');
+    }
+    public function UserContactDetail()
+    {
+        return $this->hasOne('App\Model\UserContactDetails','userId','id');
+    }
+    public function UserEducation()
+    {
+        return $this->hasOne('App\Model\UserEducations','userId','id');
+    }
+    public function UserFamilyDetail()
+    {
+        return $this->hasOne('App\Model\UserFamilyDetails','userId','id');
+    }
+    public function UserImage()
+    {
+        return $this->hasOne('App\Model\UserImages','userId','id');
+    }
+    public function UserLocation()
+    {
+        return $this->hasOne('App\Model\UserLocations','userId','id');
+    }
+    public function UserReligious()
+    {
+        return $this->hasOne('App\Model\UserReligious','userId','id');
+    }
+
 }
