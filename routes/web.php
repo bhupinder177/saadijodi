@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/partnerPreferenceUpdate','ProfileController@partnerPreferenceUpdate');
   Route::get('/listing','ListingController@index');
   Route::post('/deleteImages','ProfileController@deleteImages');
+  Route::get('/user-profile/{id}','ProfileController@userProfile');
 
 
 });

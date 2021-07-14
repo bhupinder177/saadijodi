@@ -364,4 +364,10 @@ class ProfileController extends Controller
       }
      return response($output);
     }
+
+    public function userProfile()
+    {
+      return view('front.userprofile.userProfile');
+      
+    }
 }

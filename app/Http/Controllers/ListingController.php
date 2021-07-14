@@ -43,9 +43,10 @@ class ListingController extends Controller
      */
     public function index(Request $request)
     {
-        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->get();
+        $perpage = 10;
+        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereNotIn('id',[Auth::User()->id])->orderby('id','desc')->paginate($perpage);
 
-        return view('front.listing.listing',['user'=>$user]);
+        return view('front.listing.listing',['users'=>$user]);
     }
 
 
