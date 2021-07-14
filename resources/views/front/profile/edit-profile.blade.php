@@ -28,14 +28,14 @@
 
                           <p>
                             <label for="upload_imgs" class="button hollow">Select Profile Picture</label>
-                            <input class="show-for-sr profilechange" type="file" id="upload_imgs" name="profile" />
+                            <input class="show-for-sr profilechange" accept="image/*" type="file" id="upload_imgs" name="profile" />
                           </p>
                           @if(!empty(($profileimage)))
-                          <div class="imagesshow">
+                          <div class="imagesshow1">
                           <img class="profileshow" src="{{ asset('profiles/'.$profileimage->image) }}" width="50" height="50">
                           </div>
                           @else
-                          <div class="imagesshow">
+                          <div class="imagesshow1">
                           <img class="profileshow"  >
                           </div>
 
@@ -66,7 +66,7 @@
 
                           <p>
                             <label for="upload_imgs1" class="button hollow">Select Your Images +</label>
-                            <input class="show-for-sr multipleimageUpload" type="file" id="upload_imgs1" name="images[]" multiple/>
+                            <input class="show-for-sr multipleimageUpload" accept="image/*" type="file" id="upload_imgs1" name="images[]" multiple/>
                           </p>
                           @if(count($images) > 0)
                           <div class="imagesshow">
@@ -243,7 +243,6 @@
                         <option value="">Select</option>
                         <option  @if($family->familyType == 1) selected @endif value="1">Joint</option>
                         <option  @if($family->familyType == 2) selected @endif value="2">Nuclear</option>
-                        <option  @if($family->familyType == 3) selected @endif value="3">Joint</option>
                     </select>
                           </div>
                         </div>
@@ -281,7 +280,7 @@
                                       <div class="form_group_wrap">
              <label>Time of Birth</label>
              <select name="birthHours" class="selecthide time_edit">
-               <option value="">Select</option>
+               <option value="">Select Hour</option>
 
                <option @if(!empty($birth->birthHours))@if($birth->birthHours == 1) selected @endif @endif value="1">01</option>
   <option @if(!empty($birth->birthHours))@if($birth->birthHours == 2) selected @endif @endif value="2">02</option>
@@ -297,7 +296,7 @@
   <option @if(!empty($birth->birthHours))@if($birth->birthHours == 12) selected @endif @endif value="12">12</option>
              </select>
              <select name="birthminute" class="selecthide time_edit">
-               <option value="">Select</option>
+               <option value="">Select Minute</option>
                <option @if(!empty($birth->birthminute))@if($birth->birthminute == 1) selected @endif @endif value="1">01</option>
                <option @if(!empty($birth->birthminute))@if($birth->birthminute == 2) selected @endif @endif value="2">02</option>
                <option @if(!empty($birth->birthminute))@if($birth->birthminute == 3) selected @endif @endif value="3">03</option>

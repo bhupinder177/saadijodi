@@ -34,7 +34,7 @@
               </li>
               <li class="nav-item">
                   <a id="tab-C" href="#pane-C" class="nav-link" data-toggle="tab" role="tab">
-                  <h3>My Contact detail</h3></a>
+                  <h3>My Contact Detail</h3></a>
               </li>
           </ul>
 
@@ -818,9 +818,6 @@
                         @endif
                         @if($family->familyType == 2)
                         Nuclear
-                        @endif
-                        @if($family->familyType == 3)
-                        Joint
                         @endif
                         @else
                         -

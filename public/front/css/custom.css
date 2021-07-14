@@ -95,7 +95,7 @@ z-index: 99999999;
 	background: linear-gradient(to right, #f67cab , #fb133b);
 }
 .form_group_wrap .selecthide.time_edit {
-	width: 15%;
+	width: 30%;
 	margin-right: 10px;
 }
 .red-text{

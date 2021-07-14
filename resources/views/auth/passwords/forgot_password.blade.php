@@ -14,7 +14,7 @@
 								@endif
 	            	<div class="row">
 	            		<div class="col-md-12">
-	            			<h3>Forget Password</h3>
+	            			<h3>Forgot Password</h3>
 	            		</div>
 
                         <div class="col-md-12">
@@ -33,11 +33,7 @@
                         		<button type="submit">Submit</button>
                         	</div>
                         </div>
-                        <div class="col-md-7">
-                        	<div class="check_Box_cstm">
-                        		<a class="container_box" href="{{URL::to('/forgot-password')}}">Forget Password</a>
-                        	</div>
-                        </div>
+
                 	</div>
                   </form>
 
