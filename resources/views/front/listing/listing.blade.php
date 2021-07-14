@@ -48,7 +48,11 @@
 									<div class="row">
 										<div class="col-md-3">
 											<div class="listing_imgs">
-												<img src="images/2.jpg">
+												@if(!empty($user->UserImage->image))
+				                   <img src="{{ asset('profiles/'.$user->UserImage->image) }}" >
+												@else
+												<img src="{{ asset('front/images/nofound.png') }}" >
+				                @endif
 											</div>
 										</div>
 										<div class="col-md-6">

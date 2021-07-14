@@ -8,13 +8,15 @@
           <div class="row">
             <div class="col-md-3">
               <div class="listing_imgs">
-                <img src="images/2.jpg">
+                @if(!empty($user->UserImage->image))
+                   <img src="{{ asset('profiles/'.$user->UserImage->image) }}" >
+                @endif
               </div>
             </div>
             <div class="col-md-6">
               <div class="listing_details">
                 <div class="listing_details_head">
-                  <h3>Suryanshi S</h3>
+                  <h3>{{ $user->firstName }} {{ $user->lastName }}</h3>
                   <div class="d_flex_head">
                     <span><i class="fa fa-comments"></i> Online now</span>
                     <span data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-user"></i> You & Her</span>
@@ -77,14 +79,34 @@
             <h2>Detailed Profile</h2>
 
             <div class="rpeat_col">
-              <h4>About Neha C</h4>
-              <span>SH08448030   |   Profile created by Parent</span>
-
+              <h4>About {{ $user->firstName }}</h4>
+              <span>{{ $user->uniqueId }} @if(!empty($user->UserBasicDetail->profileCreatedBy))  | Profile created by
+              @if($user->UserBasicDetail->profileCreatedBy == 1)
+              Self
+              @endif
+              @if($user->UserBasicDetail->profileCreatedBy == 2)
+              Parent / Guardian
+              @endif
+              @if($user->UserBasicDetail->profileCreatedBy == 3)
+              Sibling
+              @endif
+              @if($user->UserBasicDetail->profileCreatedBy == 4)
+              Sibling
+              @endif
+              @if($user->UserBasicDetail->profileCreatedBy == 5)
+              Friend
+              @endif
+              @if($user->UserBasicDetail->profileCreatedBy == 6)
+              Other
+              @endif
+              @endif</span>
+            @if(!empty($user->UserBasicDetail->about))
               <div class="about_here_wrap">
-                <p>I am looking for a suitable partner for my daughter.
-                  She has completed her High school. Her optimistic personality is adored by one and all. We hope to find an understanding partner for her with whom she would have a happy life.
+                <p>
+                  {{ $user->UserBasicDetail->about }}
                 </p>
               </div>
+              @endif
 
             </div>
 
@@ -97,15 +119,36 @@
               </div>
 
             </div>
+            @if(!empty($user->UserBasicDetail->diet))
 
             <div class="rpeat_col">
               <h4>Lifestyle</h4>
 
               <div class="about_here_wrap">
-                <p>Non-Vegetarian</p>
+                <p>
+                  @if($user->UserBasicDetail->diet == 1)
+                  Veg
+                  @endif
+                  @if($user->UserBasicDetail->diet == 2)
+                  Non-Veg
+                  @endif
+                  @if($user->UserBasicDetail->diet == 3)
+                Occasionally Non-Veg
+                  @endif
+                  @if($user->UserBasicDetail->diet == 4)
+                Eggetarian
+                  @endif
+                  @if($user->UserBasicDetail->diet == 5)
+                  Jain
+                  @endif
+                  @if($user->UserBasicDetail->diet == 6)
+                  Vegan
+                  @endif
+                </p>
               </div>
-
             </div>
+            @endif
+
 
             <div class="rpeat_col">
               <h4>Background</h4>

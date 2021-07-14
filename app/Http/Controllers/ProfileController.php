@@ -365,9 +365,11 @@ class ProfileController extends Controller
      return response($output);
     }
 
-    public function userProfile()
+    public function userProfile($id)
     {
-      return view('front.userprofile.userProfile');
-      
+      $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('uniqueId',$id)->first();
+
+      return view('front.userprofile.userProfile',['user'=>$user]);
+
     }
 }
