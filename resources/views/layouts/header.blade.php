@@ -36,7 +36,9 @@
 						<div class="col-md-6">
 							<div class="follow_icons">
 								<span class="follow_fa">
+									<a target="_blank" href="http://www.facebook.com/saadijodi">
 									<i class="fa fa-facebook-f"></i>
+								 </a>
 								</span>
 								<span class="follow_fa">
 									<i class="fa fa-twitter"></i>
@@ -51,7 +53,9 @@
 									<i class="fa fa-pinterest-p"></i>
 								</span>
 								<span class="follow_fa">
+									<a target="_blank" href="http://www.instagram.com/saadijodi">
 									<i class="fa fa-instagram"></i>
+								  </a>
 								</span>
 							</div>
 						</div>
@@ -75,7 +79,7 @@
 								<a class="nav-link" href="{{URL::to('/listing')}}">Lisitng </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/profile')}}">My Profile </a>
+								<a class="nav-link" href="{{URL::to('/notification')}}">Notification </a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#Register">My Photos </a>

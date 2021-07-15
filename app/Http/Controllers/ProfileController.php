@@ -16,6 +16,7 @@ use App\Model\UserContactDetails;
 use App\Model\PartnerPreferences;
 use App\Model\UserBirthDetails;
 use App\Model\UserImages;
+use App\Model\Notification;
 use Validator;
 use Session;
 use Curl;
@@ -373,6 +374,10 @@ class ProfileController extends Controller
 
     public function notification()
     {
-      return view('front.notification.notification');
+      $notification = Notification::with(['userdetail'=>function($q){
+        $q->select('id','firstName','lastName','uniqueId');
+      }])->where('notificationTo',Auth::User()->id)->orderBy('id','desc')->paginate(10);
+
+      return view('front.notification.notification',['notification'=>$notification]);
     }
 }

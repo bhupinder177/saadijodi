@@ -1,6 +1,16 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 }
+header {
+	z-index: 99;
+	position: sticky;
+}
+.fixed-top {
+    top: -40px;
+    transform: translateY(40px);
+    transition: transform .3s;
+    background: rgb(255, 255, 255) !important;
+}
 .top-header {
 	background: #333333;
 	color: #fff;
@@ -32,6 +42,7 @@ body {
 .header_bg {
 	padding: 0;
 	box-shadow: 0 0px 6px 1px #767474;
+	background: rgba(129, 129, 129, 0.23);
 }
 .header_bg .navbar-brand {
 	width: 25%;
@@ -44,11 +55,14 @@ body {
 }
 .header_bg .navbar-nav .nav-item .nav-link {
 	font-size: 16px;
-	color: #000;
+	color: #fff;
 	font-weight: 500;
 	font-family: "Open Sans", sans-serif;
 	padding: 0 15px;
-	text-transform: uppercase;
+	text-transform: capitalize;
+}
+.fixed-top .navbar-nav .nav-item .nav-link {
+	color: #666;
 }
 .custom_cc_b .login_rg-b {
 	background: linear-gradient(to right, #fb133b , #f67cab);
@@ -59,15 +73,17 @@ body {
 	font-weight: 600 !important;
 }
 .top_banner {
-	background-image: url('../images/HomePage_banner.jpg');
+	background: url('../images/couple-hero-img.jpg') center top no-repeat;
 	background-size: cover;
-	height: 560px;
+	height: 720px;
 	background-repeat: no-repeat;
 	position: relative;
+	margin-top: -115px;
+	background-attachment: fixed;
 }
 .baner_title {
 	text-align: center;
-	padding-top: 35%;
+	padding-top: 45%;
 }
 .baner_title h3 {
 	color: #fff;
@@ -1301,10 +1317,289 @@ footer {
 
 
 
+.notification_wrapp {
+	padding: 60px 0;
+}
+.notification_prnt h2 {
+	margin-bottom: 25px;
+	font-size: 32px;
+	font-weight: 600;
+	color: #444;
+}
+.card_body_td {
+	border: 1px solid #e3e3e3;
+	margin-bottom: 25px;
+	padding: 12px;
+	border-radius: 4px;
+}
+.card_body_td:hover {
+	box-shadow: 0px 2px 6px 1px #e3e3e3;
+}
+.card_body_td table {
+	width: 100%;
+}
+.card_body_td table tr {
+	display: flex;
+}
+.card_body_td table tr td .card-title {
+	margin-bottom: 0;
+	font-size: 16px;
+	color: #333;
+	text-transform: capitalize;
+}
+.card_body_td table tr td a.btn {
+	font-size: 0.8rem;
+	padding: 3px;
+}
+.card_body_td table tr td:nth-child(2) {
+	text-align: right;
+	justify-content: space-around;
+}
+.card_body_td table tr td .view_n {
+	padding: 2px 10px !important;
+	font-size: 16px !important;
+	background: #0f78d5;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+}
+.card_body_td table tr td .dismiss-notification {
+	padding: 2px 10px !important;
+	font-size: 16px !important;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+}
 
 
 
 
+
+
+.chat_wrapp {
+	padding: 60px 0;
+	background: linear-gradient(to right, #91EAE4, #86A8E7, #FB1840);
+}
+.chat_wrapp .chat {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.chat_wrapp .card {
+	height: 500px;
+	border-radius: 15px !important;
+	background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.chat_wrapp .contacts_body {
+	padding: 0.75rem 0 !important;
+	overflow-y: auto;
+	white-space: nowrap;
+}
+.chat_wrapp .msg_card_body {
+	overflow-y: auto;
+}
+.chat_wrapp .card-header {
+	border-radius: 15px 15px 0 0 !important;
+	border-bottom: 0 !important;
+}
+.chat_wrapp .card-footer {
+	border-radius: 0 0 15px 15px !important;
+	border-top: 0 !important;
+}
+.chat_wrapp .search {
+	border-radius: 15px 0 0 15px !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	border: 0 !important;
+	color: white !important;
+}
+.chat_wrapp .search:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.chat_wrapp .type_msg {
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	border: 0 !important;
+	color: white !important;
+	height: 60px !important;
+	overflow-y: auto;
+}
+.chat_wrapp .type_msg:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.chat_wrapp .attach_btn {
+	border-radius: 15px 0 0 15px !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	border: 0 !important;
+	color: white !important;
+	cursor: pointer;
+}
+.chat_wrapp .send_btn {
+	border-radius: 0 15px 15px 0 !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	border: 0 !important;
+	color: white !important;
+	cursor: pointer;
+}
+.chat_wrapp .search_btn {
+	border-radius: 0 15px 15px 0 !important;
+	background-color: rgba(0, 0, 0, 0.3) !important;
+	border: 0 !important;
+	color: white !important;
+	cursor: pointer;
+}
+.chat_wrapp .contacts {
+	list-style: none;
+	padding: 0;
+}
+.chat_wrapp .contacts li {
+	width: 100% !important;
+	padding: 5px 10px;
+	margin-bottom: 15px !important;
+}
+.chat_wrapp .active {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+.chat_wrapp .user_img {
+	height: 70px;
+	width: 70px;
+	border: 1.5px solid #f5f6fa;
+}
+.chat_wrapp .user_img_msg {
+	height: 40px;
+	width: 40px;
+	border: 1.5px solid #f5f6fa;
+}
+.chat_wrapp .img_cont {
+	position: relative;
+	height: 70px;
+	width: 70px;
+}
+.chat_wrapp .img_cont_msg {
+	height: 40px;
+	width: 40px;
+}
+.chat_wrapp .online_icon {
+	position: absolute;
+	height: 15px;
+	width: 15px;
+	background-color: #4cd137;
+	border-radius: 50%;
+	bottom: 0.2em;
+	right: 0.4em;
+	border: 1.5px solid white;
+}
+.chat_wrapp .offline {
+	background-color: #c23616 !important;
+}
+.chat_wrapp .user_info {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 15px;
+}
+.chat_wrapp .user_info span {
+	font-size: 20px;
+	color: white;
+}
+.chat_wrapp .user_info p {
+	font-size: 10px;
+	color: rgba(255, 255, 255, 0.6);
+}
+.chat_wrapp .video_cam {
+	margin-left: 50px;
+	margin-top: 5px;
+}
+.chat_wrapp .video_cam span {
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.chat_wrapp .msg_cotainer {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 10px;
+	border-radius: 25px;
+	background-color: #82ccdd;
+	padding: 10px;
+	position: relative;
+}
+.chat_wrapp .msg_cotainer_send {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;
+	border-radius: 25px;
+	background-color: #78e08f;
+	padding: 10px;
+	position: relative;
+}
+.chat_wrapp .msg_time {
+	position: absolute;
+	left: 0;
+	bottom: -15px;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 10px;
+}
+.chat_wrapp .msg_time_send {
+	position: absolute;
+	right: 0;
+	bottom: -15px;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 10px;
+}
+.chat_wrapp .msg_head {
+	position: relative;
+}
+.chat_wrapp #action_menu_btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+}
+.chat_wrapp .action_menu {
+	z-index: 1;
+	position: absolute;
+	padding: 15px 0;
+	background-color: rgb(99, 73, 105);
+	color: white;
+	border-radius: 15px;
+	top: 30px;
+	right: 15px;
+	display: none;
+}
+.chat_wrapp .action_menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.chat_wrapp .action_menu ul li {
+	width: 100%;
+	padding: 10px 15px;
+	margin-bottom: 5px;
+}
+.chat_wrapp .action_menu ul li i {
+	padding-right: 10px;
+}
+.chat_wrapp .action_menu ul li:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+@media(max-width: 576px) {
+	.chat_wrapp .contacts_card {
+		margin-bottom: 15px !important;
+	}
+}
+
+
+
+
+
+
+.form_group_wrap .selecthide.time_edit {
+	width: 15%;
+	margin-right: 10px;
+}
 .selector {
     position: relative;
     width: 100%;
@@ -1468,6 +1763,16 @@ footer {
 
 @media (max-width: 768px) {
 
+.custom_cc_b {
+	padding: 20px;
+	border-top: 1px solid #c8bfbf;
+}
+.custom_cc_b .login_rg-b {
+	display: inline-block;
+	width: 180px;
+	text-align: center;
+	margin-bottom: 10px;
+}
 .header_bg .navbar-brand {
 	width: 30%;
 }
@@ -1518,6 +1823,16 @@ footer {
 
 @media (max-width: 576px) {
 
+.custom_cc_b {
+	padding: 20px;
+	border-top: 1px solid #c8bfbf;
+}
+.custom_cc_b .login_rg-b {
+	display: inline-block;
+	width: 180px;
+	text-align: center;
+	margin-bottom: 10px;
+}
 .header_bg .navbar-brand {
 	height: 160px;
 	width: 60%;

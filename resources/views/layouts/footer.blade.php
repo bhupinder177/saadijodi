@@ -36,9 +36,7 @@
             <li>
               <i class="fa fa-angle-right"></i><a href="#">Mobile Matrimony</a>
             </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="#">Payment Option</a>
-            </li>
+          
             <li>
               <i class="fa fa-angle-right"></i><a href="#">Member Demograph</a>
             </li>
@@ -64,9 +62,7 @@
             <li>
               <i class="fa fa-angle-right"></i><a href="#">Terms and Condition</a>
             </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="#">Blog</a>
-            </li>
+
           </ul>
         </div>
       </div>

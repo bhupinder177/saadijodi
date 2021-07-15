@@ -44,7 +44,17 @@ class ListingController extends Controller
     public function index(Request $request)
     {
         $perpage = 10;
-        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereNotIn('id',[Auth::User()->id])->orderby('id','desc')->paginate($perpage);
+        if(Auth::user()->gender == 1)
+        {
+          $gender = 2;
+        }
+        else
+        {
+           $gender = 1;
+        }
+        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereNotIn('id',[Auth::User()->id])->whereHas('UserBasicDetail',function($w)use($gender){
+          $w->whereDate('gender',$gender);
+        })->orderby('id','desc')->paginate($perpage);
 
         return view('front.listing.listing',['users'=>$user]);
     }
