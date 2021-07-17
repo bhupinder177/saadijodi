@@ -24,7 +24,7 @@
                 </div>
                 <div class="listing_details_title">
                   <a class="d_flex_title" href="#">
-                    <span>24 yrs, 
+                    <span>24 yrs,
                       @if(!empty($user->UserBasicDetail->height))
 
                       @if($user->UserBasicDetail->height == 1)
@@ -164,13 +164,13 @@
                       @endif
                     </span>
                     <span>
-                      @if(!empty($user->UserLocation->citydetail)) 
-                      {{ $user->UserLocation->citydetail->name }} 
-                      @else - 
-                      @endif, 
-                      @if(!empty($user->UserLocation->statedetail)) 
+                      @if(!empty($user->UserLocation->citydetail))
+                      {{ $user->UserLocation->citydetail->name }}
+                      @else -
+                      @endif,
+                      @if(!empty($user->UserLocation->statedetail))
                       {{ $user->UserLocation->statedetail->name }}
-                      @else - 
+                      @else -
                       @endif
                     </span>
                     <span>
@@ -440,7 +440,7 @@
                   @endif
                   @else
                   -
-                  @endif, 
+                  @endif,
                   @if(!empty($user->UserReligious->motherTongue))
                   @if($user->UserReligious->motherTongue == 1)
                   Hindi
@@ -486,14 +486,14 @@
                     @else
                     -
                     @endif</p>
-                <p>@if(!empty($user->UserLocation->citydetail)) 
-                  {{ $user->UserLocation->citydetail->name }} 
-                  @else - @endif, 
-                  @if(!empty($user->UserLocation->statedetail)) 
-                  {{ $user->UserLocation->statedetail->name }} 
-                  @else - @endif, 
-                  @if(!empty($location->countrydetail)) 
-                  {{ $location->countrydetail->name }} 
+                <p>@if(!empty($user->UserLocation->citydetail))
+                  {{ $user->UserLocation->citydetail->name }}
+                  @else - @endif,
+                  @if(!empty($user->UserLocation->statedetail))
+                  {{ $user->UserLocation->statedetail->name }}
+                  @else - @endif,
+                  @if(!empty($location->countrydetail))
+                  {{ $location->countrydetail->name }}
                   @else - @endif
                 </p>
               </div>

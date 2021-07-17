@@ -206,7 +206,7 @@
 								                          @endif
 								                        </span>
 														<span>
-															@if(!empty($user->UserLocation->citydetail)) {{ $user->UserLocation->citydetail->name }} @else - @endif, 
+															@if(!empty($user->UserLocation->citydetail)) {{ $user->UserLocation->citydetail->name }} @else - @endif,
 															@if(!empty($user->UserLocation->statedetail)) {{ $user->UserLocation->statedetail->name }} @else - @endif
 
 														</span>
