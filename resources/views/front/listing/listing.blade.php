@@ -66,7 +66,19 @@
 												</div>
 												<div class="listing_details_title">
 													<a class="d_flex_title" href="#">
-														<span>24 yrs,
+														<?php
+														if(!empty($user->UserBasicDetail))
+														{
+														$dateOfBirth = $user->UserBasicDetail->dateOfBirth;
+														$today = date("Y-m-d");
+														$diff = date_diff(date_create($dateOfBirth), date_create($today));
+														$age = $diff->format('%y');
+													 }
+													 else{
+														 $age ='';
+													 }
+														?>
+														<span>{{ $age }} yrs,
 														@if(!empty($user->UserBasicDetail->height))
 
                           								@if($user->UserBasicDetail->height == 1)
