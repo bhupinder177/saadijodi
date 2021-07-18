@@ -1179,10 +1179,10 @@
                       <span class="quest">Age</span>
                       <span class="answr">:@if($partner) {{ $partner->ageMin  }} to {{ $partner->ageMax  }} @endif</span>
                     </div>
-                    <div class="flex_details_span">
+                    <!-- <div class="flex_details_span">
                       <span class="quest">Height</span>
                       <span class="answr">: 5' 0"(152cm) to 5' 6"(167cm)</span>
-                    </div>
+                    </div> -->
                     <div class="flex_details_span">
                       <span class="quest">Religion / Community</span>
                       <span class="answr">:

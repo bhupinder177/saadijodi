@@ -101,3 +101,19 @@ z-index: 99999999;
 .red-text{
 	color:red;
 }
+
+
+.conect_nwwed {
+	padding: 50% 30px 0;
+	border-left: 1px solid #000;
+	height: 100%;
+	text-align: center;
+}
+.conect_nwwed p {
+	color: #666;
+}
+.conect_nwwed .fa {
+	font-size: 40px;
+	color: #00FF00;
+	cursor: pointer;
+}

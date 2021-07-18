@@ -6,7 +6,7 @@
 				<tbody>
 					<tr>
 						<td align="center" height="100" width="100" style="background:#c3c8ca;border-bottom:solid 1px #f5f5f5;" valign="middle">
-              <img width="150px" src="{{ asset('front/img/logo.png') }}" alt="">
+              <img width="150px" src="{{ asset('front/images/logo.jpg') }}" alt="">
             </td>
 					</tr>
 					<tr>

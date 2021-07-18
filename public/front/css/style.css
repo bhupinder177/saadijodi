@@ -1743,8 +1743,60 @@ footer {
 
 
 
-
-
+.contact_sec {
+	padding: 60px 0;
+}
+.hdng h1 {
+	text-align: center;
+	font-size: 28px;
+	padding-bottom: 60px;
+}
+.form__field {
+	margin-bottom: 50px;
+}
+.form__field label {
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 1.5px;
+	margin-bottom: 0;
+	display: block;
+}
+.form__field input {
+	padding: 5px 0;
+	border: 0;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: 0px;
+	color: #1f1f1f;
+	border-radius: 0;
+	border-bottom: 1px solid #1f1f1f;
+	background-color: transparent;
+	width: 100%;
+	outline: none;
+	box-shadow: none;
+}
+.form__field textarea {
+	border: 1px solid #1f1f1f;
+	padding: 5px 10px;
+	width: 100%;
+	outline: none;
+	box-shadow: none;
+	margin-top: 22px;
+}
+.btn_con button {
+	background: #d8587b8a;
+	padding: 12px 60px;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	transition: 0.5s;
+	color: #fff;
+	border-radius: 6px;
+	cursor: pointer;
+}
+.btn_con button:hover {
+	background: #d8587b;
+}
 
 
 
@@ -1834,7 +1886,7 @@ footer {
 	margin-bottom: 10px;
 }
 .header_bg .navbar-brand {
-	height: 160px;
+	height: 105px;
 	width: 60%;
 	margin-left: 20px;
 }
@@ -1844,12 +1896,23 @@ footer {
 .top_banner {
 	background-position: bottom center;
 	height: 400px;
+	margin-top: -165px;
 }
 .baner_title {
-	padding-top: 65%;
+	padding-top: 80%;
 }
 .baner_title h3 {
 	font-size: 26px;
+}
+.telephone_cont p {
+	font-size: 13px;
+}
+.follow_icons {
+	text-align: center;
+	margin: 10px 0 8px;
+}
+.find-section {
+	box-shadow: none;
 }
 
 

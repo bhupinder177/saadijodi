@@ -30,6 +30,13 @@ Route::get('/forgot-password','Auth\ResetPasswordController@forgot');
 Route::post('/forgotPassword','Auth\ResetPasswordController@forgotPassword');
 Route::get('/forgotPassword-verifiy','Auth\ResetPasswordController@verify');
 Route::post('/newPasswordUpdate','Auth\ResetPasswordController@newPasswordUpdate');
+Route::get('/contact-us','ContactController@index');
+Route::post('/contactSave','ContactController@contactSave');
+Route::get('/about-us','ContactController@about');
+Route::get('/faqs','ContactController@faq');
+Route::get('/term-conditions','ContactController@term');
+Route::get('/privacy-policy','ContactController@privacy');
+Route::get('/refund-policy','ContactController@privacy');
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/profile','ProfileController@index');
@@ -45,6 +52,9 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/deleteImages','ProfileController@deleteImages');
   Route::get('/user-profile/{id}','ProfileController@userProfile');
   Route::get('/notification','ProfileController@notification');
+  Route::get('/online', 'ProfileController@online');
+  Route::post('/inviteSend', 'ProfileController@inviteSend');
+
 
 
 });

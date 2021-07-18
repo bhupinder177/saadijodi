@@ -447,6 +447,69 @@ jQuery('body').on('change', '#country', function()
 
 // images
 
+// invite send
+$('body').on('click','.inviteUser',function(){
+  var id = $(this).attr('data-id');
+
+   $.ajax({
+   type : 'POST',
+   cache : false,
+   url : base_url + '/inviteSend',
+   data:{
+     id:id
+   },
+   headers : {
+   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   },
+   dataType: 'json',
+   beforeSend  : function () {
+     $(".button-disabled").attr("disabled", "disabled");
+     $(".preloader").css('display','block');
+   },
+   complete: function () {
+     $(".preloader").css('display','none');
+       $(".button-disabled").attr("disabled",false);
+   },
+   success:function(response)
+   {
+     $.toast().reset('all');
+     var delayTime = 3000;
+     if (response.success)
+        {
+          $('.conect_nww'+id).addClass('d-none');
+          $('.conect_nwwed'+id).removeClass('d-none');
+
+          $.toast({
+            heading             : 'Success',
+            text                : response.success_message,
+            loader              : true,
+            loaderBg            : '#fff',
+            showHideTransition  : 'fade',
+            icon                : 'success',
+            hideAfter           : delayTime,
+            position            : 'top-right'
+          });
+        }
+        if( response.formErrors)
+          {
+            $.toast({
+              heading             : 'Error',
+              text                : response.errors,
+              loader              : true,
+              loaderBg            : '#fff',
+              showHideTransition  : 'fade',
+              icon                : 'error',
+              hideAfter           : delayTime,
+              position            : 'top-right'
+            });
+          }
+
+   }
+   });
+
+});
+// invite send
+
 
 
 });
@@ -467,32 +530,8 @@ $.ajax({
 	 });
  }
 
- function logout()
- {
-   var base_url = $('.base_url').val();
 
- $.ajax({
-   dataType:'json',
-  url :base_url+'/checkLogout',
-  type : 'get',
-  headers     : {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  },
-  success: function(response)
-   {
- 		 if(response.success)
-     {
-       if(response.result.logout == 1)
-       {
-         $("#logout-form").submit();
-
-       }
-     }
- 	 }
- 	 });
-  }
-
-// setInterval('online()', 20000);
+setInterval('online()', 20000);
 // setInterval('logout()', 20000);
 
  // *************** image read*************

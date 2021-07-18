@@ -60,7 +60,22 @@
 												<div class="listing_details_head">
 													<h3>{{ucfirst($user->firstName) ?? "-"}} {{ucfirst($user->lastName) ?? "-"}}</h3>
 													<div class="d_flex_head">
+														@php
+														$date = Date('Y-m-d H:i:s');
+														$time = 0;
+														if(isset($m->UserOnline))
+														{
+														$time = strtotime($date) - strtotime($m->detail->online->date);
+														}
+														else
+														{
+														$time = 22;
+														 }
+														 @endphp
+														@if($time > 20)
+														@else
 														<span><i class="fa fa-comments"></i> Online now</span>
+														@endif
 														<span data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-user"></i> You & Her</span>
 													</div>
 												</div>
@@ -78,7 +93,8 @@
 														 $age ='';
 													 }
 														?>
-														<span>{{ $age }} yrs,
+
+														<span>@if($age){{ $age }} yrs, @endif
 														@if(!empty($user->UserBasicDetail->height))
 
                           								@if($user->UserBasicDetail->height == 1)
@@ -177,8 +193,6 @@
 											            @if($user->UserBasicDetail->height == 32)
 											            7'
 											            @endif
-											            @else
-											            -
 											            @endif
 														</span>
 														<span>
@@ -192,8 +206,6 @@
 									                        @if($user->UserBasicDetail->maritalStatus == 3)
 									                        Awaiting Divorce
 									                        @endif
-									                        @else
-									                        -
 									                        @endif
 									                    </span>
 														<span>
@@ -213,13 +225,11 @@
 								                          @if($user->UserReligious->Religion == 5)
 								                          Parsi
 								                          @endif
-								                          @else
-								                          -
 								                          @endif
 								                        </span>
 														<span>
-															@if(!empty($user->UserLocation->citydetail)) {{ $user->UserLocation->citydetail->name }} @else - @endif,
-															@if(!empty($user->UserLocation->statedetail)) {{ $user->UserLocation->statedetail->name }} @else - @endif
+															@if(!empty($user->UserLocation->citydetail)) {{ $user->UserLocation->citydetail->name }} @endif,
+															@if(!empty($user->UserLocation->statedetail)) {{ $user->UserLocation->statedetail->name }} @endif
 
 														</span>
 														<span>
@@ -242,8 +252,6 @@
 									                        @if($user->UserReligious->motherTongue == 6)
 									                        Urdu
 									                        @endif
-									                        @else
-									                        -
 									                        @endif
 									                    </span>
 														<span>
@@ -342,8 +350,7 @@
 									                        @if($user->UserEducation->workingAs == 92) Student @endif
 									                        @if($user->UserEducation->workingAs == 93) Retired @endif
 									                        @if($user->UserEducation->workingAs == 94) Not working @endif
-									                        @else
-									                        -
+
 									                        @endif
 														</span>
 													</a>
@@ -355,10 +362,14 @@
 											</div>
 										</div>
 										<div class="col-md-3">
-											<div class="conect_nww">
+											<div class="conect_nww conect_nww{{ $user->id }}">
 												<p>Like this profile?</p>
-												<i class="fa fa-check-circle"></i>
+												<a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
 												<p>Connect Now</p>
+											</div>
+											<div class="d-none conect_nwwed conect_nwwed{{ $user->id }}">
+												<i class="fa fa-check-circle"></i>
+												<p>Connected</p>
 											</div>
 										</div>
 									</div>

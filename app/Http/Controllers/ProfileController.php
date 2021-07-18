@@ -17,6 +17,7 @@ use App\Model\PartnerPreferences;
 use App\Model\UserBirthDetails;
 use App\Model\UserImages;
 use App\Model\Notification;
+use App\Model\UserOnline;
 use Validator;
 use Session;
 use Curl;
@@ -380,4 +381,88 @@ class ProfileController extends Controller
 
       return view('front.notification.notification',['notification'=>$notification]);
     }
+
+    public function online(Request $request)
+    {
+      try{
+
+         if(!empty(Auth::user()->id))
+         {
+         $id = Auth::user()->id;
+         $date = Date('Y-m-d H:i:s');
+
+           $online['userId'] = $id;
+           $online['date'] = $date;
+           $res =  UserOnline::updateOrCreate(array("userId"=>Auth::User()->id),$online);
+
+        }
+
+       if($res)
+       {
+         $response['success']         = true;
+         return response($response);
+       }
+       else
+        {
+         $response['formErrors'] = true;
+         return response($response);
+         }
+       }
+       catch(\Exception $e)
+        {
+         $response['errors'] = $e->getMessage();
+         $response['formErrors'] = "true";
+         return response($response);
+        }
+    }
+
+    public function inviteSend(Request $request)
+    {
+        try{
+
+           $this->prefix = request()->route()->getPrefix();
+           if(!empty(Auth::user()->id))
+           {
+           $id = Auth::user()->id;
+           $date = Date('Y-m-d H:i:s');
+
+
+             $msg = "You have received invitation";
+             $n = new Notification([
+                  'notificationTo' =>$request->id,
+                  'notificationFrom' =>$id,
+                  'notificationMessage' =>$msg,
+                  'type' =>1,
+                  'date' =>$date,
+                  'status'=>0,
+                  'read'=>0,
+              ]);
+
+             $res =  $n->save();
+
+          }
+
+         if($res)
+         {
+           $response['success']= true;
+           $response['success_message']= "invitation Sent Successfully";
+
+           return response($response);
+         }
+         else
+          {
+           $response['formErrors'] = true;
+           $response['errors']= "invitation not Send";
+           return response($response);
+           }
+         }
+         catch(\Exception $e)
+          {
+           $response['errors'] = $e->getMessage();
+           $response['formErrors'] = "true";
+           return response($response);
+          }
+    }
+
+
 }

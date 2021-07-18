@@ -25,21 +25,24 @@
           <h2>Help & Support</h2>
           <ul>
             <li>
-              <i class="fa fa-angle-right"></i><a href="#">Contact us</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/contact-us')}}">Contact us</a>
             </li>
             <li>
-              <i class="fa fa-angle-right"></i><a href="#">FAQs</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/faqs')}}">FAQs</a>
             </li>
             <li>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/term-conditions')}}">Terms and Condition</a>
+            </li>
+            <!-- <li>
               <i class="fa fa-angle-right"></i><a href="#">Success Stories</a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <i class="fa fa-angle-right"></i><a href="#">Mobile Matrimony</a>
-            </li>
-          
-            <li>
+            </li> -->
+
+            <!-- <li>
               <i class="fa fa-angle-right"></i><a href="#">Member Demograph</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -48,20 +51,15 @@
           <h2>Information</h2>
           <ul>
             <li>
-              <i class="fa fa-angle-right"></i><a href="#">About Us</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/faqs')}}">About Us</a>
             </li>
             <li>
-              <i class="fa fa-angle-right"></i><a href="#">Privacy Policy</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/privacy-policy')}}">Privacy Policy</a>
             </li>
             <li>
-              <i class="fa fa-angle-right"></i><a href="#">Refund Policy</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/refund-policy')}}">Refund Policy</a>
             </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="#">Report Misuse</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="#">Terms and Condition</a>
-            </li>
+
 
           </ul>
         </div>

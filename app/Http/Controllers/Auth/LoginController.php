@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Model\User;
+use App\Model\UserOnline;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -95,6 +96,10 @@ class LoginController extends Controller
          else if($user->status == 1)
          {
            $id = Auth::user()->id;
+           $date = Date('Y-m-d H:i:s');
+           $online['userId'] = $id;
+           $online['date'] = $date;
+           UserOnline::updateOrCreate(array("userId"=>Auth::User()->id),$online);
            $request->session()->regenerate();
            $response['success'] = "true";
            $response['url'] = url('profile');

@@ -554,38 +554,39 @@ submitHandler: function (form)
 
 // contact update
 
-// dispatcher
-$("#adddispatcher").validate({
+// contact form validation
+$("#contactform").validate({
+  errorClass: "has-error",
+highlight: function(element, errorClass) {
+    //$(element).parents('.form-group').addClass(errorClass);
+},
+unhighlight: function(element, errorClass, validClass) {
+  //  $(element).parents('.form-group').removeClass(errorClass);
+},
 rules:
 {
- name: {
-   required: true,
- },
- type: {
-   required: true,
- },
  email: {
    required: true,
    email:true,
    regex: "",
  },
- "company[]": {
+ name: {
+   required: true,
+ },
+ message: {
    required: true,
  },
 },
 messages:
 {
- name: {
-   required: "Please company name",
- },
  email: {
-   required: "Please enter email",
+   required: "Please enter email address",
  },
- type: {
-   required: "Please select type",
+ name: {
+   required: "Please enter name",
  },
- "company[]": {
-   required: "Please select company",
+ message: {
+   required: "Please enter first name",
  },
 },
 submitHandler: function (form)
@@ -593,44 +594,8 @@ submitHandler: function (form)
  formSubmit(form);
 }
 });
+// contact form validation
 
-// company add
-
-// user
-$("#adduser").validate({
-rules:
-{
- name: {
-   required: true,
- },
- email: {
-   required: true,
-   email:true,
-   regex: "",
- },
- type: {
-   required: true,
- },
-},
-messages:
-{
- name: {
-   required: "Please company name",
- },
- email: {
-   required: "Please enter email",
- },
- type: {
-   required: "Please select type",
- },
-},
-submitHandler: function (form)
-{
- formSubmit(form);
-}
-});
-
-// user add
 
   // back
  $('.cancel').click(function(){

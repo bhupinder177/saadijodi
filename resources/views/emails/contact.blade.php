@@ -6,7 +6,7 @@
 				<tbody>
 					<tr>
 						<td align="center" height="100" width="100" style="background:#c3c8ca;border-bottom:solid 1px #f5f5f5;" valign="middle">
-              <img width="150px" src="{{ asset('front/img/logo.png') }}" alt="">
+              <img width="150px" src="{{ asset('front/images/logo.jpg') }}" alt="">
             </td>
 					</tr>
 					<tr>
@@ -34,12 +34,11 @@
 																			 Hi Admin,
 															         <br/>
 															         <p><b>Name: </b>{{ $data['name'] }}</p>
-															         <p><b>Phone: </b>{{ $data['phone'] }}</p>
 															         <p><b>Email: </b>{{ $data['email'] }}</p>
-															         <p><b>Comment: </b>{{ $data['comment'] }}</p><br>
+															         <p><b>Comment: </b>{{ $data['message'] }}</p><br>
 
 															        <br/>Thank You,<br/>
-																			 My Cab Share Team</br>
+																			 Saddi Jodi Team</br>
 															         <br/><br/>
                                     </td>
 																	</tr>
