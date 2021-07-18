@@ -70,7 +70,7 @@ class ContactController extends Controller
     {
         return view('front.contact.refund');
     }
-    
+
     public function term()
     {
         return view('front.contact.term_condition');

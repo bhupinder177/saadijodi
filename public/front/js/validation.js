@@ -586,7 +586,7 @@ messages:
    required: "Please enter name",
  },
  message: {
-   required: "Please enter first name",
+   required: "Please enter message",
  },
 },
 submitHandler: function (form)
