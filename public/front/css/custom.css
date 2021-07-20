@@ -117,3 +117,6 @@ z-index: 99999999;
 	color: #00FF00;
 	cursor: pointer;
 }
+a.removedocument {
+    color: red;
+}

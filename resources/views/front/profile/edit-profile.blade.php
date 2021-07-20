@@ -784,7 +784,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>City</label>
+                            <label>City <span class="red-text">*</span></label>
                             <select id="cities" name="city" class="selecthide">
                         <option value="">Select City <span class="red-text">*</span></option>
                         @if(count($city) > 0)
@@ -807,7 +807,7 @@
                     </select>
                           </div>
                           <div class="form_group_wrap">
-                            <label>Pincode <span class="red-text">*</span></label>
+                            <label>Postal Zip Code <span class="red-text">*</span></label>
                             <input name="pincode" value="@if(!empty($location)){{ $location->pincode }}@endif" placeholder="Please enter pincode" class="selecthide" type="text" >
                           </div>
                         </div>

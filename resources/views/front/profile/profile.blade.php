@@ -1107,7 +1107,7 @@
                       <span class="answr">: @if(!empty($location->citydetail)) {{ $location->citydetail->name }} @else - @endif</span>
                     </div>
                     <div class="flex_details_span">
-                      <span class="quest">Zip / Pin code</span>
+                      <span class="quest">Postal Zip Code</span>
                       <span class="answr">: @if(!empty($location->pincode)) {{ $location->pincode }} @else - @endif</span>
                     </div>
                   </div>

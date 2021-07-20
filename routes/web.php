@@ -55,6 +55,16 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/online', 'ProfileController@online');
   Route::post('/inviteSend', 'ProfileController@inviteSend');
 
+  // message
+  Route::get('/message','MessageController@index');
+  Route::post('/getlatesthistory','MessageController@chatHistory');
+  Route::post('/getoldMessage','MessageController@getoldMessage');
+  Route::post('/gettime','MessageController@gettime');
+  Route::post('/saveChat','MessageController@saveChat');
+  Route::post('/CreateChatRoom','MessageController@CreateChatRoom');
+  Route::post('/readmessage','MessageController@readmessage');
+  // message
+
 
 
 });

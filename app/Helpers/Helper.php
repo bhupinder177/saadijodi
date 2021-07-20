@@ -10,7 +10,7 @@ use App\Estimation;
 use PDF;
 use App\Model\Notification;
 use App\Model\Message;
-use App\Model\Review;
+use App\Model\UserImages;
 
 
 class GlobalFunctions {
@@ -194,6 +194,11 @@ class GlobalFunctions {
       public static function getreview($id,$userId)
       {
           return $userrating = Review::where(array("bookingId"=>$id,"reviewBy"=>$userId))->first();
+      }
+
+      public static function getImage($userId)
+      {
+          return $userrating = UserImages::where(array("userId"=>$userId,"isProfile"=>1))->first();
       }
 
 

@@ -302,10 +302,14 @@
               </div>
             </div>
             <div class="col-md-3">
-              <div class="conect_nww">
+              <div class="conect_nww conect_nww{{ $user->id }}">
                 <p>Like this profile?</p>
-                <i class="fa fa-check-circle"></i>
+                <a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
                 <p>Connect Now</p>
+              </div>
+              <div class="d-none conect_nwwed conect_nwwed{{ $user->id }}">
+                <i class="fa fa-check-circle"></i>
+                <p>Connected</p>
               </div>
             </div>
           </div>

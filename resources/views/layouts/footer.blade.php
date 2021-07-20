@@ -51,7 +51,7 @@
           <h2>Information</h2>
           <ul>
             <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/faqs')}}">About Us</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/about-us')}}">About Us</a>
             </li>
             <li>
               <i class="fa fa-angle-right"></i><a href="{{URL::to('/privacy-policy')}}">Privacy Policy</a>
@@ -71,8 +71,9 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{{ asset('front/js/jquery-3.2.1.min.js') }}"></script>
+<!-- <script src="{{ asset('front/js/jquery-3.2.1.min.js') }}"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
@@ -81,6 +82,13 @@
 <script src="{{ asset('front/js/jquery.toast.js') }}"></script>
 <script src="{{ asset('front/js/validation.js') }}"></script>
 <script src="{{ asset('front/js/custom.js') }}"></script>
+<?php
+if(request()->segment(1) == "message")
+{
+	?>
+<script src="{{ asset('front/js/socket-front.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="https://app.saadijodi.com/socket.io/socket.io.js"></script>
+<?php } ?>
 
 <script>
 $( function() {
