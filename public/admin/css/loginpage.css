@@ -1,0 +1,31 @@
+
+.login_panel {
+max-width: 850px;
+margin: 50px auto;
+padding: 100px 42px;
+background: url(../images/login_bg.png) no-repeat right top #fff;
+box-shadow: 0 0 8px #ddd;
+background-size: 57.5%;
+min-height: 629px;
+}
+.login_bx {
+width: 100%;
+max-width: 500px;
+}
+.login_logo {
+margin-bottom: 10px;
+}
+.form-control {
+border: none;
+box-shadow: 0 0 8px #eee;
+height: 50px;
+}
+.btn.btn-primary {
+background: #329cd5;
+border: 1px solid #329cd5;
+}
+.login_bx h3 {
+color: #2babe2;
+font-size: 30px;
+margin-bottom: 25px;
+}

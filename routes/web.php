@@ -38,7 +38,7 @@ Route::get('/term-conditions','ContactController@term');
 Route::get('/privacy-policy','ContactController@privacy');
 Route::get('/refund-policy','ContactController@privacy');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth','agent']], function () {
   Route::get('/profile','ProfileController@index');
   Route::get('/edit-profile','ProfileController@edit');
   Route::post('/profileUpdate','ProfileController@update');
@@ -64,7 +64,38 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/CreateChatRoom','MessageController@CreateChatRoom');
   Route::post('/readmessage','MessageController@readmessage');
   // message
-
-
-
 });
+
+
+// ******************************Website routes**********
+// ******************************Admin routes**********
+// Admin Routes
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('login', 'AdminController@loginView')->name('admin.login');
+    Route::post('login', 'AdminController@loginAuthenticate');
+    Route::get('forgot-password', 'AdminController@forgotPasswordView');
+    Route::post('forgot-password', 'AdminController@forgotPassword');
+    Route::get('reset-password/{token}', 'AdminController@resetPasswordView');
+    Route::post('reset-password', 'AdminController@resetPassword');
+    Route::get('logout', function () {
+        \Auth::logout();
+
+        return redirect('admin/login');
+    });
+    Route::group(['middleware' => ['auth', 'admin']], function () {
+
+
+        Route::get('dashboard', 'DashboardController@DashboardView');
+        Route::get('userlist', 'UserController@index');
+        Route::post('ownerStatusUpdate', 'UserController@status');
+        Route::get('packages','PackageController@index');
+        Route::get('packages-add','PackageController@add');
+        Route::post('packagesSave','PackageController@save');
+        Route::get('packages-edit/{id}','PackageController@edit');
+        Route::post('packages-update','PackageController@update');
+        Route::post('packages-delete','PackageController@delete');
+
+
+    });
+  });
+// ******************************Admin routes**********
