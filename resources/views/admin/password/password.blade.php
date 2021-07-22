@@ -1,6 +1,6 @@
 
-@include('layouts.header')
-@include('layouts.sidebar')
+@include('admin.layouts.header')
+@include('admin.layouts.sidebar')
 
 
 <div class="page-content">
@@ -13,12 +13,9 @@
 
 
           <div class="">
-            @role('admin')
-            <form action="{{ url('passwordUpdate') }}" method="post" enctype="multipart/form-data" class="reset" id="passwordUpdate">
-            @endrole
-            @hasanyrole('owner|driver')
-            <form action="{{ url($prefix.'passwordUpdate') }}" method="post" enctype="multipart/form-data" class="reset" id="passwordUpdate">
-            @endrole
+
+
+            <form action="{{ url($prefix.'/passwordUpdate') }}" method="post" enctype="multipart/form-data" class="reset" id="passwordUpdate">
 
                     <div class="row">
 
@@ -52,4 +49,4 @@
 
 
 
-    @include('layouts.footer')
+    @include('admin.layouts.footer')

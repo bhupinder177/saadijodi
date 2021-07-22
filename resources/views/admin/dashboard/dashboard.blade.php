@@ -24,7 +24,7 @@
                                <li>
                                    <div class="content">
                                        <p>Users</p>
-                                       <span>33</span>
+                                       <span>{{ $user }}</span>
                                    </div>
                                </li>
                            </ul>
@@ -45,8 +45,8 @@
                                  </li>
                                  <li>
                                      <div class="content">
-                                         <p>Vehicles</p>
-                                         <span>232</span>
+                                         <p>Package</p>
+                                         <span>{{ $package }}</span>
                                      </div>
                                  </li>
                              </ul>
@@ -55,28 +55,7 @@
                      </div>
                      <!-- vehicle -->
 
-                     <!-- vehicle -->
-                     <div class="col-md-4">
-                       <a href="{{URL::to('/customer')}}">
-                           <div class="emp wow bounceInDown  animated" style="visibility: visible; animation-name: bounceInDown;">
-                               <ul class="ul-list unstyle mb-0">
-                                   <li>
-                                       <div class="bg-blue">
-                                           <img src="{{ asset('admin/images/customer.png')}}" class="image-fluid">
-                                       </div>
-                                   </li>
-                                   <li>
-                                       <div class="content">
-                                           <p>Accounts</p>
-                                           <span>423</span>
-                                       </div>
-                                   </li>
-                               </ul>
-                           </div>
-                           </a>
-                       </div>
-                       <!-- vehicle -->
-
+                    
 
 
 

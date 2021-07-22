@@ -95,6 +95,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('packages-update','PackageController@update');
         Route::post('packages-delete','PackageController@delete');
 
+        Route::get('/password', 'DashboardController@password');
+        Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
+
 
     });
   });
