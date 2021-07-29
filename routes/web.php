@@ -52,8 +52,12 @@ Route::group(['middleware' => ['auth','agent']], function () {
   Route::post('/deleteImages','ProfileController@deleteImages');
   Route::get('/user-profile/{id}','ProfileController@userProfile');
   Route::get('/notification','ProfileController@notification');
+  Route::post('/notificationUpdate','ProfileController@notificationUpdate');
   Route::get('/online', 'ProfileController@online');
   Route::post('/inviteSend', 'ProfileController@inviteSend');
+  Route::get('/membership','MembershipController@index');
+  Route::get('payment/{id}', 'MembershipController@stripe');
+  Route::post('stripe', 'MembershipController@stripePost')->name('stripe.post');
 
   // message
   Route::get('/message','MessageController@index');
@@ -64,6 +68,8 @@ Route::group(['middleware' => ['auth','agent']], function () {
   Route::post('/CreateChatRoom','MessageController@CreateChatRoom');
   Route::post('/readmessage','MessageController@readmessage');
   // message
+
+  Route::post('/checkPackage','MembershipController@checkPackage');
 });
 
 

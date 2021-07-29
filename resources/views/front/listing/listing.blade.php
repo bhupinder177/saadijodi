@@ -361,16 +361,32 @@
 												</div>
 											</div>
 										</div>
+										<?php $connect = App\Helpers\GlobalFunctions::getnotificationInvite(Auth::User()->id,$user->id); ?>
+
 										<div class="col-md-3">
+											<div class="conect_nwwed conect_nwwed{{ $user->id }}">
+												<a data-id="{{ $user->id }}" class="chatRoomJoin"><i class="fa fa-comment"></i></a>
+												<p>Chat</p>
+											</div>
+
+											@if(!empty($connect))
+											<div class="conect_nwwed conect_nwwed{{ $user->id }}">
+												<i  class="fa fa-check-circle"></i>
+												<p>Connected</p>
+											</div>
+											@else
 											<div class="conect_nww conect_nww{{ $user->id }}">
 												<p>Like this profile?</p>
 												<a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
 												<p>Connect Now</p>
 											</div>
+
 											<div class="d-none conect_nwwed conect_nwwed{{ $user->id }}">
 												<i class="fa fa-check-circle"></i>
 												<p>Connected</p>
 											</div>
+											@endif
+
 										</div>
 									</div>
 								</div>

@@ -16,10 +16,19 @@
               <div class="card_body_td">
                 <table>
                   <tr>
-                    <td style="width:70%"><div class="card-title">{{ $n->notificationMessage }}</div></td>
-                    <td style="width:30%">
-                      <a  class="btn btn-primary view_n">View</a>
-                      <a  class="btn btn-danger dismiss-notification">Dismiss</a>
+                    <td style="width:70%"><div class="card-title">{{ $n->notificationMessage }} From <a href="{{URL::to('/user-profile/'.$n->userdetail->uniqueId)}}">{{ $n->userdetail->firstName }} {{ $n->userdetail->lastName }}</a></div></td>
+                    <td style="width:30%" class="statustd{{ $n->id }}">
+                      @if($n->status == 0)
+                      <a data-id="{{ $n->id }}" data-status="1" class="notificationStatus notificationStatus{{ $n->id }} btn btn-primary view_n">Accept</a>
+                      <a data-id="{{ $n->id }}" data-status="2" class="notificationStatus notificationStatus{{ $n->id }} btn btn-danger dismiss-notification">Reject</a>
+                      @endif
+                      @if($n->status == 1)
+                      <a  class="btn btn-primary view_n">Accepted</a>
+                      @endif
+                      @if($n->status == 2)
+                      <a  class="btn btn-danger dismiss-notification">Rejected</a>
+                      @endif
+
                     </td>
                   </tr>
                 </table>
@@ -42,7 +51,30 @@
 
 
 
+            <!-- confirm modal -->
+                         <div id="notificationconfirm" class="modal fade" role="dialog">
+                       <div class="modal-dialog">
+                         <div class="modal-content">
+                           <div class="modal-header">
+                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             <h4 class="modal-title">Status</h4>
+                           </div>
+                           <div class="modal-body driverdetails">
+                             <h5 class="messagetext"></h5>
+                             <input type="hidden" value="" name="id" class="notificationId">
+                             <input type="hidden" value="" name="status" class="notificationStatus">
+                             <input type="hidden" value="{{URL::to('/notificationUpdate/')}}" name="link" class="notificationlink">
+                                </div>
 
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-success notificationUpdate" >Confirm</button>
+                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                           </div>
+                         </div>
+
+                       </div>
+                     </div>
+                         <!-- confirm modal -->
 
 
 

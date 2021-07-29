@@ -92,15 +92,7 @@ class GlobalFunctions {
           curl_close( $ch );
       }
 
-      public static function getnotification($id)
-      {
-        return $notification = Notification::where('notificationTo',$id)->orderBy('id','desc')->limit(3)->get();
-      }
 
-      public static function getOnenotification($id,$postId)
-      {
-        return $notification = Notification::where(array('notificationFrom'=>$id,'postid'=>$postId,'type'=>2))->first();
-      }
 
       public static function unreadmessage($id,$roomId)
       {
@@ -199,6 +191,17 @@ class GlobalFunctions {
       public static function getImage($userId)
       {
           return $userrating = UserImages::where(array("userId"=>$userId,"isProfile"=>1))->first();
+      }
+
+      public static function getnotificationInvite($userId,$to)
+      {
+        return $notification = Notification::where(array("notificationFrom"=>$userId,"notificationTo"=>$to))->first();
+      }
+
+      public static function getnotificationCount($userId)
+      {
+        return $count = Notification::where(array('notificationTo'=>$userId,"read"=>0))->count();
+
       }
 
 

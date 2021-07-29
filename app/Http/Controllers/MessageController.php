@@ -370,7 +370,7 @@ class MessageController extends Controller
           }
           else
          {
-           $id = Auth::User()->id;
+            $id = Auth::User()->id;
 
              $date = date("Y-m-d H:i:s", strtotime($request->date));
              $roomdata = new MessageRoom();

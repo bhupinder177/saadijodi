@@ -57,7 +57,7 @@ class ProfileController extends Controller
         $images = UserImages::where(array('userId'=>Auth::User()->id,"isProfile"=>0))->get();
         $profileimage = UserImages::where(array('userId'=>Auth::User()->id,"isProfile"=>1))->first();
 
-        if($detail->dateOfBirth)
+        if(!empty($detail->dateOfBirth))
         {
           $dateOfBirth = $detail->dateOfBirth;
           $today = date("Y-m-d");
@@ -379,6 +379,8 @@ class ProfileController extends Controller
         $q->select('id','firstName','lastName','uniqueId');
       }])->where('notificationTo',Auth::User()->id)->orderBy('id','desc')->paginate(10);
 
+      Notification::where('notificationTo',Auth::User()->id)->update(array("read"=>1));
+
       return view('front.notification.notification',['notification'=>$notification]);
     }
 
@@ -462,6 +464,58 @@ class ProfileController extends Controller
            $response['formErrors'] = "true";
            return response($response);
           }
+    }
+
+    public function notificationUpdate(Request $request)
+    {
+      try{
+
+         $date = Date('Y-m-d H:i:s');
+         $nupdate = Notification::where('id',$request->id)->update(array("status"=>$request->status));
+         if($nupdate)
+         {
+           if($request->status == 1)
+           {
+           $msg = "Your invitation has been accepted";
+           }
+           else
+           {
+             $msg = "Your invitation has been rejected";
+           }
+           $notify = Notification::where('id',$request->id)->first();
+           $n = new Notification([
+                'notificationTo' =>$notify->notificationFrom,
+                'notificationFrom' =>$notify->notificationTo,
+                'notificationMessage' =>$msg,
+                'type' =>1,
+                'date' =>$date,
+                'status'=>0,
+                'read'=>0,
+            ]);
+
+           $res =  $n->save();
+         }
+
+       if($res)
+       {
+         $response['success']= true;
+         $response['success_message']= "Notification Updated Successfully";
+
+         return response($response);
+       }
+       else
+        {
+         $response['formErrors'] = true;
+         $response['errors']= "Notification not Update";
+         return response($response);
+         }
+       }
+       catch(\Exception $e)
+        {
+         $response['errors'] = $e->getMessage();
+         $response['formErrors'] = "true";
+         return response($response);
+        }
     }
 
 

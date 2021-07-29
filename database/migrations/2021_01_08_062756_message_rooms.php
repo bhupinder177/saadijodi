@@ -18,7 +18,7 @@ class MessageRooms extends Migration
           $table->string('roomId');
           $table->integer('userId');
           $table->integer('oppositeUserId');
-          $table->string('message');
+          $table->string('message')->nullable();
           $table->dateTime('last_message_at');
           $table->timestamps();
       });

@@ -79,7 +79,9 @@
 								<a class="nav-link" href="{{URL::to('/listing')}}">Lisitng </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/notification')}}">Notification </a>
+								<?php $count = App\Helpers\GlobalFunctions::getnotificationCount(Auth::User()->id); ?>
+
+								<a class="nav-link" href="{{URL::to('/notification')}}">Notification <?php if($count > 0){ echo '('. $count .')'; } ?></a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#Register">My Photos </a>
@@ -88,7 +90,7 @@
 								<a class="nav-link" href="#Register">Settings </a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#Register">Inbox </a>
+								<a class="nav-link" href="{{URL::to('/message')}}">Inbox </a>
 							</li>
 						</ul>
 						@endif

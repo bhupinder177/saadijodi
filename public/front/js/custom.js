@@ -200,30 +200,38 @@ return false;
 
 
     // delete vehicle from edit
-    $('body').on('click','.deleterecord',function(){
+    $('body').on('click','.notificationStatus',function(){
 
       var id = $(this).attr('data-id');
-      var link = $(this).attr('data-link');
-      $('.deleteId').val(id);
-      $('.deletelink').val(link);
-
-      $('#deleteconfirm').modal('show');
-
+      var status = $(this).attr('data-status');
+      $('.notificationId').val(id);
+      $('.notificationStatus').val(status);
+      if(status == 1)
+      {
+        var msg = "Are you sure want to accept this notification";
+      }
+      else if(status == 2)
+      {
+        var msg = "Are you sure want to reject this notification";
+      }
+      $('.messagetext').html(msg);
+      $('#notificationconfirm').modal('show');
 
     });
 
     // delete driver
-    $('body').on('click','.datadelete',function(){
+    $('body').on('click','.notificationUpdate',function(){
 
-      var id = $('.deleteId').val();
-      var link = $('.deletelink').val();
+      var id = $('.notificationId').val();
+      var status = $('.notificationStatus').val();
+      var link = $('.notificationlink').val();
 
       $.ajax({
         dataType:'json',
         url :link,
         type :'post',
         data : {
-          id:id
+          id:id,status:status
         },
         enctype : 'multipart/form-data',
        headers     : {
@@ -244,7 +252,15 @@ return false;
         delayTime = response.delayTime;
         if (response.success)
         {
-           $('#deleteconfirm').modal('hide');
+          if(status == 1)
+          {
+          $('.statustd'+id).html('<a class="btn btn-primary view_n">Accepted</a>')
+          }
+          else if(status == 2)
+          {
+            $('.statustd'+id).html('<a class="btn btn-danger dismiss-notification">Rejected</a>')
+          }
+           $('#notificationconfirm').modal('hide');
           $.toast({
             heading             : 'Success',
             text                : response.success_message,
@@ -256,7 +272,7 @@ return false;
             position            : 'top-right'
           });
 
-           setTimeout(function() {  location.reload(true);},3000);
+          // setTimeout(function() {  location.reload(true);},3000);
         }
         else
         {
@@ -296,70 +312,86 @@ return false;
     });
     // delete vehicle
 
+    // check package
+    $('body').on('click','.chatRoomJoin',function(){
 
-    // view user
-$('body').on('click','.driverviewd',function(){
+      var id = $(this).attr('data-id');
 
-   var id = $(this).attr('data-id');
-   $.ajax({
-     dataType:'json',
-     url :base_url +'/driverView',
-      type :'post',
-      data : {
-        id:id
-      },
-      enctype : 'multipart/form-data',
-     headers     : {
-       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-     },
-     beforeSend  : function () {
-       $(".loader_panel").css('display','block');
-     },
-     complete: function () {
-       $(".loader_panel").css('display','none');
-     },
-     success: function(response){
-     if (response.success)
-     {
-       var gg = response.result;
-       var taxi = response.taxi;
 
-       var rows = '';
+      $.ajax({
+        dataType:'json',
+        url :base_url+'/checkPackage',
+        type :'post',
+        data : {
+          id:id
+        },
+        enctype : 'multipart/form-data',
+       headers     : {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       },
+       beforeSend  : function () {
+         $(".loader_panel").css('display','block');
+       },
+       complete: function () {
+         $(".loader_panel").css('display','none');
+       },
 
-       var dates = new Date(Date.parse(gg.dateofbirth));
-       var month = dates.getMonth();
-       var day = dates.getDate();
-       var year = dates.getFullYear();
-        var date = ''+day+'-'+month+'-'+year;
+        success: function(response){
 
-     rows += '<p><b>First Name</b> : '+gg.firstName+' </p>';
-     rows += '<p><b>Last Name</b> : '+gg.lastName+' </p>';
-     rows += '<p><b>Email</b> : '+gg.email+' </p>';
-     if(gg.badgeId)
-     {
-     rows += '<p><b>BadgeId</b> : '+gg.badgeId+' </p>';
-     }
-     if(gg.driver_info.taxiNumber)
-     {
-     rows += '<p><b>Taxi Number</b> : '+gg.driver_info.taxiNumber+' </p>';
-     }
-     if(gg.driver_info.accountId)
-     {
-     rows += '<p><b>AccountId</b> : '+gg.driver_info.accountId+' </p>';
-     }
+          $.toast().reset('all');
+        var delayTime = 3000;
+        if(response.delayTime)
+        delayTime = response.delayTime;
+        if (response.success)
+        {
+          if(response.url)
+          {
+            if(response.delayTime)
+            setTimeout(function() { window.location.href=response.url;}, response.delayTime);
+            else
+            window.location.href=response.url;
+          }
+        }
+        else
+        {
+          //$(".button-disabled").removeAttr("disabled");
+          if( response.formErrors)
+          {
+            $.toast({
+              heading             : 'Error',
+              text                : response.errors,
+              loader              : true,
+              loaderBg            : '#fff',
+              showHideTransition  : 'fade',
+              icon                : 'error',
+              hideAfter           : delayTime,
+              position            : 'top-right'
+            });
+          }
+          else
+          {
+            jQuery('#InputEmail').val('');
+            $.toast({
+              heading             : 'Error',
+              text                : response.error_message,
+              loader              : true,
+              loaderBg            : '#fff',
+              showHideTransition  : 'fade',
+              icon                : 'error',
+              hideAfter           : delayTime,
+              position            : 'top-right'
+            });
+          }
+        }
 
-     if(gg.driver_info.driverImage)
-     {
-     rows += '<p><b>Profile Image</b> : <img height="100" width="100" src="'+base_url1+'/driver/'+gg.driver_info.driverImage+'"></p>';
-     }
+        }
+      });
 
-     $('.driverdetails').html(rows);
-     $('#view').modal('show');
-     }
+    });
 
-   }
- });
-});
+    // check package
+
+
 
 // view driver
 
