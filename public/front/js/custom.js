@@ -342,7 +342,7 @@ return false;
         var delayTime = 3000;
         if(response.delayTime)
         delayTime = response.delayTime;
-        if (response.success)
+        if (response.success == "true")
         {
           if(response.url)
           {
@@ -354,34 +354,7 @@ return false;
         }
         else
         {
-          //$(".button-disabled").removeAttr("disabled");
-          if( response.formErrors)
-          {
-            $.toast({
-              heading             : 'Error',
-              text                : response.errors,
-              loader              : true,
-              loaderBg            : '#fff',
-              showHideTransition  : 'fade',
-              icon                : 'error',
-              hideAfter           : delayTime,
-              position            : 'top-right'
-            });
-          }
-          else
-          {
-            jQuery('#InputEmail').val('');
-            $.toast({
-              heading             : 'Error',
-              text                : response.error_message,
-              loader              : true,
-              loaderBg            : '#fff',
-              showHideTransition  : 'fade',
-              icon                : 'error',
-              hideAfter           : delayTime,
-              position            : 'top-right'
-            });
-          }
+          $('#planalert').modal('show');
         }
 
         }

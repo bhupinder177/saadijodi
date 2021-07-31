@@ -11,6 +11,8 @@
                 @if(!empty($user->UserImage->image))
                    <img src="{{ asset('profiles/'.$user->UserImage->image) }}" >
                 @endif
+                <?php $connect = App\Helpers\GlobalFunctions::getnotificationInvite(Auth::User()->id,$user->id); ?>
+
               </div>
             </div>
             <div class="col-md-6">
@@ -123,8 +125,6 @@
                       @if($user->UserBasicDetail->height == 32)
                       7'
                       @endif
-                      @else
-                      -
                       @endif
                     </span>
                     <span>
@@ -138,8 +138,6 @@
                       @if($user->UserBasicDetail->maritalStatus == 3)
                       Awaiting Divorce
                       @endif
-                      @else
-                      -
                       @endif
                     </span>
                     <span>
@@ -159,18 +157,14 @@
                       @if($user->UserReligious->Religion == 5)
                       Parsi
                       @endif
-                      @else
-                      -
                       @endif
                     </span>
                     <span>
                       @if(!empty($user->UserLocation->citydetail))
-                      {{ $user->UserLocation->citydetail->name }}
-                      @else -
-                      @endif,
+                      {{ $user->UserLocation->citydetail->name }},
+                      @endif
                       @if(!empty($user->UserLocation->statedetail))
                       {{ $user->UserLocation->statedetail->name }}
-                      @else -
                       @endif
                     </span>
                     <span>
@@ -193,8 +187,6 @@
                       @if($user->UserReligious->motherTongue == 6)
                       Urdu
                       @endif
-                      @else
-                      -
                       @endif
                     </span>
                     <span>
@@ -293,8 +285,6 @@
                       @if($user->UserEducation->workingAs == 92) Student @endif
                       @if($user->UserEducation->workingAs == 93) Retired @endif
                       @if($user->UserEducation->workingAs == 94) Not working @endif
-                      @else
-                      -
                       @endif
                     </span>
                   </a>
@@ -302,15 +292,28 @@
               </div>
             </div>
             <div class="col-md-3">
+              <div class="conect_nwwed conect_nwwed{{ $user->id }}">
+                <a data-id="{{ $user->id }}" class="chatRoomJoin"><i class="fa fa-comment"></i></a>
+                <p>Chat</p>
+              </div>
+
+              @if(!empty($connect))
+              <div class="conect_nwwed conect_nwwed{{ $user->id }}">
+                <i  class="fa fa-check-circle"></i>
+                <p>Connected</p>
+              </div>
+              @else
               <div class="conect_nww conect_nww{{ $user->id }}">
                 <p>Like this profile?</p>
                 <a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
                 <p>Connect Now</p>
               </div>
+
               <div class="d-none conect_nwwed conect_nwwed{{ $user->id }}">
                 <i class="fa fa-check-circle"></i>
                 <p>Connected</p>
               </div>
+              @endif
             </div>
           </div>
         </div>
@@ -318,27 +321,7 @@
 
       <div class="col-md-4">
 
-        <div class="sidebar_boxes">
-          <h2 class="heading_sb">Verifications</h2>
-          <div class="new_macth_box">
-            <p>Mobile number verified</p>
-          </div>
-        </div>
 
-        <div class="sidebar_boxes">
-          <h2 class="heading_sb">Verifications</h2>
-          <div class="new_macth_box">
-            <div class="side_img">
-              <img src="images/user.jpg">
-            </div>
-            <div class="side_title">
-              <a href="#">
-                <h4>Varsha R</h4>
-                <p>19 , 5' 2", Hindu , Rajput Team Member / Staff Ludhiana , India</p>
-              </a>
-            </div>
-          </div>
-        </div>
 
       </div>
 
@@ -385,8 +368,8 @@
               <h4>Contact Details</h4>
 
               <div class="about_here_wrap">
-                <p>Contact Number <span class="num">{{$user->UserContactDetails->mobile ?? "-"}}</span></p>
-                <p>Email ID <span class="num">{{$user->email ?? "-"}}</span></p>
+                <p>Contact Number <span class="num">{{$user->UserContactDetails->mobile ?? ""}}</span></p>
+                <p>Email ID <span class="num">{{$user->email }}</span></p>
               </div>
 
             </div>
@@ -442,9 +425,8 @@
                   @if($user->UserReligious->Religion == 5)
                   Parsi
                   @endif
-                  @else
-                  -
-                  @endif,
+                  ,
+                  @endif
                   @if(!empty($user->UserReligious->motherTongue))
                   @if($user->UserReligious->motherTongue == 1)
                   Hindi
@@ -464,8 +446,6 @@
                   @if($user->UserReligious->motherTongue == 6)
                   Urdu
                   @endif
-                  @else
-                  -
                   @endif
                 </p>
                 <p>@if(!empty($user->UserReligious->motherTongue))
@@ -487,18 +467,16 @@
                     @if($user->UserReligious->motherTongue == 6)
                     Urdu
                     @endif
-                    @else
-                    -
                     @endif</p>
                 <p>@if(!empty($user->UserLocation->citydetail))
                   {{ $user->UserLocation->citydetail->name }}
-                  @else - @endif,
+                  @endif,
                   @if(!empty($user->UserLocation->statedetail))
                   {{ $user->UserLocation->statedetail->name }}
-                  @else - @endif,
+                  @endif,
                   @if(!empty($location->countrydetail))
                   {{ $location->countrydetail->name }}
-                  @else - @endif
+                   @endif
                 </p>
               </div>
 
@@ -532,8 +510,6 @@
                   @if($education->workingWith == 3) Defense / Civil Services @endif
                   @if($education->workingWith == 4) Business / Self Employed @endif
                   @if($education->workingWith == 5) Not Working @endif
-                  @else
-                  -
                   @endif</p>
                 <p>Earns Upto INR 1 Lakh annually</p>
               </div>

@@ -404,4 +404,28 @@
 			</div>
 		</section>
 
+		<!-- Plan Update -->
+								 <div id="planalert" class="modal fade" role="dialog">
+							 <div class="modal-dialog">
+								 <div class="modal-content">
+									 <div class="modal-header">
+										 <button type="button" class="close" data-dismiss="modal">&times;</button>
+										 <h4 class="modal-title">Membership</h4>
+									 </div>
+									 <div class="modal-body driverdetails">
+										 <h5 class="messagetext">Add our membership plan to get the feature of "Chat &  Invites". You can chat & send invites to people you like.</h5>
+
+										</div>
+
+									 <div class="modal-footer">
+										 <a href="{{URL::to('/membership')}}" class="btn btn-success" >Membership</a>
+										 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+									 </div>
+								 </div>
+
+							 </div>
+						 </div>
+								 <!-- Plan Update -->
+
+
     @include('layouts.footer')

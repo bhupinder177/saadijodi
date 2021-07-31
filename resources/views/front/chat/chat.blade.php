@@ -98,14 +98,15 @@
                         @else
                         <img src="{{ asset('front/images/_D.jpg') }}" class="rounded-circle chatwithimage user_img">
                         @endif
+                        <span class="online_icon"></span>
                         @endif
                         @endif
-                          <span class="online_icon"></span>
                       </div>
+                      @if(count($rooms) > 0)
                       <div class="user_info">
                           <span class="chatWith">Chat with @if(count($rooms) > 0) @if($rooms[0]->user->id == Auth::user()->id) {{ $rooms[0]->oppositeUser->firstName }} @endif @if($rooms[0]->oppositeUser->id == Auth::user()->id) {{ $rooms[0]->user->firstName }} @endif @endif</span>
-
                       </div>
+                      @endif
                   </div>
 
                   <span id="action_menu_btn"><i class="fa fa-ellipsis-v"></i></span>
@@ -163,7 +164,7 @@
 
 
               </div>
-
+             @if(count($rooms) > 0)
               <div class="card-footer">
                 <form class="write chatinputForm" action="">
                   <div class="input-group">
@@ -179,6 +180,10 @@
                   </div>
                 </form>
               </div>
+              @else
+              <div class="nochat">No Chat</div>
+              @endif
+
 
           </div>
       </div>
