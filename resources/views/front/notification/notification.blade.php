@@ -56,8 +56,9 @@
                        <div class="modal-dialog">
                          <div class="modal-content">
                            <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                              <h4 class="modal-title">Status</h4>
+                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             
                            </div>
                            <div class="modal-body driverdetails">
                              <h5 class="messagetext"></h5>

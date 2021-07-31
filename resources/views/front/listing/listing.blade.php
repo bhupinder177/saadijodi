@@ -409,8 +409,9 @@
 							 <div class="modal-dialog">
 								 <div class="modal-content">
 									 <div class="modal-header">
-										 <button type="button" class="close" data-dismiss="modal">&times;</button>
 										 <h4 class="modal-title">Membership</h4>
+										 <button type="button" class="close" data-dismiss="modal">&times;</button>
+										 
 									 </div>
 									 <div class="modal-body driverdetails">
 										 <h5 class="messagetext">Add our membership plan to get the feature of "Chat &  Invites". You can chat & send invites to people you like.</h5>
