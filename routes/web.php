@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth','agent']], function () {
   // message
 
   Route::post('/checkPackage','MembershipController@checkPackage');
+  Route::get('/change-password','ProfileController@changePassword');
+  Route::post('/changePasswordSubmit','ProfileController@changePasswordSubmit');
 });
 
 

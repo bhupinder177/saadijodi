@@ -18,6 +18,7 @@ use App\Model\UserBirthDetails;
 use App\Model\UserImages;
 use App\Model\Notification;
 use App\Model\UserOnline;
+use App\Model\UserPackage;
 use Validator;
 use Session;
 use Curl;
@@ -25,6 +26,8 @@ use DB;
 use Crypt;
 use Auth;
 use DateTime;
+use Hash;
+
 
 class ProfileController extends Controller
 {
@@ -420,11 +423,14 @@ class ProfileController extends Controller
 
     public function inviteSend(Request $request)
     {
-        try{
+       try{
 
            $this->prefix = request()->route()->getPrefix();
            if(!empty(Auth::user()->id))
            {
+             $package = UserPackage::where('userId',Auth::User()->id)->first();
+             if($package)
+             {
            $id = Auth::user()->id;
            $date = Date('Y-m-d H:i:s');
 
@@ -441,23 +447,29 @@ class ProfileController extends Controller
               ]);
 
              $res =  $n->save();
+             if($res)
+             {
+               $response['success']= true;
+               $response['success_message']= "invitation Sent Successfully";
+
+               return response($response);
+             }
+             else
+              {
+               $response['formErrors'] = true;
+               $response['errors']= "invitation not Send";
+               return response($response);
+               }
 
           }
-
-         if($res)
-         {
-           $response['success']= true;
-           $response['success_message']= "invitation Sent Successfully";
-
-           return response($response);
-         }
          else
-          {
-           $response['formErrors'] = true;
-           $response['errors']= "invitation not Send";
+         {
+           $response['success']= false;
+
            return response($response);
-           }
+          }
          }
+       }
          catch(\Exception $e)
           {
            $response['errors'] = $e->getMessage();
@@ -516,6 +528,61 @@ class ProfileController extends Controller
          $response['formErrors'] = "true";
          return response($response);
         }
+    }
+
+    public function changePassword()
+    {
+      return view('front.password.password');
+    }
+
+    public function changePasswordSubmit(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+             'currentpassword' => 'required|string',
+             'password' => 'required|string|confirmed',
+
+         ]);
+
+       if ($validator->fails())
+       {
+          $errors = $validator->errors();
+         $output['validation']     = false;
+         $output['errors']      = $errors;
+       }
+       else
+      {
+
+        $id = Auth::user()->id;
+        $updated_password =  bcrypt($request->password);
+        $current_password =  bcrypt($request->currentpassword);
+        $user = User::where('id',$id)->first();
+
+        if(Hash::check($request->currentpassword,$user->password))
+        {
+         $result = User::where('id',$id)->update(['password' => $updated_password]);
+
+       if($result)
+        {
+          $output['success'] ="true";
+          $output['success_message'] ="Password Updated Successfully";
+          $output['delayTime'] = 3000;
+          $output['resetform'] ='true';
+        }
+        else
+        {
+          $output['formErrors'] ="true";
+          $output['errors'] ="Password Is not update";
+        }
+      }
+      else
+      {
+        $output['formErrors'] ="true";
+        $output['errors'] ="Current Password does not matched";
+      }
+
+     }
+          echo json_encode($output);
+          exit;
     }
 
 

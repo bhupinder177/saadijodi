@@ -364,6 +364,9 @@
 										<?php $connect = App\Helpers\GlobalFunctions::getnotificationInvite(Auth::User()->id,$user->id); ?>
 
 										<div class="col-md-3">
+											<div class="connect_parent">
+
+
 											<div class="conect_nwwed conect_nwwed{{ $user->id }}">
 												<a data-id="{{ $user->id }}" class="chatRoomJoin"><i class="fa fa-comment"></i></a>
 												<p>Chat</p>
@@ -371,22 +374,23 @@
 
 											@if(!empty($connect))
 											<div class="conect_nwwed conect_nwwed{{ $user->id }}">
-												<i  class="fa fa-check-circle"></i>
+												<i class="fa fa-check-circle"></i>
 												<p>Connected</p>
 											</div>
 											@else
 											<div class="conect_nww conect_nww{{ $user->id }}">
 												<p>Like this profile?</p>
-												<a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
+											<a data-id="{{ $user->id }}" class="inviteUser"><i class="fa fa-check-circle"></i></a>
 												<p>Connect Now</p>
 											</div>
-
 											<div class="d-none conect_nwwed conect_nwwed{{ $user->id }}">
 												<i class="fa fa-check-circle"></i>
 												<p>Connected</p>
 											</div>
+
 											@endif
 
+										</div>
 										</div>
 									</div>
 								</div>
@@ -411,7 +415,7 @@
 									 <div class="modal-header">
 										 <h4 class="modal-title">Membership</h4>
 										 <button type="button" class="close" data-dismiss="modal">&times;</button>
-										 
+
 									 </div>
 									 <div class="modal-body driverdetails">
 										 <h5 class="messagetext">Add our membership plan to get the feature of "Chat &  Invites". You can chat & send invites to people you like.</h5>

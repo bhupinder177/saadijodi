@@ -1,3 +1,4 @@
+
 body {
 	font-family: 'Open Sans', sans-serif;
 }
@@ -469,6 +470,7 @@ header {
 footer {
 	background: #d8587b;
 	padding: 60px 0;
+	margin-top: 40px;
 }
 .footer_wrap p {
 	color: #fff;
@@ -1810,11 +1812,24 @@ footer {
 .login_register {
 	width: 100%;
 }
+.page-wrapper_login {
+	background-size: cover;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
 
 }
 
 @media (max-width: 768px) {
 
+.sidebar-item {
+	position: relative;
+}
+.about_my_self {
+	display: block;
+	margin-top: 100px;
+}
 .custom_cc_b {
 	padding: 20px;
 	border-top: 1px solid #c8bfbf;
@@ -1875,6 +1890,23 @@ footer {
 
 @media (max-width: 576px) {
 
+
+#faq .card .card-header .btn-header-link {
+	font-size: 16px;
+	white-space: break-spaces;
+}
+.side_img {
+	width: 90px;
+	border-radius: 50%;
+	height: 80px;
+}
+.card_body_td table tr td .view_n {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.card_body_td table tr td .dismiss-notification {
+	width: 100%;
+}
 .custom_cc_b {
 	padding: 20px;
 	border-top: 1px solid #c8bfbf;

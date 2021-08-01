@@ -87,6 +87,7 @@ class MembershipController extends Controller
             'chat' => $package->chat,
             'connects' => $package->connects,
             'phoneNumberDisplay' => $package->phoneNumberDisplay,
+            'status'=>1,
         ]);
          $upackage->save();
 
@@ -102,7 +103,7 @@ class MembershipController extends Controller
 
     public function checkPackage(Request $request)
     {
-      $package = UserPackage::where('userId',Auth::User()->id)->first();
+      $package = UserPackage::where(array('userId',Auth::User()->id,"status"=>1))->first();
       if($package)
       {
         $userId = Auth::User()->id;

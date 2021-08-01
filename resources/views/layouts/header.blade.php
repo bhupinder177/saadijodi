@@ -83,14 +83,16 @@
 
 								<a class="nav-link" href="{{URL::to('/notification')}}">Notification <?php if($count > 0){ echo '('. $count .')'; } ?></a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#Register">My Photos </a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#Register">Settings </a>
-							</li>
+
+
 							<li class="nav-item">
 								<a class="nav-link" href="{{URL::to('/message')}}">Inbox </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{URL::to('/membership')}}">Membership </a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{URL::to('/change-password')}}">Change Password </a>
 							</li>
 						</ul>
 						@endif

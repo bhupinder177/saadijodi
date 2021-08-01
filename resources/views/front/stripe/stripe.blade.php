@@ -20,6 +20,69 @@
             vertical-align: middle;
             width: 61%;
         }
+
+				/* new added css */
+				.panel.panel-default.credit-card-box {
+	background: #fff;
+	padding: 0 0;
+	margin-top: 60px;
+	border-radius: 0;
+	border: none;
+	box-shadow: 0px 0px 14px 2px #d4d4d4;
+}
+.panel-default > .panel-heading {
+	color: #444;
+	background-color: #f3f3f3;
+	border-color: #000;
+	display: block;
+}
+.panel-default > .panel-heading {
+	color: #444;
+	background-color: #f3f3f3;
+	border-color: #000;
+	display: block;
+}
+.panel-body {
+	padding: 30px 20px;
+}
+.form-group {
+	margin-bottom: 25px;
+}
+label {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: 500;
+	font-size: 15px;
+}
+.form-control {
+	display: block;
+	width: 100%;
+	padding: 10px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+	border-color: #e1103894;
+	outline: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.btn-primary:hover {
+	color: #fff;
+	background-color: #e11038;
+}
+				/* new added css */
     </style>
 </head>
 <body>

@@ -206,6 +206,48 @@ $.validator.addMethod("lettersonly", function(value, element) {
 
  // Newpassword
 
+    // ChangeNewpassword
+    $("#changePasswordform").validate({
+      errorClass: "has-error",
+    highlight: function(element, errorClass) {
+        //$(element).parents('.form-group').addClass(errorClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      //  $(element).parents('.form-group').removeClass(errorClass);
+    },
+   rules:
+   {
+     currentpassword: {
+       required: true,
+     },
+     password: {
+       required: true,
+     },
+     confirm_password: {
+       required: true,
+        equalTo: "#password",
+     },
+   },
+   messages:
+   {
+     currentpassword: {
+       required: "Please enter current password",
+     },
+     password: {
+       required: "Please enter new password",
+     },
+     password_confirmation: {
+       required: "Confirm password is required",
+     },
+   },
+   submitHandler: function (form)
+   {
+     formSubmit(form);
+   }
+ });
+
+ // Newpassword
+
  // profile update
  $("#profileUpdate").validate({
    errorClass: "has-error",

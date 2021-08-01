@@ -40,6 +40,9 @@ header {
 	border-radius: 5px;
 	cursor: pointer;
 }
+.follow_icons .follow_fa a {
+	color: #fff;
+}
 .header_bg {
 	padding: 0;
 	box-shadow: 0 0px 6px 1px #767474;
@@ -61,6 +64,11 @@ header {
 	font-family: "Open Sans", sans-serif;
 	padding: 0 15px;
 	text-transform: capitalize;
+	transition: 0.7s;
+}
+.header_bg .navbar-nav .nav-item .nav-link:hover {
+	color: #fa2750;
+	transition: 0.4s;
 }
 .fixed-top .navbar-nav .nav-item .nav-link {
 	color: #666;
@@ -1024,7 +1032,7 @@ footer {
 	cursor: ;
 }
 .listing_imgs {
-	height: 300px;
+	height: 100%;
 	overflow: hidden;
 }
 .listing_imgs img {
@@ -1079,14 +1087,30 @@ footer {
 	color: #666;
 	font-size: 14px;
 }
-.conect_nww {
-	padding: 50% 30px 0;
+.connect_parent {
 	border-left: 1px solid #000;
 	height: 100%;
+	padding: 40px 0;
+}
+.conect_nwwed p {
+	color: #666;
+}
+.conect_nwwed {
+	padding: 0% 30px 0;
+	text-align: center;
+}
+.conect_nwwed .fa {
+	font-size: 40px;
+	color: #54EE54DE;
+	margin-bottom: 12px;
+}
+.conect_nww {
+	padding: 0% 30px 0;
 	text-align: center;
 }
 .conect_nww p {
 	color: #666;
+	margin-bottom: 0;
 }
 .conect_nww .fa {
 	font-size: 40px;
@@ -1172,6 +1196,16 @@ footer {
 	color: rgb(229, 73, 85);
 	font-size: 22px;
 	margin: 0;
+}
+.rpeat_col h4 .fa {
+	border: 1px solid;
+	border-radius: 50%;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	padding: 10px 0 0;
+	text-align: center;
+	margin: 0 8px 6px 0;
 }
 .rpeat_col span {
 	font-size: 14px;
@@ -1364,6 +1398,7 @@ footer {
 	border: none;
 	outline: none;
 	border-radius: 4px;
+	color: #fff;
 }
 .card_body_td table tr td .dismiss-notification {
 	padding: 2px 10px !important;
@@ -1371,6 +1406,7 @@ footer {
 	border: none;
 	outline: none;
 	border-radius: 4px;
+	color: #fff;
 }
 
 
@@ -1421,8 +1457,9 @@ footer {
 	background-color: rgba(0, 0, 0, 0.3) !important;
 	border: 0 !important;
 	color: white !important;
-	height: 60px !important;
+	height: 50px !important;
 	overflow-y: auto;
+	padding: 12px 12px;
 }
 .chat_wrapp .type_msg:focus {
 	box-shadow: none !important;
@@ -1537,16 +1574,20 @@ footer {
 .chat_wrapp .msg_time {
 	position: absolute;
 	left: 0;
-	bottom: -15px;
+	bottom: -20px;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 10px;
+	min-width: 170px;
+	text-align: left;
 }
 .chat_wrapp .msg_time_send {
 	position: absolute;
 	right: 0;
-	bottom: -15px;
+	bottom: -20px;
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 10px;
+	min-width: 170px;
+	text-align: right;
 }
 .chat_wrapp .msg_head {
 	position: relative;
@@ -1801,6 +1842,86 @@ footer {
 }
 
 
+.modal-footer .btn-success {
+	background: #f8507c;
+	border: none;
+}
+.modal-footer .btn-success:hover {
+	background: #fb1b44;
+}
+.modal-footer .btn-default:hover {
+	background: #fb1b44;
+}
+.modal-body.driverdetails .messagetext {
+	font-size: 18px;
+	line-height: 34px;
+	letter-spacing: 1px;
+}
+
+
+
+.content {
+	margin: 60px 0;
+}
+.wrapper-1 {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 4px 8px 20px 8px rgba(205, 121, 129, 0.2);
+	margin: auto;
+}
+.wrapper-2 {
+	padding: 30px;
+	text-align: center;
+}
+.wrapper-2 h1 {
+	font-family: 'Kaushan Script', cursive;
+	font-size: 4em;
+	letter-spacing: 3px;
+	color: #F72C4F;
+	margin: 0;
+	margin-bottom: 20px;
+}
+.wrapper-2 p {
+	margin: 0;
+	font-size: 1.3em;
+	color: #aaa;
+	font-family: 'Source Sans Pro', sans-serif;
+	letter-spacing: 1px;
+}
+.go-home {
+	color: #fff;
+	background: #f8507c;
+	border: none;
+	padding: 10px 50px;
+	margin: 30px 0;
+	border-radius: 30px;
+	text-transform: capitalize;
+}
+.go-home:hover {
+	background: #fb1b44ed;
+}
+.footer-like {
+	background: #f8507c61;
+	padding: 6px;
+	text-align: center;
+}
+.footer-like p {
+	margin: 0;
+	padding: 4px;
+	color: #ff0043;
+	font-family: 'Source Sans Pro', sans-serif;
+	letter-spacing: 1px;
+}
+.footer-like p a {
+	text-decoration: none;
+	color: #ff0043;
+	font-weight: 600;
+}
+
+
+
+
 
 
 @media (max-width: 991px) {
@@ -1823,6 +1944,9 @@ footer {
 
 @media (max-width: 768px) {
 
+.wrapper-1 {
+	width: 100%;
+}
 .sidebar-item {
 	position: relative;
 }
@@ -1949,3 +2073,21 @@ footer {
 
 
 }
+
+
+
+
+
+
+
+
+@media (min-width:360px) {
+	.wrapper-2 h1 {
+		font-size: 4.5em;
+	}
+	.go-home {
+		margin-bottom: 20px;
+	}
+}
+
+

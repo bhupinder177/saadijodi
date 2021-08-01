@@ -479,7 +479,7 @@ $('body').on('click','.inviteUser',function(){
    {
      $.toast().reset('all');
      var delayTime = 3000;
-     if (response.success)
+     if (response.success == true)
         {
           $('.conect_nww'+id).addClass('d-none');
           $('.conect_nwwed'+id).removeClass('d-none');
@@ -495,19 +495,10 @@ $('body').on('click','.inviteUser',function(){
             position            : 'top-right'
           });
         }
-        if( response.formErrors)
-          {
-            $.toast({
-              heading             : 'Error',
-              text                : response.errors,
-              loader              : true,
-              loaderBg            : '#fff',
-              showHideTransition  : 'fade',
-              icon                : 'error',
-              hideAfter           : delayTime,
-              position            : 'top-right'
-            });
-          }
+        else
+        {
+        $('#planalert').modal('show');
+        }
 
    }
    });

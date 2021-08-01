@@ -333,7 +333,7 @@
             <h2>Detailed Profile</h2>
 
             <div class="rpeat_col">
-              <h4>About {{ ucfirst($user->firstName) }}</h4>
+              <h4><i class="fa fa-info-circle"></i> About {{ ucfirst($user->firstName) }}</h4>
               <span>{{ $user->uniqueId }} @if(!empty($user->UserBasicDetail->profileCreatedBy))  | Profile created by
               @if($user->UserBasicDetail->profileCreatedBy == 1)
               Self
@@ -365,7 +365,7 @@
             </div>
 
             <div class="rpeat_col">
-              <h4>Contact Details</h4>
+              <h4><i class="fa fa-phone"></i>Contact Details</h4>
 
               <div class="about_here_wrap">
                 <p>Contact Number <span class="num">{{$user->UserContactDetails->mobile ?? ""}}</span></p>
@@ -376,7 +376,7 @@
             @if(!empty($user->UserBasicDetail->diet))
 
             <div class="rpeat_col">
-              <h4>Lifestyle</h4>
+              <h4><i class="fa fa-glass"></i>Lifestyle</h4>
 
               <div class="about_here_wrap">
                 <p>
@@ -405,7 +405,7 @@
 
 
             <div class="rpeat_col">
-              <h4>Background</h4>
+              <h4><i class="fa fa-book"></i>Background</h4>
 
               <div class="about_here_wrap">
                 <p>
@@ -483,7 +483,7 @@
             </div>
 
             <div class="rpeat_col">
-              <h4>Horoscope Details</h4>
+              <h4><i class="fa fa-globe"></i>Horoscope Details</h4>
 
               <div class="about_here_wrap">
                 <p>Born in Patiala on ✱✱/✱✱/✱✱✱✱ at exactly 09:30 am.</p>
@@ -492,7 +492,7 @@
             </div>
 
             <div class="rpeat_col">
-              <h4>Family Details</h4>
+              <h4><i class="fa fa-home"></i>Family Details</h4>
 
               <div class="about_here_wrap">
                 <p>Ours is a family with moderate values. Her father is employed and her mother is a homemaker. She doesn't have any siblings.</p>
@@ -501,7 +501,7 @@
             </div>
 
             <div class="rpeat_col">
-              <h4>Education & Career</h4>
+              <h4><i class="fa fa-graduation-cap"></i>Education & Career</h4>
 
               <div class="about_here_wrap">
                 <p>@if(!empty($education->workingWith))
@@ -524,4 +524,28 @@
     </div>
   </div>
 </section>
+
+<!-- Plan Update -->
+             <div id="planalert" class="modal fade" role="dialog">
+           <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h4 class="modal-title">Membership</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+               </div>
+               <div class="modal-body driverdetails">
+                 <h5 class="messagetext">Add our membership plan to get the feature of "Chat &  Invites". You can chat & send invites to people you like.</h5>
+
+                </div>
+
+               <div class="modal-footer">
+                 <a href="{{URL::to('/membership')}}" class="btn btn-success" >Membership</a>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+               </div>
+             </div>
+
+           </div>
+         </div>
+             <!-- Plan Update -->
 @include('layouts.footer')
