@@ -11,12 +11,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
-              <form action="{{URL::to('/userlist')}}" method="get">
+              <form action="{{URL::to($prefix.'/userlist')}}" method="get">
                 <div class="row">
             <div class="col-md-7">
               <div class="form-group">
             <input class="form-control search" placeholder="Search" type="text">
-            <input type="hidden" class="searchpagelink" value="{{URL::to('/userlist')}}">
+            <input type="hidden" class="searchpagelink" value="{{URL::to($prefix.'/userlist')}}">
               </div>
             </div>
             <div class="col-md-2">
@@ -26,13 +26,13 @@
             </div>
             <div class="col-md-2">
               <div class="form-group">
-            <a class="btn btn-success getreset" value="Reset" data-href="{{ url('/userlist') }}">Reset</a>
+            <a class="btn btn-success getreset" value="Reset" data-href="{{ url($prefix.'/userlist') }}">Reset</a>
               </div>
             </div>
            </div>
           </form>
           </div>
-          
+
        </div>
 
             <div class="table-responsive table-sec">
