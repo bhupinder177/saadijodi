@@ -20,7 +20,12 @@
             <ul class="list-unstyled mb-4">
               <?php echo $p->description; ?>
             </ul>
+            @if(!empty($selected) && $p->id == $selected->packageId)
+            <a  class="btn btn-block @if($k == 0)btn-primary @endif @if($k == 1)btn-primary @endif @if($k == 2)btn-primary @endif  text-uppercase rounded-lg py-3">Selected</a>
+
+            @else
             <a href="{{URL::to('/payment/'.Crypt::encrypt($p->id))}}" class="btn btn-block @if($k == 0)btn-primary @endif @if($k == 1)btn-primary @endif @if($k == 2)btn-primary @endif  text-uppercase rounded-lg py-3">Continue</a>
+            @endif
           </div>
         </div>
       </div>

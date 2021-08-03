@@ -103,6 +103,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('packages-update','PackageController@update');
         Route::post('packages-delete','PackageController@delete');
 
+        Route::get('coupon','CouponController@index');
+        Route::get('coupon-add','CouponController@add');
+        Route::post('couponSave','CouponController@save');
+        Route::get('coupon-edit/{id}','CouponController@edit');
+        Route::post('coupon-update','CouponController@update');
+        Route::post('coupon-delete','CouponController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

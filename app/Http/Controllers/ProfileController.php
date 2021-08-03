@@ -19,6 +19,7 @@ use App\Model\UserImages;
 use App\Model\Notification;
 use App\Model\UserOnline;
 use App\Model\UserPackage;
+use App\Model\UserConnects;
 use Validator;
 use Session;
 use Curl;
@@ -428,7 +429,7 @@ class ProfileController extends Controller
            $this->prefix = request()->route()->getPrefix();
            if(!empty(Auth::user()->id))
            {
-             $package = UserPackage::where('userId',Auth::User()->id)->first();
+             $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
              if($package)
              {
            $id = Auth::user()->id;
@@ -447,6 +448,29 @@ class ProfileController extends Controller
               ]);
 
              $res =  $n->save();
+
+             if($res)
+             {
+               $connects = new UserConnects([
+                 'userId'=>$id,
+                 'sendTo'=>$request->id,
+                 'connects'=>1,
+                 'status'=>1,
+               ]);
+               $connects->save();
+             }
+             if($res)
+             {
+              $conn =  $package->connects - 1;
+              if($conn != 0)
+              {
+               UserPackage::where(array('id'=>$package->id))->update(array("connects"=>$conn));
+              }
+              else if($conn == 0)
+              {
+                UserPackage::where(array('id'=>$package->id))->update(array("status"=>0));
+              }
+             }
              if($res)
              {
                $response['success']= true;

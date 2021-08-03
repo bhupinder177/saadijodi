@@ -41,7 +41,9 @@ class MembershipController extends Controller
     public function index()
     {
        $package = Package::get();
-        return view('front.package.package',['packages'=>$package]);
+       $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
+
+        return view('front.package.package',['packages'=>$package,'selected'=>$selected]);
     }
 
     public function stripe($id)

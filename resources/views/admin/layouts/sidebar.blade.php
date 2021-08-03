@@ -21,7 +21,7 @@
 
     <li <?php if(request()->segment(2) == "userlist" || request()->segment(1) == "user-add" || request()->segment(1) == "user-edit"){ ?>class="active" <?php } ?>>
       <a href="{{URL::to($getprefix.'/userlist')}}">
-        <span><i class="fa fa-tasks"></i><span class="lbl">Users</span></span>
+        <span><i class="fa fa-user" aria-hidden="true"></i><span class="lbl">Users</span></span>
       </a>
 
     </li>
@@ -30,6 +30,12 @@
         <li <?php if(request()->segment(2) == "packages" || request()->segment(1) == "packages-add" || request()->segment(1) == "packages-edit"){ ?>class="active" <?php } ?>>
           <a href="{{URL::to($getprefix.'/packages')}}">
             <span><i class="fa fa-tasks"></i><span class="lbl">Packages</span></span>
+          </a>
+
+        </li>
+        <li <?php if(request()->segment(2) == "coupon" || request()->segment(1) == "coupon-add" || request()->segment(1) == "coupon-edit"){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/coupon')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Coupon</span></span>
           </a>
 
         </li>

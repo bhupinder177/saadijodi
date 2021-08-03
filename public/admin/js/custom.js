@@ -186,7 +186,7 @@ submitHandler: function (form)
   // back
 
 // vehicle add
-$("#addvehicle").validate({
+$("#addcoupon").validate({
   errorClass: "has-error",
     highlight: function(element, errorClass) {
         //$(element).parents('.form-group').addClass(errorClass);
@@ -196,39 +196,23 @@ $("#addvehicle").validate({
     },
 rules:
 {
- taxiNumber: {
+ coupon: {
    required: true
  },
- taxiType: {
-   required: true
- },
- taxiInspectionExpiryDate: {
-   required: true
- },
- vehicleNo: {
-   required: true
- },
- "taxiSection[]": {
-  mytst5:true,
+ discount: {
+   required: true,
+   number:true,
  },
 },
 messages:
 {
- taxiNumber: {
-   required: "Please enter licence plate",
+ coupon: {
+   required: "Please enter coupon",
  },
- taxiType: {
-   required: "Please select taxi type",
+ discount: {
+   required: "Please enter discount",
  },
- taxiInspectionExpiryDate: {
-   required: "Please enter inspection expiry date",
- },
- vehicleNo: {
-   required: "Please enter taxi number",
- },
- "taxiSection[]": {
-   required: "Please enter taxi section",
- },
+
 },
 submitHandler: function (form)
 {
