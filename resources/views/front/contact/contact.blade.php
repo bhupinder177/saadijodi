@@ -20,7 +20,7 @@
       <div class="col-md-6">
         <div class="form__field">
           <label>Name</label>
-          <input type="text" name="name" class="name" id="name">
+          <input type="text" name="name" class="name characteronly" id="name">
         </div>
       </div>
 

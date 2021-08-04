@@ -158,7 +158,7 @@ class PackageController extends Controller
         {
            $response['success']         = true;
            $response['delayTime']       = '3000';
-           $response['success_message'] = 'package Updated Successfully.';
+           $response['success_message'] = 'Package Updated Successfully.';
            $response['url'] = url($this->prefix.'/packages');
 
            return response($response);

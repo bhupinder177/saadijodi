@@ -97,7 +97,7 @@ label {
                     <div class="row display-tr" >
                         <h3 class="panel-title display-td" >Payment Details</h3>
                         <div class="display-td" >
-                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                            <img class="img-responsive pull-right" src="{{ asset('front/images/payment.png') }}">
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ label {
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' name="name" size='4' type='text'>
+                                    class='form-control' placeholder="please enter name on card" name="name" size='4' type='text'>
                             </div>
                         </div>
 												<input type="hidden" name="packageId" value="{{ $id }}">
@@ -127,7 +127,7 @@ label {
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
+                                    autocomplete='off' placeholder="please enter card number" class='form-control card-number' size='20'
                                     type='text'>
                             </div>
                         </div>

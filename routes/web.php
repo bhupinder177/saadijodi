@@ -58,6 +58,7 @@ Route::group(['middleware' => ['auth','agent']], function () {
   Route::get('/membership','MembershipController@index');
   Route::get('payment/{id}', 'MembershipController@stripe');
   Route::post('stripe', 'MembershipController@stripePost')->name('stripe.post');
+  Route::get('success', 'MembershipController@success');
 
   // message
   Route::get('/message','MessageController@index');

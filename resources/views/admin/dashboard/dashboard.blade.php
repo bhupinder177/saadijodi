@@ -13,7 +13,7 @@
                  <div class="row">
                  <!-- users -->
                  <div class="col-md-4">
-                   <a href="{{URL::to('/userlist')}}">
+                   <a href="{{URL::to($prefix.'/userlist')}}">
                        <div class="emp wow bounceInDown  animated" style="visibility: visible; animation-name: bounceInDown;">
                            <ul class="ul-list unstyle mb-0">
                                <li>
@@ -35,7 +35,7 @@
 
                    <!-- vehicle -->
                    <div class="col-md-4">
-                     <a href="{{URL::to('/vehicle')}}">
+                     <a href="{{URL::to($prefix.'/packages')}}">
                          <div class="emp wow bounceInDown  animated" style="visibility: visible; animation-name: bounceInDown;">
                              <ul class="ul-list unstyle mb-0">
                                  <li>
@@ -55,7 +55,7 @@
                      </div>
                      <!-- vehicle -->
 
-                    
+
 
 
 

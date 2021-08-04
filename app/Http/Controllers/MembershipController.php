@@ -19,7 +19,7 @@ use Auth;
 use DateTime;
 use Stripe;
 use Illuminate\Support\Facades\Crypt;
-
+Use Redirect;
 
 class MembershipController extends Controller
 {
@@ -96,11 +96,8 @@ class MembershipController extends Controller
       }
 
 
-
-
       Session::flash('success', 'Payment successful!');
-
-      return back();
+      return Redirect('/success');
     }
 
     public function checkPackage(Request $request)
@@ -152,6 +149,11 @@ class MembershipController extends Controller
         $output['success'] = "false";
       }
       return response($output);
+    }
+
+    public function success(Request $request)
+    {
+       return view('front.stripe.thanku');
     }
 
 

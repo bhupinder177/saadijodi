@@ -19,12 +19,12 @@
             <input type="hidden" class="searchpagelink" value="{{URL::to($prefix.'/packages')}}">
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-3 col-md-2">
               <div class="form-group">
             <input class="btn btn-success searchbtn" value="Search" type="submit">
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-3 col-md-2">
               <div class="form-group">
             <a class="btn btn-success getreset" value="Reset" data-href="{{ url($prefix.'/packages') }}">Reset</a>
               </div>

@@ -184,7 +184,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
      password: {
        required: true
      },
-     confirm_password: {
+     password_confirmation: {
        required: true,
         equalTo: "#password",
      },
@@ -195,7 +195,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
        required: "Please enter password",
      },
      password_confirmation: {
-       required: "Confirm password is required",
+       required: "Please enter Confirm password",
      },
    },
    submitHandler: function (form)
@@ -223,7 +223,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
      password: {
        required: true,
      },
-     confirm_password: {
+     password_confirmation: {
        required: true,
         equalTo: "#password",
      },

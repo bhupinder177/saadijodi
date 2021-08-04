@@ -49,7 +49,7 @@
                 <h3>{{ $user->firstName }} {{ $user->lastName }} ( {{ $user->uniqueId }} )</h3>
                 <div class="row">
                   <div class="col-md-4">
-                    <div class="profile_pic">
+                    <div class="profile_pic @if(empty($profileimage->image)) no_img @endif">
                       @if(!empty($profileimage->image))
                          <img src="{{ asset('profiles/'.$profileimage->image) }}" style="width:100%">
                       @endif

@@ -17,9 +17,10 @@ class DashboardController extends Controller
     public function DashboardView(Request $request)
     {
             //redirect if not super admin
+            $this->prefix = request()->route()->getPrefix();
         $user = User::where('type',2)->count();
         $package = Package::count();
-        return view('admin.dashboard.dashboard',['user'=>$user,'package'=>$package]);
+        return view('admin.dashboard.dashboard',['user'=>$user,'package'=>$package,'prefix'=>$this->prefix]);
 
     }
 

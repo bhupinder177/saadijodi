@@ -97,3 +97,19 @@ ul.ul-list .content span {
     color: #444;
     font-size: 12px;
 }
+.driverdetails .messagetext {
+	margin: 0;
+}
+.table td .form-group {
+	margin-bottom: 0;
+}
+
+
+
+@media (max-width: 768px) {
+
+.table td .form-group .ownerStatuschange {
+	width: 150px;
+}
+
+}

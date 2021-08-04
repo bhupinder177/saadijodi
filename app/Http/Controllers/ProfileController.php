@@ -474,7 +474,7 @@ class ProfileController extends Controller
              if($res)
              {
                $response['success']= true;
-               $response['success_message']= "invitation Sent Successfully";
+               $response['success_message']= "Invitation Sent Successfully";
 
                return response($response);
              }

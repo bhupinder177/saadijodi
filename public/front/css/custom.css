@@ -102,7 +102,10 @@ z-index: 99999999;
 	color:red;
 }
 
-
+.no_image
+{
+	height:0px;
+}
 /* .conect_nwwed {
 	padding: 50% 30px 0;
 	border-left: 1px solid #000;
