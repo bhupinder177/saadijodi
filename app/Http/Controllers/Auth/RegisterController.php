@@ -120,7 +120,7 @@ class RegisterController extends Controller
            'password' =>bcrypt($request->password),
            'phone' =>$request->phone,
            'type'=>2,
-           'status'=>1,
+           'status'=>0,
            'uniqueId'=>$uniqueNo1,
            'uniqueNo'=>$uniqueNo,
        ]);
@@ -148,18 +148,18 @@ class RegisterController extends Controller
       }
 
 
-      // if($res)
-      //  {
-      //    $token = Crypt::encryptString($request->email);
-      //    $mailData = array('link'=>URL::to('/verification?token='.$token),'name'=>$request->firstName);
-      //    $emailresult = CommonHelper::sendmail('nitindeveloper23@gmail.com', 'Sadi jodi', $request->email,$request->firstName, 'Email verification' , ['data'=>$mailData], 'emails.verification','',$attachment=null);
-      //  }
-      // Kindly check your Email and activate your account
+      if($res)
+       {
+         $token = Crypt::encryptString($request->email);
+         $mailData = array('link'=>URL::to('/verification?token='.$token),'name'=>$request->firstName);
+         $emailresult = CommonHelper::sendmail('nitindeveloper23@gmail.com', 'Sadi jodi', $request->email,$request->firstName, 'Email verification' , ['data'=>$mailData], 'emails.verification','',$attachment=null);
+       }
+      //
 
     if($res)
       {
         $output['success'] ="true";
-        $output['success_message'] ="Registered Successfully.";
+        $output['success_message'] ="Registered Successfully.Kindly check your Email and activate your account";
         $output['delayTime'] = 4000;
         $output['resetform'] ='true';
         $output['url'] = url('login');
