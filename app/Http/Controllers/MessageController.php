@@ -28,7 +28,7 @@ class MessageController extends Controller
     $h = '0 Hours';
     $m = '0 Minutes';
     $result = User::where('id',$id)->first();
-    $messagesId = '';
+    $offset = '';
     if(!empty($result->countryId))
     {
       $country = Country::where('id',$result->countryId)->first();
@@ -62,25 +62,21 @@ class MessageController extends Controller
     $rooms = MessageRoom::with('user','oppositeUser')->where('userId',$id)->orwhere('oppositeUserId',$id)->orderby('last_message_at','desc')->get();
     if(count($rooms) > 0)
     {
-    $count = Message::where('roomId',$rooms[0]->roomId)->count();
-    if($count > 10)
-    {
-    $count = $count - 10;
-    }
-    else
-    {
-      $count = 0;
-    }
-    $messages = Message::where('roomid',$rooms[0]->roomId)->skip($count)->take(10)->get();
+    $messages = Message::where('roomid',$rooms[0]->roomId)->orderBy('id','desc')->limit(10)->get();
     $up = Message::where('roomId',$rooms[0]->roomId)->update(array('is_read'=>1));
-     if($messages)
-     {
-      $messagesId = $messages[0]->id ?? '';
-      }
+
+    $messages =  $messages->reverse();
+    if(count($messages) > 0)
+    {
+      $count = count($messages);
+      $count = $count - 1;
+      $offset = $messages[$count]->id;
+    }
+
     }
     $title = "Messages";
 
-    return view('front.chat.chat',['title'=>$title,'rooms'=>$rooms,'offset'=>10,'messages'=>$messages,'timezone'=>$timezone,'messagesId'=>$messagesId]);
+    return view('front.chat.chat',['title'=>$title,'rooms'=>$rooms,'offset'=>$offset,'messages'=>$messages,'timezone'=>$timezone]);
   }
 
   public function chatHistory(Request $request)
@@ -120,16 +116,9 @@ class MessageController extends Controller
      $timezone = $h.' '.$m;
      }
     }
-    $count = Message::where('roomid',$request->data_room)->count();
-    if($count > 10)
-    {
-    $count = $count - 10;
-    }
-    else
-    {
-      $count = 0;
-    }
-    $messages = Message::where('roomId', $request->data_room)->skip($count)->take(10)->get();
+
+    $messages = Message::where('roomId', $request->data_room)->orderBy('id','desc')->limit(10)->get();
+    $messages =  $messages->reverse();
     $update = Message::where(array('roomId'=>$request->data_room,"userId"=>$request->sender))->update(array("is_read"=>1));
     $user = User::where('id',$request->sender)->first();
     $room = MessageRoom::where('roomId',$request->data_room)->first();
@@ -256,6 +245,7 @@ class MessageController extends Controller
     $id = Auth::User()->id;
     $h = '0 Hours';
     $m = '0 Minutes';
+    $offset = '';
     $result = User::where('id',$id)->first();
     if(!empty($result->countryId))
     {
@@ -286,10 +276,16 @@ class MessageController extends Controller
      $timezone = $h.' '.$m;
      }
     }
-    $messages = Message::where('roomId',$request->data_room)->orderby('id','desc')->skip($request->data_offset)->take(10)->get();
+    $messages = Message::where('roomId',$request->data_room)->where('id','<',$request->data_offset)->orderBy('id','desc')->limit(10)->get();
+    if(count($messages) > 0)
+    {
     $messages = $messages->reverse();
-    $returnHTML = view('front.chat.chat-oldhistory', compact('messages','timezone'))->render();
-   return new JsonResponse(['rhtml' => $returnHTML]);
+    $count = count($messages);
+    $count = $count - 1;
+    $offset = $messages[$count]->id;
+    }
+    $returnHTML = view('front.chat.chat-oldhistory', compact('messages','timezone','offset'))->render();
+   return new JsonResponse(['rhtml' => $returnHTML,'offset'=>$offset]);
   }
 
   public function gettime(Request $request)

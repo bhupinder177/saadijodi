@@ -253,14 +253,12 @@ $.ajax({
   });
 
   // get preview message on scroll up
-  $('.chat_wrap').scroll(function () {
-    let className = $('.chathistoryul li:first-child').attr('data-mes');
+  $('.msg_card_body').scroll(function () {
+    let className = $('.msg_card_body:first-child').attr('data-mes');
     if($(this).scrollTop() < 1) {
-
-
       let ele = $(this);
-      let data_offset = parseInt($('.chat-active').attr('data-offset'));
-      let data_room = $('.chat-active').attr('data-room');
+      let data_offset = parseInt($(this).attr('data-offset'));
+      let data_room = $(this).attr('data-room');
       $.ajax({
         url: SITE_URL + '/getoldMessage',
         type: "post",
@@ -273,11 +271,9 @@ $.ajax({
       },
         success: function (data)
         {
-          $('.chathistoryul'+data_room).prepend(data.rhtml);
-          data_offset += 10;
-          console.log(data_offset);
-          $('.chat-active').attr('data-offset',data_offset);
-          isOnScreen(ele,className);
+          ele.prepend(data.rhtml);
+          ele.attr('data-offset',data.offset);
+          isOnScreen(ele,data_offset);
         },
         error: function (data) {
           console.log(data);
@@ -307,11 +303,11 @@ $.ajax({
   }
 
   function isOnScreen(elem,className) {
-    //console.log(elem);
-    //console.log("ssss fdfddffdfdfddfdffddf");
+
+  
     // if the element doesn't exist, abort
-     $(window).scrollTop($(this).scrollTop());
-   $( ".chat_wrap .message-scroll[data-mes='"+className+"']")[0].scrollIntoView();return false
+    $(window).scrollTop($(this).scrollTop());
+   $("[data-mes='"+className+"']")[0].scrollIntoView();return false
     // if( elem.length == 0 ) {
     //   return;
     // }

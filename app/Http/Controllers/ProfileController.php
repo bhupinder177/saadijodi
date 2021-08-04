@@ -430,7 +430,7 @@ class ProfileController extends Controller
            if(!empty(Auth::user()->id))
            {
              $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
-             if($package)
+             if(!empty($package) && $package->connects != 0)
              {
            $id = Auth::user()->id;
            $date = Date('Y-m-d H:i:s');
