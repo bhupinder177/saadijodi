@@ -154,11 +154,12 @@ class RegisterController extends Controller
       //    $mailData = array('link'=>URL::to('/verification?token='.$token),'name'=>$request->firstName);
       //    $emailresult = CommonHelper::sendmail('nitindeveloper23@gmail.com', 'Sadi jodi', $request->email,$request->firstName, 'Email verification' , ['data'=>$mailData], 'emails.verification','',$attachment=null);
       //  }
+      // Kindly check your Email and activate your account
 
     if($res)
       {
         $output['success'] ="true";
-        $output['success_message'] ="Registered Successfully.Kindly check your Email and activate your account";
+        $output['success_message'] ="Registered Successfully.";
         $output['delayTime'] = 4000;
         $output['resetform'] ='true';
         $output['url'] = url('login');
