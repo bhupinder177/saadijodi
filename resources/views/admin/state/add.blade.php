@@ -6,7 +6,7 @@
 <div class="page-content">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li class="active">Country:{{ $country->name }} Add State</li>
+      <li class="active">Country:{{ $country->name }} | Add State</li>
     </ol>
   </section>
       <div class="container-fluid">
