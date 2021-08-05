@@ -58,7 +58,7 @@
       </div>
 
       <div class="col-md-4">
-        
+
         <div class="box_prnt">
           <div class="box-step">
             <div class="step-number">
@@ -259,16 +259,7 @@
          <div class="customer-logos slider">
               <div class="slide">
                 <div class="images_slick">
-                  <img src="{{ asset('front/images/1.jpg') }}">
-                </div>
-                <div class="slick_text">
-                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
-                  <a href="#" class="read_more">Read More</a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="images_slick">
-                  <img src="{{ asset('front/images/2.jpg') }}">
+                  <img src="{{ asset('front/images/2.jpeg') }}">
                 </div>
                 <div class="slick_text">
                   <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
@@ -287,6 +278,15 @@
               <div class="slide">
                 <div class="images_slick">
                   <img src="{{ asset('front/images/4.jpeg') }}">
+                </div>
+                <div class="slick_text">
+                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
+                  <a href="#" class="read_more">Read More</a>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="images_slick">
+                  <img src="{{ asset('front/images/5.jpeg') }}">
                 </div>
                 <div class="slick_text">
                   <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
