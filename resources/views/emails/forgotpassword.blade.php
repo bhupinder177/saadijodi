@@ -1,80 +1,100 @@
-<table border="0" width="100%">
-	<tbody>
-		<tr>
-			<td>
-			<table align="center" border="0" cellpadding="0" cellspacing="0" style="background:#fff; box-shadow:0 0 10px #ccc;" width="600">
-				<tbody>
-					<tr>
-						<td align="center" height="100" width="100" style="background:#c3c8ca;border-bottom:solid 1px #f5f5f5;" valign="middle">
-              <img width="150px" src="{{ asset('front/images/logo.jpg') }}" alt="">
-            </td>
-					</tr>
-					<tr>
-						<td>
-						<table cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td width="15">&nbsp;</td>
-									<td width="670">
-									<table cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td height="15">&nbsp;</td>
-											</tr>
-											<tr>
-												<td width="530">
-												<table cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family:Arial, Helvetica, sans-serif; padding:10px; font-size:13px;">
-															<table border="0" cellpadding="0" cellspacing="0" width="100%">
-																<tbody>
-																	<tr>
-                                    <td>
-																			 Hi {{ $data['name'] }},
-															         <br/>
-															         <p>We've received a request to reset your password . If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link :<br><br>
-																			<a style='display: block;width: 262px;height: 14px;background: #4E9CAF;padding: 10px;text-align: center;border-radius: 5px;color: white;font-weight: bold;text-decoration:none;' class='click' href="{{ $data['link'] }}">
-	 																			 Click here to reset your password</a><br><br>
-															         </p>
-															        <br/>Thank You,<br/>
-																			 My Cab Share Team</br>
-															         <br/><br/>
-                                    </td>
-																	</tr>
-																</tbody>
-															</table>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-											<!-- <tr>
-												<td height="15" style="padding-bottom:15px;">
-												<p>*This email account is not monitored. Please do not reply to this email as we will not be able to read and respond to your messages.</p>
-												</td>
-											</tr> -->
-										</tbody>
-									</table>
-									</td>
-									<td width="15">&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-					</tr>
-					<tr>
-						<td align="center" style="padding:5px; background: none repeat scroll 0 0 #333;
-             border-top: 1px solid #CCCCCC;color:#fff;" valign="top">
-						<!-- <p>You have received this message by auto generated e-mail.</p> -->
-
-						<center><?php echo '&copy; '.date('Y'). ' ALL RIGHTS RESERVED'; ?></center>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			</td>
-		</tr>
-	</tbody>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+   <!-- LOGO -->
+   <tbody>
+      <tr>
+         <td bgcolor="#caefebc7" align="center" style="background: #caefebc7;">
+            <table style="max-width: 600px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+               <tbody>
+                  <tr>
+                     <td style="padding: 80px 10px 80px 10px;" valign="top" align="center">
+                        <a>
+                        <img alt="Logo" src="{{ asset('front/images/logo.jpg') }}" width="120" style="display: block; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
+                        </a>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <!-- HERO -->
+      <tr>
+         <td style="padding: 0px 10px 0px 10px;background: #caefebc7;" align="center">
+            <table style="max-width: 600px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+               <tbody>
+                  <tr>
+                     <td style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;" valign="top" bgcolor="#ffffff" align="center">
+                        <h1 style="font-size: 42px; font-weight: 400; margin: 0;">Welcome!</h1>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <!-- COPY BLOCK -->
+      <tr>
+         <td style="padding: 0px 10px 0px 10px;" bgcolor="#f4f4f4" align="center">
+            <table style="max-width: 600px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+               <!-- COPY -->
+               <tbody>
+                  <tr>
+                     <td style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
+                        <p style="margin: 0;">Hi {{ $data['name'] }}, </p>
+                        <p style="margin: 14px 0;">We've received a request to reset your password . If you didn't make the request, just ignore this email. Otherwise, you can reset your password using this link : </p>
+                     </td>
+                  </tr>
+                  <!-- BULLETPROOF BUTTON -->
+                  <tr>
+                     <td bgcolor="#ffffff" align="left">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                           <tbody>
+                              <tr>
+                                 <td style="padding: 20px 30px 60px 30px;" bgcolor="#ffffff" align="center">
+                                    <table cellspacing="0" cellpadding="0" border="0">
+                                       <tbody>
+                                          <tr>
+                                             <td style="border-radius: 0px;" align="center">
+                                              <a href="{{ $data['link'] }}" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 12px 50px; background: #F43A5D; display: inline-block;">Click here to reset your password</a>
+                                            </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </td>
+                  </tr>
+                  <!-- COPY -->
+                  <tr>
+                     <td style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
+                        <p style="margin: 0;">If you have any questions, just reply to this email—we're always happy to help out.</p>
+                     </td>
+                  </tr>
+                  <!-- COPY -->
+                  <tr>
+                     <td style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
+                        <p style="margin: 0;">Thank You,<br>Saddi Jodi Team</p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <!-- SUPPORT CALLOUT -->
+      <tr>
+         <td style="padding: 30px 10px 0px 10px;" bgcolor="#f4f4f4" align="center">
+            <table style="max-width: 600px;border: 4px solid #c5bcbc;margin-bottom: 30px;" width="100%" cellspacing="0" cellpadding="0" border="0">
+               <!-- HEADLINE -->
+               <tbody>
+                  <tr>
+                     <td style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#fafafa" align="center">
+                        <h2 style="font-size: 16px; font-weight: 400; color: #111111; margin: 0;">Need more help?</h2>
+                        <p style="margin: 0; font-size: 14px;"><a href="https://saadijodi.com/" target="_blank" style="color: #33cabb;">We’re here, ready to talk</a></p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
 </table>
