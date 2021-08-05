@@ -6,7 +6,7 @@
 <div class="page-content">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li class="active">Edit Coupon</li>
+      <li class="active">Edit Country</li>
     </ol>
   </section>
       <div class="container-fluid">
@@ -14,27 +14,18 @@
 
           <div class="">
 
-            <form action="{{ url($prefix.'/coupon-update') }}" method="post" enctype="multipart/form-data" class="reset" id="addcoupon">
+            <form action="{{ url($prefix.'/country-update') }}" method="post" enctype="multipart/form-data" class="reset" id="addcountry">
 
                     <div class="row">
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Coupon <span class="red">*</span></label>
-      <input type="text" value="{{ $result->coupon }}" placeholder="Please enter coupon" class="form-control " name="coupon"   id="coupon">
+                            <label>Country<span class="red">*</span></label>
+      <input type="text" value="{{ $result->name }}" placeholder="Please enter country" class="form-control " name="name"   id="name">
                           </div>
                           <input type="hidden" value="{{Crypt::encrypt($result->id)}}" name="id">
 
                       </div>
-
-                      <div class="col-sm-6">
-                          <div class="form-group">
-                            <label>Discount (%)<span class="red">*</span></label>
-      <input type="text" value="{{ $result->discount }}" placeholder="Please enter discount" class="form-control" name="discount"   id="discount">
-                          </div>
-                      </div>
-
-
 
                     </div>
 

@@ -40,6 +40,15 @@
 
         </li>
 
+        <li <?php if(request()->segment(2) == "country" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/country')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Countrys</span></span>
+          </a>
+
+        </li>
+
+
+
   </ul>
 </nav>
 

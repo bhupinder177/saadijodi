@@ -17,6 +17,7 @@ class States extends Migration
       $table->increments('id');
       $table->string('name')->nullable();
       $table->string('country_id')->nullable();
+      $table->string('timezone')->nullable();
       $table->timestamps();
       });
     }

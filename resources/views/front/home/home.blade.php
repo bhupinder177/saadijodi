@@ -11,7 +11,7 @@
   </div>
 </section>
 
-<section class="looking_bride">
+<section style="display:none" class="looking_bride">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -109,7 +109,7 @@
 </section>
 
 
-<section class="matches_wrapp">
+<section style="display:none" class="matches_wrapp">
   <div class="container">
     <div class="row">
 

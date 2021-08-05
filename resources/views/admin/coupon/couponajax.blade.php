@@ -1,4 +1,3 @@
-<div class="table-responsive table-sec">
     <table class="table table-bordered">
         <thead>
             <tr>

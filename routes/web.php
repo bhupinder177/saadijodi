@@ -111,6 +111,27 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('coupon-update','CouponController@update');
         Route::post('coupon-delete','CouponController@delete');
 
+        Route::get('country','CountryController@index');
+        Route::get('country-add','CountryController@add');
+        Route::post('countrySave','CountryController@save');
+        Route::get('country-edit/{id}','CountryController@edit');
+        Route::post('country-update','CountryController@update');
+        Route::post('country-delete','CountryController@delete');
+
+        Route::get('state/{id}','StateController@index');
+        Route::get('state-add/{id}','StateController@add');
+        Route::post('stateSave','StateController@save');
+        Route::get('state-edit/{id}','StateController@edit');
+        Route::post('state-update','StateController@update');
+        Route::post('state-delete','StateController@delete');
+
+        Route::get('city/{id}','CityController@index');
+        Route::get('city-add/{id}','CityController@add');
+        Route::post('citySave','CityController@save');
+        Route::get('city-edit/{id}','CityController@edit');
+        Route::post('city-update','CityController@update');
+        Route::post('city-delete','CityController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

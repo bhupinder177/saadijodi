@@ -6,7 +6,7 @@
 <div class="page-content">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li class="active">Edit Coupon</li>
+      <li class="active">Edit State</li>
     </ol>
   </section>
       <div class="container-fluid">
@@ -14,25 +14,26 @@
 
           <div class="">
 
-            <form action="{{ url($prefix.'/coupon-update') }}" method="post" enctype="multipart/form-data" class="reset" id="addcoupon">
+            <form action="{{ url($prefix.'/state-update') }}" method="post" enctype="multipart/form-data" class="reset" id="addstate">
 
                     <div class="row">
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Coupon <span class="red">*</span></label>
-      <input type="text" value="{{ $result->coupon }}" placeholder="Please enter coupon" class="form-control " name="coupon"   id="coupon">
+                            <label>State <span class="red">*</span></label>
+      <input type="text" placeholder="Please enter state" value="{{ $result->name }}" class="form-control " name="name"   id="name">
+      <input type="hidden" name="country_id" value="{{ $result->country_id }}">
+      <input type="hidden" name="id" value="{{Crypt::encrypt($result->id)}}">
                           </div>
-                          <input type="hidden" value="{{Crypt::encrypt($result->id)}}" name="id">
-
                       </div>
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Discount (%)<span class="red">*</span></label>
-      <input type="text" value="{{ $result->discount }}" placeholder="Please enter discount" class="form-control" name="discount"   id="discount">
+                            <label>Timezone <span class="red">*</span></label>
+      <input type="text" placeholder="Please enter timezone" value="{{ $result->timezone }}" class="form-control " name="timezone"   id="timezone">
                           </div>
                       </div>
+
 
 
 
