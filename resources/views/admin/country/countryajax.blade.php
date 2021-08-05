@@ -3,8 +3,8 @@
         <tr>
             <th style="width: 5%">S. No</th>
             <th style="width: 10%">Country</th>
-
-            <th style="width: 10%">Actions</th>
+            <th style="width: 8%">State</th>
+            <th style="width: 8%">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +15,8 @@
         <tr class="data">
             <td>{{ ++$srNo }}</td>
             <td>{{ $u->name }}</td>
-  <td><a href="{{ url($prefix.'/state/'.$u->id)}}" class="btn btn-success">Add State</a></td>
+            <td><a href="{{ url($prefix.'/state/'.$u->id)}}" class="btn btn-success">Add State</a></td>
+
             <td >
              <a href="{{url($prefix.'/country-edit/'.Crypt::encrypt($u->id))}}"><i class="fa fa-edit"></i></a>
              <a class="deleterecord" data-link="{{url($prefix.'/country-delete')}}" data-id="{{ $u->id }}"><i class="fa fa-trash deleterecord"  data-link="{{url($prefix.'/country-delete')}}"  data-id="{{ $u->id }}" aria-hidden="true"></i></a>
