@@ -4,7 +4,7 @@
     <div class="page-content">
       <section class="content-header">
         <ol class="breadcrumb">
-          <li class="active">Country: {{ $state->name }} City Listing</li>
+          <li class="active">Country: {{ $state->name }} | City Listing</li>
         </ol>
       </section>
 
