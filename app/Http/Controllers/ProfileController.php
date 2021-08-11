@@ -523,7 +523,7 @@ class ProfileController extends Controller
                 'notificationTo' =>$notify->notificationFrom,
                 'notificationFrom' =>$notify->notificationTo,
                 'notificationMessage' =>$msg,
-                'type' =>1,
+                'type' =>2,
                 'date' =>$date,
                 'status'=>0,
                 'read'=>0,

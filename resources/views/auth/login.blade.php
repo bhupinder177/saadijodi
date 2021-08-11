@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-7">
                         	<div class="check_Box_cstm">
-                        		<a class="container_box" href="{{URL::to('/forgot-password')}}">Forgot Password ?</a>
+                        		<a class="container_box" href="{{URL::to('/forgot-password')}}">Forgot Password?</a>
                         	</div>
                         </div>
                 	</div>

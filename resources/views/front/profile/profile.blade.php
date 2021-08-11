@@ -1167,7 +1167,7 @@
 
               <div id="pane-B" class="tab-pane fade">
 
-                  <div class="profile_sec_one">
+                  <div class="profile_sec_one ">
                     <div class="edit_Wrapp">
                     <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
                     </div>
@@ -1340,7 +1340,7 @@
               </div>
             </div>
 
-            <div class="profile_sec_one">
+            <div class="profile_sec_one bottom_space">
                     <div class="edit_Wrapp">
                       <a href="{{URL::to('/partner-profile')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
 
@@ -1498,7 +1498,7 @@
 
               <div id="pane-C" class="tab-pane fade">
 
-                <div class="profile_sec_one">
+                <div class="profile_sec_one bottom_space">
                     <div class="edit_Wrapp">
                       <a href="{{URL::to('/contact-details')}}"><span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
 

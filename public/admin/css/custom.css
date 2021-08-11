@@ -99,6 +99,7 @@ ul.ul-list .content span {
 }
 .driverdetails .messagetext {
 	margin: 0;
+	text-align: center;
 }
 .table td .form-group {
 	margin-bottom: 0;
@@ -110,6 +111,18 @@ ul.ul-list .content span {
 
 .table td .form-group .ownerStatuschange {
 	width: 150px;
+}
+
+}
+
+.modal {
+	top: 30% !important;
+}
+
+@media (max-width: 576px) {
+
+.modal {
+	padding: 0 25px !important;
 }
 
 }

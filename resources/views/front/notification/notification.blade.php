@@ -18,6 +18,7 @@
                   <tr>
                     <td style="width:70%"><div class="card-title">{{ $n->notificationMessage }} From <a href="{{URL::to('/user-profile/'.$n->userdetail->uniqueId)}}">{{ $n->userdetail->firstName }} {{ $n->userdetail->lastName }}</a></div></td>
                     <td style="width:30%" class="statustd{{ $n->id }}">
+                      @if($n->type == 1)
                       @if($n->status == 0)
                       <a data-id="{{ $n->id }}" data-status="1" class="notificationStatus notificationStatus{{ $n->id }} btn btn-primary view_n">Accept</a>
                       <a data-id="{{ $n->id }}" data-status="2" class="notificationStatus notificationStatus{{ $n->id }} btn btn-danger dismiss-notification">Reject</a>
@@ -27,6 +28,7 @@
                       @endif
                       @if($n->status == 2)
                       <a  class="btn btn-danger dismiss-notification">Rejected</a>
+                      @endif
                       @endif
 
                     </td>
@@ -58,7 +60,7 @@
                            <div class="modal-header">
                              <h4 class="modal-title">Status</h4>
                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                             
+
                            </div>
                            <div class="modal-body driverdetails">
                              <h5 class="messagetext"></h5>

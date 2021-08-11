@@ -11,6 +11,7 @@ use App\Model\Cities;
 use App\Model\Package;
 use App\Model\UserPackage;
 use App\Model\MessageRoom;
+use App\Model\Coupon;
 use Validator;
 use Session;
 use Curl;
@@ -55,9 +56,28 @@ class MembershipController extends Controller
 
     public function stripePost(Request $request)
     {
+      $pid = Crypt::decrypt($request->packageId);
+      $package = Package::where('id',$pid)->first();
+      $price = $package->price;
+       if(isset($request->coupon))
+       {
+         $res = Coupon::where(array('coupon'=>$request->coupon,'status'=>1))->first();
+         if(!empty($res))
+         {
+            $discount = $res->discount;
+            $tdiscount = $price * 2;
+            $tdiscount = $tdiscount / 100;
+            $price = $price - $tdiscount;
+         }
+         else
+         {
+           $output['formErrors'] ="true";
+           $output['errors'] ="Invalide Coupon code";
+           return response($output);
+         }
+       }
 
-       $pid = Crypt::decrypt($request->packageId);
-       $package = Package::where('id',$pid)->first();
+
       Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
       $customer = \Stripe\Customer::create(array(
@@ -68,10 +88,10 @@ class MembershipController extends Controller
      "address" => ["city" => "ropar", "country" => 'india', "line1" => 'ropar', "line2" => "", "postal_code" => '140001', "state" =>'punjab']
      ));
      $orderID = strtoupper(str_replace('.','',uniqid('', true)));
-    $amount = $package->price * 100;
+    $amount = $price * 100;
     $payment =   Stripe\Charge::create ([
              'customer' => $customer->id,
-              "amount" =>$amount ,
+              "amount" =>$amount,
               "currency" => "inr",
               'metadata' => array(
               'order_id' => $orderID
@@ -85,19 +105,30 @@ class MembershipController extends Controller
         $upackage = new UserPackage([
             'userId' => Auth::User()->id,
             'packageId' => $package->id,
-            'price' => $package->price,
+            'price' => $price,
             'chat' => $package->chat,
             'connects' => $package->connects,
             'phoneNumberDisplay' => $package->phoneNumberDisplay,
             'status'=>1,
         ]);
-         $upackage->save();
+         $success = $upackage->save();
 
       }
 
+      if($payment)
+      {
+        $output['success'] ="true";
+        $output['success_message'] ="Payment  Successfully";
+        $output['delayTime'] = 3000;
+        $output['url'] = url('success');
+      }
+      else
+      {
+        $output['formErrors'] ="true";
+        $output['errors'] ="Profile Is not update";
+      }
+      return response($output);
 
-      Session::flash('success', 'Payment successful!');
-      return Redirect('/success');
     }
 
     public function checkPackage(Request $request)
@@ -154,6 +185,40 @@ class MembershipController extends Controller
     public function success(Request $request)
     {
        return view('front.stripe.thanku');
+    }
+
+    public function ApplyCoupon(Request $request)
+    {
+      if(isset($request->id))
+      {
+        $pid = Crypt::decrypt($request->packageId);
+        $res = Coupon::where(array('coupon'=>$request->id,'status'=>1))->first();
+        if(!empty($res))
+        {
+          $package = Package::where('id',$pid)->first();
+          $price = $package->price;
+          $discount = $res->discount;
+          $tdiscount = $price * 2;
+          $tdiscount = $tdiscount / 100;
+          $price = $price - $tdiscount;
+          $res->payable = $price;
+          $output['success'] ="true";
+          $output['success_message'] ="Coupon Apply Successfully";
+          $output['result'] = $res;
+        }
+        else
+        {
+          $output['formErrors'] ="true";
+          $output['errors'] ="Invalide Coupon code";
+        }
+      }
+      else
+      {
+        $output['formErrors'] ="true";
+        $output['errors'] ="Coupon code is required";
+      }
+      return response($output);
+
     }
 
 

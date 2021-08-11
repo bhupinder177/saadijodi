@@ -4,6 +4,10 @@
 	<title>Saadi</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="{{ asset('front/css/jquery.toast.css') }}">
+		<link rel="stylesheet" href="{{ asset('front/css/custom.css') }}">
+
+	<meta name="csrf-token" content="{{ csrf_token() }}">
     <style type="text/css">
         .panel-title {
         display: inline;
@@ -82,11 +86,17 @@ label {
 	color: #fff;
 	background-color: #e11038;
 }
+input.btn.btn-success.applycoupon {
+    margin-top: 22px;
+}
 				/* new added css */
     </style>
 </head>
 <body>
-
+		<input type="hidden" value="{{ URL::to('/') }}" class="base_url">
+	<div style="display:none" class="preloader">
+	 <div class="loader"></div>
+	</div>
 <div class="container">
 
 
@@ -119,15 +129,15 @@ label {
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' placeholder="please enter name on card" name="name" size='4' type='text'>
+                                    class='form-control' placeholder="Please enter name on card" name="name" size='4' type='text'>
                             </div>
                         </div>
-												<input type="hidden" name="packageId" value="{{ $id }}">
+												<input type="hidden" name="packageId" class="packageId" value="{{ $id }}">
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' placeholder="please enter card number" class='form-control card-number' size='20'
+                                    autocomplete='off' placeholder="Please enter card number" class='form-control card-number' size='20'
                                     type='text'>
                             </div>
                         </div>
@@ -140,15 +150,33 @@ label {
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Expiration Month</label> <input
-                                    class='form-control card-expiry-month' placeholder='MM' size='2'
+                                    class='form-control card-expiry-month' maxlength="2" placeholder='MM' size='2'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Expiration Year</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                    class='form-control card-expiry-year' maxlength="4" placeholder='YYYY' size='4'
                                     type='text'>
                             </div>
                         </div>
+												<div class="form-now row">
+
+
+                            <div class='col-xs-12 col-md-6 form-group'>
+                                <label class='control-label'>Coupon Code</label> <input
+                                    autocomplete='off' placeholder="Please enter coupon code" class='form-control couponcode' name="coupon" size='20'
+                                    type='text'>
+                            </div>
+
+                            <div class='col-xs-12 col-md-6 form-group'>
+                                    <input type="button" value="Apply Coupon" class='btn btn-success applycoupon' >
+                            </div>
+														  <div class='col-xs-12 col-md-12 form-group'>
+														<div class="discount">
+
+														</div>
+													</div>
+											</div>
 
                         <div class='form-row row'>
                             <div class='col-md-12 error form-group hide'>
@@ -159,7 +187,7 @@ label {
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now (${{ $package->price }})</button>
+                                <button class="btn btn-primary btn-lg btn-block paymentbtn" type="submit">Pay Now (${{ $package->price }})</button>
                             </div>
                         </div>
 
@@ -174,7 +202,12 @@ label {
 </body>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script src="{{ asset('front/js/jquery.validate.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script src="{{ asset('front/js/jquery.toast.js') }}"></script>
+<script src="{{ asset('front/js/validation.js') }}"></script>
+<script src="{{ asset('front/js/custom.js') }}"></script>
 <script type="text/javascript">
 $(function() {
     var $form         = $(".require-validation");
@@ -223,7 +256,8 @@ $(function() {
             // insert the token into the form so it gets submitted to the server
             $form.find('input[type=text]').empty();
             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
+            // $form.get(0).submit();
+						formSubmit($form.get(0));
         }
     }
 

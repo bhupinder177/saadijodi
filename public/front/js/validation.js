@@ -237,7 +237,7 @@ $.validator.addMethod("lettersonly", function(value, element) {
        required: "Please enter new password",
      },
      password_confirmation: {
-       required: "Confirm password is required",
+       required: "Please enter Confirm password",
      },
    },
    submitHandler: function (form)

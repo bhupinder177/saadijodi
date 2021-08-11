@@ -6,7 +6,7 @@
     <div class="content">
       <div class="wrapper-1">
           <div class="wrapper-2">
-            <h1>Payment Successfully.</h1>
+            <h2>Payment Successfully.</h2>
 
 
           </div>
