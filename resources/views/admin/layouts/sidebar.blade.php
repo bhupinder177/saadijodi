@@ -47,6 +47,13 @@
 
         </li>
 
+        <li <?php if(request()->segment(2) == "stories" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/stories')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Stories</span></span>
+          </a>
+
+        </li>
+
 
 
   </ul>

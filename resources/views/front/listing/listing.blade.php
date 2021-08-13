@@ -8,28 +8,29 @@
 					<div class="col-md-3">
 
 						<div class="serach_filters">
-							<h3 class="mt-0 mb-4">Refine Search</h3>
+							<h3 class="mt-0 mb-4"> Search</h3>
+		                  <div class="">
+												<form action="{{URL::to('/listing')}}"  method="GET">
 
-		                  <div class="serach_filters_col">
-		                  	<h6 class="text-uppercase font-weight-bold mb-3">Photo Settings</h6>
 			                  <div class="mt-2 mb-2 pl-2">
-			                    <div class="custom-control custom-checkbox">
-			                      <input type="checkbox" class="custom-control-input" id="category-1">
-			                      <label class="custom-control-label" for="category-1">All</label>
+													<div class="form_group_wrap">
+                            <label>Religion</label>
+			                      <select name="religion"  id="category-1">
+	                        <option  value="">Select religion</option>
+	                        <option @if($relation == 1) selected @endif  value="1" >Hindu</option>
+	                        <option @if($relation == 2) selected @endif value="2">Muslim</option>
+	                        <option @if($relation == 3) selected @endif value="3">Christian</option>
+	                        <option @if($relation == 4) selected @endif  value="4">Sikh</option>
+	                        <option @if($relation == 5) selected @endif  value="5">Parsi</option>
+	                    </select>
 			                    </div>
 			                  </div>
-			                  <div class="mt-2 mb-2 pl-2">
-			                    <div class="custom-control custom-checkbox">
-			                      <input type="checkbox" class="custom-control-input" id="category-2">
-			                      <label class="custom-control-label" for="category-2">Visible to all(34)</label>
-			                    </div>
-			                  </div>
-			                  <div class="mt-2 mb-2 pl-2">
-			                    <div class="custom-control custom-checkbox">
-			                      <input type="checkbox" class="custom-control-input" id="category-3">
-			                      <label class="custom-control-label" for="category-3">Protected Phot...(12)</label>
-			                    </div>
-			                  </div>
+												<div class="mt-2 mb-2 pl-2">
+												 <div class="form_group_wrap">
+													<input type="submit" value="Search" class="btn btn-success searchbtn">
+												 </div>
+											 </div>
+										 </form>
 		                  </div>
 
 

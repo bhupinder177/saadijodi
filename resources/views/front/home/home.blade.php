@@ -247,7 +247,7 @@
 
   </div>
 </section>
-
+@if(count($stories) > 0)
 <section class="testimo_wrapp">
   <div class="container">
 
@@ -257,42 +257,17 @@
           <h2>Over 40,000 Happy Stories</h2>
         </div>
          <div class="customer-logos slider">
+           @foreach($stories as $s)
               <div class="slide">
                 <div class="images_slick">
-                  <img src="{{ asset('front/images/2.jpeg') }}">
+                  <img src="{{ asset('stories/'.$s->image) }}">
                 </div>
                 <div class="slick_text">
-                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
-                  <a href="#" class="read_more">Read More</a>
+                  <h4>{{ $s->description }}</h4>
+                  <!-- <a href="#" class="read_more">Read More</a> -->
                 </div>
               </div>
-              <div class="slide">
-                <div class="images_slick">
-                  <img src="{{ asset('front/images/3.jpeg') }}">
-                </div>
-                <div class="slick_text">
-                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
-                  <a href="#" class="read_more">Read More</a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="images_slick">
-                  <img src="{{ asset('front/images/4.jpeg') }}">
-                </div>
-                <div class="slick_text">
-                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
-                  <a href="#" class="read_more">Read More</a>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="images_slick">
-                  <img src="{{ asset('front/images/5.jpeg') }}">
-                </div>
-                <div class="slick_text">
-                  <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries</h4>
-                  <a href="#" class="read_more">Read More</a>
-                </div>
-              </div>
+              @endforeach
            </div>
 
       </div>
@@ -300,6 +275,7 @@
 
   </div>
 </section>
+@endif
 
 <section class="show_macth_wrapp">
   <div class="container">

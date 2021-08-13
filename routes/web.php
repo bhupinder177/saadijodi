@@ -133,6 +133,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('city-update','CityController@update');
         Route::post('city-delete','CityController@delete');
 
+        Route::get('stories','StoriesController@index');
+        Route::get('stories-add','StoriesController@add');
+        Route::post('storiesSave','StoriesController@save');
+        Route::get('stories-edit/{id}','StoriesController@edit');
+        Route::post('stories-update','StoriesController@update');
+        Route::post('stories-delete','StoriesController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

@@ -44,6 +44,7 @@ class ListingController extends Controller
     public function index(Request $request)
     {
         $perpage = 10;
+        $relation ='';
         $gender = UserBasicDetails::where('userId',Auth::user()->id)->first();
 
         if($gender->gender == 1)
@@ -55,12 +56,21 @@ class ListingController extends Controller
            $gender = 1;
         }
 
-        $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereHas('UserBasicDetail',function($w)use($gender){
+        $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
-        })->orderby('id','desc')->paginate($perpage);
+        });
+        if($request->religion)
+        {
+          $relation = $request->religion;
+          $query->WhereHas('UserReligious',function($query) use($relation){
+            $query->where('religion',$relation);
+          });
+        }
+
+        $user = $query->orderby('id','desc')->paginate($perpage);
 
 
-        return view('front.listing.listing',['users'=>$user]);
+        return view('front.listing.listing',['users'=>$user,'relation'=>$relation]);
     }
 
 

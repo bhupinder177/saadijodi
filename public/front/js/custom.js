@@ -30,38 +30,6 @@ jQuery('body').on('keyup', '#email', function(){
 });
 // pagination
 
-// search
-jQuery('body').on('click', '.searchbtn', function(){
-
-var page = 1;
-var pageUrl = jQuery('.searchpagelink').val();
-var search = jQuery('.search').val();
-$.ajax({
-type : 'GET',
-cache : false,
-url : pageUrl,
-data : {page:page,search:search},
-headers : {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-},
-beforeSend  : function () {
-  $(".loader_panel").css('display','block');
-},
-complete: function () {
-  $(".loader_panel").css('display','none');
-},
-dataType: 'json',
-success:function(response){
-if(response.html)
-{
-
-jQuery('.table-responsive').html(response.html);
-
-}
-}
-});
-return false;
-});
 
 
 
@@ -171,25 +139,7 @@ return false;
     });
     // **********************only character******************************
 
-    // tabs open and close
-    $('body').on('click','.nav.nav-pills li a',function()
-  {
-    var h = $(this).attr('href');
-     $('.nav.nav-pills li a').removeClass('active');
-     $('.nav.nav-pills li a').removeClass('show');
-     $(this).addClass('active');
-     $(this).addClass('show');
-      $('.tab-pane').addClass('d-none');
-      $('.tab-pane').removeClass('fade');
-      $('.tab-pane').removeClass('in');
-      $('.tab-pane').removeClass('show');
-      $(h).removeClass('d-none');
-      $(h).addClass('fade');
-      $(h).addClass('in');
-      $(h).addClass('active');
-      $(h).addClass('show');
-  });
-    // tabs open and close
+  
 
     // ********************* Image read********************************
 	$('body').on('change', '.profilechange', function()

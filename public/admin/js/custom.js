@@ -220,6 +220,66 @@ submitHandler: function (form)
 }
 });
 // vehicle add
+// stories add
+$("#addstories").validate({
+  errorClass: "has-error",
+    highlight: function(element, errorClass) {
+        //$(element).parents('.form-group').addClass(errorClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      //  $(element).parents('.form-group').removeClass(errorClass);
+    },
+rules:
+{
+ image: {
+   required: true
+ },
+ description: {
+   required: true,
+ },
+},
+messages:
+{
+ image: {
+   required: "Please select image",
+ },
+ description: {
+   required: "Please enter description",
+ },
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+// Stories add
+// stories add
+$("#updatestories").validate({
+  errorClass: "has-error",
+    highlight: function(element, errorClass) {
+        //$(element).parents('.form-group').addClass(errorClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      //  $(element).parents('.form-group').removeClass(errorClass);
+    },
+rules:
+{
+ description: {
+   required: true,
+ },
+},
+messages:
+{
+ description: {
+   required: "Please enter description",
+ },
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+// Stories add
 
 // country
 $("#addcountry").validate({
