@@ -65,7 +65,7 @@ class StoriesController extends Controller
   public function save(Request $request)
   {
     $validator = Validator::make($request->all(),[
-          'image' => 'required|image',
+          'image' => 'required|mimes:jpeg,jpg,png',
           'description' => 'required|string',
 
         ]);
