@@ -109,11 +109,11 @@
 														@else
 														<span><i class="fa fa-comments"></i> Online now</span>
 														@endif
-														<span data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-user"></i> You & Her</span>
+														<span data-toggle="tooltip" data-placement="bottom" ><i class="fa fa-user"></i> You & Her</span>
 													</div>
 												</div>
 												<div class="listing_details_title">
-													<a class="d_flex_title" href="#">
+													<a class="d_flex_title" href="{{URL::to('/user-profile/'.$user->uniqueId)}}">
 														<?php
 														if(!empty($user->UserBasicDetail))
 														{
@@ -427,7 +427,10 @@
 										</div>
 									</div>
 								</div>
-							<?php } } ?>
+							<?php } } else
+							{ ?>
+								<div class="norecordfound">No record found</div>
+							<?php } ?>
 
 							<div class="pagination">{{ $users->links() }}</div>
 

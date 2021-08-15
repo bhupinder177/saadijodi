@@ -68,10 +68,10 @@ class ProfileController extends Controller
           $diff = date_diff(date_create($dateOfBirth), date_create($today));
           $detail->age = $diff->format('%y');
         }
-        else
-        {
-         $detail->age ='';
-        }
+        // else
+        // {
+        //  $detail->age = 0;
+        // }
 
         return view('front.profile.profile',['images'=>$images,'profileimage'=>$profileimage,'detail'=>$detail,'birth'=>$birth,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education,'contact'=>$contact,'partner'=>$partner]);
     }

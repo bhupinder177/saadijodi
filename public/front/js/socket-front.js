@@ -80,17 +80,11 @@ $(function () {
 
   // show new message alert on inactive user screen
   socket.on('allusermessage', function(room, sender, receiver, data) {
-    // var senderId = $('.typing'+room).parents('.chat-div').attr('data-sender');
-    // var receiverId = $('.typing'+room).parents('.chat-div').attr('data-receiver');
-    // var roomIdd = $('.typing'+room).parents('.chat-active').attr('data-room');
+
     var senderId = $('.chat-div').attr('data-sender');
     var receiverId = $('.chat-div').attr('data-receiver');
     var roomIdd = $('.chat-active').attr('data-room');
-    // console.log(senderId);
-    // console.log(receiverId);
-    // console.log(roomIdd);
-    // console.log(sender+' sender '+senderId+' '+receiver+' receiver '+receiverId);
-    // var ko = isOnScreen( jQuery( '#tab15-tab' ) );console.log('hjjjjj '+ko);
+
     if(($('.personli'+receiverId).hasClass('active') != true) && (receiver == senderId))
     {
       var currentCount = $.trim($('.personli'+receiverId+room).find('.msg_count').html());
@@ -99,16 +93,10 @@ $(function () {
       else
       currentCount = currentCount;
       $('.personli'+receiverId+room).parent().prepend($('.personli'+receiverId+room).clone(true,true));
-      // $('.personli'+receiverId+room).addClass('un-read-message');
 
       $('.unread'+receiverId+room).removeClass('d-none');
-      // $('.personli'+receiverId+room).find('.msg_count').html(parseInt(currentCount)+1);
       $('.unread'+receiverId+room).html(parseInt(currentCount)+1);
       $('.personli'+receiverId+room).last().remove();
-      // $('.msg_badge').html(parseInt($('.msg_badge').html())+1);
-      // setTimeout(function(){
-      //   $.getScript(SITE_URL+"/js/chat-plugin.js");
-      // },500);
     }
     if(($('.personli'+receiverId+room).hasClass('active') == true) && (receiver == senderId))
     {
@@ -118,7 +106,7 @@ $(function () {
 
 
 // readMessage
-$(document).on('click', '.chathistoryul,.chatinputForm', function () {
+$(document).on('click', '.msg_card_body,.chatinputForm', function () {
 var room = $('.chat-active').attr('data-room');
 var receiver = $('.chat-active').attr('data-receiver');
 var currentCount = $.trim($('.unread'+receiver+room).html());
@@ -304,7 +292,7 @@ $.ajax({
 
   function isOnScreen(elem,className) {
 
-  
+
     // if the element doesn't exist, abort
     $(window).scrollTop($(this).scrollTop());
    $("[data-mes='"+className+"']")[0].scrollIntoView();return false

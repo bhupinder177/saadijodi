@@ -74,4 +74,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Model\UserOnline','userId','id');
     }
 
+    public function online(){
+      return $this->belongsTo('App\Model\UserOnline','id','userId');
+    }
+
 }

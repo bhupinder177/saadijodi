@@ -96,7 +96,7 @@ class GlobalFunctions {
 
       public static function unreadmessage($id,$roomId)
       {
-        return $unread = Message::where(array("roomId"=>$roomId,'userId'=>$id,"is_read"=>0))->count();
+        return $unread = Message::where(array('roomId'=>$roomId,'userId'=>$id,"is_read"=>0))->count();
       }
 
 
@@ -201,6 +201,12 @@ class GlobalFunctions {
       public static function getnotificationCount($userId)
       {
         return $count = Notification::where(array('notificationTo'=>$userId,"read"=>0))->count();
+
+      }
+
+      public static function unreadmessageHeader($id)
+      {
+        return $unread = Message::where(array('userId'=>$id,"is_read"=>0))->count();
 
       }
 

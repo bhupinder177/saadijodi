@@ -59,7 +59,7 @@ class MessageController extends Controller
      }
     }
     $messages = array();
-    $rooms = MessageRoom::with('user','oppositeUser')->where('userId',$id)->orwhere('oppositeUserId',$id)->orderby('last_message_at','desc')->get();
+    $rooms = MessageRoom::with('user','oppositeUser','user.online','oppositeUser.online')->where('userId',$id)->orwhere('oppositeUserId',$id)->orderby('last_message_at','desc')->get();
     if(count($rooms) > 0)
     {
     $messages = Message::where('roomid',$rooms[0]->roomId)->orderBy('id','desc')->limit(10)->get();

@@ -8,23 +8,24 @@
 
       <div class="col-md-4 chat">
         <div class="card mb-sm-3 mb-md-0 contacts_card">
-                    <div class="card-header">
+                    <!-- <div class="card-header">
                         <div class="input-group">
                             <input type="text" placeholder="Search..." name="" class="form-control search">
                             <div class="input-group-prepend">
                                 <span class="input-group-text search_btn"><i class="fa fa-search"></i></span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card-body contacts_body">
                         <ui class="contacts">
                           @if(count($rooms) > 0)
+
                           @foreach($rooms as $key =>$room)
                           <!-- user show-->
                           @if($room->user->id == Auth::user()->id)
                            @php $unread = App\Helpers\GlobalFunctions::unreadmessage($room->oppositeUser->id,$room->roomId); @endphp
                            @php $image = App\Helpers\GlobalFunctions::getImage($room->oppositeUser->id); @endphp
-                          <li class="person @if($key == 0) active @endif personli{{ $room->oppositeUser->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->oppositeUser->id }}" data-room="{{ $room->roomId}}">
+                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->oppositeUser->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->oppositeUser->id }}" data-room="{{ $room->roomId}}">
                               <div class="d-flex bd-highlight">
                                   <div class="img_cont">
                                     @if(!empty($image))
@@ -32,11 +33,28 @@
                                     @else
                                     <img src="{{ asset('front/images/_D.jpg') }}" class="rounded-circle user_img">
                                     @endif
-
-                                      <span class="online_icon"></span>
+                                    @php
+                                    $date = Date('Y-m-d H:i:s');
+                                    $time = 0;
+                                    @endphp
+                                    <?php if(isset($room->oppositeUser->online))
+                                      {
+                                      $time = strtotime($date) - strtotime($room->oppositeUser->online->date);
+                                      }
+                                      else
+                                      {
+                                      $time = 22;
+                                      }
+                                      ?>
+                                    @if($time > 20)
+                                    <span class="offline_icon"></span>
+                                    @else
+                                    <span class="online_icon"></span>
+                                    @endif
                                   </div>
                                   <div class="user_info">
                                       <span>{{ $room->oppositeUser->firstName }}</span>
+                                        <span class="@if($unread == 0) d-none @endif unread{{ $room->oppositeUser->id }}{{ $room->roomId }} msg_count unread">{{ $unread }}</span>
                                   </div>
                               </div>
                           </li>
@@ -48,7 +66,7 @@
                            @php $unread = App\Helpers\GlobalFunctions::unreadmessage($room->user->id,$room->roomId); @endphp
                            @php $image = App\Helpers\GlobalFunctions::getImage($room->user->id); @endphp
 
-                          <li class="person @if($key == 0) active @endif personli{{ $room->user->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->user->id }}" data-room="{{ $room->roomId}}">
+                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->user->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->user->id }}" data-room="{{ $room->roomId}}">
                               <div class="d-flex bd-highlight">
                                   <div class="img_cont">
                                     @if(!empty($image))
@@ -56,11 +74,31 @@
                                     @else
                                     <img src="{{ asset('front/images/_D.jpg') }}" class="rounded-circle user_img">
                                     @endif
+                                    @php
+                                    $date = Date('Y-m-d H:i:s');
+                                    $time = 0;
+                                    @endphp
+                                  <?php if(isset($room->user->online))
+                                    {
+                                    $time = strtotime($date) - strtotime($room->user->online->date);
+                                    }
+                                    else
+                                    {
+                                    $time = 22;
+                                    }
+                                    ?>
+                                    @if($time > 20)
+                                    <span class="offline_icon"></span>
+                                    @else
+                                    <span class="online_icon"></span>
+                                    @endif
 
                                       <span class="online_icon"></span>
                                   </div>
                                   <div class="user_info">
                                       <span>{{ $room->user->firstName }}</span>
+                                      <span class="@if($unread == 0) d-none @endif unread{{ $room->user->id }}{{ $room->roomId }} msg_count unread">{{ $unread }}</span>
+
                                   </div>
                               </div>
                           </li>
@@ -90,6 +128,24 @@
                         @else
                         <img src="{{ asset('front/images/_D.jpg') }}" class="rounded-circle chatwithimage user_img">
                         @endif
+                        @php
+                        $date = Date('Y-m-d H:i:s');
+                        $time2 = 0;
+                        @endphp
+                        <?php if(isset($rooms[0]->oppositeUser->online))
+                          {
+                          $time2 = strtotime($date) - strtotime($rooms[0]->oppositeUser->online->date);
+                          }
+                          else
+                          {
+                          $time2 = 22;
+                          }
+                          ?>
+                        @if($time2 > 20)
+                        <span class="offline_icon"></span>
+                        @else
+                        <span class="online_icon"></span>
+                        @endif
                         @endif
                         @if($rooms[0]->oppositeUser->id == Auth::user()->id)
                         @php $image = App\Helpers\GlobalFunctions::getImage($rooms[0]->user->id); @endphp
@@ -98,7 +154,24 @@
                         @else
                         <img src="{{ asset('front/images/_D.jpg') }}" class="rounded-circle chatwithimage user_img">
                         @endif
+                        @php
+                        $date = Date('Y-m-d H:i:s');
+                        $time1 = 0;
+                        @endphp
+                        <?php if(isset($rooms[0]->user->online))
+                          {
+                          $time1 = strtotime($date) - strtotime($rooms[0]->user->online->date);
+                          }
+                          else
+                          {
+                          $time1 = 22;
+                          }
+                          ?>
+                        @if($time1 > 20)
+                        <span class="offline_icon"></span>
+                        @else
                         <span class="online_icon"></span>
+                        @endif
                         @endif
                         @endif
                       </div>
@@ -121,7 +194,7 @@
                   </div>
               </div>
 
-              <div class="card-body msg_card_body @if(count($rooms) > 0) msg_card_body{{ $rooms[0]->roomId }} @endif" data-offset="{{ $offset }}" data-room="@if(count($rooms) > 0){{ $rooms[0]->roomId }} @endif">
+              <div class="card-body msg_card_body chat-active @if(count($rooms) > 0) msg_card_body{{ $rooms[0]->roomId }} @endif" data-offset="{{ $offset }}" @if(count($rooms) > 0) @if($rooms[0]->oppositeUser->id == Auth::user()->id) data-receiver="{{ $rooms[0]->user->id }}" @endif @if($rooms[0]->user->id == Auth::user()->id) data-receiver="{{ $rooms[0]->oppositeUser->id }}" @endif @endif data-room="@if(count($rooms) > 0){{ $rooms[0]->roomId }} @endif">
                   @if(count($messages) > 0)
                   @foreach($messages as $m)
                   @if($m->userId == Auth::user()->id)
