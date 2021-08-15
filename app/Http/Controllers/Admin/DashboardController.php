@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User;
 use App\Model\Package;
+use App\Model\Coupon;
+use App\Model\Stories;
 use Str, DB, Auth;
 use Validator;
 
@@ -20,7 +22,9 @@ class DashboardController extends Controller
             $this->prefix = request()->route()->getPrefix();
         $user = User::where('type',2)->count();
         $package = Package::count();
-        return view('admin.dashboard.dashboard',['user'=>$user,'package'=>$package,'prefix'=>$this->prefix]);
+        $coupon = Coupon::count();
+        $stories = Stories::count();
+        return view('admin.dashboard.dashboard',['stories'=>$stories,'user'=>$user,'coupon'=>$coupon,'package'=>$package,'prefix'=>$this->prefix]);
 
     }
 
