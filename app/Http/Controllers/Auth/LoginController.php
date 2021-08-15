@@ -76,7 +76,7 @@ class LoginController extends Controller
      else
      {
 
-       $credentials = ['email' => $request->input('email'), 'password' => $request->input('password')];
+       $credentials = ['email' => $request->input('email'), 'password' => $request->input('password'),'type'=>2];
        $web = $request->input('web');
        $authSuccess = Auth::attempt($credentials, $request->has('remember'));
        $user = User::where('email',$request->input('email'))->first();

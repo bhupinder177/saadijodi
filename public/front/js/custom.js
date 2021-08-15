@@ -8,11 +8,17 @@ var base_url = $('.base_url').val();
  $( function() {
   $('.dateofbirth').datepicker({
      dateFormat: 'dd-mm-yy',
-     maxDate: 0,
-     changeMonth: true,
-     changeYear: true,
+     minDate: new Date(1900,1-1,1), maxDate: '-18Y',
+     defaultDate: new Date(1970,1-1,1),
+
+     // maxDate: 0,
+     //changeMonth: true,
+     //changeYear: true,
      // yearRange: "1950:2020"
-     yearRange: "1950:"+(new Date().getFullYear()),
+     //yearRange: "1950:"+(new Date().getFullYear()),
+     changeMonth: true,
+      changeYear: true,
+      yearRange: '-110:-18',
      onSelect: function (e) {
         var id = $(this).attr('id');
          $('#'+id+'-error').html('');
@@ -139,7 +145,7 @@ jQuery('body').on('keyup', '#email', function(){
     });
     // **********************only character******************************
 
-  
+
 
     // ********************* Image read********************************
 	$('body').on('change', '.profilechange', function()

@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\URL;
-use Validator;
+// use Validator;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -85,7 +86,9 @@ class CityController extends Controller
      {
 
        $this->prefix = request()->route()->getPrefix();
-
+       $check = Cities::where('name', 'like', '%' . $request->name . '%')->where('state_id',$request->state_id)->first();
+       if(!empty($check))
+       {
        $user = new Cities([
            'name' => $request->name,
            'state_id' => $request->state_id,
@@ -104,12 +107,21 @@ class CityController extends Controller
        $response['resetform'] ='true';
        return response($response);
      }
-     else
-     {
+      else
+      {
        $response['formErrors'] = true;
        $response['delayTime']     = '3000';
        $response['errors'] = 'City Not Added.';
        return response($response);
+       }
+     }
+     else
+     {
+        $response['formErrors'] = true;
+        $response['delayTime']     = '3000';
+        $response['errors'] = 'City already Exist.';
+        return response($response);
+
      }
    }
 

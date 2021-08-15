@@ -49,9 +49,9 @@
 								<span class="follow_fa">
 									<i class="fa fa-linkedin"></i>
 								</span>
-								<span class="follow_fa">
+								<!-- <span class="follow_fa">
 									<i class="fa fa-pinterest-p"></i>
-								</span>
+								</span> -->
 								<span class="follow_fa">
 									<a target="_blank" href="http://www.instagram.com/saadijodi">
 									<i class="fa fa-instagram"></i>

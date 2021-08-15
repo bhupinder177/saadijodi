@@ -64,7 +64,17 @@ class StateController extends Controller
   {
     $this->prefix = request()->route()->getPrefix();
       $country = Country::where('id',$id)->first();
-    return view('admin.state.add',['prefix'=>$this->prefix,'country'=>$country]);
+      $zones_array = array();
+      $timestamp = time();
+      $default_timezone = date_default_timezone_get();
+      foreach (timezone_identifiers_list() as $key => $zone)
+     {
+      date_default_timezone_set($zone);
+      $zones_array[$key]['zone'] = $zone;
+      $zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
+       }
+       date_default_timezone_set($default_timezone);
+    return view('admin.state.add',['prefix'=>$this->prefix,'country'=>$country,'zones'=>$zones_array]);
   }
 
   public function save(Request $request)
@@ -168,9 +178,18 @@ class StateController extends Controller
    {
      $id = Crypt::decrypt($id);
      $this->prefix = request()->route()->getPrefix();
-
+     $zones_array = array();
+     $timestamp = time();
+     $default_timezone = date_default_timezone_get();
+     foreach (timezone_identifiers_list() as $key => $zone)
+     {
+     date_default_timezone_set($zone);
+     $zones_array[$key]['zone'] = $zone;
+     $zones_array[$key]['diff_from_GMT'] = date('P', $timestamp);
+      }
+      date_default_timezone_set($default_timezone);
      $result = States::where(array("id"=>$id))->first();
-     return view('admin.state.edit',['result'=>$result,'prefix'=>$this->prefix]);
+     return view('admin.state.edit',['result'=>$result,'prefix'=>$this->prefix,'zones'=>$zones_array]);
    }
 
 

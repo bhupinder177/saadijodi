@@ -369,7 +369,7 @@
 
 
 											<div class="conect_nwwed conect_nwwed{{ $user->id }}">
-												<a data-id="{{ $user->id }}" class="chatRoomJoin"><i class="fa fa-comment"></i></a>
+												<a hand data-id="{{ $user->id }}" class="chatRoomJoin"><i class="fa fa-comment"></i></a>
 												<p>Chat</p>
 											</div>
 

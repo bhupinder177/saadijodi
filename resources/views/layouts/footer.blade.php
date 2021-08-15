@@ -9,13 +9,20 @@
           <h3>Follow Us</h3>
           <ul>
             <li>
+              <a target="_blank" href="http://www.facebook.com/saadijodi">
               <i class="fa fa-facebook-square"></i>
+            </a>
             </li>
             <li>
               <i class="fa fa-twitter-square"></i>
             </li>
             <li>
               <i class="fa fa-linkedin"></i>
+            </li>
+            <li>
+              <a target="_blank" href="http://www.instagram.com/saadijodi">
+              <i class="fa fa-instagram"></i>
+              </a>
             </li>
           </ul>
         </div>
@@ -33,16 +40,7 @@
             <li>
               <i class="fa fa-angle-right"></i><a href="{{URL::to('/term-conditions')}}">Terms and Condition</a>
             </li>
-            <!-- <li>
-              <i class="fa fa-angle-right"></i><a href="#">Success Stories</a>
-            </li> -->
-            <!-- <li>
-              <i class="fa fa-angle-right"></i><a href="#">Mobile Matrimony</a>
-            </li> -->
 
-            <!-- <li>
-              <i class="fa fa-angle-right"></i><a href="#">Member Demograph</a>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -56,9 +54,9 @@
             <li>
               <i class="fa fa-angle-right"></i><a href="{{URL::to('/privacy-policy')}}">Privacy Policy</a>
             </li>
-            <li>
+            <!-- <li>
               <i class="fa fa-angle-right"></i><a href="{{URL::to('/refund-policy')}}">Refund Policy</a>
-            </li>
+            </li> -->
 
 
           </ul>

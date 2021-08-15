@@ -28,11 +28,20 @@
                       </div>
 
                       <div class="col-sm-6">
-                          <div class="form-group">
-                            <label>Timezone <span class="red">*</span></label>
-      <input type="text" placeholder="Please enter timezone" value="{{ $result->timezone }}" class="form-control " name="timezone"   id="timezone">
-                          </div>
-                      </div>
+                      <div class="form-group">
+                         <label>Time Zone <span class="red">*</span></label>
+                         <select   name="timezone"  id="timezone" class="form-control" >
+                           <option value="">Select timezone</option>
+                           @if(!empty($zones))
+                           @foreach($zones as $z)
+                           @php $time = $z['zone'].' '.$z['diff_from_GMT'] @endphp
+                           <option @if($time == $result['timezone']) selected @endif value="{{ $z['zone'] }} {{ $z['diff_from_GMT'] }}">{{ $z['zone'] }} {{ $z['diff_from_GMT'] }} </option>
+                           @endforeach
+                           @endif
+                         </select>
+                       </div>
+                     </div>
+
 
 
 
