@@ -48,13 +48,45 @@
 								<div class="listing_st">
 									<div class="row">
 										<div class="col-md-3">
-											<div class="listing_imgs">
+											<!-- <div class="listing_imgs">
 												@if(!empty($user->UserImage->image))
 				                   <img src="{{ asset('profiles/'.$user->UserImage->image) }}" >
 												@else
 												<img src="{{ asset('front/images/nofound.png') }}" >
 				                @endif
+											</div> -->
+											<!-- slider -->
+												@if(count($user->UserImage) > 0)
+											<div class="listing_imgs">
+											<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+											  <div class="carousel-inner">
+													@foreach($user->UserImage as $k=>$img)
+											    <div class="carousel-item @if($k == 0) active @endif">
+											      <img class="d-block w-100" src="{{ asset('profiles/'.$img->image) }}" alt="First slide">
+											    </div>
+													@endforeach
+											  </div>
+											  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+											    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+											    <span class="sr-only">Previous</span>
+											  </a>
+											  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+											    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+											    <span class="sr-only">Next</span>
+											  </a>
 											</div>
+										</div>
+										<!-- slider -->
+										<!-- no image -->
+										@else
+									 <div class="listing_imgs">
+											<img src="{{ asset('front/images/nofound.png') }}" >
+										</div>
+										<!-- no image -->
+
+										<!-- slider -->
+										@endif
+
 										</div>
 										<div class="col-md-6">
 											<div class="listing_details">

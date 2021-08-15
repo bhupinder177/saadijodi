@@ -59,7 +59,7 @@ class User extends Authenticatable
     }
     public function UserImage()
     {
-        return $this->hasOne('App\Model\UserImages','userId','id')->where('isProfile',1);
+        return $this->hasMany('App\Model\UserImages','userId','id')->orderby('isProfile','desc');
     }
     public function UserLocation()
     {
