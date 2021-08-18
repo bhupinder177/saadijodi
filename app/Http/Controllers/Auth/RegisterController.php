@@ -152,7 +152,7 @@ class RegisterController extends Controller
        {
          $token = Crypt::encryptString($request->email);
          $mailData = array('link'=>URL::to('/verification?token='.$token),'name'=>$request->firstName);
-         $emailresult = CommonHelper::sendmail('nitindeveloper23@gmail.com', 'Sadi jodi', $request->email,$request->firstName, 'Email verification' , ['data'=>$mailData], 'emails.verification','',$attachment=null);
+         $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $request->email,$request->firstName, 'Email verification' , ['data'=>$mailData], 'emails.verification','',$attachment=null);
        }
       //
 

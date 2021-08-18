@@ -63,7 +63,7 @@ class ResetPasswordController extends Controller
 
       $mailData = array('link'=>URL::to('/forgotPassword-verifiy?email='.$emailcrypt),'name'=>$user->firstName);
 
-       $emailresult = CommonHelper::sendmail('nitindeveloper23@gmail.com', 'Saddi Jodi', $request->email,$user->firstName, 'Reset Password' , ['data'=>$mailData], 'emails.forgotpassword','',$attachment=null);
+       $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Saddi Jodi', $request->email,$user->firstName, 'Reset Password' , ['data'=>$mailData], 'emails.forgotpassword','',$attachment=null);
        if($emailresult)
        {
          $response['success'] ="true";
