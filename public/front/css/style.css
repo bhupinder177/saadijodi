@@ -1935,7 +1935,7 @@ footer {
 }
 .page-wrapper_login {
 	background-size: cover;
-	height: 100vh;
+	height: auto;
 	background-repeat: no-repeat;
 	background-position: bottom center;
 }
