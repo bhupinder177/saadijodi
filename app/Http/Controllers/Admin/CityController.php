@@ -87,7 +87,7 @@ class CityController extends Controller
 
        $this->prefix = request()->route()->getPrefix();
        $check = Cities::where('name', 'like', '%' . $request->name . '%')->where('state_id',$request->state_id)->first();
-       if(!empty($check))
+       if(empty($check))
        {
        $user = new Cities([
            'name' => $request->name,
