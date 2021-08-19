@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group([
-    'prefix' => 'auth'
-], function () {
+
 
     Route::post('login', 'ApiController@login');
     Route::post('signup', 'ApiController@signup');
@@ -29,4 +27,3 @@ Route::group([
 
 
     });
-});
