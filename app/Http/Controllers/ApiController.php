@@ -25,10 +25,16 @@ class ApiController extends Controller
               'firstName' => 'required|string',
               'lastName' => 'required|string',
               'password' => 'required|string|confirmed',
-              'phone' => 'required',
+              'phone' => 'required|unique:users',
               'gender' => 'required',
 
           ]);
+          if ($validator->fails())
+          {
+            return response()->json(['error'=>$validator->errors()], 401);
+          }
+          else
+         {
           $last = User::orderby('id','desc')->first();
           if(!empty($last->uniqueNo))
           {
@@ -94,41 +100,63 @@ class ApiController extends Controller
              'message' => 'User is not created'
          ], 401);
        }
+     }
     }
 
 
     public function login(Request $request)
     {
 
-        $request->validate([
-            'email' => 'required|string',
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
+        if ($validator->fails())
+        {
+          return response()->json(['error'=>$validator->errors()], 401);
+        }
+        else
+       {
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials))
+        {
             return response()->json([
                "success"=>"false",
                 'message' => 'Invalid email and Password'
             ], 201);
-
+       }
+       else
+       {
         $user = $request->user();
+        if($user->status == 1)
+        {
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);
           $token->save();
-          $userdetail = User::where('email',$request->email)->first();
+
         return response()->json([
             'success'=> "true",
             "message"=>"Login Successfully",
-            "result"=>$userdetail,
+            "result"=>$user,
             'token_type' => 'Bearer',
             'access_token' => $tokenResult->accessToken,
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
         ]);
+         }
+         else
+         {
+           return response()->json([
+              "success"=>"false",
+               'message' => 'Account is not Active.'
+           ], 201);
+         }
+        }
+      }
     }
 
 
