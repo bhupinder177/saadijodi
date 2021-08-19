@@ -31,7 +31,7 @@ class ApiController extends Controller
           ]);
           if ($validator->fails())
           {
-            return response()->json(['error'=>$validator->errors()], 401);
+            return response()->json(['success'=>'false','error'=>$validator->errors()]);
           }
           else
          {
@@ -91,14 +91,14 @@ class ApiController extends Controller
         return response()->json([
             "success"=>"true",
             'message' => 'Registered Successfully.Kindly check your Email and activate your account'
-        ], 201);
+        ]);
        }
        else
        {
          return response()->json([
              "success"=>"false",
              'message' => 'User is not created'
-         ], 401);
+         ]);
        }
      }
     }
@@ -114,7 +114,7 @@ class ApiController extends Controller
         ]);
         if ($validator->fails())
         {
-          return response()->json(['error'=>$validator->errors()], 401);
+          return response()->json(['success'=>'false','error'=>$validator->errors()]);
         }
         else
        {
@@ -124,7 +124,7 @@ class ApiController extends Controller
             return response()->json([
                "success"=>"false",
                 'message' => 'Invalid email and Password'
-            ], 201);
+            ]);
        }
        else
        {
@@ -152,8 +152,8 @@ class ApiController extends Controller
          {
            return response()->json([
               "success"=>"false",
-               'message' => 'Account is not Active.'
-           ], 201);
+               'message' => 'Please verify the email -'.$user->email. ' to activate your account',
+           ]);
          }
         }
       }
@@ -213,7 +213,7 @@ class ApiController extends Controller
             return response()->json([
                 'success'=>"false",
                 'message' => 'email is not send'
-            ], 200);
+            ]);
            }
        }
        else
@@ -221,7 +221,7 @@ class ApiController extends Controller
          return response()->json([
             'success'=>"false",
             'message' => 'Email is Not Exist'
-          ], 200);
+          ]);
        }
       }
     }
@@ -255,7 +255,7 @@ class ApiController extends Controller
                  return response()->json([
                   'success'=>"false",
                   'message' => 'Password is Not Update'
-                ], 200);
+                ]);
                }
 
            }
