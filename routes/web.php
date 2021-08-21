@@ -161,6 +161,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('mothertongue-update','MotherTongueController@update');
         Route::post('mothertongue-delete','MotherTongueController@delete');
 
+        Route::get('qualification','QualificationController@index');
+        Route::get('qualification-add','QualificationController@add');
+        Route::post('qualificationSave','QualificationController@save');
+        Route::get('qualification-edit/{id}','QualificationController@edit');
+        Route::post('qualification-update','QualificationController@update');
+        Route::post('qualification-delete','QualificationController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

@@ -71,6 +71,12 @@
           </a>
 
         </li>
+        <li <?php if(request()->segment(2) == "qualification" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/qualification')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Qualifications</span></span>
+          </a>
+
+        </li>
 
 
 
