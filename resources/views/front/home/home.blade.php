@@ -196,24 +196,24 @@
       <div class="col-md-4">
         <div class="choose_box_wrap">
           <img src="{{ asset('front/images/info.svg') }}">
-          <h5>Get Complete Family Information</h5>
-          <p>You will find detailed family information in every profile. Knowing the family will help you take the next step with confidence.</p>
+          <h5>Privacy Policy</h5>
+          <p>Control the unacceptable access to photos and personal details</p>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="choose_box_wrap">
           <img src="{{ asset('front/images/match.svg') }}">
-          <h5>Get Complete Family Information</h5>
-          <p>You will find detailed family information in every profile. Knowing the family will help you take the next step with confidence.</p>
+          <h5>Classified</h5>
+          <p>Each profile is categorized by religion, community, and language.</p>
         </div>
       </div>
 
       <div class="col-md-4">
         <div class="choose_box_wrap">
           <img src="{{ asset('front/images/connection.png') }}">
-          <h5>Get Complete Family Information</h5>
-          <p>You will find detailed family information in every profile. Knowing the family will help you take the next step with confidence.</p>
+          <h5>100% verified profiles</h5>
+          <p>Personal visit by our special agents to avoid fake profiles.</p>
         </div>
       </div>
 

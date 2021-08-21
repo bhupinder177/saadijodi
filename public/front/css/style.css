@@ -2039,9 +2039,15 @@ footer {
 	padding: 20px;
 	border-top: 1px solid #c8bfbf;
 }
-.custom_cc_b .login_rg-b {
+/* .custom_cc_b .login_rg-b {
 	display: inline-block;
 	width: 180px;
+	text-align: center;
+	margin-bottom: 10px;
+} */
+.custom_cc_b .login_rg-b {
+	display: inline-block;
+	width: 100%;
 	text-align: center;
 	margin-bottom: 10px;
 }
@@ -2092,4 +2098,29 @@ footer {
 	.go-home {
 		margin-bottom: 20px;
 	}
+}
+
+
+@media (max-width: 991px) {
+
+.custom_cc_b .login_rg-b {
+	margin-bottom: 10px;
+}
+
+}
+
+@media (max-width: 767px) {
+
+.custom_cc {
+	padding-bottom: 20px;
+	border-top: 1px solid #c8bfbf;
+	padding-top: 15px;
+}
+.header_bg .navbar-nav .nav-item .nav-link {
+	color: #fa2750;
+}
+.custom_cc_b .login_rg-b {
+	width: 100%;
+}
+
 }
