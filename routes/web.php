@@ -119,14 +119,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('country-update','CountryController@update');
         Route::post('country-delete','CountryController@delete');
 
-        Route::get('state/{id}','StateController@index');
+        Route::get('state','StateController@index');
         Route::get('state-add/{id}','StateController@add');
         Route::post('stateSave','StateController@save');
         Route::get('state-edit/{id}','StateController@edit');
         Route::post('state-update','StateController@update');
         Route::post('state-delete','StateController@delete');
 
-        Route::get('city/{id}','CityController@index');
+        Route::get('city','CityController@index');
         Route::get('city-add/{id}','CityController@add');
         Route::post('citySave','CityController@save');
         Route::get('city-edit/{id}','CityController@edit');

@@ -15,7 +15,7 @@
         <tr class="data">
             <td>{{ ++$srNo }}</td>
             <td>{{ $u->name }}</td>
-            <td><a href="{{ url($prefix.'/state/'.$u->id)}}" class="btn btn-success">Add State</a></td>
+            <td><a href="{{ url($prefix.'/state?id='.$u->id)}}" class="btn btn-success">Add State</a></td>
 
             <td >
              <a href="{{url($prefix.'/country-edit/'.Crypt::encrypt($u->id))}}"><i class="fa fa-edit"></i></a>

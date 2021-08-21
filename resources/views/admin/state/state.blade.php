@@ -11,12 +11,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
-              <form action="{{URL::to('/state?id='.$id)}}" method="get">
+              <form action="{{URL::to($prefix.'/state?id='.$id)}}" method="get">
                 <div class="row">
             <div class="col-md-7">
               <div class="form-group">
             <input class="form-control search" placeholder="Search" type="text">
-            <input type="hidden" class="searchpagelink" value="{{URL::to('/state?id='.$id)}}">
+            <input type="hidden" class="searchpagelink" value="{{URL::to($prefix.'/state?id='.$id)}}">
               </div>
             </div>
             <div class="col-3 col-md-2">
@@ -26,7 +26,7 @@
             </div>
             <div class="col-3 col-md-2">
               <div class="form-group">
-            <a class="btn btn-success getreset" value="Reset" data-href="{{URL::to('/state?id='.$id)}}">Reset</a>
+            <a class="btn btn-success getreset" value="Reset" data-href="{{URL::to($prefix.'/state?id='.$id)}}">Reset</a>
               </div>
             </div>
            </div>
@@ -59,7 +59,7 @@
                             <td>{{ ++$srNo }}</td>
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->timezone }}</td>
-  <td><a href="{{ url($prefix.'/city/'.$u->id)}}" class="btn btn-success">Add City</a></td>
+  <td><a href="{{ url($prefix.'/city?id='.$u->id)}}" class="btn btn-success">Add City</a></td>
                             <td >
                              <a href="{{url($prefix.'/state-edit/'.Crypt::encrypt($u->id))}}"><i class="fa fa-edit"></i></a>
                              <a class="deleterecord" data-link="{{url($prefix.'/state-delete')}}" data-id="{{ $u->id }}"><i class="fa fa-trash deleterecord"  data-link="{{url($prefix.'/state-delete')}}"  data-id="{{ $u->id }}" aria-hidden="true"></i></a>

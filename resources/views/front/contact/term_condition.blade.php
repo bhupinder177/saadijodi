@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="hdng">
-          <h1>Term & Conditions</h1>
+          <h1>Terms & Conditions</h1>
         </div>
       </div>
       <div class="col-md-12">

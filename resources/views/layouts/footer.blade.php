@@ -4,7 +4,8 @@
       <div class="col-md-6">
         <div class="footer_wrap">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting <br>industry. Lorem Ipsum has been the industry's standard dummy<br> text ever since the 1500 swhen an unknown printer took a galley<br> of type and scrambled it to make a type specimen book.
+            Saadijodi.com is the leading matrimonial website, founded with an aim to please people with their perfect match. It is a social networking site helps you to connect different religion and region. We are here to serve worldwide customers and successfully we’ve touched more than 1000+ lives.
+
           </p>
           <h3>Follow Us</h3>
           <ul>

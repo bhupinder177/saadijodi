@@ -64,10 +64,11 @@ class MembershipController extends Controller
          $res = Coupon::where(array('coupon'=>$request->coupon,'status'=>1))->first();
          if(!empty($res))
          {
-            $discount = $res->discount;
-            $tdiscount = $price * 2;
-            $tdiscount = $tdiscount / 100;
-            $price = $price - $tdiscount;
+           $price = $package->price;
+           $discount = $res->discount;
+           $tdiscount = $discount * $price;
+           $tdiscount = $tdiscount / 100;
+           $price = $price - $tdiscount;
          }
          else
          {
@@ -198,12 +199,12 @@ class MembershipController extends Controller
           $package = Package::where('id',$pid)->first();
           $price = $package->price;
           $discount = $res->discount;
-          $tdiscount = $price * 2;
+          $tdiscount = $discount * $price;
           $tdiscount = $tdiscount / 100;
           $price = $price - $tdiscount;
           $res->payable = $price;
           $output['success'] ="true";
-          $output['success_message'] ="Coupon Apply Successfully";
+          $output['success_message'] ="Coupon Applied Successfully";
           $output['result'] = $res;
         }
         else

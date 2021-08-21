@@ -17,7 +17,7 @@
             <td>{{ ++$srNo }}</td>
             <td>{{ $u->name }}</td>
                 <td>{{ $u->timezone }}</td>
-<td><a href="{{ url($prefix.'/city/'.$u->id)}}" class="btn btn-success">Add City</a></td>
+<td><a href="{{ url($prefix.'/city?id='.$u->id)}}" class="btn btn-success">Add City</a></td>
             <td >
               <a href="{{url($prefix.'/state-edit/'.Crypt::encrypt($u->id))}}"><i class="fa fa-edit"></i></a>
               <a class="deleterecord" data-link="{{url($prefix.'/state-delete')}}" data-id="{{ $u->id }}"><i class="fa fa-trash deleterecord"  data-link="{{url($prefix.'/state-delete')}}"  data-id="{{ $u->id }}" aria-hidden="true"></i></a>

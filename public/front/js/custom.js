@@ -164,11 +164,11 @@ jQuery('body').on('keyup', '#email', function(){
       $('.notificationStatus').val(status);
       if(status == 1)
       {
-        var msg = "Are you sure want to accept this notification ?";
+        var msg = "Are you sure want to accept this notification?";
       }
       else if(status == 2)
       {
-        var msg = "Are you sure want to reject this notification ?";
+        var msg = "Are you sure want to reject this notification?";
       }
       $('.messagetext').html(msg);
       $('#notificationconfirm').modal('show');

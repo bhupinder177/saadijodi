@@ -11,12 +11,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
-              <form action="{{URL::to('/city?id='.$id)}}" method="get">
+              <form action="{{URL::to($prefix.'/city?id='.$id)}}" method="get">
                 <div class="row">
             <div class="col-md-7">
               <div class="form-group">
             <input class="form-control search" placeholder="Search" type="text">
-            <input type="hidden" class="searchpagelink" value="{{URL::to('/city?id='.$id)}}">
+            <input type="hidden" class="searchpagelink" value="{{URL::to($prefix.'/city?id='.$id)}}">
               </div>
             </div>
             <div class="col-3 col-md-2">
@@ -26,7 +26,7 @@
             </div>
             <div class="col-3 col-md-2">
               <div class="form-group">
-            <a class="btn btn-success getreset" value="Reset" data-href="{{URL::to('/city?id='.$id)}}">Reset</a>
+            <a class="btn btn-success getreset" value="Reset" data-href="{{URL::to($prefix.'/city?id='.$id)}}">Reset</a>
               </div>
             </div>
            </div>

@@ -20,12 +20,12 @@ class StateController extends Controller
 {
     //
 
-    public function index(Request $request,$id)
+    public function index(Request $request)
     {
         $this->prefix = request()->route()->getPrefix();
         $perpage = 10;
         $query = States::query();
-        $country = Country::where('id',$id)->first();
+        $country = Country::where('id',$request->id)->first();
 
 
         if($request->ajax()){
@@ -53,10 +53,10 @@ class StateController extends Controller
         }
         else
         {
-           $users = $query->where('country_id',$id)->orderby('id','DESC')->paginate($perpage);
+           $users = $query->where('country_id',$request->id)->orderby('id','DESC')->paginate($perpage);
 
 
-          return view('admin.state.state',['prefix'=>$this->prefix,'country'=>$country,'id'=>$id,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
+          return view('admin.state.state',['prefix'=>$this->prefix,'country'=>$country,'id'=>$request->id,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
          }
     }
 
@@ -112,7 +112,7 @@ class StateController extends Controller
        $response['success']         = true;
        $response['delayTime']       = '3000';
        $response['success_message'] = 'State Added Successfully.';
-       $response['url'] = url($this->prefix.'/state/'.$request->country_id);
+       $response['url'] = url($this->prefix.'/state?id='.$request->country_id);
        $response['resetform'] ='true';
        return response($response);
      }
@@ -159,7 +159,7 @@ class StateController extends Controller
            $response['success']         = true;
            $response['delayTime']       = '3000';
            $response['success_message'] = 'State Updated Successfully.';
-           $response['url'] = url($this->prefix.'/state/'.$request['country_id']);
+           $response['url'] = url($this->prefix.'/state?id=/'.$request['country_id']);
 
            return response($response);
          }

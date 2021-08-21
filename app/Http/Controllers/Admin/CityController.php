@@ -21,12 +21,12 @@ class CityController extends Controller
 {
     //
 
-    public function index(Request $request,$id)
+    public function index(Request $request)
     {
         $this->prefix = request()->route()->getPrefix();
         $perpage = 10;
         $query = Cities::query();
-        $state = States::where('id',$id)->first();
+        $state = States::where('id',$request->id)->first();
 
 
         if($request->ajax()){
@@ -54,10 +54,10 @@ class CityController extends Controller
         }
         else
         {
-           $users = $query->where('state_id',$id)->orderby('id','DESC')->paginate($perpage);
+           $users = $query->where('state_id',$request->id)->orderby('id','DESC')->paginate($perpage);
 
 
-          return view('admin.city.city',['prefix'=>$this->prefix,'state'=>$state,'id'=>$id,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
+          return view('admin.city.city',['prefix'=>$this->prefix,'state'=>$state,'id'=>$request->id,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
          }
     }
 
@@ -103,7 +103,7 @@ class CityController extends Controller
        $response['success']         = true;
        $response['delayTime']       = '3000';
        $response['success_message'] = 'City Added Successfully.';
-       $response['url'] = url($this->prefix.'/city/'.$request->state_id);
+       $response['url'] = url($this->prefix.'/city?id='.$request->state_id);
        $response['resetform'] ='true';
        return response($response);
      }
@@ -157,7 +157,7 @@ class CityController extends Controller
            $response['success']         = true;
            $response['delayTime']       = '3000';
            $response['success_message'] = 'City Updated Successfully.';
-           $response['url'] = url($this->prefix.'/city/'.$request['state_id']);
+           $response['url'] = url($this->prefix.'/?id='.$request['state_id']);
 
            return response($response);
          }
