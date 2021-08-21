@@ -308,6 +308,35 @@ submitHandler: function (form)
 }
 });
 // country
+// addreligions
+$("#addreligions").validate({
+  errorClass: "has-error",
+    highlight: function(element, errorClass) {
+        //$(element).parents('.form-group').addClass(errorClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      //  $(element).parents('.form-group').removeClass(errorClass);
+    },
+rules:
+{
+ name: {
+   required: true
+ },
+},
+messages:
+{
+ name: {
+   required: "Please enter country",
+ },
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+// addreligions
+
+
 // city
 $("#addcity").validate({
   errorClass: "has-error",

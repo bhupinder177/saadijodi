@@ -23,6 +23,7 @@ use App\Model\UserConnects;
 use App\Model\Religion;
 use App\Model\Community;
 use App\Model\MotherTongue;
+use App\Model\Height;
 use Validator;
 use Session;
 use Curl;
@@ -53,7 +54,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::where('id',Auth::User()->id)->first();
-        $detail = UserBasicDetails::where('userId',Auth::User()->id)->first();
+        $detail = UserBasicDetails::with('heightdetail')->where('userId',Auth::User()->id)->first();
         $family = UserFamilyDetails::where('userId',Auth::User()->id)->first();
         $religion = UserReligious::with('religiondetail','communitydetail','motherTonguedetail')->where('userId',Auth::User()->id)->first();
         $education = UserEducations::where('userId',Auth::User()->id)->first();
@@ -95,6 +96,7 @@ class ProfileController extends Controller
       $allcommunity = Community::get();
       $allmothertongue = MotherTongue::get();
       $allcountry = Country::get();
+      $allheight = Height::get();
       $states = array();
       $city = array();
       if(!empty($location->country))
@@ -107,7 +109,7 @@ class ProfileController extends Controller
       }
 
 
-      return view('front.profile.edit-profile',['states'=>$states,'allmothertongue'=>$allmothertongue,'allcommunity'=>$allcommunity,'allreligion'=>$allreligion,'profileimage'=>$profileimage,'images'=>$images,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+      return view('front.profile.edit-profile',['states'=>$states,'allheight'=>$allheight,'allmothertongue'=>$allmothertongue,'allcommunity'=>$allcommunity,'allreligion'=>$allreligion,'profileimage'=>$profileimage,'images'=>$images,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function update(Request $request)
@@ -380,7 +382,7 @@ class ProfileController extends Controller
 
     public function userProfile($id)
     {
-      $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('uniqueId',$id)->first();
+      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('uniqueId',$id)->first();
       return view('front.userprofile.userProfile',['user'=>$user]);
     }
 

@@ -16,6 +16,7 @@ use App\Model\UserContactDetails;
 use App\Model\PartnerPreferences;
 use App\Model\UserBirthDetails;
 use App\Model\UserImages;
+use App\Model\Heights;
 use Validator;
 use Session;
 use Curl;
@@ -56,7 +57,7 @@ class ListingController extends Controller
            $gender = 1;
         }
 
-        $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+        $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
         });
         if($request->religion)

@@ -119,6 +119,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('country-update','CountryController@update');
         Route::post('country-delete','CountryController@delete');
 
+        Route::get('religions','ReligionsController@index');
+        Route::get('religions-add','ReligionsController@add');
+        Route::post('religionsSave','ReligionsController@save');
+        Route::get('religions-edit/{id}','ReligionsController@edit');
+        Route::post('religions-update','ReligionsController@update');
+        Route::post('religions-delete','ReligionsController@delete');
+
         Route::get('state','StateController@index');
         Route::get('state-add/{id}','StateController@add');
         Route::post('stateSave','StateController@save');
@@ -139,6 +146,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('stories-edit/{id}','StoriesController@edit');
         Route::post('stories-update','StoriesController@update');
         Route::post('stories-delete','StoriesController@delete');
+
+        Route::get('community','CommunityController@index');
+        Route::get('community-add','CommunityController@add');
+        Route::post('communitySave','CommunityController@save');
+        Route::get('community-edit/{id}','CommunityController@edit');
+        Route::post('community-update','CommunityController@update');
+        Route::post('community-delete','CommunityController@delete');
 
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');

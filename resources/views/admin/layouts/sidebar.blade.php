@@ -53,6 +53,18 @@
           </a>
 
         </li>
+        <li <?php if(request()->segment(2) == "religions" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/religions')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Religions</span></span>
+          </a>
+
+        </li>
+        <li <?php if(request()->segment(2) == "community" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/community')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Community</span></span>
+          </a>
+
+        </li>
 
 
 

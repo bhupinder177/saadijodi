@@ -135,8 +135,12 @@
                             <label>Height <span class="red-text">*</span></label>
                             <select name="height" class="selecthide">
   <option value="">Select height</option>
-  <option @if($detail->height == 1) selected @endif value="1">4ft 5in </option>
-  <option @if($detail->height == 2) selected @endif value="2">4ft 6in </option>
+  @if($allheight)
+  @foreach($allheight as $height)
+  <option @if($detail->height == $height->id) selected @endif value="{{ $height->id }}">{{ $height->inch }} - {{ $height->cm }} </option>
+  @endforeach
+  @endif
+  <!-- <option @if($detail->height == 2) selected @endif value="2">4ft 6in </option>
   <option @if($detail->height == 3) selected @endif value="3">4ft 7in </option>
   <option @if($detail->height == 4) selected @endif value="4">4ft 8in </option>
   <option @if($detail->height == 5) selected @endif value="5">4ft 9in </option>
@@ -166,7 +170,7 @@
   <option @if($detail->height == 29) selected @endif value="29">6ft 9in </option>
   <option @if($detail->height == 30) selected @endif value="30">6ft 10in </option>
   <option @if($detail->height == 31) selected @endif value="31">6ft 11in </option>
-  <option @if($detail->height == 32) selected @endif value="32">7ft </option>
+  <option @if($detail->height == 32) selected @endif value="32">7ft </option> -->
 
   </select>
                           </div>
