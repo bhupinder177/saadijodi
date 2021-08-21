@@ -15,7 +15,7 @@ class MotherTongues extends Migration
     {
       Schema::create('mother_tongues', function (Blueprint $table) {
           $table->increments('id');
-          $table->text('name')->nullable();
+          $table->string('name')->nullable();
           $table->timestamps();
       });
 

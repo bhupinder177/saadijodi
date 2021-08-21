@@ -8,6 +8,21 @@ use App\Model\UserBasicDetails;
 use App\Model\UserFamilyDetails;
 use App\Model\UserEducations;
 use App\Model\UserReligious;
+use App\Model\UserLocations;
+use App\Model\Country;
+use App\Model\States;
+use App\Model\Cities;
+use App\Model\UserContactDetails;
+use App\Model\PartnerPreferences;
+use App\Model\UserBirthDetails;
+use App\Model\UserImages;
+use App\Model\Notification;
+use App\Model\UserOnline;
+use App\Model\UserPackage;
+use App\Model\UserConnects;
+use App\Model\Religion;
+use App\Model\Community;
+use App\Model\MotherTongue;
 use App\Helpers\GlobalFunctions as CommonHelper;
 use Validator;
 use DB;
@@ -292,7 +307,7 @@ class ApiController extends Controller
          $gender = 1;
       }
 
-      $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereHas('UserBasicDetail',function($w)use($gender){
+      $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
         $w->where('gender',$gender);
       });
 
@@ -328,7 +343,7 @@ class ApiController extends Controller
         }
         else
        {
-      $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('id',$request->userId)->first();
+      $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
 
       if($user)
        {

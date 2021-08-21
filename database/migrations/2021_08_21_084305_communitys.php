@@ -15,7 +15,7 @@ class Communitys extends Migration
     {
       Schema::create('communities', function (Blueprint $table) {
           $table->increments('id');
-          $table->text('name')->nullable();
+          $table->string('name')->nullable();
           $table->timestamps();
       });
     }
