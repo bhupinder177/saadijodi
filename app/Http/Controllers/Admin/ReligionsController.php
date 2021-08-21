@@ -159,7 +159,7 @@ class ReligionsController extends Controller
      $id = Crypt::decrypt($id);
      $this->prefix = request()->route()->getPrefix();
 
-     $result = Country::where(array("id"=>$id))->first();
+     $result = Religion::where(array("id"=>$id))->first();
      return view('admin.religion.edit',['result'=>$result,'prefix'=>$this->prefix]);
    }
 
