@@ -830,31 +830,39 @@
                             <label>Religion <span class="red-text">*</span></label>
                             <select name="religion" class="selecthide">
                         <option  value="">Select religion</option>
-                        <option @if($religion->religion == 1) selected @endif value="1" >Hindu</option>
-                        <option @if($religion->religion == 2) selected @endif value="2">Muslim</option>
-                        <option @if($religion->religion == 3) selected @endif value="3">Christian</option>
-                        <option @if($religion->religion == 4) selected @endif value="4">Sikh</option>
-                        <option @if($religion->religion == 5) selected @endif value="5">Parsi</option>
+                        @if($allreligion)
+                        @foreach($allreligion as $rel)
+                        <option @if($religion->religion == $rel->id) selected @endif value="{{ $rel->id }}" >{{ ucwords($rel->name) }}</option>
+                        @endforeach
+                        @endif
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Mother Tongue <span class="red-text">*</span></label>
                             <select name="motherTongue" class="selecthide">
                         <option value="">Select Mother Tongue</option>
-                        <option @if($religion->motherTongue == 1) selected @endif value="1">Hindi</option>
-                        <option @if($religion->motherTongue == 2) selected @endif value="2">Marathi</option>
+                        @if(!empty($allmothertongue))
+                        @foreach($allmothertongue as $mo)
+                        <option @if($religion->motherTongue == $mo->id) selected @endif value="{{ $mo->id }}">{{ ucwords($mo->name) }}</option>
+                        @endforeach
+                        @endif
+                        <!-- <option @if($religion->motherTongue == 2) selected @endif value="2">Marathi</option>
                         <option @if($religion->motherTongue == 3) selected @endif value="3">Punjabi</option>
                         <option @if($religion->motherTongue == 4) selected @endif value="4">Bengali</option>
                         <option @if($religion->motherTongue == 5) selected @endif value="5">Gujarati</option>
-                        <option @if($religion->motherTongue == 6) selected @endif value="6">Urdu</option>
+                        <option @if($religion->motherTongue == 6) selected @endif value="6">Urdu</option> -->
                     </select>
                           </div>
                           <div class="form_group_wrap">
                             <label>Community <span class="red-text">*</span></label>
                             <select name="community" class="selecthide">
-                        <option value="">Select</option>
-                        <option @if($religion->community == 1) selected @endif value="1">Ahluwalia</option>
-                        <option @if($religion->community == 2) selected @endif value="2">Arora</option>
+                        <option value="">Select Coummunity</option>
+                        @if(!empty($allcommunity))
+                        @foreach($allcommunity as $comunity)
+                        <option @if($religion->community == $comunity->id) selected @endif value="{{ $comunity->id }}">{{ $comunity->name }}</option>
+                        @endforeach
+                        @endif
+                        <!-- <option @if($religion->community == 2) selected @endif value="2">Arora</option>
                         <option @if($religion->community == 3) selected @endif value="3">Clean Shaven</option>
                         <option @if($religion->community == 4) selected @endif value="4">Gursikh</option>
                         <option @if($religion->community == 5) selected @endif value="5">Jatt</option>
@@ -868,7 +876,7 @@
                         <option @if($religion->community == 13) selected @endif value="13">Ramdasia</option>
                         <option @if($religion->community == 14) selected @endif value="14">Ramgharia</option>
                         <option @if($religion->community == 15) selected @endif value="15">Ravidasia</option>
-                        <option @if($religion->community == 16) selected @endif value="16">Saini</option></select>
+                        <option @if($religion->community == 16) selected @endif value="16">Saini</option></select> -->
 
 
                     </select>

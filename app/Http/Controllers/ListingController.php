@@ -56,7 +56,7 @@ class ListingController extends Controller
            $gender = 1;
         }
 
-        $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereHas('UserBasicDetail',function($w)use($gender){
+        $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
         });
         if($request->religion)

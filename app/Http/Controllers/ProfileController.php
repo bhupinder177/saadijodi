@@ -20,6 +20,9 @@ use App\Model\Notification;
 use App\Model\UserOnline;
 use App\Model\UserPackage;
 use App\Model\UserConnects;
+use App\Model\Religion;
+use App\Model\Community;
+use App\Model\MotherTongue;
 use Validator;
 use Session;
 use Curl;
@@ -52,7 +55,7 @@ class ProfileController extends Controller
         $user = User::where('id',Auth::User()->id)->first();
         $detail = UserBasicDetails::where('userId',Auth::User()->id)->first();
         $family = UserFamilyDetails::where('userId',Auth::User()->id)->first();
-        $religion = UserReligious::where('userId',Auth::User()->id)->first();
+        $religion = UserReligious::with('religiondetail','communitydetail','motherTonguedetail')->where('userId',Auth::User()->id)->first();
         $education = UserEducations::where('userId',Auth::User()->id)->first();
         $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
         $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
@@ -68,6 +71,7 @@ class ProfileController extends Controller
           $diff = date_diff(date_create($dateOfBirth), date_create($today));
           $detail->age = $diff->format('%y');
         }
+
         // else
         // {
         //  $detail->age = 0;
@@ -87,6 +91,9 @@ class ProfileController extends Controller
       $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
       $images = UserImages::where(array("userId"=>Auth::User()->id,"isProfile"=>0))->get();
       $profileimage = UserImages::where(array("userId"=>Auth::User()->id,"isProfile"=>1))->first();
+      $allreligion = Religion::get();
+      $allcommunity = Community::get();
+      $allmothertongue = MotherTongue::get();
       $allcountry = Country::get();
       $states = array();
       $city = array();
@@ -100,7 +107,7 @@ class ProfileController extends Controller
       }
 
 
-      return view('front.profile.edit-profile',['states'=>$states,'profileimage'=>$profileimage,'images'=>$images,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
+      return view('front.profile.edit-profile',['states'=>$states,'allmothertongue'=>$allmothertongue,'allcommunity'=>$allcommunity,'allreligion'=>$allreligion,'profileimage'=>$profileimage,'images'=>$images,'birth'=>$birth,'city'=>$city,'allcountry'=>$allcountry,'detail'=>$detail,'location'=>$location,'user'=>$user,'family'=>$family,'religion'=>$religion,'education'=>$education]);
     }
 
     public function update(Request $request)

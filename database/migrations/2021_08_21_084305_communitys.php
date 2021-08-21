@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Stories extends Migration
+class Communitys extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class Stories extends Migration
      */
     public function up()
     {
-      Schema::create('stories', function (Blueprint $table) {
+      Schema::create('communities', function (Blueprint $table) {
           $table->increments('id');
-          $table->text('description')->nullable();
-          $table->string('image')->nullable();
+          $table->text('name')->nullable();
           $table->timestamps();
       });
     }
@@ -28,6 +27,6 @@ class Stories extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('stories');
+        Schema::dropIfExists('communities');
     }
 }

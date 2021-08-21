@@ -48,14 +48,7 @@
 								<div class="listing_st">
 									<div class="row">
 										<div class="col-md-3">
-											<!-- <div class="listing_imgs">
-												@if(!empty($user->UserImage->image))
-				                   <img src="{{ asset('profiles/'.$user->UserImage->image) }}" >
-												@else
-												<img src="{{ asset('front/images/nofound.png') }}" >
-				                @endif
-											</div> -->
-											<!-- slider -->
+
 												@if(count($user->UserImage) > 0)
 											<div class="listing_imgs">
 											<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -242,23 +235,9 @@
 									                        @endif
 									                    </span>
 														<span>
-														  @if(!empty($user->UserReligious->Religion))
-								                          @if($user->UserReligious->Religion == 1)
-								                          Hindu
-								                          @endif
-								                          @if($user->UserReligious->Religion == 2)
-								                          Muslim
-								                          @endif
-								                          @if($user->UserReligious->Religion == 3)
-								                          Christian
-								                          @endif
-								                          @if($user->UserReligious->Religion == 4)
-								                          Sikh
-								                          @endif
-								                          @if($user->UserReligious->Religion == 5)
-								                          Parsi
-								                          @endif
-								                          @endif
+														  @if(!empty($user->UserReligious->religiondetail))
+								               {{ ucwords($user->UserReligious->religiondetail->name) }}
+								                @endif
 								                        </span>
 														<span>
 															@if(!empty($user->UserLocation->citydetail)) {{ $user->UserLocation->citydetail->name }} @endif,
@@ -266,25 +245,8 @@
 
 														</span>
 														<span>
-															@if(!empty($user->UserReligious->motherTongue))
-									                        @if($user->UserReligious->motherTongue == 1)
-									                        Hindi
-									                        @endif
-									                        @if($user->UserReligious->motherTongue == 2)
-									                        Marathi
-									                        @endif
-									                        @if($user->UserReligious->motherTongue == 3)
-									                        Punjabi
-									                        @endif
-									                        @if($user->UserReligious->motherTongue == 4)
-									                        Bengali
-									                        @endif
-									                        @if($user->UserReligious->motherTongue == 5)
-									                        Gujarati
-									                        @endif
-									                        @if($user->UserReligious->motherTongue == 6)
-									                        Urdu
-									                        @endif
+															@if(!empty($user->UserReligious->motherTonguedetail))
+									                       {{ ucwords($user->UserReligious->motherTonguedetail->name) }}
 									                        @endif
 									                    </span>
 														<span>

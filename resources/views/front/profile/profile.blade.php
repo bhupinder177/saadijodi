@@ -249,75 +249,14 @@
                       <div class="flex_details_span">
                         <span class="quest">Religion / Community</span>
                         <span class="answr">:
-                          @if(!empty($religion->religion))
-                          @if($religion->religion == 1)
-                          Hindu
-                          @endif
-                          @if($religion->religion == 2)
-                          Muslim
-                          @endif
-                          @if($religion->religion == 3)
-                          Christian
-                          @endif
-                          @if($religion->religion == 4)
-                          Sikh
-                          @endif
-                          @if($religion->religion == 5)
-                          Parsi
-                          @endif
+                          @if(!empty($religion->religiondetail))
+                          {{ $religion->religiondetail->name }}
                           @else
                           -
                           @endif
                           /
-                          @if(!empty($religion->community))
-                          @if($religion->community == 1)
-                          Ahluwalia
-                          @endif
-                          @if($religion->community == 2)
-                          Arora
-                          @endif
-                          @if($religion->community == 3)
-                          Clean Shaven
-                          @endif
-                          @if($religion->community == 4)
-                          Gursikh
-                          @endif
-                          @if($religion->community == 5)
-                          Jatt
-                          @endif
-                          @if($religion->community == 6)
-                          Kamboj
-                          @endif
-                          @if($religion->community == 7)
-                          Kesadhari
-                          @endif
-                          @if($religion->community == 8)
-                          Khatri
-                          @endif
-                          @if($religion->community == 9)
-                          Kshatriya
-                          @endif
-                          @if($religion->community == 10)
-                          Labana
-                          @endif
-                          @if($religion->community == 11)
-                          Mazhbi/Majabi
-                          @endif
-                          @if($religion->community == 12)
-                          Rajput
-                          @endif
-                          @if($religion->community == 13)
-                          Ramdasia
-                          @endif
-                          @if($religion->community == 14)
-                          Ramgharia
-                          @endif
-                          @if($religion->community == 15)
-                          Ravidasia
-                          @endif
-                          @if($religion->community == 16)
-                          Saini
-                          @endif
+                          @if(!empty($religion->communitydetail))
+                          {{ $religion->communitydetail->name }}
                           @else
                           -
                           @endif
@@ -567,22 +506,10 @@
                     <div class="flex_details_span">
                       <span class="quest">Religion</span>
                       <span class="answr">:
-                        @if(!empty($religion))
-                        @if($religion->religion == 1)
-                        Hindu
-                        @endif
-                        @if($religion->religion == 2)
-                        Muslim
-                        @endif
-                        @if($religion->religion == 3)
-                        Christian
-                        @endif
-                        @if($religion->religion == 4)
-                        Sikh
-                        @endif
-                        @if($religion->religion == 5)
-                        Parsi
-                        @endif
+                        @if(!empty($religion->religiondetail))
+                         {{ ucwords($religion->religiondetail->name) }}
+                         @else
+                         -
                         @endif
 
                       </span>
@@ -590,55 +517,8 @@
                     <div class="flex_details_span">
                       <span class="quest">Community</span>
                       <span class="answr">:
-                        @if(!empty($religion->community))
-                        @if($religion->community == 1)
-                        Ahluwalia
-                        @endif
-                        @if($religion->community == 2)
-                        Arora
-                        @endif
-                        @if($religion->community == 3)
-                        Clean Shaven
-                        @endif
-                        @if($religion->community == 4)
-                        Gursikh
-                        @endif
-                        @if($religion->community == 5)
-                        Jatt
-                        @endif
-                        @if($religion->community == 6)
-                        Kamboj
-                        @endif
-                        @if($religion->community == 7)
-                        Kesadhari
-                        @endif
-                        @if($religion->community == 8)
-                        Khatri
-                        @endif
-                        @if($religion->community == 9)
-                        Kshatriya
-                        @endif
-                        @if($religion->community == 10)
-                        Labana
-                        @endif
-                        @if($religion->community == 11)
-                        Mazhbi/Majabi
-                        @endif
-                        @if($religion->community == 12)
-                        Rajput
-                        @endif
-                        @if($religion->community == 13)
-                        Ramdasia
-                        @endif
-                        @if($religion->community == 14)
-                        Ramgharia
-                        @endif
-                        @if($religion->community == 15)
-                        Ravidasia
-                        @endif
-                        @if($religion->community == 16)
-                        Saini
-                        @endif
+                        @if(!empty($religion->communitydetail))
+                        {{ ucwords($religion->communitydetail->name) }}
                         @else
                         -
                         @endif
@@ -652,25 +532,8 @@
                     <div class="flex_details_span">
                       <span class="quest">Mother Tongue</span>
                       <span class="answr">:
-                        @if(!empty($religion->motherTongue))
-                        @if($religion->motherTongue == 1)
-                        Hindi
-                        @endif
-                        @if($religion->motherTongue == 2)
-                        Marathi
-                        @endif
-                        @if($religion->motherTongue == 3)
-                        Punjabi
-                        @endif
-                        @if($religion->motherTongue == 4)
-                        Bengali
-                        @endif
-                        @if($religion->motherTongue == 5)
-                        Gujarati
-                        @endif
-                        @if($religion->motherTongue == 6)
-                        Urdu
-                        @endif
+                        @if(!empty($religion->motherTonguedetail))
+                         {{ ucwords($religion->motherTonguedetail->name)  }}
                         @else
                         -
                         @endif

@@ -166,52 +166,21 @@
                       @endif
                     </span>
                     <span>
-                      @if(!empty($user->UserReligious->Religion))
-                      @if($user->UserReligious->Religion == 1)
-                      Hindu
-                      @endif
-                      @if($user->UserReligious->Religion == 2)
-                      Muslim
-                      @endif
-                      @if($user->UserReligious->Religion == 3)
-                      Christian
-                      @endif
-                      @if($user->UserReligious->Religion == 4)
-                      Sikh
-                      @endif
-                      @if($user->UserReligious->Religion == 5)
-                      Parsi
-                      @endif
+                      @if(!empty($user->UserReligious->religiondetail))
+                      {{ ucwords($user->UserReligious->religiondetail->name) }}
                       @endif
                     </span>
                     <span>
                       @if(!empty($user->UserLocation->citydetail))
-                      {{ $user->UserLocation->citydetail->name }},
+                      {{ ucwords($user->UserLocation->citydetail->name) }},
                       @endif
                       @if(!empty($user->UserLocation->statedetail))
-                      {{ $user->UserLocation->statedetail->name }}
+                      {{ ucwords($user->UserLocation->statedetail->name) }}
                       @endif
                     </span>
                     <span>
-                      @if(!empty($user->UserReligious->motherTongue))
-                      @if($user->UserReligious->motherTongue == 1)
-                      Hindi
-                      @endif
-                      @if($user->UserReligious->motherTongue == 2)
-                      Marathi
-                      @endif
-                      @if($user->UserReligious->motherTongue == 3)
-                      Punjabi
-                      @endif
-                      @if($user->UserReligious->motherTongue == 4)
-                      Bengali
-                      @endif
-                      @if($user->UserReligious->motherTongue == 5)
-                      Gujarati
-                      @endif
-                      @if($user->UserReligious->motherTongue == 6)
-                      Urdu
-                      @endif
+                      @if(!empty($user->UserReligious->motherTonguedetail))
+                      {{ ucwords($user->UserReligious->motherTonguedetail->name) }}
                       @endif
                     </span>
                     <span>
@@ -434,66 +403,14 @@
 
               <div class="about_here_wrap">
                 <p>
-                  @if(!empty($user->UserReligious->Religion))
-                  @if($user->UserReligious->Religion == 1)
-                  Hindu
-                  @endif
-                  @if($user->UserReligious->Religion == 2)
-                  Muslim
-                  @endif
-                  @if($user->UserReligious->Religion == 3)
-                  Christian
-                  @endif
-                  @if($user->UserReligious->Religion == 4)
-                  Sikh
-                  @endif
-                  @if($user->UserReligious->Religion == 5)
-                  Parsi
-                  @endif
-
-                  @endif
-                  @if(!empty($user->UserReligious->motherTongue))
-                  ,
-                  @if($user->UserReligious->motherTongue == 1)
-                  Hindi
-                  @endif
-                  @if($user->UserReligious->motherTongue == 2)
-                  Marathi
-                  @endif
-                  @if($user->UserReligious->motherTongue == 3)
-                  Punjabi
-                  @endif
-                  @if($user->UserReligious->motherTongue == 4)
-                  Bengali
-                  @endif
-                  @if($user->UserReligious->motherTongue == 5)
-                  Gujarati
-                  @endif
-                  @if($user->UserReligious->motherTongue == 6)
-                  Urdu
-                  @endif
-                  @endif
+                  @if(!empty($user->UserReligious->religiondetail))
+                   {{ ucwords($user->UserReligious->religiondetail->name) }}
+                    @endif
                 </p>
-                <p>@if(!empty($user->UserReligious->motherTongue))
-                    @if($user->UserReligious->motherTongue == 1)
-                    Hindi
+                <p>	@if(!empty($user->UserReligious->motherTonguedetail))
+                    {{ ucwords($user->UserReligious->motherTonguedetail->name) }}
                     @endif
-                    @if($user->UserReligious->motherTongue == 2)
-                    Marathi
-                    @endif
-                    @if($user->UserReligious->motherTongue == 3)
-                    Punjabi
-                    @endif
-                    @if($user->UserReligious->motherTongue == 4)
-                    Bengali
-                    @endif
-                    @if($user->UserReligious->motherTongue == 5)
-                    Gujarati
-                    @endif
-                    @if($user->UserReligious->motherTongue == 6)
-                    Urdu
-                    @endif
-                    @endif</p>
+                  </p>
                 <p>@if(!empty($user->UserLocation->citydetail))
                   {{ $user->UserLocation->citydetail->name }}
                   @endif,
@@ -512,7 +429,7 @@
               <h4><i class="fa fa-globe"></i>Horoscope Details</h4>
 
               <div class="about_here_wrap">
-                <p>Born in Patiala on ✱✱/✱✱/✱✱✱✱ at exactly 09:30 am.</p>
+                <p>@if(!empty($user->UserBirthDetail)) Born in {{ $user->UserBirthDetail->birthCity }} @endif @if(!empty($user->UserBasicDetail->dateOfBirth)) on {{ $user->UserBasicDetail->dateOfBirth }} @endif @if(!empty($user->UserBirthDetail->birthHours)) at exactly {{ $user->UserBirthDetail->birthHours.':'.$user->UserBirthDetail->birthminute.' '.$user->UserBirthDetail->birthAmPm }} @endif</p>
               </div>
 
             </div>
