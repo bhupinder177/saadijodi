@@ -96,7 +96,7 @@ class ReligionsController extends Controller
        $response['success']         = true;
        $response['delayTime']       = '3000';
        $response['success_message'] = 'Religion Added Successfully.';
-       $response['url'] = url($this->prefix.'/religion');
+       $response['url'] = url($this->prefix.'/religions');
        $response['resetform'] ='true';
        return response($response);
      }
@@ -139,7 +139,7 @@ class ReligionsController extends Controller
            $response['success']         = true;
            $response['delayTime']       = '3000';
            $response['success_message'] = 'Religion Updated Successfully.';
-           $response['url'] = url($this->prefix.'/religion');
+           $response['url'] = url($this->prefix.'/religions');
 
            return response($response);
          }
