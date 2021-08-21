@@ -65,6 +65,12 @@
           </a>
 
         </li>
+        <li <?php if(request()->segment(2) == "mothertongue" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/mothertongue')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Mother Tongue</span></span>
+          </a>
+
+        </li>
 
 
 

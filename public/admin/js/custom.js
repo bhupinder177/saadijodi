@@ -326,7 +326,7 @@ rules:
 messages:
 {
  name: {
-   required: "Please enter country",
+   required: "This is required",
  },
 },
 submitHandler: function (form)

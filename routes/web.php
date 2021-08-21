@@ -154,6 +154,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('community-update','CommunityController@update');
         Route::post('community-delete','CommunityController@delete');
 
+        Route::get('mothertongue','MotherTongueController@index');
+        Route::get('mothertongue-add','MotherTongueController@add');
+        Route::post('mothertongueSave','MotherTongueController@save');
+        Route::get('mothertongue-edit/{id}','MotherTongueController@edit');
+        Route::post('mothertongue-update','MotherTongueController@update');
+        Route::post('mothertongue-delete','MotherTongueController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

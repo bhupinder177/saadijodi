@@ -6,7 +6,7 @@
 <div class="page-content">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li class="active">Add Community</li>
+      <li class="active">Add Mother Tongue</li>
     </ol>
   </section>
       <div class="container-fluid">
@@ -14,14 +14,14 @@
 
           <div class="">
 
-            <form action="{{ url($prefix.'/communitySave') }}" method="post" enctype="multipart/form-data" class="reset" id="addreligions">
+            <form action="{{ url($prefix.'/mothertongueSave') }}" method="post" enctype="multipart/form-data" class="reset" id="addreligions">
 
                     <div class="row">
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Community <span class="red">*</span></label>
-      <input type="text" placeholder="Please enter community" class="form-control " name="name"   id="name">
+                            <label>Mother Tongue <span class="red">*</span></label>
+      <input type="text" placeholder="Please enter mother tongue" class="form-control " name="name"   id="name">
                           </div>
                       </div>
 
