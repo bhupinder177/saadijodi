@@ -1,5 +1,5 @@
 @include('layouts.header')
-<section class="contact_sec">
+<section class="contact_sec termandconditions">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
