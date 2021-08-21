@@ -30,7 +30,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="telephone_cont">
-								<p><i class="fa fa-envelope"></i> Saadi jodi@gmail.com</p>
+								<p><i class="fa fa-envelope"></i> info@saadijodi.com</p>
 							</div>
 						</div>
 						<div class="col-md-6">
