@@ -13,6 +13,8 @@ use Validator;
 use DB;
 use Illuminate\Support\Facades\URL;
 use Crypt;
+use Hash;
+
 
 class ApiController extends Controller
 {
@@ -228,37 +230,120 @@ class ApiController extends Controller
 
     public function changePassword(Request $request)
     {
+      $validator = Validator::make($request->all(),[
+              'currentpassword' => 'required|string',
+              'password' => 'required|string|confirmed',
 
-           $validator = Validator::make($request->all(), [
-             'id' => 'required',
-             'password' => 'required|string|confirmed',
+          ]);
 
-           ]);
-           if ($validator->fails())
-           {
-              return response()->json(['error'=>$validator->errors()], 401);
-           }
-           else
-           {
-              $updated_password = bcrypt(request('password'));
-               $users = User::where('id',request('id'))->update(['password' => $updated_password]);
-               if($users)
-               {
-                   return response()->json([
-                  'success'=>"true",
-                  'message' => 'Password is Updated Successfully'
-              ]);
+        if ($validator->fails())
+        {
+           $errors = $validator->errors();
+          $output['validation']     = false;
+          $output['errors']      = $errors;
+        }
+        else
+       {
 
-               }
-               else
-               {
-                 return response()->json([
-                  'success'=>"false",
-                  'message' => 'Password is Not Update'
-                ]);
-               }
+         $id = $request->user()->id;
+         $updated_password =  bcrypt($request->password);
+         $current_password =  bcrypt($request->currentpassword);
+         $user = User::where('id',$id)->first();
 
-           }
+         if(Hash::check($request->currentpassword,$user->password))
+         {
+          $result = User::where('id',$id)->update(['password' => $updated_password]);
+
+        if($result)
+         {
+           $output['success'] ="true";
+           $output['message'] ="Password Updated Successfully";
+
+         }
+         else
+         {
+           $output['success'] ="true";
+           $output['message'] ="Password is not update";
+         }
+       }
+       else
+       {
+         $output['success'] ="false";
+         $output['message'] ="Current Password does not matched";
+       }
+
+      }
+           echo json_encode($output);
+           exit;
+    }
+
+    public function toDayMatchListing(Request $request)
+    {
+      $page=$request['page'];
+     	$pageCount = 10;
+      $gender = UserBasicDetails::where('userId',$request->user()->id)->first();
+
+      if($gender->gender == 1)
+      {
+        $gender = 2;
+      }
+      else if($gender->gender == 2)
+      {
+         $gender = 1;
+      }
+
+      $query = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->whereHas('UserBasicDetail',function($w)use($gender){
+        $w->where('gender',$gender);
+      });
+
+      $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="today match listing";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+       echo json_encode($output);
+       exit;
+    }
+
+    public function profileDetail(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+              'userId' => 'required|string',
+
+          ]);
+
+        if ($validator->fails())
+        {
+           $errors = $validator->errors();
+          $output['validation']     = false;
+          $output['errors']      = $errors;
+        }
+        else
+       {
+      $user = User::with('UserBasicDetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('id',$request->userId)->first();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get profile details";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+      }
+      echo json_encode($output);
+      exit;
     }
 
 
