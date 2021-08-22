@@ -155,7 +155,7 @@ class QualificationsTableSeeder extends Seeder
             ],
             [
                 'name' => 'M.Sc',
-            ],   
+            ],
             [
                 'name' => 'BSc (Hons)',
             ],
@@ -284,7 +284,7 @@ class QualificationsTableSeeder extends Seeder
             [
                 'name' => 'Less than high school',
             ],
-        
+
         ];
         foreach ($inputs as $val) {
             \DB::table('qualifications')->insert($val);

@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="baner_title">
-          <h3>...because a marriage is between two families</h3>
+          <h3>We unite similar families into an event called marriage.</h3>
         </div>
       </div>
     </div>
