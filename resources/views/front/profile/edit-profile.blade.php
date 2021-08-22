@@ -140,37 +140,7 @@
   <option @if($detail->height == $height->id) selected @endif value="{{ $height->id }}">{{ $height->inch }} - {{ $height->cm }} </option>
   @endforeach
   @endif
-  <!-- <option @if($detail->height == 2) selected @endif value="2">4ft 6in </option>
-  <option @if($detail->height == 3) selected @endif value="3">4ft 7in </option>
-  <option @if($detail->height == 4) selected @endif value="4">4ft 8in </option>
-  <option @if($detail->height == 5) selected @endif value="5">4ft 9in </option>
-  <option @if($detail->height == 6) selected @endif value="6">4ft 10in</option>
-  <option @if($detail->height == 7) selected @endif value="7">4ft 11in</option>
-  <option @if($detail->height == 8) selected @endif value="8">5ft </option>
-  <option @if($detail->height == 9) selected @endif value="9">5ft 1in </option>
-  <option @if($detail->height == 10) selected @endif value="10">5ft 2in </option>
-  <option @if($detail->height == 11) selected @endif value="11">5ft 3in </option>
-  <option @if($detail->height == 12) selected @endif value="12">5ft 4in </option>
-  <option @if($detail->height == 13) selected @endif value="13">5ft 5in </option>
-  <option @if($detail->height == 14) selected @endif value="14">5ft 6in </option>
-  <option @if($detail->height == 15) selected @endif value="15">5ft 7in </option>
-  <option @if($detail->height == 16) selected @endif value="16">5ft 8in </option>
-  <option @if($detail->height == 17) selected @endif value="17">5ft 9in </option>
-  <option @if($detail->height == 18) selected @endif value="18">5ft 10in </option>
-  <option @if($detail->height == 19) selected @endif value="19">5ft 11in </option>
-  <option @if($detail->height == 20) selected @endif value="20">6ft </option>
-  <option @if($detail->height == 21) selected @endif value="21">6ft 1in </option>
-  <option @if($detail->height == 22) selected @endif value="22">6ft 2in </option>
-  <option @if($detail->height == 23) selected @endif value="23">6ft 3in </option>
-  <option @if($detail->height == 24) selected @endif value="24">6ft 4in </option>
-  <option @if($detail->height == 25) selected @endif value="25">6ft 5in </option>
-  <option @if($detail->height == 26) selected @endif value="26">6ft 6in </option>
-  <option @if($detail->height == 27) selected @endif value="27">6ft 7in </option>
-  <option @if($detail->height == 28) selected @endif value="28">6ft 8in </option>
-  <option @if($detail->height == 29) selected @endif value="29">6ft 9in </option>
-  <option @if($detail->height == 30) selected @endif value="30">6ft 10in </option>
-  <option @if($detail->height == 31) selected @endif value="31">6ft 11in </option>
-  <option @if($detail->height == 32) selected @endif value="32">7ft </option> -->
+
 
   </select>
                           </div>
@@ -436,9 +406,13 @@
                             <select name="highestQualification" class="selecthide">
                         <optgroup id="educationlevel-optgroup--ENGINEERING-" label="-ENGINEERING-">
       </optgroup>
-      <option value="">Select</option>
-      <option @if($education->highestQualification == 1) selected @endif value="1">B.E / B.Tech</option>
-      <option @if($education->highestQualification == 2) selected @endif value="2">M.E / M.Tech</option>
+      <option value="">Select Qualification</option>
+      @if($allqualification)
+      @foreach($allqualification as $q)
+      <option @if($education->highestQualification == $q->id) selected @endif value="{{ $q->id }}">{{ $q->name }}</option>
+      @endforeach
+      @endif
+      <!-- <option @if($education->highestQualification == 2) selected @endif value="2">M.E / M.Tech</option>
       <option @if($education->highestQualification == 3) selected @endif value="3">M.S Engineering</option>
       <option @if($education->highestQualification == 4) selected @endif value="4">B.Eng (Hons)</option>
       <option @if($education->highestQualification == 5) selected @endif value="5">M.Eng (Hons)</option>
@@ -548,7 +522,7 @@
       <optgroup id="educationlevel-optgroup--NON-GRADUATE-" label="-NON-GRADUATE-">
       </optgroup>
       <option @if($education->highestQualification == 91) selected @endif value="91" label="High school">High school</option>
-      <option @if($education->highestQualification == 92) selected @endif value="92" label="Less than high school">Less than high school</option>
+      <option @if($education->highestQualification == 92) selected @endif value="92" label="Less than high school">Less than high school</option> -->
                     </select>
                           </div>
                           <div class="form_group_wrap">
@@ -565,11 +539,13 @@
                           <div class="form_group_wrap">
                             <label>Working As <span class="red-text">*</span></label>
                             <select name="workingAs" class="selecthide">
-                              <option value="" label="Select">Select</option>
-        <optgroup id="occupation-optgroup-Accounting, Banking &amp; Finance" label="Accounting, Banking &amp; Finance">
-        </optgroup>
-        <option @if($education->workingAs == 1) selected @endif value="1">Banking Professional</option>
-        <option @if($education->workingAs == 2) selected @endif value="2">Chartered Accountant</option>
+                              <option value="" label="Select">Select Working As</option>
+        @if($allworkingSectors)
+        @foreach($allworkingSectors as $sector)
+        <option @if($education->workingAs == $sector->id) selected @endif value="{{ $sector->id }}">{{ $sector->name }}</option>
+        @endforeach
+        @endif
+        <!-- <option @if($education->workingAs == 2) selected @endif value="2">Chartered Accountant</option>
         <option @if($education->workingAs == 3) selected @endif value="3">Company Secretary</option>
         <option @if($education->workingAs == 4) selected @endif value="4">Finance Professional</option>
         <option @if($education->workingAs == 5) selected @endif value="5">Investment Professional</option>
@@ -706,7 +682,7 @@
         </optgroup>
         <option @if($education->workingAs == 92) selected @endif value="92">Student</option>
         <option @if($education->workingAs == 93) selected @endif value="93">Retired</option>
-        <option @if($education->workingAs == 94) selected @endif value="94">Not working</option>
+        <option @if($education->workingAs == 94) selected @endif value="94">Not working</option> -->
                     </select>
                           </div>
                           <div class="form_group_wrap">

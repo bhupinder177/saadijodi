@@ -24,6 +24,8 @@ use App\Model\Religion;
 use App\Model\Community;
 use App\Model\MotherTongue;
 use App\Model\Height;
+use App\Model\Qualification;
+use App\Model\WorkingSectors;
 use App\Helpers\GlobalFunctions as CommonHelper;
 use Validator;
 use DB;
@@ -308,7 +310,7 @@ class ApiController extends Controller
          $gender = 1;
       }
 
-      $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+      $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
         $w->where('gender',$gender);
       });
 
@@ -344,7 +346,7 @@ class ApiController extends Controller
         }
         else
        {
-      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
+      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
 
       if($user)
        {

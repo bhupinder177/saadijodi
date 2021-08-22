@@ -78,6 +78,13 @@
 
         </li>
 
+        <li <?php if(request()->segment(2) == "workingsectors" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/workingsectors')}}">
+            <span><i class="fa fa-tasks"></i><span class="lbl">Working Sectors</span></span>
+          </a>
+
+        </li>
+
 
 
   </ul>

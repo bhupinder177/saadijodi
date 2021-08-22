@@ -168,6 +168,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('qualification-update','QualificationController@update');
         Route::post('qualification-delete','QualificationController@delete');
 
+        Route::get('workingsectors','WorkingSectorsController@index');
+        Route::get('workingsectors-add','WorkingSectorsController@add');
+        Route::post('workingsectorsSave','WorkingSectorsController@save');
+        Route::get('workingsectors-edit/{id}','WorkingSectorsController@edit');
+        Route::post('workingsectors-update','WorkingSectorsController@update');
+        Route::post('workingsectors-delete','WorkingSectorsController@delete');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 
