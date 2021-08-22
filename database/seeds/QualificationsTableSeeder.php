@@ -200,7 +200,8 @@ class QualificationsTableSeeder extends Seeder
             ],
             [
                 'name' => 'M.D',
-            ],[
+            ],
+            [
                 'name' => 'M.S Medicine',
             ],
             [
@@ -220,7 +221,8 @@ class QualificationsTableSeeder extends Seeder
             ],
             [
                 'name' => 'PGD Medicine',
-            ],[
+            ],
+            [
                 'name' => 'ADN',
             ],
             [
@@ -240,7 +242,8 @@ class QualificationsTableSeeder extends Seeder
             ],
             [
                 'name' => 'ABA',
-            ],[
+            ],
+            [
                 'name' => 'ADBus',
             ],
             [
@@ -260,7 +263,8 @@ class QualificationsTableSeeder extends Seeder
             ],
             [
                 'name' => 'M.Phil',
-            ],[
+            ],
+            [
                 'name' => 'Bachelor',
             ],
             [
