@@ -161,4 +161,21 @@ z-index: 99999999;
 	content: "("
 
 }
+
+.aboutpage p {
+	font-size: 15px;
+	color: #000000c4;
+}
+.faqspage p {
+	font-size: 15px;
+	color: #000000c4;
+}
+.termandconditions p {
+	font-size: 15px;
+	color: #000000c4;
+}
+.privacypage p {
+	font-size: 15px;
+	color: #000000c4;
+}
 /* 15-08-2021 */
