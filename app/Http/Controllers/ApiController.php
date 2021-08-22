@@ -364,6 +364,72 @@ class ApiController extends Controller
       exit;
     }
 
+    public function connectSave()
+    {
+        $package = UserPackage::where(array('userId'=>$request->user()->id,"status"=>1))->first();
+        if(!empty($package) && $package->connects != 0)
+        {
+           $id = Auth::user()->id;
+           $date = Date('Y-m-d H:i:s');
+            $msg = "You have received invitation";
+            $n = new Notification([
+                 'notificationTo' =>$request->id,
+                 'notificationFrom' =>$request->user()->id,
+                 'notificationMessage' =>$msg,
+                 'type' =>1,
+                 'date' =>$date,
+                 'status'=>0,
+                 'read'=>0,
+             ]);
+
+            $res =  $n->save();
+
+            if($res)
+            {
+              $connects = new UserConnects([
+                'userId'=>$request->user()->id,
+                'sendTo'=>$request->id,
+                'connects'=>1,
+                'status'=>1,
+              ]);
+              $connects->save();
+            }
+            if($res)
+            {
+             $conn =  $package->connects - 1;
+             if($conn != 0)
+             {
+              UserPackage::where(array('id'=>$package->id))->update(array("connects"=>$conn));
+             }
+             else if($conn == 0)
+             {
+               UserPackage::where(array('id'=>$package->id))->update(array("status"=>0));
+             }
+            }
+            if($res)
+            {
+              $response['success']= true;
+              $response['message']= "Connect Sent Successfully";
+
+              return response($response);
+            }
+            else
+             {
+              $response['formErrors'] = true;
+              $response['message']= "Connect not Send";
+              return response($response);
+              }
+         }
+        else
+        {
+          $response['success']= false;
+          $response['message']= "package not Available";
+          return response($response);
+         }
+
+
+    }
+
 
 
 

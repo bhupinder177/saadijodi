@@ -17,11 +17,15 @@
                             <label>Religion</label>
 			                      <select name="religion"  id="category-1">
 	                        <option  value="">Select religion</option>
-	                        <option @if($relation == 1) selected @endif  value="1" >Hindu</option>
-	                        <option @if($relation == 2) selected @endif value="2">Muslim</option>
+													@if($allreligion)
+													@foreach($allreligion as $rel)
+	                        <option @if($relation == $rel->id) selected @endif  value="{{ $rel->id }}" >{{ ucwords($rel->name) }}</option>
+													@endforeach
+													@endif
+	                        <!-- <option @if($relation == 2) selected @endif value="2">Muslim</option>
 	                        <option @if($relation == 3) selected @endif value="3">Christian</option>
 	                        <option @if($relation == 4) selected @endif  value="4">Sikh</option>
-	                        <option @if($relation == 5) selected @endif  value="5">Parsi</option>
+	                        <option @if($relation == 5) selected @endif  value="5">Parsi</option> -->
 	                    </select>
 			                    </div>
 			                  </div>

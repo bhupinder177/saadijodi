@@ -16,7 +16,14 @@ use App\Model\UserContactDetails;
 use App\Model\PartnerPreferences;
 use App\Model\UserBirthDetails;
 use App\Model\UserImages;
-use App\Model\Heights;
+use App\Model\Notification;
+use App\Model\UserOnline;
+use App\Model\UserPackage;
+use App\Model\UserConnects;
+use App\Model\Religion;
+use App\Model\Community;
+use App\Model\MotherTongue;
+use App\Model\Height;
 use App\Model\Qualification;
 use App\Model\WorkingSectors;
 use Validator;
@@ -72,8 +79,8 @@ class ListingController extends Controller
 
         $user = $query->orderby('id','desc')->paginate($perpage);
 
-
-        return view('front.listing.listing',['users'=>$user,'relation'=>$relation]);
+        $allreligion = Religion::get();
+        return view('front.listing.listing',['users'=>$user,'relation'=>$relation,'allreligion'=>$allreligion]);
     }
 
 
