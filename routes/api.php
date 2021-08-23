@@ -28,6 +28,7 @@ use Illuminate\Http\Request;
         Route::get('toDayMatchListing', 'ApiController@toDayMatchListing');
         Route::post('profileDetail', 'ApiController@profileDetail');
         Route::post('connectSave', 'ApiController@connectSave');
+        Route::get('getPackage', 'ApiController@getPackage');
 
 
     });

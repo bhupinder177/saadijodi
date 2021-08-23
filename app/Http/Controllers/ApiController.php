@@ -26,6 +26,7 @@ use App\Model\MotherTongue;
 use App\Model\Height;
 use App\Model\Qualification;
 use App\Model\WorkingSectors;
+use App\Model\Package;
 use App\Helpers\GlobalFunctions as CommonHelper;
 use Validator;
 use DB;
@@ -310,11 +311,25 @@ class ApiController extends Controller
          $gender = 1;
       }
 
-      $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+      $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
         $w->where('gender',$gender);
       });
 
       $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+
+      if(count($user) > 0)
+      {
+        foreach($user as $k=>$us)
+        {
+          if(!empty($us['user_image']))
+          {
+            foreach($us['user_image'] as $k1=>$u)
+            {
+            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
+            }
+          }
+        }
+      }
 
       if($user)
        {
@@ -346,8 +361,17 @@ class ApiController extends Controller
         }
         else
        {
-      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious',,'UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
-
+      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
+      if(!empty($user))
+      {
+        if($user['user_image'])
+        {
+          foreach($us['user_image'] as $k1=>$u)
+          {
+          $user['user_image'][$k1]['image'] = url("profiles/".$u['image']);
+          }
+        }
+      }
       if($user)
        {
          $output['success'] ="true";
@@ -428,6 +452,26 @@ class ApiController extends Controller
          }
 
 
+    }
+
+    public function getPackage()
+    {
+      $user = Package::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get package";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
     }
 
 
