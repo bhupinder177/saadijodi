@@ -44,14 +44,14 @@ class CommunityController extends Controller
 
 
 
-            $users = $query->orderby('id','DESC')->paginate($perpage);
+            $users = $query->with('religiondetail')->orderby('id','DESC')->paginate($perpage);
 
             $html =  view('admin.community.communityajax',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage])->render();
             return response()->json(['html' => $html]);
         }
         else
         {
-           $users = $query->orderby('id','DESC')->paginate($perpage);
+           $users = $query->with('religiondetail')->orderby('id','DESC')->paginate($perpage);
 
 
           return view('admin.community.community',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);

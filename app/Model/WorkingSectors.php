@@ -9,4 +9,10 @@ class WorkingSectors extends Model
   protected $fillable = [
       'name'
   ];
+
+  public function detail()
+  {
+      return $this->hasMany('App\Model\UserEducations','workingAs','id');
+  }
+
 }

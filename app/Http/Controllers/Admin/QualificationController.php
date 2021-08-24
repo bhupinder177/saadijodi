@@ -44,14 +44,14 @@ class QualificationController extends Controller
 
 
 
-            $users = $query->orderby('id','DESC')->paginate($perpage);
+            $users = $query->with('detail')->orderby('id','DESC')->paginate($perpage);
 
             $html =  view('admin.qualification.qualificationajax',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage])->render();
             return response()->json(['html' => $html]);
         }
         else
         {
-           $users = $query->orderby('id','DESC')->paginate($perpage);
+           $users = $query->with('detail')->orderby('id','DESC')->paginate($perpage);
 
 
           return view('admin.qualification.qualification',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);

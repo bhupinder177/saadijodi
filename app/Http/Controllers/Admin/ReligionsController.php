@@ -51,9 +51,7 @@ class ReligionsController extends Controller
         }
         else
         {
-           $users = $query->orderby('id','DESC')->paginate($perpage);
-
-
+           $users = $query->with('religiondetail')->orderby('id','DESC')->paginate($perpage);
           return view('admin.religion.religion',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
          }
     }

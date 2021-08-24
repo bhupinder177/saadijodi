@@ -17,8 +17,11 @@
 
 
             <td >
+              @if(count($u->religiondetail) == 0)
              <a href="{{url($prefix.'/religions-edit/'.Crypt::encrypt($u->id))}}"><i class="fa fa-edit"></i></a>
              <a class="deleterecord" data-link="{{url($prefix.'/religions-delete')}}" data-id="{{ $u->id }}"><i class="fa fa-trash deleterecord"  data-link="{{url($prefix.'/religions-delete')}}"  data-id="{{ $u->id }}" aria-hidden="true"></i></a>
+             @endif
+             </td>
              </td>
         </tr>
         @endforeach

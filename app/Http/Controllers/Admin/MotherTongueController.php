@@ -44,14 +44,14 @@ class MotherTongueController extends Controller
 
 
 
-            $users = $query->orderby('id','DESC')->paginate($perpage);
+            $users = $query->with('religiondetail')->orderby('id','DESC')->paginate($perpage);
 
             $html =  view('admin.mothertongue.mothertongueajax',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage])->render();
             return response()->json(['html' => $html]);
         }
         else
         {
-           $users = $query->orderby('id','DESC')->paginate($perpage);
+           $users = $query->with('religiondetail')->orderby('id','DESC')->paginate($perpage);
 
 
           return view('admin.mothertongue.mothertongue',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
