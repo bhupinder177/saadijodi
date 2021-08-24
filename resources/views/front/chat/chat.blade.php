@@ -242,7 +242,8 @@
                 <form class="write chatinputForm" action="">
                   <div class="input-group">
                       <div class="input-group-append">
-                          <span class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
+                          <!-- <span for="uploadimage" class="input-group-text attach_btn"><i class="fa fa-paperclip"></i></span>
+                          <input type="file" id="uploadimage" class="uploadimge"> -->
                       </div>
                       <textarea name="message-to-send" id="message-to-send" class="form-control type_msg" placeholder="Type your message..."></textarea>
                       <input type="hidden" value="{{ Auth::user()->firstName }}" id="handle">

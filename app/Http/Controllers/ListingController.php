@@ -55,6 +55,11 @@ class ListingController extends Controller
     {
         $perpage = 10;
         $relation ='';
+        $countryId ='';
+        $stateId ='';
+        $cityId ='';
+        $allstates = [];
+        $allcity = [];
         $gender = UserBasicDetails::where('userId',Auth::user()->id)->first();
 
         if($gender->gender == 1)
@@ -69,7 +74,7 @@ class ListingController extends Controller
         $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
         });
-        if($request->religion)
+        if(!empty($request->religion))
         {
           $relation = $request->religion;
           $query->WhereHas('UserReligious',function($query) use($relation){
@@ -77,10 +82,42 @@ class ListingController extends Controller
           });
         }
 
+        if(!empty($request->country))
+        {
+          $countryId = $request->country;
+          $query->WhereHas('UserLocation',function($query) use($countryId){
+            $query->where('country',$countryId);
+          });
+        }
+        if(!empty($request->state))
+        {
+          $stateId = $request->state;
+          $query->WhereHas('UserLocation',function($query) use($stateId){
+            $query->where('state',$stateId);
+          });
+        }
+        if(!empty($request->city))
+        {
+          $cityId = $request->city;
+          $query->WhereHas('UserLocation',function($query) use($cityId){
+            $query->where('state',$cityId);
+          });
+        }
+
+        if(!empty($countryId))
+        {
+        $allstates = States::where('country_id',$countryId)->get();
+        }
+        if(!empty($stateId))
+        {
+        $allcity = Cities::where('state_id',$stateId)->get();
+        }
+
         $user = $query->orderby('id','desc')->paginate($perpage);
 
         $allreligion = Religion::get();
-        return view('front.listing.listing',['users'=>$user,'relation'=>$relation,'allreligion'=>$allreligion]);
+        $allcountry = Country::get();
+        return view('front.listing.listing',['users'=>$user,'allcountry'=>$allcountry,'allstates'=>$allstates,'allcity'=>$allcity,'countryId'=>$countryId,'relation'=>$relation,'allreligion'=>$allreligion,'stateId'=>$stateId,'cityId'=>$cityId]);
     }
 
 

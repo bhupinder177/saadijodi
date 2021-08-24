@@ -22,10 +22,45 @@
 	                        <option @if($relation == $rel->id) selected @endif  value="{{ $rel->id }}" >{{ ucwords($rel->name) }}</option>
 													@endforeach
 													@endif
-	                        <!-- <option @if($relation == 2) selected @endif value="2">Muslim</option>
-	                        <option @if($relation == 3) selected @endif value="3">Christian</option>
-	                        <option @if($relation == 4) selected @endif  value="4">Sikh</option>
-	                        <option @if($relation == 5) selected @endif  value="5">Parsi</option> -->
+	                    </select>
+			                    </div>
+			                  </div>
+			                  <div class="mt-2 mb-2 pl-2">
+													<div class="form_group_wrap">
+                            <label>Country</label>
+			                      <select class="countryChange" name="country"  id="category-1">
+	                        <option  value="">Select country</option>
+													@if($allcountry)
+													@foreach($allcountry as $country)
+	                        <option @if($countryId == $country->id) selected @endif  value="{{ $country->id }}" >{{ ucwords($country->name) }}</option>
+													@endforeach
+													@endif
+	                    </select>
+			                    </div>
+			                  </div>
+			                  <div class="mt-2 mb-2 pl-2 statefilter @if(empty($allstates)) @if(empty($allstates))  @endif d-none @endif">
+													<div class="form_group_wrap">
+                            <label>State</label>
+			                      <select class="stateChange" name="state"  id="category-1">
+	                        <option  value="">Select State</option>
+													@if($allstates)
+													@foreach($allstates as $st)
+													<option @if($stateId == $st->id) selected @endif  value="{{ $st->id }}" >{{ ucwords($st->name) }}</option>
+													@endforeach
+													@endif
+	                    </select>
+			                    </div>
+			                  </div>
+			                  <div class="mt-2 mb-2 pl-2 cityfilter @if(!empty($allcity))  @else d-none @endif">
+													<div class="form_group_wrap">
+                            <label>City</label>
+			                      <select class="cityChange" name="city"  id="category-1">
+	                        <option  value="">Select City</option>
+													@if($allcity)
+													@foreach($allcity as $ci)
+													<option @if($cityId == $ci->id) selected @endif  value="{{ $ci->id }}" >{{ ucwords($ci->name) }}</option>
+													@endforeach
+													@endif
 	                    </select>
 			                    </div>
 			                  </div>

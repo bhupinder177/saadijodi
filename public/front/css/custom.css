@@ -178,4 +178,7 @@ z-index: 99999999;
 	font-size: 15px;
 	color: #000000c4;
 }
+#uploadimage {
+    display: none;
+}
 /* 15-08-2021 */

@@ -548,6 +548,67 @@ $('body').on('click','.inviteUser',function(){
 });
 // invite send
 
+// change country in filter
+jQuery('body').on('change', '.countryChange', function()
+    {
+      var id = $(this).val()
+      $.ajax({
+      type : 'POST',
+      cache : false,
+      url : base_url + '/getState',
+      data : {countryId:id},
+      headers : {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      dataType: 'json',
+      success:function(response){
+      if(response.success == "true")
+      {
+        var  list ='';
+       list +='<option value="">Select State</option>';
+       $.each(response.result,function(key, value){
+       var id = value.id;
+       var name = value.name;
+       list +='<option data-text="'+name+'" value="'+id+'">'+name+'</option>';
+      });
+      $('.statefilter').removeClass('d-none');
+      $('.stateChange').html(list);
+      }
+      }
+      });
+    });
+
+    jQuery('body').on('change', '.stateChange', function()
+    {
+      var id = $(this).val()
+      $.ajax({
+      type : 'POST',
+      cache : false,
+      url : base_url + '/getCity',
+      data : {stateId:id},
+      headers : {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      dataType: 'json',
+      success:function(response){
+      if(response.success == "true")
+      {
+      var  list ='';
+       list +='<option value="">Select City</option>';
+       $.each(response.result,function(key, value){
+       var id = value.id;
+       var name = value.name;
+       list +='<option data-text="'+name+'" value="'+id+'">'+name+'</option>';
+      });
+      $('.cityfilter').removeClass('d-none');
+      $('.cityChange').html(list);
+      }
+      }
+      });
+    });
+
+// change country in filter
+
 
 
 });
