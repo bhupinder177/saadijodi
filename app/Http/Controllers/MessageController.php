@@ -1,12 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 use App\Model\User;
-use App\Model\Post;
-use App\Model\PostRequest;
 use App\Model\Message;
 use App\Model\Country;
 use App\Model\Notification;
 use App\Model\MessageRoom;
+use App\Model\UserLocations;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -27,16 +26,19 @@ class MessageController extends Controller
     $id = Auth::User()->id;
     $h = '0 Hours';
     $m = '0 Minutes';
-    $result = User::where('id',$id)->first();
+    $result = UserLocations::with('statedetail')->where('userId',$id)->first();
     $offset = '';
-    if(!empty($result->countryId))
+    if(!empty($result->statedetail))
     {
-      $country = Country::where('id',$result->countryId)->first();
-      if($country)
+      if(!empty($result->statedetail->timezone))
       {
-        $result->country = $country->name;
-        $timezone = str_replace("GMT","",$country->timezone);
+        $timezone = str_replace("GMT","",$result->statedetail->timezone);
       }
+      else
+      {
+        $timezone ='0';
+      }
+
     }
     else
     {
@@ -84,17 +86,22 @@ class MessageController extends Controller
     $id = Auth::User()->id;
     $h = '0 Hours';
     $m = '0 Minutes';
-    $result = User::where('id',$id)->first();
+
     $post = array();
     $requestdata = array();
-    if(!empty($result->countryId))
+    $result = UserLocations::with('statedetail')->where('userId',$id)->first();
+
+    if(!empty($result->statedetail))
     {
-      $country = Country::where('id',$result->countryId)->first();
-      if($country)
+      if(!empty($result->statedetail->timezone))
       {
-        $result->country = $country->name;
-        $timezone = str_replace("GMT","",$country->timezone);
+        $timezone = str_replace("GMT","",$result->statedetail->timezone);
       }
+      else
+      {
+        $timezone ='0';
+      }
+
     }
     else
     {
@@ -163,20 +170,25 @@ class MessageController extends Controller
            $id = Auth::User()->id;
            $h = '0 Hours';
            $m = '0 Minutes';
-           $result = User::where('id',$id)->first();
-           if(!empty($result->countryId))
+           $result = UserLocations::with('statedetail')->where('userId',$id)->first();
+
+           if(!empty($result->statedetail))
            {
-             $country = Country::where('id',$result->countryId)->first();
-             if($country)
+             if(!empty($result->statedetail->timezone))
              {
-               $result->country = $country->name;
-               $timezone = str_replace("GMT","",$country->timezone);
+               $timezone = str_replace("GMT","",$result->statedetail->timezone);
              }
+             else
+             {
+               $timezone ='0';
+             }
+
            }
            else
            {
             $timezone = '0';
            }
+
            if(!empty($timezone))
            {
             $zone = explode(":",$timezone);
@@ -245,16 +257,19 @@ class MessageController extends Controller
     $id = Auth::User()->id;
     $h = '0 Hours';
     $m = '0 Minutes';
-    $offset = '';
-    $result = User::where('id',$id)->first();
-    if(!empty($result->countryId))
+    $result = UserLocations::with('statedetail')->where('userId',$id)->first();
+
+    if(!empty($result->statedetail))
     {
-      $country = Country::where('id',$result->countryId)->first();
-      if($country)
+      if(!empty($result->statedetail->timezone))
       {
-        $result->country = $country->name;
-        $timezone = str_replace("GMT","",$country->timezone);
+        $timezone = str_replace("GMT","",$result->statedetail->timezone);
       }
+      else
+      {
+        $timezone ='0';
+      }
+
     }
     else
     {
