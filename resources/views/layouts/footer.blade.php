@@ -39,7 +39,7 @@
               <i class="fa fa-angle-right"></i><a href="{{URL::to('/faqs')}}">FAQs</a>
             </li>
             <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/term-conditions')}}">Terms and Condition</a>
+              <i class="fa fa-angle-right"></i><a href="{{URL::to('/term-conditions')}}">Terms and Conditions</a>
             </li>
 
           </ul>
