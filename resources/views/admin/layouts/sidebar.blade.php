@@ -35,21 +35,21 @@
         </li>
         <li <?php if(request()->segment(2) == "coupon" || request()->segment(1) == "coupon-add" || request()->segment(1) == "coupon-edit"){ ?>class="active" <?php } ?>>
           <a href="{{URL::to($getprefix.'/coupon')}}">
-            <span><i class="fa fa-tasks"></i><span class="lbl">Coupon</span></span>
+            <span><i class="fa fa-gift"></i><span class="lbl">Coupon</span></span>
           </a>
 
         </li>
 
         <li <?php if(request()->segment(2) == "country" ){ ?>class="active" <?php } ?>>
           <a href="{{URL::to($getprefix.'/country')}}">
-            <span><i class="fa fa-tasks"></i><span class="lbl">Countries</span></span>
+            <span><i class="fa fa-flag"></i><span class="lbl">Countries</span></span>
           </a>
 
         </li>
 
         <li <?php if(request()->segment(2) == "stories" ){ ?>class="active" <?php } ?>>
           <a href="{{URL::to($getprefix.'/stories')}}">
-            <span><i class="fa fa-tasks"></i><span class="lbl">Stories</span></span>
+            <span><i class="fa fa-history"></i><span class="lbl">Stories</span></span>
           </a>
 
         </li>
@@ -73,7 +73,7 @@
         </li>
         <li <?php if(request()->segment(2) == "qualification" ){ ?>class="active" <?php } ?>>
           <a href="{{URL::to($getprefix.'/qualification')}}">
-            <span><i class="fa fa-tasks"></i><span class="lbl">Qualifications</span></span>
+            <span><i class="fa fa-graduation-cap"></i><span class="lbl">Qualifications</span></span>
           </a>
 
         </li>
@@ -84,6 +84,14 @@
           </a>
 
         </li>
+
+        <li <?php if(request()->segment(2) == "payments" ){ ?>class="active" <?php } ?>>
+          <a href="{{URL::to($getprefix.'/payments')}}">
+            <span><i class="fa fa-credit-card" aria-hidden="true"></i><span class="lbl">Payments</span></span>
+          </a>
+
+        </li>
+
 
 
 

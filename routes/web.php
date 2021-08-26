@@ -175,6 +175,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::post('workingsectors-update','WorkingSectorsController@update');
         Route::post('workingsectors-delete','WorkingSectorsController@delete');
 
+        Route::get('payments','PaymentsController@index');
+
         Route::get('/password', 'DashboardController@password');
         Route::post('/passwordUpdate', 'DashboardController@passwordUpdate');
 

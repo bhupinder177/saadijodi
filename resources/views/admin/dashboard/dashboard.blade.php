@@ -11,6 +11,28 @@
                    </ol>
                  </section>
                  <div class="row">
+
+                   <!-- users -->
+                   <div class="col-md-4">
+                     <a href="{{URL::to($prefix.'/payments')}}">
+                         <div class="emp wow bounceInDown  animated" style="visibility: visible; animation-name: bounceInDown;">
+                             <ul class="ul-list unstyle mb-0">
+                                 <li>
+                                     <div class="bg-blue">
+                                         <img src="{{ asset('admin/images/driver.png')}}" class="image-fluid">
+                                     </div>
+                                 </li>
+                                 <li>
+                                     <div class="content">
+                                         <p>Total Payments</p>
+                                         <span>${{ number_format($payment,2) }}</span>
+                                     </div>
+                                 </li>
+                             </ul>
+                         </div>
+                         </a>
+                     </div>
+                     <!-- users -->
                  <!-- users -->
                  <div class="col-md-4">
                    <a href="{{URL::to($prefix.'/userlist')}}">

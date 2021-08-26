@@ -12,6 +12,7 @@ use App\Model\Package;
 use App\Model\UserPackage;
 use App\Model\MessageRoom;
 use App\Model\Coupon;
+use App\Model\Payments;
 use Validator;
 use Session;
 use Curl;
@@ -59,6 +60,7 @@ class MembershipController extends Controller
       $pid = Crypt::decrypt($request->packageId);
       $package = Package::where('id',$pid)->first();
       $price = $package->price;
+      $tdiscount = 0;
        if(isset($request->coupon))
        {
          $res = Coupon::where(array('coupon'=>$request->coupon,'status'=>1))->first();
@@ -114,12 +116,23 @@ class MembershipController extends Controller
         ]);
          $success = $upackage->save();
 
+         if($success)
+         {
+           $pay = new Payments([
+             'userId'=>Auth::User()->id,
+             'packageId'=>$package->id,
+             'amount'=>$price,
+             'coupon'=>$tdiscount,
+           ]);
+           $pay->save();
+         }
+
       }
 
       if($payment)
       {
         $output['success'] ="true";
-        $output['success_message'] ="Payment  Successfully";
+        $output['success_message'] ="Payment  Successful";
         $output['delayTime'] = 3000;
         $output['url'] = url('success');
       }
