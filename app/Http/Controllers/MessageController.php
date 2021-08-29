@@ -91,6 +91,7 @@ class MessageController extends Controller
     $requestdata = array();
     $result = UserLocations::with('statedetail')->where('userId',$id)->first();
 
+
     if(!empty($result->statedetail))
     {
       if(!empty($result->statedetail->timezone))
@@ -130,7 +131,8 @@ class MessageController extends Controller
     $user = User::where('id',$request->sender)->first();
     $room = MessageRoom::where('roomId',$request->data_room)->first();
     $image = CommonHelper::getImage($request->sender);
-    if($image)
+    
+    if(!empty($image))
     {
       $img = url("profiles/".$image->image);
     }

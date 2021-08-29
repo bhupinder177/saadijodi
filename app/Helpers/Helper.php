@@ -190,7 +190,8 @@ class GlobalFunctions {
 
       public static function getImage($userId)
       {
-          return $userrating = UserImages::where(array("userId"=>$userId,"isProfile"=>1))->first();
+      
+          return $userimage = UserImages::where(array("userId"=>$userId,"isProfile"=>1))->first();
       }
 
       public static function getnotificationInvite($userId,$to)

@@ -185,6 +185,7 @@ $.ajax({
       data: {
         'data_room' : room,
         'sender' : receiver,
+
       },
       headers     : {
      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -195,7 +196,7 @@ $.ajax({
         ele.html(data.rhtml);
         ele.attr('data-offset', '10');
         $(".chatWith").text('Chat with '+data.user);
-        $(".chatwithimage").data('src',data.image);
+        $(".chatwithimage").attr('src',data.image);
         $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
         ele.animate({ scrollTop: ele.prop("scrollHeight")}, 1000);
       },
