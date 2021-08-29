@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('type');
             $table->integer('status');
             $table->integer('forgotPasswordExpired')->nullable();
+            $table->integer('profileUpdate')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

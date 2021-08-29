@@ -43,7 +43,7 @@ class MembershipController extends Controller
     public function index()
     {
        $package = Package::get();
-       $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
+       $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderby('id','desc')->first();
 
         return view('front.package.package',['packages'=>$package,'selected'=>$selected]);
     }

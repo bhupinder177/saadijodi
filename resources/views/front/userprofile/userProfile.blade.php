@@ -161,7 +161,10 @@
 
               <div class="about_here_wrap">
                 @if(isset($user->UserContactDetails->mobile))<p>Contact Number <span class="num">{{$user->UserContactDetails->mobile ?? ""}}</span></p>@endif
-                <p>Email ID <span class="num">{{$user->email }}</span></p>
+                <p>Email ID @if($phoneshowing == 1)<span class="num">{{$user->email }}</span> @else <span class="num">---</span> @endif</p>
+                @if(!empty($user->UserContactDetail))
+                <p>Phone Number @if($phoneshowing == 1)<span class="num">{{ $user->UserContactDetail->mobile }}</span>@else <span class="num">---</span> @endif</p>
+                @endif
               </div>
 
             </div>

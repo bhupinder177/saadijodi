@@ -127,6 +127,8 @@ class ProfileController extends Controller
        $detail['bloodGroup'] = $request->bloodGroup;
        $detail['dateOfBirth'] = date("Y-m-d", strtotime($request->dateOfBirth));
 
+
+        User::where(array("id"=>Auth::User()->id))->update(array("profileUpdate"=>1));
        $res = UserBasicDetails::updateOrCreate(array("userId"=>Auth::User()->id),$detail);
        if($res)
        {
@@ -386,8 +388,14 @@ class ProfileController extends Controller
 
     public function userProfile($id)
     {
+      $phoneshowing = 0;
+      $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderby('id','desc')->first();
+      if(!empty($selected) && $selected->phoneNumberDisplay == 1)
+      {
+        $phoneshowing = 1;
+      }
       $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('uniqueId',$id)->first();
-      return view('front.userprofile.userProfile',['user'=>$user]);
+      return view('front.userprofile.userProfile',['user'=>$user,'phoneshowing'=>$phoneshowing]);
     }
 
     public function notification()
