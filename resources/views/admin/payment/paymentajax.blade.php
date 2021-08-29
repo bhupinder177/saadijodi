@@ -3,7 +3,7 @@
         <tr>
             <th style="width: 5%">S. No</th>
             <th style="width: 10%">User Name</th>
-            <th style="width: 8%">Amount</th>
+            <th style="width: 8%">Amount($)</th>
             <th style="width: 8%">Coupon Amount</th>
             <th style="width: 8%">Date</th>
         </tr>
