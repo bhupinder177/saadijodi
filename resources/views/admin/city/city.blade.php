@@ -71,7 +71,9 @@
                     </tbody>
                 </table>
                 <div class="pagination1">
-                    {{$users->links()}}
+                    {{$users->appends([
+                      "id"=>$id
+                    ])->links()}}
                 </div>
             </div>
         </div>

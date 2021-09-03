@@ -48,7 +48,7 @@ class StateController extends Controller
 
             $users = $query->where('country_id',$request->id)->orderby('id','DESC')->paginate($perpage);
 
-            $html =  view('admin.state.stateajax',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage])->render();
+            $html =  view('admin.state.stateajax',['prefix'=>$this->prefix,'id'=>$request->id,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage])->render();
             return response()->json(['html' => $html]);
         }
         else
