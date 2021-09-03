@@ -159,7 +159,7 @@ class StateController extends Controller
            $response['success']         = true;
            $response['delayTime']       = '3000';
            $response['success_message'] = 'State Updated Successfully.';
-           $response['url'] = url($this->prefix.'/state?id=/'.$request['country_id']);
+           $response['url'] = url($this->prefix.'/state?id='.$request['country_id']);
 
            return response($response);
          }
