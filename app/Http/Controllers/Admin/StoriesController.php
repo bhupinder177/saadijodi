@@ -149,7 +149,7 @@ class StoriesController extends Controller
          $extension2    = $files->extension();
          $type         = explode('.',$name);
          $files->move(public_path().'/stories/', $imgRef.'.'.$extension2);
-         $data['image'] = $imgRef.'.'.$extension2;
+         $data1['image'] = $imgRef.'.'.$extension2;
 
        }
        $id = Crypt::decrypt($request['id']);
