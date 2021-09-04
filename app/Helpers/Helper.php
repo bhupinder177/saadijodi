@@ -10,6 +10,7 @@ use App\Estimation;
 use PDF;
 use App\Model\Notification;
 use App\Model\Message;
+use App\Model\MessageRoom;
 use App\Model\UserImages;
 
 
@@ -190,7 +191,7 @@ class GlobalFunctions {
 
       public static function getImage($userId)
       {
-      
+
           return $userimage = UserImages::where(array("userId"=>$userId,"isProfile"=>1))->first();
       }
 
@@ -207,7 +208,24 @@ class GlobalFunctions {
 
       public static function unreadmessageHeader($id)
       {
-        return $unread = Message::where(array('userId'=>$id,"is_read"=>0))->count();
+         $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
+         $array = [];
+
+         if(count($rooms) > 0)
+         {
+           foreach($rooms as $r)
+           {
+             if($r->userId != $id)
+             {
+               $array[] = $r->userId;
+             }
+             if($r->oppositeUserId != $id)
+             {
+               $array[] = $r->oppositeUserId;
+             }
+           }
+         }
+        $allunread = Message::whereIn('userId',$array)->where('is_read',0)->count();
 
       }
 

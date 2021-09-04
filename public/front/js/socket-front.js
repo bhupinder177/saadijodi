@@ -97,6 +97,15 @@ $(function () {
       $('.unread'+receiverId+room).removeClass('d-none');
       $('.unread'+receiverId+room).html(parseInt(currentCount)+1);
       $('.personli'+receiverId+room).last().remove();
+
+      var mainCount = $.trim($('.unreadheadermessage').html());
+      if(mainCount == '')
+      mainCount = 0;
+      else
+      mainCount = mainCount;
+      mainCount = parseInt(mainCount)+1;
+      $('.unreadheadermessage').removeClass('d-none');
+      $('.unreadheadermessage').html(mainCount);
     }
     if(($('.personli'+receiverId+room).hasClass('active') == true) && (receiver == senderId))
     {
@@ -109,6 +118,7 @@ $(function () {
 $(document).on('click', '.msg_card_body,.chatinputForm', function () {
 var room = $('.chat-active').attr('data-room');
 var receiver = $('.chat-active').attr('data-receiver');
+
 var currentCount = $.trim($('.unread'+receiver+room).html());
 var count = parseInt(currentCount);
 if(count)
@@ -128,6 +138,16 @@ $.ajax({
     {
     $('.unread'+receiver+room).html('');
     $('.unread'+receiver+room).addClass('d-none');
+        if(data.allunread)
+        {
+        $('.unreadheadermessage').removeClass('d-none');
+        $('.unreadheadermessage').html(data.allunread);
+        }
+        else
+        {
+        $('.unreadheadermessage').addClass('d-none');
+        $('.unreadheadermessage').html(data.allunread);
+        }
     }
   },
   error: function (data) {
@@ -197,8 +217,22 @@ $.ajax({
         ele.attr('data-offset', '10');
         $(".chatWith").text('Chat with '+data.user);
         $(".chatwithimage").attr('src',data.image);
+        $('.chat-active').attr('data-room',room);
+        $('.chat-active').attr('data-receiver',receiver);
+
+        if(data.allunread)
+        {
+        $('.unreadheadermessage').removeClass('d-none');
+        $('.unreadheadermessage').html(data.allunread);
+        }
+        else
+        {
+          $('.unreadheadermessage').addClass('d-none');
+          $('.unreadheadermessage').html(data.allunread);
+        }
         $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
-        ele.animate({ scrollTop: ele.prop("scrollHeight")}, 1000);
+
+
       },
       error: function (data) {
         console.log(data);
@@ -244,7 +278,9 @@ $.ajax({
   // get preview message on scroll up
   $('.msg_card_body').scroll(function () {
     let className = $('.msg_card_body:first-child').attr('data-mes');
-    if($(this).scrollTop() < 1) {
+
+    if($(this).scrollTop() < 1 && (className)) {
+      console.log("gggg");
       let ele = $(this);
       let data_offset = parseInt($(this).attr('data-offset'));
       let data_room = $(this).attr('data-room');
@@ -262,6 +298,16 @@ $.ajax({
         {
           ele.prepend(data.rhtml);
           ele.attr('data-offset',data.offset);
+          if(data.allunread)
+          {
+          $('.unreadheadermessage').removeClass('d-none');
+          $('.unreadheadermessage').html(data.allunread);
+          }
+          else
+          {
+            $('.unreadheadermessage').addClass('d-none');
+            $('.unreadheadermessage').html(data.allunread);
+          }
           isOnScreen(ele,data_offset);
         },
         error: function (data) {
@@ -295,8 +341,10 @@ $.ajax({
 
 
     // if the element doesn't exist, abort
-    $(window).scrollTop($(this).scrollTop());
-   $("[data-mes='"+className+"']")[0].scrollIntoView();return false
+  //  $(window).scrollTop($(this).scrollTop());
+    $(".msg_card_body").animate({ scrollTop: $("[data-mes='"+className+"']")[0].scrollHeight}, 1000);
+
+//   $("[data-mes='"+className+"']")[0].scrollIntoView();return false
     // if( elem.length == 0 ) {
     //   return;
     // }

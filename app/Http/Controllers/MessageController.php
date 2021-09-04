@@ -154,7 +154,27 @@ class MessageController extends Controller
 
     $roomId = $request->data_room;
     $offset = 10;
-    $returnHTML = view('front.chat.chat-thread', compact('messages','user','roomId','offset','timezone'))->render();
+
+    $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
+    $array = [];
+
+    if(count($rooms) > 0)
+    {
+      foreach($rooms as $r)
+      {
+        if($r->userId != $id)
+        {
+          $array[] = $r->userId;
+        }
+        if($r->oppositeUserId != $id)
+        {
+          $array[] = $r->oppositeUserId;
+        }
+      }
+    }
+   $allunread = Message::whereIn('userId',$array)->where('is_read',0)->count();
+
+    $returnHTML = view('front.chat.chat-thread', compact('messages','user','roomId','offset','timezone','allunread'))->render();
      # udpate the chat message to is_read = true
     $message_ids = $messages->pluck('id');
    return new JsonResponse(['rhtml' => $returnHTML,'user'=>$user->firstName,'image'=>$img]);
@@ -322,7 +342,27 @@ class MessageController extends Controller
     $count = $count - 1;
     $offset = $messages[$count]->id;
     }
-    $returnHTML = view('front.chat.chat-oldhistory', compact('messages','timezone','offset'))->render();
+
+    $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
+    $array = [];
+
+    if(count($rooms) > 0)
+    {
+      foreach($rooms as $r)
+      {
+        if($r->userId != $id)
+        {
+          $array[] = $r->userId;
+        }
+        if($r->oppositeUserId != $id)
+        {
+          $array[] = $r->oppositeUserId;
+        }
+      }
+    }
+   $allunread = Message::whereIn('userId',$array)->where('is_read',0)->count();
+
+    $returnHTML = view('front.chat.chat-oldhistory', compact('messages','timezone','offset','allunread'))->render();
    return new JsonResponse(['rhtml' => $returnHTML,'offset'=>$offset]);
   }
 
