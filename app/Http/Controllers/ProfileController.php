@@ -450,7 +450,7 @@ class ProfileController extends Controller
            $this->prefix = request()->route()->getPrefix();
            if(!empty(Auth::user()->id))
            {
-             $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
+             $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderBy('id','desc')->first();
              if(!empty($package) && $package->connects != 0)
              {
            $id = Auth::user()->id;

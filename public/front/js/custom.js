@@ -46,36 +46,35 @@ jQuery('body').on('keyup', '#email', function(){
       var type = $(this).attr('data-type');
       var type1 = $(this).attr('data-typee');
 
-       if(type1 == 1)
-       {
-         var counting = $('.rcshow span').length;
-
-         if(counting == 1)
-         {
-          $('.rcerror').val('');
-         }
-       }
-       else if(type == 2)
-       {
-         var counting1 = $('.insuranceshow span').length;
-         if(counting1 == 1)
-         {
-          $('.insuranceerror').val('');
-         }
-      }
-       else if(type == 3)
-       {
-         var counting2 = $('.licenceshow span').length;
-         if(counting2 == 1)
-         {
-           $('.licencerror').val('');
-        }
-      }
+      //  if(type1 == 1)
+      //  {
+      //    var counting = $('.rcshow span').length;
+      //
+      //    if(counting == 1)
+      //    {
+      //     $('.rcerror').val('');
+      //    }
+      //  }
+      //  else if(type == 2)
+      //  {
+      //    var counting1 = $('.insuranceshow span').length;
+      //    if(counting1 == 1)
+      //    {
+      //     $('.insuranceerror').val('');
+      //    }
+      // }
+      //  else if(type == 3)
+      //  {
+      //    var counting2 = $('.licenceshow span').length;
+      //    if(counting2 == 1)
+      //    {
+      //      $('.licencerror').val('');
+      //   }
+      // }
       if(!id)
       {
         $('.doctype'+type).remove();
-        $(this).remove();
-         //location.reload();
+        $('.removedocument'+id).remove();
       }
       else
       {
@@ -470,7 +469,8 @@ jQuery('body').on('change', '#country', function()
     // *********************get states********************
 // images
     $('body').on('change', '.multipleimageUpload', function(){
-        $('#rc-error').remove();
+
+
 
           var aa = true;
          if (this.files && this.files[0]) {
@@ -672,5 +672,6 @@ setInterval('online()', 20000);
    a = Math.floor(Math.random() * 6) + 1;
   r += '<span class="doctype1'+a+'"><img class="doctype1'+a+' docimg" height="50" width="50" src=' + e.target.result + '>';
    r += '<a data-typee="1" data-type="1'+a+'"  class="removedocument" ><i  class="fa fa-times" aria-hidden="true"></i></a></span>';
+   console.log(r);
    $('.imagesshow').append(r);
 };

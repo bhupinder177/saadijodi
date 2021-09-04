@@ -147,7 +147,7 @@ class MembershipController extends Controller
 
     public function checkPackage(Request $request)
     {
-      $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->first();
+      $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderBy('id','desc')->first();
       if(!empty($package) && $package->chat == 1)
       {
         $userId = Auth::User()->id;
