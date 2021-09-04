@@ -28,11 +28,17 @@ class MessageController extends Controller
     $m = '0 Minutes';
     $result = UserLocations::with('statedetail')->where('userId',$id)->first();
     $offset = '';
+
+
     if(!empty($result->statedetail))
     {
       if(!empty($result->statedetail->timezone))
       {
-        $timezone = str_replace("GMT","",$result->statedetail->timezone);
+        $timezoneArray = explode(" ",$result->statedetail->timezone);
+        if(!empty($timezoneArray))
+        {
+          $timezone = $timezoneArray[1];
+        }
       }
       else
       {
@@ -44,6 +50,7 @@ class MessageController extends Controller
     {
      $timezone = '0';
     }
+
     if(!empty($timezone))
     {
      $zone = explode(":",$timezone);
@@ -91,12 +98,15 @@ class MessageController extends Controller
     $requestdata = array();
     $result = UserLocations::with('statedetail')->where('userId',$id)->first();
 
-
     if(!empty($result->statedetail))
     {
       if(!empty($result->statedetail->timezone))
       {
-        $timezone = str_replace("GMT","",$result->statedetail->timezone);
+        $timezoneArray = explode(" ",$result->statedetail->timezone);
+        if(!empty($timezoneArray))
+        {
+          $timezone = $timezoneArray[1];
+        }
       }
       else
       {
@@ -108,6 +118,7 @@ class MessageController extends Controller
     {
      $timezone = '0';
     }
+
     if(!empty($timezone))
     {
      $zone = explode(":",$timezone);
@@ -131,7 +142,7 @@ class MessageController extends Controller
     $user = User::where('id',$request->sender)->first();
     $room = MessageRoom::where('roomId',$request->data_room)->first();
     $image = CommonHelper::getImage($request->sender);
-    
+
     if(!empty($image))
     {
       $img = url("profiles/".$image->image);
@@ -178,7 +189,11 @@ class MessageController extends Controller
            {
              if(!empty($result->statedetail->timezone))
              {
-               $timezone = str_replace("GMT","",$result->statedetail->timezone);
+               $timezoneArray = explode(" ",$result->statedetail->timezone);
+               if(!empty($timezoneArray))
+               {
+                 $timezone = $timezoneArray[1];
+               }
              }
              else
              {
@@ -265,7 +280,11 @@ class MessageController extends Controller
     {
       if(!empty($result->statedetail->timezone))
       {
-        $timezone = str_replace("GMT","",$result->statedetail->timezone);
+        $timezoneArray = explode(" ",$result->statedetail->timezone);
+        if(!empty($timezoneArray))
+        {
+          $timezone = $timezoneArray[1];
+        }
       }
       else
       {
@@ -277,6 +296,7 @@ class MessageController extends Controller
     {
      $timezone = '0';
     }
+
     if(!empty($timezone))
     {
      $zone = explode(":",$timezone);
@@ -293,6 +313,7 @@ class MessageController extends Controller
      $timezone = $h.' '.$m;
      }
     }
+
     $messages = Message::where('roomId',$request->data_room)->where('id','<',$request->data_offset)->orderBy('id','desc')->limit(10)->get();
     if(count($messages) > 0)
     {
@@ -310,20 +331,29 @@ class MessageController extends Controller
     $id = Auth::User()->id;
     $h = '0 Hours';
     $m = '0 Minutes';
-    $result = User::where('id',$id)->first();
-    if(!empty($result->countryId))
+
+    $result = UserLocations::with('statedetail')->where('userId',$id)->first();
+
+    if(!empty($result->statedetail))
     {
-      $country = Country::where('id',$result->countryId)->first();
-      if($country)
+      if(!empty($result->statedetail->timezone))
       {
-        $result->country = $country->name;
-        $timezone = str_replace("GMT","",$country->timezone);
+        $timezoneArray = explode(" ",$result->statedetail->timezone);
+        if(!empty($timezoneArray))
+        {
+          $timezone = $timezoneArray[1];
+        }
+      }
+      else
+      {
+        $timezone ='0';
       }
     }
     else
     {
      $timezone = '0';
     }
+
     if(!empty($timezone))
     {
      $zone = explode(":",$timezone);

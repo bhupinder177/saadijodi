@@ -76,7 +76,7 @@
                   @endforeach
                 </div>
                 @else
-                <div class="rcshow">
+                <div class="imagesshow">
                 </div>
                 @endif
 
@@ -589,7 +589,7 @@
                         <option @if($religion->community == $comunity->id) selected @endif value="{{ $comunity->id }}">{{ $comunity->name }}</option>
                         @endforeach
                         @endif
-                        
+
 
 
                     </select>

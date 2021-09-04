@@ -668,7 +668,9 @@ setInterval('online()', 20000);
  function rcURL(e) {
 
    var r = '';
-    r += '<span class="doctype1'+e.loaded+'"><img class="doctype1'+e.loaded+' docimg" height="50" width="50" src=' + e.target.result + '>';
-   r += '<a data-typee="1" data-type="1'+e.loaded+'"  class="removedocument" ><i  class="fa fa-times" aria-hidden="true"></i></a></span>';
-  $('.imagesshow').append(r);
+   var a = '';
+   a = Math.floor(Math.random() * 6) + 1;
+  r += '<span class="doctype1'+a+'"><img class="doctype1'+a+' docimg" height="50" width="50" src=' + e.target.result + '>';
+   r += '<a data-typee="1" data-type="1'+a+'"  class="removedocument" ><i  class="fa fa-times" aria-hidden="true"></i></a></span>';
+   $('.imagesshow').append(r);
 };

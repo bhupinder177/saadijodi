@@ -67,6 +67,7 @@
 												<div class="mt-2 mb-2 pl-2">
 												 <div class="form_group_wrap">
 													<input type="submit" value="Search" class="btn btn-success searchbtn">
+													<a href="{{URL::to('/listing')}}"  class="btn btn-success resetbtn">Reset</a>
 												 </div>
 											 </div>
 										 </form>

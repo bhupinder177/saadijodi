@@ -100,7 +100,7 @@ class ListingController extends Controller
         {
           $cityId = $request->city;
           $query->WhereHas('UserLocation',function($query) use($cityId){
-            $query->where('state',$cityId);
+            $query->where('city',$cityId);
           });
         }
 

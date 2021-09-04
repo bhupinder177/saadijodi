@@ -181,4 +181,9 @@ z-index: 99999999;
 #uploadimage {
     display: none;
 }
+
+.serach_filters .form_group_wrap .resetbtn {
+    border: none;
+    background: #f8507c;
+}
 /* 15-08-2021 */
