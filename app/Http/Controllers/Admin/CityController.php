@@ -157,7 +157,7 @@ class CityController extends Controller
            $response['success']         = true;
            $response['delayTime']       = '3000';
            $response['success_message'] = 'City Updated Successfully.';
-           $response['url'] = url($this->prefix.'/?id='.$request['state_id']);
+           $response['url'] = url($this->prefix.'/city?id='.$request['state_id']);
 
            return response($response);
          }

@@ -27,7 +27,7 @@
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Price <span class="red">*</span></label>
+                            <label>Price ($)<span class="red">*</span></label>
       <input type="text" placeholder="Please enter price" class="form-control" name="price"   id="price">
                           </div>
                       </div>

@@ -10,7 +10,7 @@
           <h3>Follow Us</h3>
           <ul>
             <li>
-              <a target="_blank" href="http://www.facebook.com/saadijodi">
+              <a target="_blank" href="http://www.facebook.com/saadijodii">
               <i class="fa fa-facebook-square"></i>
             </a>
             </li>

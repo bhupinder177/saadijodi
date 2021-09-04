@@ -126,3 +126,8 @@ ul.ul-list .content span {
 }
 
 }
+
+
+.modal-footer {
+	justify-content: center;
+}

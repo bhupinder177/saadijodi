@@ -36,7 +36,7 @@
 						<div class="col-md-6">
 							<div class="follow_icons">
 								<span class="follow_fa">
-									<a target="_blank" href="http://www.facebook.com/saadijodi">
+									<a target="_blank" href="http://www.facebook.com/saadijodii">
 									<i class="fa fa-facebook-f"></i>
 								 </a>
 								</span>

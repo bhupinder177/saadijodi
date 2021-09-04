@@ -787,7 +787,7 @@ footer {
 	font-size: 20px;
 }
 .sidebar-item {
-	position: absolute;
+	position: unset;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -2105,6 +2105,16 @@ footer {
 
 .custom_cc_b .login_rg-b {
 	margin-bottom: 10px;
+}
+
+.about_my_self .nav-link {
+    padding: 7px 8px 0;
+}
+.about_my_self .nav-link.active h3 {
+    font-size: 16px;
+}
+.about_my_self .nav-link h3 {
+    font-size: 16px;
 }
 
 }
