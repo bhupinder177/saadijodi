@@ -24,7 +24,7 @@
                <tbody>
                   <tr>
                      <td style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;" valign="top" bgcolor="#ffffff" align="center">
-                        <h1 style="font-size: 42px; font-weight: 400; margin: 0;">Welcome!</h1>
+                        <h1 style="font-size: 42px; font-weight: 400; margin: 0;">Welcome to Saadijodi.com!</h1>
                      </td>
                   </tr>
                </tbody>
@@ -40,9 +40,10 @@
                   <tr>
                      <td style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
                         <p style="margin: 0;">Hi {{ $data['name'] }}, </p>
-                        <p style="margin: 14px 0;"><h3>Thanks you for being  our customer .</h3> </p>
-                        <p style="margin: 14px 0;"><h3>GET {{ $data['discount'] }} % OFF</h3> </p>
-                        <p style="margin: 0;">Coupon Code is: {{ $data['coupon'] }}</p>
+                        <p style="margin: 14px 0;"><h6>A Special welcome COUPON code has been added to your account. </h6> </p>
+                        <p style="margin: 14px 0;">Join the largest growing Matermonial website for the perfect match New Signup can get {{ $data['discount'] }} % off as an advantage</p>
+                        <p style="margin: 0;">Code : {{ $data['coupon'] }}</p>
+                        <p style="margin: 0;">Start your tour for matchmaking Choose from our valid profiles.</p>
                      </td>
                   </tr>
                   <!-- BULLETPROOF BUTTON -->
