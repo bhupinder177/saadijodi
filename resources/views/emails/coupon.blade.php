@@ -41,8 +41,8 @@
                      <td style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
                         <p style="margin: 0;">Hi {{ $data['name'] }}, </p>
                         <p style="margin: 14px 0;"><h3>Thanks you for being  our customer .</h3> </p>
-                        <p style="margin: 14px 0;"><h3>GET {{ $data['dicount'] }} % OFF</h3> </p>
-                        <p style="margin: 0;">Coupon Code is: {{ $data['discount'] }}</p>
+                        <p style="margin: 14px 0;"><h3>GET {{ $data['discount'] }} % OFF</h3> </p>
+                        <p style="margin: 0;">Coupon Code is: {{ $data['coupon'] }}</p>
                      </td>
                   </tr>
                   <!-- BULLETPROOF BUTTON -->
