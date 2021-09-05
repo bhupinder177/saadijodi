@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\User;
+use App\Model\Coupon;
+
 use Illuminate\Http\Request;
 use App\Helpers\GlobalFunctions as CommonHelper;
 use Illuminate\Support\Facades\Auth;
@@ -52,9 +54,10 @@ class UserController extends Controller
         else
         {
            $users = $query->where('type',2)->orderby('id','DESC')->paginate($perpage);
+           $coupon = Coupon::where('status',1)->get();
 
 
-          return view('admin.users.user',['prefix'=>$this->prefix,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
+          return view('admin.users.user',['prefix'=>$this->prefix,'allcoupon'=>$coupon,'users'=>$users,'perpage'=>$perpage,'srNo'=>(request()->input('page', 1) - 1) * $perpage]);
          }
     }
 
@@ -338,6 +341,44 @@ class UserController extends Controller
      {
        $response['formErrors'] = true;
        $response['errors'] = 'Status Not Update.';
+       return response($response);
+      }
+    }
+  }
+
+  public function sendCoupon(Request $request)
+  {
+    $validator = Validator::make($request->all(),[
+          'id' => 'required|string',
+          'coupon' => 'required|string',
+      ]);
+
+      if ($validator->fails())
+      {
+        $errors = $validator->errors();
+       $response['validation']  = false;
+       $response['errors']      = $errors;
+       return response($response);
+      }
+      else
+     {
+
+         $user = User::where('id',$request->id)->first();
+         $coupon = Coupon::where('id',$request->coupon)->first();
+         $mailData = array('coupon'=>$coupon->coupon,'name'=>$user->firstName);
+         $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Coupon code' , ['data'=>$mailData], 'emails.coupon','',$attachment=null);
+        if($emailresult)
+       {
+        $response['success']         = true;
+        $response['resetform']         = true;
+        $response['modelhide']         = "#couponSendUser";
+        $response['success_message'] = 'Coupon Code Sent Successfully.';
+        return response($response);
+      }
+      else
+      {
+       $response['formErrors'] = true;
+       $response['errors'] = 'Coupon Not send.';
        return response($response);
       }
     }

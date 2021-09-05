@@ -464,7 +464,36 @@ submitHandler: function (form)
 // package add
 
 
+// coupon send
+// state
+$("#couponuser").validate({
+  errorClass: "has-error",
+    highlight: function(element, errorClass) {
+        //$(element).parents('.form-group').addClass(errorClass);
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      //  $(element).parents('.form-group').removeClass(errorClass);
+    },
+rules:
+{
+ coupon: {
+   required: true
+ },
+},
+messages:
+{
+ coupon: {
+   required: "Please select coupon code",
+ },
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+// state
 
+// coupon send
 
 // pagination
 jQuery('body').on('click', '.pagination1 a', function(){
@@ -676,6 +705,17 @@ $('body').on('change','.ownerStatuschange',function(){
 });
 
 // owner status change
+
+
+// send coupon to user
+$('body').on('click','.sendCoupon',function(){
+
+  var id = $(this).attr('data-id');
+  $('.couponuserId').val(id);
+  $('#couponSendUser').modal('show');
+
+});
+// send coupon to user
 
 // owner status change
 $('body').on('click','.updatestatus',function(){

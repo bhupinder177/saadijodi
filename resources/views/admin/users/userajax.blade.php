@@ -6,6 +6,7 @@
             <th style="width: 10%">Last Name</th>
             <th style="width: 10%">Email</th>
             <th style="width: 12%">Status</th>
+            <th style="width: 5%">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,10 @@
               </select>
             </div>
             </td>
+            <td>
+              <a class="sendCoupon" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
+            </td>
+
 
         </tr>
         @endforeach

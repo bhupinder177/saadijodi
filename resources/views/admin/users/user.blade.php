@@ -44,6 +44,7 @@
                             <th style="width: 10%">Last Name</th>
                             <th style="width: 10%">Email</th>
                             <th style="width: 12%">Status</th>
+                            <th style="width: 5%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,6 +67,9 @@
                                 <option data-id="{{ $u->id }}" @if($u->status == 0) selected @endif  value="0">InActive</option>
                               </select>
                             </div>
+                            </td>
+                            <td>
+                              <a class="sendCoupon" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
                             </td>
 
                         </tr>
@@ -128,6 +132,44 @@
                             </div>
                           </div>
                               <!-- confirm modal -->
+
+
+
+                              <!-- coupon modal -->
+                                           <div id="couponSendUser" class="modal fade" role="dialog">
+                                             <form class="reset" action="{{URL::to($prefix.'/sendCoupon')}}" id="couponuser" method="post">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                 <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                 <h4 class="modal-title">Send Coupon</h4>
+                                                </div>
+                                             <div class="modal-body driverdetails">
+                                            <div class="form-group">
+                                              <label>Coupon</label>
+                                              <select name="coupon" class="form-control">
+                                                <option value="">Select Coupon</option>
+                                                @if(!empty($allcoupon))
+                                                @foreach($allcoupon as $c)
+                                                <option value="{{ $c->id }}">{{ $c->coupon }}</option>
+                                                @endforeach
+                                                @endif
+                                              </select>
+                                            </div>
+                                               <input type="hidden" value="" name="id" class="couponuserId">
+                                              </div>
+
+                                             <div class="modal-footer">
+                                               <button type="submit" class="btn btn-success " >Submit</button>
+
+                                               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                             </div>
+                                           </div>
+
+                                         </div>
+                                       </form>
+                                       </div>
+                                           <!-- confirm modal -->
 
 
 
