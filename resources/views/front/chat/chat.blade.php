@@ -233,6 +233,8 @@
                  </div>
                  @endif
                   @endforeach
+                  @else
+                  <div class="nochat">No Chat</div>
                   @endif
 
 
@@ -254,8 +256,7 @@
                   </div>
                 </form>
               </div>
-              @else
-              <div class="nochat">No Chat</div>
+
               @endif
 
 
