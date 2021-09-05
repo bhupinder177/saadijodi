@@ -40,12 +40,13 @@
                   <tr>
                      <td style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
                         <p style="margin: 0;">Hi {{ $data['name'] }}, </p>
-                        <p style="margin: 14px 0;">Thanks for Signing up with Saddi Jodi! </p>
-                        <p style="margin: 0;">We would like to update you that still your account is not activated. Please click below link to activate your account. </p>
+                        <p style="margin: 14px 0;"><h3>Thanks you for being  our customer .</h3> </p>
+                        <p style="margin: 14px 0;"><h3>GET {{ $data['dicount'] }} % OFF</h3> </p>
+                        <p style="margin: 0;">Coupon Code is: {{ $data['discount'] }}</p>
                      </td>
                   </tr>
                   <!-- BULLETPROOF BUTTON -->
-                  
+
                   <tr>
                      <td style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
                         <p style="margin: 0;">If you have any questions, just reply to this email—we're always happy to help out.</p>

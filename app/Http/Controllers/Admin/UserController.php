@@ -365,7 +365,7 @@ class UserController extends Controller
 
          $user = User::where('id',$request->id)->first();
          $coupon = Coupon::where('id',$request->coupon)->first();
-         $mailData = array('coupon'=>$coupon->coupon,'name'=>$user->firstName);
+         $mailData = array('coupon'=>$coupon->coupon,'discount'=>$coupon->discount,'name'=>$user->firstName);
          $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Coupon code' , ['data'=>$mailData], 'emails.coupon','',$attachment=null);
         if($emailresult)
        {
