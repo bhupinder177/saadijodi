@@ -711,6 +711,9 @@ $('body').on('change','.ownerStatuschange',function(){
 $('body').on('click','.sendCoupon',function(){
 
   var id = $(this).attr('data-id');
+  var name = $(this).attr('data-name');
+  var title = 'Send Coupon Code to '+name;
+  $('.coupontitle').html(title);
   $('.couponuserId').val(id);
   $('#couponSendUser').modal('show');
 

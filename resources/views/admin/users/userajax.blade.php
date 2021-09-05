@@ -31,7 +31,7 @@
             </div>
             </td>
             <td>
-              <a class="sendCoupon" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
+              <a class="sendCoupon" data-name="{{ $u->firstName }}" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
             </td>
 
 

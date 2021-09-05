@@ -69,7 +69,7 @@
                             </div>
                             </td>
                             <td>
-                              <a class="sendCoupon" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
+                              <a class="sendCoupon" data-name="{{ $u->firstName }}" data-id="{{ $u->id }}"><i  data-id="{{ $u->id }}" class="sendCoupon fa fa-gift"></i> </a>
                             </td>
 
                         </tr>
@@ -142,7 +142,7 @@
                                               <div class="modal-content">
                                                  <div class="modal-header">
                                                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                 <h4 class="modal-title">Send Coupon</h4>
+                                                 <h4 class="modal-title coupontitle">Send Coupon</h4>
                                                 </div>
                                              <div class="modal-body driverdetails">
                                             <div class="form-group">
