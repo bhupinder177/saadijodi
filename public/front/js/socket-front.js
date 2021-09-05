@@ -16,7 +16,7 @@ $(function () {
     let data_offset = parseInt($('.chat-active').attr('data-offset'));
       data_offset += 1;
     $('.chat-active').attr('data-offset',data_offset);
-
+    $('.nochat').remove();
     if(senderId == sender)
     {
 

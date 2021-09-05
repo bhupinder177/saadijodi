@@ -150,25 +150,32 @@ class MembershipController extends Controller
       $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderBy('id','desc')->first();
       if(!empty($package) && $package->chat == 1)
       {
-        $userId = Auth::User()->id;
+         $userId = Auth::User()->id;
 
          $date = date("Y-m-d H:i:s", strtotime($request->date));
          $roomdata = new MessageRoom();
          if($userId > $request->id)
          {
-          $roomId = $userId.'_'.$request->Id;
+           $roomId = $userId.'_'.$request->id;
          }
          else
          {
-          $roomId = $request->id.'_'.$userId;
+           $roomId = $request->id.'_'.$userId;
          }
          $roomdata->userId = $userId;
          $roomdata->oppositeUserId = $request->id;
          $roomdata->roomId = $roomId;
          $roomdata->last_message_at = date('Y-m-d H:i:s');
          $check = MessageRoom::where('roomId',$roomId)->first();
-         if(!$check)
+         
+         if(!empty($check))
          {
+           MessageRoom::where('roomId',$roomId)->update(array('last_message_at'=>date('Y-m-d H:i:s')));
+           $output['success'] ="true";
+           $output['url'] = url('message');
+        }
+       else
+       {
          $result = $roomdata->save();
          if($result)
          {
@@ -181,12 +188,6 @@ class MembershipController extends Controller
            $output['success'] ="true";
            $output['url'] = url('message');
           }
-        }
-       else
-       {
-         MessageRoom::where('roomId',$roomId)->update(array('last_message_at'=>date('Y-m-d H:i:s')));
-         $output['success'] ="true";
-         $output['url'] = url('message');
        }
      }
       else

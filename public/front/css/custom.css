@@ -186,4 +186,13 @@ z-index: 99999999;
     border: none;
     background: #f8507c;
 }
+
+.nochat {
+	position: absolute;
+	top: 48%;
+	left: 40%;
+	font-size: 20px;
+	color: #fff;
+	font-weight: 900;
+}
 /* 15-08-2021 */
