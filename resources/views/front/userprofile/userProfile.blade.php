@@ -66,7 +66,7 @@
                   <a class="d_flex_title" href="#">
                     <span>@if($age){{ $age }} Yrs, @endif
                       @if(!empty($user->UserBasicDetail->heightdetail))
-                        {{ $user->UserBasicDetail->heightdetail->cm }}
+                        {{ $user->UserBasicDetail->heightdetail->inch }}
                        @endif
                     </span>
                     <span>

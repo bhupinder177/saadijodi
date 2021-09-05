@@ -103,9 +103,9 @@ class ListingController extends Controller
         {
           $income = $preferene->income;
         }
-        if(!empty($preferene->$relation))
+        if(!empty($preferene->religion))
         {
-          $prelation = $preferene->$relation;
+          $prelation = $preferene->religion;
         }
         if(!empty($preferene->community))
         {
@@ -140,9 +140,12 @@ class ListingController extends Controller
         }
         else
         {
+          if(!empty($prelation))
+          {
           $query->WhereHas('UserReligious',function($query) use($prelation){
             $query->where('religion',$prelation);
           });
+          }
         }
 
         if(!empty($request->country))
@@ -154,9 +157,12 @@ class ListingController extends Controller
         }
         else
         {
-          $query->WhereHas('UserLocation',function($query) use($pcountry){
-            $query->where('country',$pcountry);
-          });
+          if(!empty($pcountry))
+          {
+              $query->WhereHas('UserLocation',function($query) use($pcountry){
+                $query->where('country',$pcountry);
+              });
+          }
         }
 
 
@@ -169,9 +175,12 @@ class ListingController extends Controller
         }
         else
         {
-          $query->WhereHas('UserLocation',function($query) use($pstate){
+          if(!empty($pstate))
+          {
+            $query->WhereHas('UserLocation',function($query) use($pstate){
             $query->where('state',$pstate);
-          });
+            });
+          }
         }
 
         if(!empty($request->city))
@@ -183,9 +192,12 @@ class ListingController extends Controller
         }
         else
         {
-          $query->WhereHas('UserLocation',function($query) use($pcity){
+          if(!empty($pcity))
+          {
+           $query->WhereHas('UserLocation',function($query) use($pcity){
             $query->where('city',$pcity);
-          });
+           });
+          }
         }
 
         if(!empty($highestQualification))

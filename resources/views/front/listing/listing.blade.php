@@ -162,7 +162,7 @@
 
 														<span>@if($age){{ $age }} yrs, @endif
 														@if(!empty($user->UserBasicDetail->heightdetail))
-                              {{ $user->UserBasicDetail->heightdetail->cm }}
+                              {{ $user->UserBasicDetail->heightdetail->inch }}
 											       @endif
 														</span>
 														<span>

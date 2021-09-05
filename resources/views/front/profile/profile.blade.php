@@ -67,7 +67,7 @@
                           @endif
                           /
                           @if(!empty($detail->heightdetail))
-                           {{ $detail->heightdetail->cm }}
+                           {{ $detail->heightdetail->inch }}
                           @endif
                         </span>
                       </div>
@@ -123,29 +123,11 @@
                       <div class="flex_details_span">
                         <span class="quest">Mother Tongue</span>
                         <span class="answr">:
-                          @if(!empty($religion->motherTongue))
-                          @if($religion->motherTongue == 1)
-                          Hindi
-                          @endif
-                          @if($religion->motherTongue == 2)
-                          Marathi
-                          @endif
-                          @if($religion->motherTongue == 3)
-                          Punjabi
-                          @endif
-                          @if($religion->motherTongue == 4)
-                          Bengali
-                          @endif
-                          @if($religion->motherTongue == 5)
-                          Gujarati
-                          @endif
-                          @if($religion->motherTongue == 6)
-                          Urdu
-                          @endif
+                          @if(!empty($religion->motherTonguedetail))
+                           {{ ucwords($religion->motherTonguedetail->name)  }}
                           @else
                           -
                           @endif
-
                         </span>
                       </div>
                       <div class="flex_details_span">
@@ -228,7 +210,7 @@
                       <span class="quest">Height</span>
                       <span class="answr">:
                         @if(!empty($detail->heightdetail))
-                         {{ $detail->heightdetail->cm }}
+                         {{ $detail->heightdetail->inch }}
                         @endif
                       </span>
                     </div>
@@ -670,78 +652,18 @@
                     <div class="flex_details_span">
                       <span class="quest">Religion / Community</span>
                       <span class="answr">:
-                        @if(!empty($partner->religion))
-                        @if($partner->religion == 1)
-                        Hindu
-                        @endif
-                        @if($partner->religion == 2)
-                        Muslim
-                        @endif
-                        @if($partner->religion == 3)
-                        Christian
-                        @endif
-                        @if($partner->religion == 4)
-                        Sikh
-                        @endif
-                        @if($partner->religion == 5)
-                        Parsi
-                        @endif
+                        @if(!empty($partner->religiondetail))
+                        {{ $partner->religiondetail->name }}
                         @else
                         -
                         @endif
+
                         /
-                        @if(!empty($partner->community))
-                        @if($partner->community == 1)
-                        Ahluwalia
-                        @endif
-                        @if($partner->community == 2)
-                        Arora
-                        @endif
-                        @if($partner->community == 3)
-                        Clean Shaven
-                        @endif
-                        @if($partner->community == 4)
-                        Gursikh
-                        @endif
-                        @if($partner->community == 5)
-                        Jatt
-                        @endif
-                        @if($partner->community == 6)
-                        Kamboj
-                        @endif
-                        @if($partner->community == 7)
-                        Kesadhari
-                        @endif
-                        @if($partner->community == 8)
-                        Khatri
-                        @endif
-                        @if($partner->community == 9)
-                        Kshatriya
-                        @endif
-                        @if($partner->community == 10)
-                        Labana
-                        @endif
-                        @if($partner->community == 11)
-                        Mazhbi/Majabi
-                        @endif
-                        @if($partner->community == 12)
-                        Rajput
-                        @endif
-                        @if($partner->community == 13)
-                        Ramdasia
-                        @endif
-                        @if($partner->community == 14)
-                        Ramgharia
-                        @endif
-                        @if($partner->community == 15)
-                        Ravidasia
-                        @endif
-                        @if($partner->community == 16)
-                        Saini
-                        @endif
-                        @else
-                        -
-                        @endif
+                        @if(!empty($partner->communitydetail))
+                            {{ $partner->communitydetail->name }}
+                            @else
+                            -
+                            @endif
                       </span>
                     </div>
                   </div>
@@ -751,28 +673,12 @@
                     <div class="flex_details_span">
                       <span class="quest">Mother tongue</span>
                       <span class="answr">:
-                        @if(!empty($partner->motherTongue))
-                        @if($partner->motherTongue == 1)
-                        Hindi
-                        @endif
-                        @if($partner->motherTongue == 2)
-                        Marathi
-                        @endif
-                        @if($partner->motherTongue == 3)
-                        Punjabi
-                        @endif
-                        @if($partner->motherTongue == 4)
-                        Bengali
-                        @endif
-                        @if($partner->motherTongue == 5)
-                        Gujarati
-                        @endif
-                        @if($partner->motherTongue == 6)
-                        Urdu
-                        @endif
+                        @if(!empty($partner->motherTonguedetail))
+                         {{ ucwords($partner->motherTonguedetail->name)  }}
                         @else
                         -
                         @endif
+
                       </span>
                     </div>
                     <div class="flex_details_span">
@@ -836,99 +742,8 @@
                     <div class="flex_details_span">
                       <span class="quest">Education</span>
                       <span class="answr">:
-                        @if(!empty($partner))
-                        @if($partner->highestQualification == 1) B.E / B.Tech @endif
-                        @if($partner->highestQualification == 2) M.E / M.Tech @endif
-                        @if($partner->highestQualification == 3) M.S Engineering @endif
-                        @if($partner->highestQualification == 4) B.Eng (Hons) @endif
-                        @if($partner->highestQualification == 5) M.Eng (Hons) @endif
-                        @if($partner->highestQualification == 6) Engineering Diploma @endif
-                        @if($partner->highestQualification == 7) AE @endif
-                        @if($partner->highestQualification == 8) AET @endif
-                        @if($partner->highestQualification == 9) B.A @endif
-                        @if($partner->highestQualification == 10) B.Ed @endif
-                        @if($partner->highestQualification == 11) BJMC @endif
-                        @if($partner->highestQualification == 12) BFA @endif
-                        @if($partner->highestQualification == 13) B.Arch @endif
-                        @if($partner->highestQualification == 14) B.Des @endif
-                        @if($partner->highestQualification == 15) BMM @endif
-                        @if($partner->highestQualification == 16) MFA @endif
-                        @if($partner->highestQualification == 17) M.Ed @endif
-                        @if($partner->highestQualification == 18) M.A @endif
-                        @if($partner->highestQualification == 19) MSW @endif
-                        @if($partner->highestQualification == 20) MJMC @endif
-                        @if($partner->highestQualification == 21) M.Arch @endif
-                        @if($partner->highestQualification == 22) M.Des @endif
-                        @if($partner->highestQualification == 23) BA (Hons)@endif
-                        @if($partner->highestQualification == 24) B.Arch (Hons) @endif
-                        @if($partner->highestQualification == 25) DFA @endif
-                        @if($partner->highestQualification == 26) D.Ed @endif
-                        @if($partner->highestQualification == 27) D.Arch @endif
-                        @if($partner->highestQualification == 28) AA @endif
-                        @if($partner->highestQualification == 29) AFA @endif
-                        @if($partner->highestQualification == 30) B.Com @endif
-                        @if($partner->highestQualification == 31) CA / CPA @endif
-                        @if($partner->highestQualification == 32) CFA @endif
-                        @if($partner->highestQualification == 33) CS @endif
-                        @if($partner->highestQualification == 34) BSc / BFin @endif
-                        @if($partner->highestQualification == 35) M.Com @endif
-                        @if($partner->highestQualification == 36) MSc / MFin / MS @endif
-                        @if($partner->highestQualification == 37) BCom (Hons) @endif
-                        @if($partner->highestQualification == 38) PGD Finance @endif
-                        @if($partner->highestQualification == 39) BCA @endif
-                        @if($partner->highestQualification == 40) B.IT @endif
-                        @if($partner->highestQualification == 41) BCS @endif
-                        @if($partner->highestQualification == 42) BA Computer Science @endif
-                        @if($partner->highestQualification == 43) MCA @endif
-                        @if($partner->highestQualification == 44) PGDCA @endif
-                        @if($partner->highestQualification == 45) IT Diploma @endif
-                        @if($partner->highestQualification == 46) ADIT @endif
-                        @if($partner->highestQualification == 47) B.Sc @endif
-                        @if($partner->highestQualification == 48) M.Sc @endif
-                        @if($partner->highestQualification == 49) BSc (Hons) @endif
-                        @if($partner->highestQualification == 50) DipSc @endif
-                        @if($partner->highestQualification == 51) AS @endif
-                        @if($partner->highestQualification == 52) AAS @endif
-                        @if($partner->highestQualification == 53) MBBS @endif
-                        @if($partner->highestQualification == 54) BDS @endif
-                        @if($partner->highestQualification == 55) BPT @endif
-                        @if($partner->highestQualification == 56) BAMS @endif
-                        @if($partner->highestQualification == 57) BHMS @endif
-                        @if($partner->highestQualification == 58) B.Pharma @endif
-                        @if($partner->highestQualification == 59) BVSc @endif
-                        @if($partner->highestQualification == 60) BSN / BScN @endif
-                        @if($partner->highestQualification == 61) MDS @endif
-                        @if($partner->highestQualification == 62) MCh @endif
-                        @if($partner->highestQualification == 63) M.D @endif
-                        @if($partner->highestQualification == 64) M.S Medicine @endif
-                        @if($partner->highestQualification == 65) MPT @endif
-                        @if($partner->highestQualification == 66) DM @endif
-                        @if($partner->highestQualification == 67) M.Pharma @endif
-                        @if($partner->highestQualification == 68) MVSc @endif
-                        @if($partner->highestQualification == 69) MMed @endif
-                        @if($partner->highestQualification == 70) PGD Medicine @endif
-                        @if($partner->highestQualification == 71) ADN @endif
-                        @if($partner->highestQualification == 72) BBA @endif
-                        @if($partner->highestQualification == 73) BHM @endif
-                        @if($partner->highestQualification == 74) BBM @endif
-                        @if($partner->highestQualification == 75) MBA @endif
-                        @if($partner->highestQualification == 76) PGDM @endif
-                        @if($partner->highestQualification == 77) ABA @endif
-                        @if($partner->highestQualification == 78) ADBus @endif
-                        @if($partner->highestQualification == 79) BL / LLB @endif
-                        @if($partner->highestQualification == 80) ML / LLM @endif
-                        @if($partner->highestQualification == 81) LLB (Hons) @endif
-                        @if($partner->highestQualification == 82) ALA @endif
-                        @if($partner->highestQualification == 83) Ph.D @endif
-                        @if($partner->highestQualification == 84) M.Phil @endif
-                        @if($partner->highestQualification == 85) Bachelor @endif
-                        @if($partner->highestQualification == 86) Master @endif
-                        @if($partner->highestQualification == 87) Diploma @endif
-                        @if($partner->highestQualification == 88) Honours @endif
-                        @if($partner->highestQualification == 89) Doctorate @endif
-                        @if($partner->highestQualification == 90) Associate @endif
-                        @if($partner->highestQualification == 91) High school @endif
-                        @if($partner->highestQualification == 92) Less than high school @endif
+                        @if(!empty($partner->educationdetail))
+                      {{ $partner->educationdetail->name }}
                         @endif
                       </span>
                     </div>

@@ -61,7 +61,7 @@ class ProfileController extends Controller
         $religion = UserReligious::with('religiondetail','communitydetail','motherTonguedetail')->where('userId',Auth::User()->id)->first();
         $education = UserEducations::with('educationdetail','workingAsdetail')->where('userId',Auth::User()->id)->first();
         $contact = UserContactDetails::where('userId',Auth::User()->id)->first();
-        $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail')->where('userId',Auth::User()->id)->first();
+        $partner = PartnerPreferences::with('countrydetail','statedetail','citydetail','religiondetail','communitydetail','motherTonguedetail','educationdetail','workingAsdetail')->where('userId',Auth::User()->id)->first();
         $location = UserLocations::with('countrydetail','statedetail','citydetail','grewUpdetail')->where('userId',Auth::User()->id)->first();
         $birth = UserBirthDetails::where('userId',Auth::User()->id)->first();
         $images = UserImages::where(array('userId'=>Auth::User()->id,"isProfile"=>0))->get();
@@ -300,12 +300,18 @@ class ProfileController extends Controller
       $allcountry = Country::get();
       $states = array();
       $city = array();
+      $allreligion = Religion::get();
+      $allcommunity = Community::get();
+      $allmothertongue = MotherTongue::get();
+      $allqualification = Qualification::get();
+      $allworkingSectors = WorkingSectors::get();
+      $allheight = Height::get();
       if(!empty($detail->country))
       {
       $states = States::where('country_id',$detail->country)->get();
       $city = Cities::where('state_id',$detail->state)->get();
       }
-      return view('front.profile.partner-profile',['detail'=>$detail,'states'=>$states,'city'=>$city,'allcountry'=>$allcountry]);
+      return view('front.profile.partner-profile',['allqualification'=>$allqualification,'allworkingSectors'=>$allworkingSectors,'states'=>$states,'allheight'=>$allheight,'allmothertongue'=>$allmothertongue,'allcommunity'=>$allcommunity,'allreligion'=>$allreligion,'detail'=>$detail,'states'=>$states,'city'=>$city,'allcountry'=>$allcountry]);
     }
 
     public function contactdetails(Request $request)
