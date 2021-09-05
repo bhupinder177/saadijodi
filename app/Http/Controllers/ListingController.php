@@ -60,6 +60,62 @@ class ListingController extends Controller
         $cityId ='';
         $allstates = [];
         $allcity = [];
+        $martialStatus = '';
+        $pcountry = '';
+        $pstate = '';
+        $pcity = '';
+        $highestQualification ='';
+        $workingWith ='';
+        $income ='';
+        $prelation ='';
+        $community ='';
+        $motherTongue ='';
+        $preferene = PartnerPreferences::where('userId',Auth::user()->id)->first();
+        if(!empty($preferene->maritalStatus))
+        {
+        $martialStatus = $preferene->maritalStatus;
+        }
+        if(!empty($preferene->country))
+        {
+         $pcountry = $preferene->country;
+        }
+        if(!empty($preferene->state))
+        {
+        $pstate = $preferene->state;
+        }
+        if(!empty($preferene->city))
+        {
+          $pcity = $preferene->city;
+        }
+        if(!empty($preferene->highestQualification))
+        {
+          $highestQualification = $preferene->highestQualification;
+        }
+        if(!empty($preferene->workingWith))
+        {
+          $workingWith = $preferene->workingWith;
+        }
+        if(!empty($preferene->income))
+        {
+          $income = $preferene->income;
+        }
+        if(!empty($preferene->income))
+        {
+          $income = $preferene->income;
+        }
+        if(!empty($preferene->$relation))
+        {
+          $prelation = $preferene->$relation;
+        }
+        if(!empty($preferene->community))
+        {
+          $community = $preferene->community;
+        }
+        if(!empty($preferene->motherTongue))
+        {
+          $motherTongue = $preferene->motherTongue;
+        }
+
         $gender = UserBasicDetails::where('userId',Auth::user()->id)->first();
 
         if($gender->gender == 1)
@@ -74,11 +130,18 @@ class ListingController extends Controller
         $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('profileUpdate',1)->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
         });
+
         if(!empty($request->religion))
         {
           $relation = $request->religion;
           $query->WhereHas('UserReligious',function($query) use($relation){
             $query->where('religion',$relation);
+          });
+        }
+        else
+        {
+          $query->WhereHas('UserReligious',function($query) use($prelation){
+            $query->where('religion',$prelation);
           });
         }
 
@@ -89,6 +152,14 @@ class ListingController extends Controller
             $query->where('country',$countryId);
           });
         }
+        else
+        {
+          $query->WhereHas('UserLocation',function($query) use($pcountry){
+            $query->where('country',$pcountry);
+          });
+        }
+
+
         if(!empty($request->state))
         {
           $stateId = $request->state;
@@ -96,11 +167,52 @@ class ListingController extends Controller
             $query->where('state',$stateId);
           });
         }
+        else
+        {
+          $query->WhereHas('UserLocation',function($query) use($pstate){
+            $query->where('state',$pstate);
+          });
+        }
+
         if(!empty($request->city))
         {
           $cityId = $request->city;
           $query->WhereHas('UserLocation',function($query) use($cityId){
             $query->where('city',$cityId);
+          });
+        }
+        else
+        {
+          $query->WhereHas('UserLocation',function($query) use($pcity){
+            $query->where('city',$pcity);
+          });
+        }
+
+        if(!empty($highestQualification))
+        {
+          $query->WhereHas('UserEducation',function($query) use($highestQualification){
+            $query->where('highestQualification',$highestQualification);
+          });
+        }
+
+        if(!empty($workingWith))
+        {
+          $query->WhereHas('UserEducation',function($query) use($workingWith){
+            $query->where('workingWith',$workingWith);
+          });
+        }
+
+        if(!empty($community))
+        {
+          $query->WhereHas('UserReligious',function($query) use($community){
+            $query->where('community',$community);
+          });
+        }
+
+        if(!empty($motherTongue))
+        {
+          $query->WhereHas('UserReligious',function($query) use($motherTongue){
+            $query->where('motherTongue',$motherTongue);
           });
         }
 
