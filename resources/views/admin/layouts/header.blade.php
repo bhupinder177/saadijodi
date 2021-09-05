@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Panel</title>
-    <link rel="shortcut icon" href="{{ asset('admin/images/fv.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('front/images/favicon.ico') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/css/lib/lobipanel/lobipanel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/separate/vendor/lobipanel.min.css')}}">
