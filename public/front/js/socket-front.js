@@ -41,7 +41,10 @@ $(function () {
           row +='</div></div>';
 
           $('.msg_card_body'+room).append(row);
+          if($(".msg_card_body").html())
+          {
           $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+          }
 
         },
         error: function (data) {
@@ -66,7 +69,10 @@ $(function () {
       row +='<div class="img_cont_msg"><img src="'+data.image+'" class="rounded-circle user_img_msg"></div>';
       row +='<div class="msg_cotainer">'+dataMessage+'<span class="msg_time">'+data.time+'</span></div></div>';
       $('.msg_card_body'+room).append(row);
+      if($(".msg_card_body").html())
+      {
       $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+      }
 
     },
     error: function (data) {
@@ -106,6 +112,18 @@ $(function () {
       mainCount = parseInt(mainCount)+1;
       $('.unreadheadermessage').removeClass('d-none');
       $('.unreadheadermessage').html(mainCount);
+    }
+    else
+    {
+      var mainCount = $.trim($('.unreadheadermessage'+receiver).html());
+      if(mainCount == '')
+      mainCount = 0;
+      else
+      mainCount = mainCount;
+      mainCount = parseInt(mainCount)+1;
+
+      $('.unreadheadermessage'+receiver).removeClass('d-none');
+      $('.unreadheadermessage'+receiver).html(mainCount);
     }
     if(($('.personli'+receiverId+room).hasClass('active') == true) && (receiver == senderId))
     {
@@ -176,9 +194,13 @@ $.ajax({
   // set user
   if(roomIdd)
   {
-    $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+
     socket.emit('switchRoom', roomIdd);
     socket.emit('adduser', roomIdd, sender, receiver);
+    if($(".msg_card_body").html())
+    {
+    $(".msg_card_body").animate({ scrollTop: $(".msg_card_body")[0].scrollHeight}, 1000);
+    }
   }
 
   // click event on chat person

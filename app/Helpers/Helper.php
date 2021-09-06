@@ -206,6 +206,11 @@ class GlobalFunctions {
 
       }
 
+      public static function allrooms($userId)
+      {
+        return $rooms = MessageRoom::with('user','oppositeUser','user.online','oppositeUser.online')->where('userId',$userId)->orwhere('oppositeUserId',$userId)->orderby('last_message_at','desc')->get();
+      }
+
       public static function unreadmessageHeader($id)
       {
          $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();

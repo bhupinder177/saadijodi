@@ -87,7 +87,7 @@
 							@php $unreadmsg = App\Helpers\GlobalFunctions::unreadmessageHeader(Auth::User()->id); @endphp
 
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/message')}}">Inbox <span class="@if($unreadmsg == 0) d-none @endif unreadheadermessage">{{ $unreadmsg }}</span> </a>
+								<a class="nav-link" href="{{URL::to('/message')}}">Inbox <span class="@if($unreadmsg == 0) d-none @endif unreadheadermessage unreadheadermessage{{ Auth::user()->id }}">{{ $unreadmsg }}</span> </a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{URL::to('/membership')}}">Membership </a>

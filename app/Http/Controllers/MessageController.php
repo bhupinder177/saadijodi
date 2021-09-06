@@ -270,8 +270,9 @@ class MessageController extends Controller
 
             if($result)
              {
+
                  $this->response['success'] ="true";
-                 $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i")))).','.date('d M, Y');
+                 $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i A")))).','.date('d M, Y');
                  $this->response['image'] = $img;
              }
              else
@@ -424,7 +425,7 @@ class MessageController extends Controller
     // if($timezone)
     // {
       $this->response['success'] ="true";
-      $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i")))).','.date('d M, Y');
+      $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i A")))).','.date('d M, Y');
       $this->response['image'] = $img;
     // }
     // else

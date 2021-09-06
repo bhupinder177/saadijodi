@@ -81,13 +81,38 @@
 <script src="{{ asset('front/js/jquery.toast.js') }}"></script>
 <script src="{{ asset('front/js/validation.js') }}"></script>
 <script src="{{ asset('front/js/custom.js') }}"></script>
+
+
+  @if(!empty(Auth::User()->id))
+  @php $allrooms = App\Helpers\GlobalFunctions::allRooms(Auth::User()->id); @endphp
+@if(count($allrooms) > 0)
+<script>
+var messagesId = "{{$messagesId ?? ''}}";
+var host = '{{ env('SOCKET_HOST') }}';
+var port = '{{ env('SOCKET_PORT') }}';
+var user = '{{ Auth::user()->firstName }}';
+var SITE_URL = '{{ URL::to('/') }}';
+var roomIdd =  '{{ isset($allrooms[0])?$allrooms[0]->roomId:'' }}';
+@if ($allrooms[0]->user->id == Auth::user()->id)
+var sender =  '{{ isset($allrooms[0])?$allrooms[0]->user->id:'' }}';
+var receiver =  '{{ isset($allrooms[0])?$allrooms[0]->oppositeUser->id:'' }}';
+@else
+var receiver =  '{{ isset($allrooms[0])?$allrooms[0]->user->id:'' }}';
+var sender =  '{{ isset($allrooms[0])?$allrooms[0]->oppositeUser->id:'' }}';
+@endif
+</script>
+@endif
+@endif
+
 <?php
-if(request()->segment(1) == "message")
-{
+// if(request()->segment(1) == "message")
+// {
 	?>
 <script src="{{ asset('front/js/socket-front.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="https://app.saadijodi.com/socket.io/socket.io.js"></script>
-<?php } ?>
+<?php
+ // }
+?>
 
 <script>
 $( function() {
