@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Payments extends Migration
+class Homes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Payments extends Migration
      */
     public function up()
     {
-      Schema::create('payments', function (Blueprint $table) {
+      Schema::create('homes', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('userId')->nullable();
-          $table->string('coupon')->nullable();
-          $table->string('amount')->nullable();
-          $table->string('packageId')->nullable();
+          $table->string('title')->nullable();
+          $table->string('image')->nullable();
           $table->timestamps();
       });
     }
@@ -30,6 +28,7 @@ class Payments extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists('payments');
+      Schema::dropIfExists('homes');
+
     }
 }

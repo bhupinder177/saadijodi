@@ -19,6 +19,13 @@
       </a>
     </li>
 
+    <li <?php if(request()->segment(2) == "home" ){ ?>class="active" <?php } ?>>
+      <a href="{{URL::to($getprefix.'/home')}}">
+        <span><i class="fa fa-home"></i><span class="lbl">Home</span></span>
+      </a>
+
+    </li>
+
     <li <?php if(request()->segment(2) == "userlist" || request()->segment(1) == "user-add" || request()->segment(1) == "user-edit"){ ?>class="active" <?php } ?>>
       <a href="{{URL::to($getprefix.'/userlist')}}">
         <span><i class="fa fa-user" aria-hidden="true"></i><span class="lbl">Users</span></span>
@@ -91,6 +98,8 @@
           </a>
 
         </li>
+
+
 
 
 

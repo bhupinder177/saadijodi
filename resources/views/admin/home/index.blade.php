@@ -6,7 +6,7 @@
 <div class="page-content">
   <section class="content-header">
     <ol class="breadcrumb">
-      <li class="active">Edit Religion</li>
+      <li class="active">Home page</li>
     </ol>
   </section>
       <div class="container-fluid">
@@ -14,17 +14,22 @@
 
           <div class="">
 
-            <form action="{{ url($prefix.'/religions-update') }}" method="post" enctype="multipart/form-data" class="reset" id="addreligions">
+            <form action="{{ url($prefix.'/homeSave') }}" method="post" enctype="multipart/form-data" class="reset" id="homeUpdate">
 
                     <div class="row">
 
                       <div class="col-sm-6">
                           <div class="form-group">
-                            <label>Religion<span class="red">*</span></label>
-      <input type="text" value="{{ $result->name }}" placeholder="Please enter religion" class="form-control " name="name"   id="name">
+                            <label>Tagline <span class="red">*</span></label>
+      <input type="text" placeholder="Please enter tagline" class="form-control " name="title"   id="title">
                           </div>
-                          <input type="hidden" value="{{Crypt::encrypt($result->id)}}" name="id">
+                      </div>
 
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Image<span class="red">*</span></label>
+      <input type="file" placeholder="Please enter discount" class="form-control" name="image"   id="title">
+                          </div>
                       </div>
 
                     </div>
@@ -40,7 +45,7 @@
       </div>
   </div>
   </div>
-<!-- ///ddasdd -->
+
 
 
 

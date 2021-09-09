@@ -9,6 +9,7 @@ use App\Model\Package;
 use App\Model\Coupon;
 use App\Model\Stories;
 use App\Model\Payments;
+use App\Model\Home;
 use Str, DB, Auth;
 use Validator;
 
@@ -30,6 +31,15 @@ class DashboardController extends Controller
 
     }
 
+    public function home(Request $request)
+    {
+            //redirect if not super admin
+        $this->prefix = request()->route()->getPrefix();
+        $result = Home::first();
+        return view('admin.home.index',['result'=>$result,'prefix'=>$this->prefix]);
+
+    }
+
     public function password()
     {
       $this->prefix = request()->route()->getPrefix();
@@ -37,6 +47,8 @@ class DashboardController extends Controller
       return view('admin.password.password',['prefix'=>$this->prefix]);
 
     }
+
+
 
     public function passwordUpdate(Request $request)
    {
