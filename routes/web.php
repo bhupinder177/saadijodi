@@ -97,6 +97,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
         Route::get('dashboard', 'DashboardController@DashboardView');
         Route::get('home', 'DashboardController@home');
+        Route::post('homeSave', 'DashboardController@homeSave');
         Route::get('userlist', 'UserController@index');
         Route::post('sendCoupon', 'UserController@sendCoupon');
         Route::post('ownerStatusUpdate', 'UserController@status');

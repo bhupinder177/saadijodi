@@ -29,6 +29,15 @@ use Illuminate\Http\Request;
         Route::post('profileDetail', 'ApiController@profileDetail');
         Route::post('connectSave', 'ApiController@connectSave');
         Route::get('getPackage', 'ApiController@getPackage');
+        Route::get('allreligion', 'ApiController@allreligion');
+        Route::get('allcommunity', 'ApiController@allcommunity');
+        Route::get('allmothertongue', 'ApiController@allmothertongue');
+        Route::get('allheight', 'ApiController@allheight');
+        Route::get('allqualification', 'ApiController@allqualification');
+        Route::get('allWorkingSectors', 'ApiController@allWorkingSectors');
+        Route::get('allCountry', 'ApiController@allCountry');
+        Route::post('getState', 'ApiController@getState');
+        Route::post('getCity', 'ApiController@getCity');
 
 
     });

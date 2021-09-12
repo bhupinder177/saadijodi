@@ -21,14 +21,15 @@
                       <div class="col-sm-6">
                           <div class="form-group">
                             <label>Tagline <span class="red">*</span></label>
-      <input type="text" placeholder="Please enter tagline" class="form-control " name="title"   id="title">
+      <input type="text" placeholder="Please enter tagline" @if(!empty($result->title)) value="{{ $result->title }}" @endif class="form-control " name="title"   id="title">
                           </div>
                       </div>
 
                       <div class="col-sm-6">
                           <div class="form-group">
                             <label>Image<span class="red">*</span></label>
-      <input type="file" placeholder="Please enter discount" class="form-control" name="image"   id="title">
+      <input type="file" placeholder="Please enter discount" class="form-control" name="image"   id="image">
+        @if(!empty($result->image))<img src="{{ asset('home/'.$result->image) }}" height="100" width="100" >@endif
                           </div>
                       </div>
 

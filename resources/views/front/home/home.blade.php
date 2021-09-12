@@ -1,10 +1,10 @@
 @include('layouts.header')
-<section class="top_banner">
+<section class="top_banner" style="background: url({{ asset('home/'.$home->image) }}) center top no-repeat;">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="baner_title">
-          <h3>We unite similar families into an event called marriage.</h3>
+          @if(!empty($home)) <h3>{{ $home->title }}</h3>@endif
         </div>
       </div>
     </div>

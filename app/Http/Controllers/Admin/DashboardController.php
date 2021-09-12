@@ -40,6 +40,74 @@ class DashboardController extends Controller
 
     }
 
+    public function homeSave(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+            'image' => 'required|mimes:jpeg,jpg,png',
+            'title' => 'required|string',
+
+          ]);
+
+        if ($validator->fails())
+        {
+          $errors = $validator->errors();
+         $response['validation']  = false;
+         $response['errors']      = $errors;
+         return response($response);
+        }
+        else
+       {
+
+         $this->prefix = request()->route()->getPrefix();
+         $image = '';
+         if ($request->hasFile('image'))
+         {
+           $request->file('data_name');
+           $imgRef     = 'stories-'.time();
+           $files        = $request->file('image');
+           $name         = $files->getClientOriginalName();
+           $extension2    = $files->extension();
+           $type         = explode('.',$name);
+           $files->move(public_path().'/home/', $imgRef.'.'.$extension2);
+           $image = $imgRef.'.'.$extension2;
+           $data['image'] = $image;
+         }
+
+          $result = Home::first();
+         if(!empty($result))
+         {
+           $data['title'] = $request->title;
+           $res = Home::where('id',$result->id)->update($data);
+        }
+        else
+        {
+         $user = new Home([
+             'description' => $request->description,
+             'image'=>$image,
+
+         ]);
+
+         $res =  $user->save();
+        }
+
+
+       if($res)
+       {
+         $response['success']         = true;
+         $response['delayTime']       = '3000';
+         $response['success_message'] = 'Data Updated Successfully.';
+         return response($response);
+       }
+       else
+       {
+         $response['formErrors'] = true;
+         $response['delayTime']     = '3000';
+         $response['errors'] = 'Story Not Added.';
+         return response($response);
+       }
+     }
+    }
+
     public function password()
     {
       $this->prefix = request()->route()->getPrefix();

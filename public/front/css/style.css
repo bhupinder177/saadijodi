@@ -82,7 +82,7 @@ header {
 	font-weight: 600 !important;
 }
 .top_banner {
-	background: url('../images/couple-hero-img.jpg') center top no-repeat;
+	/* background: url('../images/couple-hero-img.jpg') center top no-repeat; */
 	background-size: cover;
 	height: 720px;
 	background-repeat: no-repeat;

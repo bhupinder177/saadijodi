@@ -638,6 +638,33 @@ submitHandler: function (form)
 });
 
 
+$("#homeUpdate").validate({
+rules:
+{
+ title: {
+   required: true
+  },
+ image: {
+   required: true,
+ },
+},
+messages:
+{
+
+ title: {
+   required: "Please enter tagline",
+},
+ image: {
+   required: "Please select image",
+},
+},
+submitHandler: function (form)
+{
+ formSubmit(form);
+}
+});
+
+
     // **********************only number******************************
     // $(".numberonly").keydown(function (e) {
     $('body').on('keydown', '.numberonly', function(e){

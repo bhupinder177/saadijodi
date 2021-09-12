@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Stories;
+use App\Model\Home;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
       $stories = Stories::get();
+      $result = Home::first();
 
-        return view('front.home.home',['stories'=>$stories]);
+        return view('front.home.home',['stories'=>$stories,'home'=>$result]);
     }
 }

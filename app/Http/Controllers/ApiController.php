@@ -388,7 +388,7 @@ class ApiController extends Controller
       exit;
     }
 
-    public function connectSave()
+    public function connectSave(Request $request)
     {
         $package = UserPackage::where(array('userId'=>$request->user()->id,"status"=>1))->first();
         if(!empty($package) && $package->connects != 0)
@@ -454,7 +454,7 @@ class ApiController extends Controller
 
     }
 
-    public function getPackage()
+    public function getPackage(Request $request)
     {
       $user = Package::get();
 
@@ -462,6 +462,186 @@ class ApiController extends Controller
        {
          $output['success'] ="true";
          $output['message'] ="get package";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allreligion(Request $request)
+    {
+      $user = Religion::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get religion";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allcommunity(Request $request)
+    {
+      $user = Community::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get community";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allmothertongue(Request $request)
+    {
+      $user = MotherTongue::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get mother tongue";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allheight(Request $request)
+    {
+      $user = Height::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get height";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allqualification(Request $request)
+    {
+      $user = Qualification::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get Qualification";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allWorkingSectors(Request $request)
+    {
+      $user = WorkingSectors::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get working sector";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function allCountry(Request $request)
+    {
+      $user = Country::get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get Country";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function getState(Request $request)
+    {
+      $user = States::where('country_id',$request->id)->get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get state";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+
+      echo json_encode($output);
+      exit;
+    }
+
+    public function getCity(Request $request)
+    {
+      $user = Cities::where('state_id',$request->id)->get();
+
+      if($user)
+       {
+         $output['success'] ="true";
+         $output['message'] ="get city";
          $output['result'] = $user;
        }
        else
