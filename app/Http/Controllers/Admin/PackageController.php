@@ -72,6 +72,7 @@ class PackageController extends Controller
           'price' => 'required|string',
           'chat' => 'required|string',
           'connects' => 'required|string',
+          'duration' => 'required|string',
           'phoneNumberDisplay' => 'required|string',
           'description' => 'required|string',
         ]);
@@ -92,6 +93,7 @@ class PackageController extends Controller
            'name' => $request->name,
            'price' => $request->price,
            'chat' => $request->chat,
+           'duration' => $request->duration,
            'connects' => $request->connects,
            'phoneNumberDisplay' => $request->phoneNumberDisplay,
            'description' => $request->description,
@@ -128,6 +130,7 @@ class PackageController extends Controller
           'price' => 'required|string',
           'chat' => 'required|string',
           'connects' => 'required|string',
+          'duration'=> 'required|string',
           'phoneNumberDisplay' => 'required|string',
           'description' => 'required|string',
            ]);

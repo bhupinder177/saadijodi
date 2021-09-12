@@ -8,7 +8,7 @@ class UserPackage extends Model
 {
     //
     protected $fillable = [
-        'userId', 'packageId','price', 'chat','connects','phoneNumberDisplay','status'
+        'userId', 'packageId','price', 'chat','connects','phoneNumberDisplay','duration','status'
     ];
 
 

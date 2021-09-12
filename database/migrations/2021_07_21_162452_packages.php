@@ -20,6 +20,7 @@ class Packages extends Migration
           $table->text('description')->nullable();
           $table->integer('chat')->nullable();
           $table->integer('connects')->nullable();
+          $table->integer('duration')->nullable();
           $table->integer('phoneNumberDisplay')->nullable();
           $table->timestamps();
       });

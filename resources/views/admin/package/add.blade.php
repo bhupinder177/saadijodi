@@ -58,6 +58,21 @@
                           </div>
                       </div>
 
+                      <div class="col-sm-6">
+                          <div class="form-group">
+                            <label>Duration <span class="red">*</span></label>
+      <select  class="form-control" name="duration"   id="duration">
+        <option value="">Select </option>
+        <option value="1">1 Month</option>
+        <option value="2">2 Month</option>
+        <option value="3">3 Month</option>
+        <option value="4">6 Month</option>
+        <option value="5">12 Month</option>
+        <option value="6">Life Time</option>
+      </select>
+                          </div>
+                      </div>
+
                       <div class="col-sm-12">
                           <div class="form-group">
                             <label>Description <span class="red">*</span></label>

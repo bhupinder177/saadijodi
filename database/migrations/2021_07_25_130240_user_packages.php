@@ -21,6 +21,7 @@ class UserPackages extends Migration
           $table->integer('chat')->nullable();
           $table->integer('connects')->nullable();
           $table->integer('phoneNumberDisplay')->nullable();
+          $table->integer('duration')->nullable();
           $table->integer('status')->nullable();
           $table->timestamps();
       });

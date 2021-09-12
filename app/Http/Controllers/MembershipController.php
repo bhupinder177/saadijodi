@@ -111,6 +111,7 @@ class MembershipController extends Controller
             'price' => $price,
             'chat' => $package->chat,
             'connects' => $package->connects,
+            'duration'=>$package->duration,
             'phoneNumberDisplay' => $package->phoneNumberDisplay,
             'status'=>1,
         ]);
@@ -167,7 +168,7 @@ class MembershipController extends Controller
          $roomdata->roomId = $roomId;
          $roomdata->last_message_at = date('Y-m-d H:i:s');
          $check = MessageRoom::where('roomId',$roomId)->first();
-         
+
          if(!empty($check))
          {
            MessageRoom::where('roomId',$roomId)->update(array('last_message_at'=>date('Y-m-d H:i:s')));

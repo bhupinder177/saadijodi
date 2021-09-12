@@ -427,6 +427,9 @@ rules:
  phoneNumberDisplay: {
    required: true,
  },
+ duration: {
+   required: true,
+ },
  price: {
    required: true,
     number:true,
@@ -450,6 +453,9 @@ messages:
    required: "This is required",
  },
  phoneNumberDisplay: {
+   required: "This is required",
+ },
+ duration: {
    required: "This is required",
  },
  description: {
