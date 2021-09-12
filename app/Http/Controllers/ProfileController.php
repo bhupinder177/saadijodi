@@ -34,7 +34,7 @@ use Crypt;
 use Auth;
 use DateTime;
 use Hash;
-
+use App\Helpers\GlobalFunctions as CommonHelper;
 
 class ProfileController extends Controller
 {
@@ -498,6 +498,15 @@ class ProfileController extends Controller
                 UserPackage::where(array('id'=>$package->id))->update(array("status"=>0));
               }
              }
+
+             if($res)
+             {
+               $from = User::where('id',$id)->first();
+               $user = User::where('id',$request->id)->first();
+               $mailData = array('name'=>$user->firstName,'from'=>$from->firstName);
+               $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Invitation' , ['data'=>$mailData], 'emails.notification','',$attachment=null);
+             }
+
              if($res)
              {
                $response['success']= true;
@@ -557,6 +566,14 @@ class ProfileController extends Controller
             ]);
 
            $res =  $n->save();
+         }
+
+         if($res)
+         {
+           $from = User::where('id',$notify->notificationTo)->first();
+           $user = User::where('id',$notify->notificationFrom)->first();
+           $mailData = array('name'=>$user->firstName,'from'=>$from->firstName);
+           $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Invitation' , ['data'=>$mailData], 'emails.invitationStatus','',$attachment=null);
          }
 
        if($res)
