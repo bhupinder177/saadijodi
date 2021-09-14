@@ -298,7 +298,7 @@ class ApiController extends Controller
 
     public function toDayMatchListing(Request $request)
     {
-      $page=$request['page'];
+      $page= $request['page'];
      	$pageCount = 10;
       $gender = UserBasicDetails::where('userId',$request->user()->id)->first();
 

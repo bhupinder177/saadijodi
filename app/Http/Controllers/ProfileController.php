@@ -573,7 +573,7 @@ class ProfileController extends Controller
          {
            $from = User::where('id',$notify->notificationTo)->first();
            $user = User::where('id',$notify->notificationFrom)->first();
-           $mailData = array('name'=>$user->firstName,'from'=>$from->firstName);
+           $mailData = array('name'=>$user->firstName,'from'=>$from->firstName,'status'=>$request->status);
            $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Invitation' , ['data'=>$mailData], 'emails.notificationStatus','',$attachment=null);
          }
 
