@@ -105,9 +105,10 @@ class MembershipController extends Controller
 
       if($payment)
       {
+        $time = strtotime(date("Y-m-d"));
          if($package->duration = 6)
          {
-          $enddate = date("Y-m-d", strtotime("+600 month", $time));
+          $enddate = date("Y-m-d", strtotime("+600 month",$time));
          }
          else
          {
