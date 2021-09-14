@@ -22,6 +22,7 @@ class UserPackages extends Migration
           $table->integer('connects')->nullable();
           $table->integer('phoneNumberDisplay')->nullable();
           $table->integer('duration')->nullable();
+          $table->date('packageEnd')->nullable();
           $table->integer('status')->nullable();
           $table->timestamps();
       });

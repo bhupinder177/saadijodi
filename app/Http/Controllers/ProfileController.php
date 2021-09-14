@@ -454,9 +454,10 @@ class ProfileController extends Controller
        try{
 
            $this->prefix = request()->route()->getPrefix();
+           $date = date("Y-m-d");
            if(!empty(Auth::user()->id))
            {
-             $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderBy('id','desc')->first();
+             $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->whereDate('packageEnd','>',$date)->orderBy('id','desc')->first();
              if(!empty($package) && $package->connects != 0)
              {
            $id = Auth::user()->id;
@@ -573,7 +574,7 @@ class ProfileController extends Controller
            $from = User::where('id',$notify->notificationTo)->first();
            $user = User::where('id',$notify->notificationFrom)->first();
            $mailData = array('name'=>$user->firstName,'from'=>$from->firstName);
-           $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Invitation' , ['data'=>$mailData], 'emails.invitationStatus','',$attachment=null);
+           $emailresult = CommonHelper::sendmail('Saadijodii@gmail.com', 'Sadi jodi', $user->email,$user->firstName, 'Invitation' , ['data'=>$mailData], 'emails.notificationStatus','',$attachment=null);
          }
 
        if($res)

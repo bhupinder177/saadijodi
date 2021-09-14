@@ -8,8 +8,8 @@
         </div>
       </div>
       <div class="col-md-12">
-        <p>Saadijodi.com is an online matrimonial website, constantly working to deliver the best life partner. To offer a privacy statement is mandatory, similarly, we committed right to privacy regarding all the personal information we have collected from you. By providing your private information, you sign the consent to use info mentioned over a website or app. </p>
-        <p><b>What kind of information, Saadijodi.com collect from you?</b></p>
+        <p>Saadi Jodi is an online matrimonial website, constantly working to deliver the best life partner. To offer a privacy statement is mandatory, similarly, we committed right to privacy regarding all the personal information we have collected from you. By providing your private information, you sign the consent to use info mentioned over a website or app. </p>
+        <p><b>What kind of information, Saadi Jodi collect from you?</b></p>
         <p><b>Direct Information:</b> The information directly submitted by you while registering with us such as Full name, contact number, educational qualifications, religion, region, gender, date of birth, marital status, hobbies, etc</p>
         <ul>
           <li>On the second note when you want to continue with us using paid services, we need your credit and debit details</li>
@@ -17,8 +17,8 @@
           <li>Details shared with our customer care or team members</li>
         </ul>
         <p><b>Indirect information using social media and inquiry:</b> Apart from the direct information you offer, we go through your social platforms and send an inquiry to collect more information about you. This process is to verify your profile and to make sure the registered profile is valid or not.</p>
-        <p>You have an opportunity to use your Facebook login to register with Saadijodi.com. This permits us to get some additional information about you from your social accounts.</p>
-      </p>How Saadijodi.com use the information it collects?</p>
+        <p>You have an opportunity to use your Facebook login to register with Saadi Jodi. This permits us to get some additional information about you from your social accounts.</p>
+      </p>How Saadi Jodi use the information it collects?</p>
       <p>There are several aspects for which we use your information:</p>
       <ul>
         <li>For data analysis</li>

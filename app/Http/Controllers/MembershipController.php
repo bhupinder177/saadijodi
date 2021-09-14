@@ -42,8 +42,9 @@ class MembershipController extends Controller
      */
     public function index()
     {
+       $date = date("Y-m-d");
        $package = Package::get();
-       $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderby('id','desc')->first();
+       $selected = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->whereDate('packageEnd','>',$date)->orderby('id','desc')->first();
 
         return view('front.package.package',['packages'=>$package,'selected'=>$selected]);
     }
@@ -104,7 +105,14 @@ class MembershipController extends Controller
 
       if($payment)
       {
-
+         if($package->duration = 6)
+         {
+          $enddate = date("Y-m-d", strtotime("+600 month", $time));
+         }
+         else
+         {
+           $enddate = date("Y-m-d", strtotime("+".$package->duration." month", $time));
+         }
         $upackage = new UserPackage([
             'userId' => Auth::User()->id,
             'packageId' => $package->id,
@@ -112,6 +120,7 @@ class MembershipController extends Controller
             'chat' => $package->chat,
             'connects' => $package->connects,
             'duration'=>$package->duration,
+            'packageEnd'=>$enddate,
             'phoneNumberDisplay' => $package->phoneNumberDisplay,
             'status'=>1,
         ]);
@@ -148,7 +157,8 @@ class MembershipController extends Controller
 
     public function checkPackage(Request $request)
     {
-      $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->orderBy('id','desc')->first();
+      $date = date("Y-m-d");
+      $package = UserPackage::where(array('userId'=>Auth::User()->id,"status"=>1))->whereDate('packageEnd','>',$date)->orderBy('id','desc')->first();
       if(!empty($package) && $package->chat == 1)
       {
          $userId = Auth::User()->id;

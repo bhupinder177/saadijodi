@@ -8,10 +8,10 @@
         </div>
       </div>
       <div class="col-md-12">
-        <p>Welcome to saadijodi.com, the perfect platform to tie a knot with your most favorite match. The agreement may be updated time and again if required and its legally binding terms for the use of members.</p>
+        <p>Welcome to Saadi Jodi, the perfect platform to tie a knot with your most favorite match. The agreement may be updated time and again if required and its legally binding terms for the use of members.</p>
 
       <p>The agreement of use is published in accordance with the provisions of Rule 3(1) of the Information Technology (Intermediaries Guidelines) Rules, 2011.</p>
-      <p>Saadijodi.com is an advertising site for matchmaking and it's completely for personal use to promote an individual profile for the reason of finding a true life partner. This is for serious matchmaking not for dating or entertainment purposes.</p>
+      <p>Saadi Jodi is an advertising site for matchmaking and it's completely for personal use to promote an individual profile for the reason of finding a true life partner. This is for serious matchmaking not for dating or entertainment purposes.</p>
       <p>Registration to this site is absolutely free. But any individual can get premium memberships according to the available packages.</p>
       <p><b>1.Eligibility</b></p>
       <p>Membership and right of admission are reserved if:</p>

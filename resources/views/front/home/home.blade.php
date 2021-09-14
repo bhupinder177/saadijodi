@@ -240,7 +240,7 @@
       <div class="col-md-12">
         <div class="title_sc">
           <h3 class="mb-4">About <span>Us</span></h3>
-          <p>SaadiJodi.com, is a reliable destination to offer magnificent matchmaking links exploring the most genuine resources to meet true potential partners. By keeping in mind the objective of our site, we successfully touch the heart of millions of people worldwide.</p>
+          <p>Saadi Jodi, is a reliable destination to offer magnificent matchmaking links exploring the most genuine resources to meet true potential partners. By keeping in mind the objective of our site, we successfully touch the heart of millions of people worldwide.</p>
         </div>
       </div>
     </div>

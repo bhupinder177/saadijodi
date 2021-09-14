@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <div class="footer_wrap">
           <p>
-            Saadijodi.com is the leading matrimonial website, founded with an aim to please people with their perfect match. It is a social networking site helps you to connect different religion and region. We are here to serve worldwide customers and successfully we’ve touched more than 1000+ lives.
+            Saadi Jodi is the leading matrimonial website, founded with an aim to please people with their perfect match. It is a social networking site helps you to connect different religion and region. We are here to serve worldwide customers and successfully we’ve touched more than 1000+ lives.
 
           </p>
           <h3>Follow Us</h3>

@@ -40,7 +40,7 @@
                   <tr>
                      <td style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;" bgcolor="#ffffff" align="left">
                         <p style="margin: 0;">Hi {{ $data['name'] }}, </p>
-                        <p style="margin: 14px 0;">You have received an invitation from  {{ $data['from'] }}....... For more details please  visit <a href="https://saadijodi.com/login">website</a> </p>
+                        <p style="margin: 14px 0;">You have received an invitation from  <b>{{ $data['from'] }} </b>. For more details please  visit <a href="https://saadijodi.com/login">website</a> </p>
                      </td>
                   </tr>
                   <!-- BULLETPROOF BUTTON -->
