@@ -154,6 +154,7 @@ class PackageController extends Controller
        $data1['description'] = $request['description'];
        $data1['chat'] = $request->chat;
        $data1['connects'] = $request->connects;
+       $data1['duration'] = $request->duration;
        $data1['phoneNumberDisplay'] = $request->phoneNumberDisplay;
 
        $res = Package::where('id',$id)->update($data1);

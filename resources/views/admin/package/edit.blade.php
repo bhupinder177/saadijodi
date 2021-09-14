@@ -64,12 +64,12 @@
                             <label>Duration <span class="red">*</span></label>
       <select  class="form-control" name="duration"   id="duration">
         <option value="">Select </option>
-        <option value="1">1 Month</option>
-        <option value="2">2 Month</option>
-        <option value="3">3 Month</option>
-        <option value="4">6 Month</option>
-        <option value="5">12 Month</option>
-        <option value="6">Life Time</option>
+        <option @if($result->duration == 1) selected @endif value="1">1 Month</option>
+        <option @if($result->duration == 2) selected @endif value="2">2 Month</option>
+        <option @if($result->duration == 3) selected @endif value="3">3 Month</option>
+        <option @if($result->duration == 4) selected @endif value="4">6 Month</option>
+        <option @if($result->duration == 5) selected @endif value="5">12 Month</option>
+        <option @if($result->duration == 6) selected @endif value="6">Life Time</option>
       </select>
                           </div>
                       </div>
