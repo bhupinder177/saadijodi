@@ -193,10 +193,10 @@ jQuery('body').on('keyup', '#email', function(){
          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
        },
        beforeSend  : function () {
-         $(".loader_panel").css('display','block');
+         $(".preloader").css('display','block');
        },
        complete: function () {
-         $(".loader_panel").css('display','none');
+         $(".preloader").css('display','none');
        },
 
         success: function(response){
@@ -285,10 +285,10 @@ jQuery('body').on('keyup', '#email', function(){
          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
        },
        beforeSend  : function () {
-         $(".loader_panel").css('display','block');
+         $(".preloader").css('display','block');
        },
        complete: function () {
-         $(".loader_panel").css('display','none');
+         $(".preloader").css('display','none');
        },
 
         success: function(response){
