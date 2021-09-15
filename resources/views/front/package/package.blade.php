@@ -14,7 +14,7 @@
         <div class="card @if($k == 0)bg-success @endif @if($k == 1)bg-warning @endif @if($k == 2)bg-danger @endif mb-5 mb-lg-0 rounded-lg shadow">
           <div class="card-header">
             <h5 class="card-title text-uppercase text-center">{{ $p->name }}</h5>
-            <h6 class="h1 text-center">${{ $p->price }}<span class="h6">/ @if($p->duration == 6)Life Time @elseif($p->duration == 1 ) 1 month @elseif($p->duration == 2) 2 month @elseif($p->duration == 3) 3 month @elseif($p->duration == 4) 6 month @elseif($p->duration == 5) 12 month @endif</span></h6>
+            <h6 class="h1 text-center">${{ $p->price }}<span class="h6">/ @if($p->duration == 6)Life Time @elseif($p->duration == 1 ) 1 months @elseif($p->duration == 2) 2 month @elseif($p->duration == 3) 3 months @elseif($p->duration == 4) 6 months @elseif($p->duration == 5) 12 months @endif</span></h6>
           </div>
           <div class="card-body bg-light rounded-bottom">
             <ul class="list-unstyled mb-4">
