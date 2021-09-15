@@ -34,8 +34,8 @@ class ContactController extends Controller
 
     public function contactSave(Request $request)
     {
-        $mailData = array('email'=>$request->email,'name'=>$request->firstName,'message'=>$request->message);
-        $res = CommonHelper::sendmail('saadijodi@gmail.com', 'Sadi jodi','bhupindersingh75890@gmail.com',$request->firstName, 'Contact us' , ['data'=>$mailData], 'emails.contact','',$attachment=null);
+        $mailData = array('email'=>$request->email,'name'=>$request->name,'message'=>$request->message);
+        $res = CommonHelper::sendmail('saadijodi@gmail.com', 'Sadi jodi','Gurwinderskhokhar@gmail.com',$request->firstName, 'Contact us' , ['data'=>$mailData], 'emails.contact','',$attachment=null);
         if($res)
         {
         $output['success'] ="true";
