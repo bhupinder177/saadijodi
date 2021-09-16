@@ -315,6 +315,31 @@ class ApiController extends Controller
         $w->where('gender',$gender);
       });
 
+      if(!empty($request->religion))
+      {
+        $relation = $request->religion;
+        $query->WhereHas('UserReligious',function($query) use($relation){
+          $query->where('religion',$relation);
+        });
+      }
+
+      if(!empty($request->firstName))
+      {
+          $query->where('firstName', 'like', '%' . $request->firstName . '%');
+      }
+      if(!empty($request->lastName))
+      {
+          $query->where('lastName', 'like', '%' . $request->lastName . '%');
+      }
+      if(!empty($request->age))
+      {
+        $relation = $request->age;
+           $y = Date('Y') - $request->age;
+        $query->WhereHas('UserBasicDetail',function($query) use($y){
+          $query->whereYear('dateOfBirth',$y);
+        });
+      }
+
       $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
 
       if(count($user) > 0)
@@ -331,7 +356,7 @@ class ApiController extends Controller
         }
       }
 
-      if($user)
+      if(count($user) > 0)
        {
          $output['success'] ="true";
          $output['message'] ="today match listing";
