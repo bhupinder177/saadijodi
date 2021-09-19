@@ -38,6 +38,8 @@ use Illuminate\Http\Request;
         Route::get('allCountry', 'ApiController@allCountry');
         Route::post('getState', 'ApiController@getState');
         Route::post('getCity', 'ApiController@getCity');
+        Route::post('favouriteSave', 'ApiController@favouriteSave');
+        Route::post('favouriteList', 'ApiController@favouriteList');
 
 
     });

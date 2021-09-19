@@ -26,6 +26,7 @@ use App\Model\MotherTongue;
 use App\Model\Height;
 use App\Model\Qualification;
 use App\Model\WorkingSectors;
+use App\Model\Favourite;
 use App\Model\Package;
 use App\Helpers\GlobalFunctions as CommonHelper;
 use Validator;
@@ -679,6 +680,87 @@ class ApiController extends Controller
       exit;
     }
 
+
+    public function favouriteSave(Request $request)
+    {
+      try{
+      $validator = Validator::make($request->all(),[
+              'userId' => 'required',
+          ]);
+          if ($validator->fails())
+          {
+            return response()->json(['success'=>'false','error'=>$validator->errors()]);
+          }
+          else
+         {
+          $user = new Favourite([
+               'userId' =>$request->user()->id,
+               'favoriteUserId' =>$request->userId,
+           ]);
+
+          $res =  $user->save();
+         if($res)
+         {
+           return response()->json([
+            "success"=>"true",
+            'message' => 'User Added in favourite list'
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'message' => 'User is not add in favorite list'
+            ]);
+          }
+        }
+      }
+      catch(\Exception $e)
+       {
+         return response()->json([
+           "success"=>"false",
+           'message'=>$e->getMessage(),
+          ]);
+       }
+    }
+
+    public function favouriteList(Request $request)
+    {
+      $page= $request['page'];
+     	$pageCount = 10;
+
+
+    $user=Favourite::with('userdetail','userdetail.UserBasicDetail','userdetail.UserBasicDetail.heightdetail','userdetail.UserBirthDetail','userdetail.UserContactDetail','userdetail.UserEducation','userdetail.UserEducation.educationdetail','userdetail.UserEducation.workingAsdetail','userdetail.UserFamilyDetail','userdetail.UserImage','userdetail.UserLocation','userdetail.UserReligious','userdetail.UserReligious.religiondetail','userdetail.UserReligious.communitydetail','userdetail.UserReligious.motherTonguedetail')->where('userId',$request->user()->id)->paginate($pageCount,['*'],'page',$page);
+
+
+      if(count($user) > 0)
+      {
+        foreach($user as $k=>$us)
+        {
+          if(!empty($us['user_image']))
+          {
+            foreach($us['user_image'] as $k1=>$u)
+            {
+            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
+            }
+          }
+        }
+      }
+
+      if(count($user) > 0)
+       {
+         $output['success'] ="true";
+         $output['message'] ="Favoruite  listing";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+       echo json_encode($output);
+       exit;
+    }
 
 
 

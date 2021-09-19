@@ -120,6 +120,13 @@ input.btn.btn-success.applycoupon {
                         </div>
                     @endif
 
+										<div class='form-row row'>
+												<div class='col-md-12 error form-group hide'>
+														<div class='alert-danger alert'>Please correct the errors and try
+																again.</div>
+												</div>
+										</div>
+
                     <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
                                                      data-cc-on-file="false"
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
@@ -178,12 +185,7 @@ input.btn.btn-success.applycoupon {
 													</div>
 											</div>
 
-                        <div class='form-row row'>
-                            <div class='col-md-12 error form-group hide'>
-                                <div class='alert-danger alert'>Please correct the errors and try
-                                    again.</div>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-xs-12">
@@ -207,7 +209,6 @@ input.btn.btn-success.applycoupon {
 
 <script src="{{ asset('front/js/jquery.toast.js') }}"></script>
 <script src="{{ asset('front/js/validation.js') }}"></script>
-<script src="{{ asset('front/js/custom.js') }}"></script>
 <script type="text/javascript">
 $(function() {
     var $form         = $(".require-validation");
@@ -219,14 +220,14 @@ $(function() {
         $inputs       = $form.find('.required').find(inputSelector),
         $errorMessage = $form.find('div.error'),
         valid         = true;
-        $errorMessage.addClass('hide');
+        $('.alert-danger').removeClass('hide');
 
         $('.has-error').removeClass('has-error');
     $inputs.each(function(i, el) {
       var $input = $(el);
       if ($input.val() === '') {
         $input.parent().addClass('has-error');
-        $errorMessage.removeClass('hide');
+          $('.alert-danger').addClass('hide');
         e.preventDefault();
       }
     });
@@ -257,10 +258,99 @@ $(function() {
             $form.find('input[type=text]').empty();
             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
             // $form.get(0).submit();
+						$('.alert-danger').removeClass('hide');
 						formSubmit($form.get(0));
         }
     }
 
 });
+
+jQuery(document).ready(function () {
+
+
+$('body').on('click','.applycoupon',function(){
+
+	var id = $('.couponcode').val();
+	var packageId = $('.packageId').val();
+
+
+	$.ajax({
+		dataType:'json',
+		url :base_url+'/ApplyCoupon',
+		type :'post',
+		data : {
+			id:id,packageId:packageId
+		},
+		enctype : 'multipart/form-data',
+	 headers     : {
+		 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	 },
+	 beforeSend  : function () {
+		 $(".loader_panel").css('display','block');
+	 },
+	 complete: function () {
+		 $(".loader_panel").css('display','none');
+	 },
+
+		success: function(response){
+
+			$.toast().reset('all');
+		var delayTime = 3000;
+		if(response.delayTime)
+		delayTime = response.delayTime;
+		if (response.success)
+		{
+			 var a = '<h6>Discount: '+response.result.discount+'%</h6>';
+			 $('.paymentbtn').html('Pay Now ($'+response.result.payable+')');
+			 $('.discount').html(a);
+			$.toast({
+				heading             : 'Success',
+				text                : response.success_message,
+				loader              : true,
+				loaderBg            : '#fff',
+				showHideTransition  : 'fade',
+				icon                : 'success',
+				hideAfter           : delayTime,
+				position            : 'top-right'
+			});
+			// setTimeout(function() {  location.reload(true);},3000);
+		}
+		else
+		{
+
+			if( response.formErrors)
+			{
+				$.toast({
+					heading             : 'Error',
+					text                : response.errors,
+					loader              : true,
+					loaderBg            : '#fff',
+					showHideTransition  : 'fade',
+					icon                : 'error',
+					hideAfter           : delayTime,
+					position            : 'top-right'
+				});
+			}
+			else
+			{
+				$.toast({
+					heading             : 'Error',
+					text                : response.error_message,
+					loader              : true,
+					loaderBg            : '#fff',
+					showHideTransition  : 'fade',
+					icon                : 'error',
+					hideAfter           : delayTime,
+					position            : 'top-right'
+				});
+			}
+		}
+
+		}
+	});
+
+});
+});
+// Apply coupon
 </script>
 </html>
