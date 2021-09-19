@@ -96,7 +96,7 @@ class MembershipController extends Controller
     $payment =   Stripe\Charge::create ([
              'customer' => $customer->id,
               "amount" =>$amount,
-              "currency" => "inr",
+              "currency" => "usd",
               'metadata' => array(
               'order_id' => $orderID
           ),
