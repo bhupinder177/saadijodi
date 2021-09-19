@@ -3,9 +3,9 @@
         <tr>
             <th style="width: 5%">S. No</th>
             <th style="width: 10%">User Name</th>
-            <th style="width: 8%">Amount($)</th>
-            <th style="width: 8%">Coupon Amount</th>
-            <th style="width: 8%">Date</th>
+            <th style="width: 5%">Amount($)</th>
+            <th style="width: 5%">Coupon Amount</th>
+            <th style="width: 10%">Date</th>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +15,7 @@
           @foreach($users as $u)
         <tr class="data">
             <td>{{ ++$srNo }}</td>
-            <td>{{ $u->user->name }}</td>
+            <td>{{ $u->user->firstName.' '.$u->user->lastName }}</td>
             <td>{{ $u->amount }}</td>
             <td>{{ $u->coupon }}</td>
             <td>{{ date('d-m-Y',strtotime($u->created_at)) }}</td>
