@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                           <div class="form_group_wrap">
                             <label>Mobile </label>
-                            <input value="@if(!empty($detail->mobile)){{ $detail->mobile }} @endif" placeholder="Please enter mobile number" class="selecthide" type="text" name="mobile">
+                            <input value="@if(!empty($detail->mobile)){{$detail->mobile}}@endif" placeholder="Please enter mobile number" class="selecthide" type="text" name="mobile">
                           </div>
                           <div class="form_group_wrap">
                             <label>Name Contact Person </label>
