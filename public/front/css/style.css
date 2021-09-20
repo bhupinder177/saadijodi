@@ -2135,3 +2135,19 @@ footer {
 }
 
 }
+
+@media (max-width: 992px) {
+
+.header_bg .navbar-nav .nav-item .nav-link {
+    width: auto;
+    display: inline flow-root list-item;
+    margin: 10px 0 10px 0;
+}
+.navbar-nav.ml-auto.custom_cc_b {
+    margin: 10px 0 20px;
+}
+.header_bg .navbar-nav .nav-item .nav-link {
+    color: #000;
+}
+
+}
