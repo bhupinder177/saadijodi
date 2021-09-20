@@ -43,21 +43,7 @@
                           </div>
                               </div>
 
-                              <!-- <div class="form_group_wrap">
-                                <label>Height</label>
-                            <div class="selector">
-                              <div class="price-slider">
-                                  <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                      <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                      <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0;"></span>
-                                      <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="right: 0;"></span>
-                                  </div>
-                                  <span id="min-price" data-currency="€" class="slider-price">0</span>
-                                  <span class="seperator">-</span>
-                                  <span id="max-price" data-currency="€" data-max="3500"  class="slider-price">3500 +</span>
-                              </div>
-                          </div>
-                              </div> -->
+
                               <div class="form_group_wrap">
                                 <label>Marital status <span class="red-text">*</span></label>
                                 <select name="maritalStatus" class="selecthide">
@@ -144,7 +130,7 @@
                                 <option value="">Select Qualification</option>
                                 @if($allqualification)
                                 @foreach($allqualification as $q)
-                                <option @if($detail->highestQualification == $q->id) selected @endif value="{{ $q->id }}">{{ $q->name }}</option>
+                                <option @if(!empty($detail->highestQualification)) @if($detail->highestQualification == $q->id) selected @endif @endif value="{{ $q->id }}">{{ $q->name }}</option>
                                 @endforeach
                                 @endif
 
@@ -201,12 +187,12 @@
                               <label>Diet <span class="red-text">*</span></label>
                               <select name="diet" class="selecthide">
                                 <option value="" >Select diet</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 1) selected @endif @endif value="1">Veg</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 2) selected @endif @endif value="2">Non-Veg</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 3) selected @endif @endif value="3">Occasionally Non-Veg</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 4) selected @endif @endif value="4">Eggetarian</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 5) selected @endif @endif value="5">Jain</option>
-                                <option @if(!empty($detail)) @if($detail->diet == 6) selected @endif @endif value="6">Vegan</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 1) selected @endif @endif value="1">Veg</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 2) selected @endif @endif value="2">Non-Veg</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 3) selected @endif @endif value="3">Occasionally Non-Veg</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 4) selected @endif @endif value="4">Eggetarian</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 5) selected @endif @endif value="5">Jain</option>
+                                <option @if(!empty($detail->diet)) @if($detail->diet == 6) selected @endif @endif value="6">Vegan</option>
                             </select>
                             </div>
                           </div>
@@ -234,7 +220,7 @@
                                 <option  value="">Select religion</option>
                                 @if($allreligion)
                                 @foreach($allreligion as $rel)
-                                <option @if($detail->religion == $rel->id) selected @endif value="{{ $rel->id }}" >{{ ucwords($rel->name) }}</option>
+                                <option @if(!empty($detail->religion)) @if($detail->religion == $rel->id) selected @endif @endif value="{{ $rel->id }}" >{{ ucwords($rel->name) }}</option>
                                 @endforeach
                                 @endif
                       </select>
@@ -245,7 +231,7 @@
                                 <option value="">Select Coummunity</option>
                                 @if(!empty($allcommunity))
                                 @foreach($allcommunity as $comunity)
-                                <option @if($detail->community == $comunity->id) selected @endif value="{{ $comunity->id }}">{{ $comunity->name }}</option>
+                                <option @if(!empty($detail->community)) @if($detail->community == $comunity->id) selected @endif @endif value="{{ $comunity->id }}">{{ $comunity->name }}</option>
                                 @endforeach
                                 @endif
                         </select>
@@ -258,7 +244,7 @@
                                 <option value="">Select Mother Tongue</option>
                                 @if(!empty($allmothertongue))
                                 @foreach($allmothertongue as $mo)
-                                <option @if($detail->motherTongue == $mo->id) selected @endif value="{{ $mo->id }}">{{ ucwords($mo->name) }}</option>
+                                <option @if(!empty($detail->motherTongue)) @if($detail->motherTongue == $mo->id) selected @endif @endif value="{{ $mo->id }}">{{ ucwords($mo->name) }}</option>
                                 @endforeach
                                 @endif
                             </select>
