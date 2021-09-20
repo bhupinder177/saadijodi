@@ -161,9 +161,9 @@
             @endif
 
             <div class="profile_sec_one">
-                    <div class="edit_Wrapp">
-                      <span class="edit_details">Edit <i class="fa fa-edit"></i></span>
-                    </div>
+              <div class="edit_Wrapp">
+              <a href="{{URL::to('/edit-profile')}}">  <span class="edit_details">Edit <i class="fa fa-edit"></i></span></a>
+              </div>
               <h3>Basics & Lifestyle</h3>
               <div class="row">
                 <div class="col-md-6">

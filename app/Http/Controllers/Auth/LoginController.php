@@ -102,7 +102,14 @@ class LoginController extends Controller
            UserOnline::updateOrCreate(array("userId"=>Auth::User()->id),$online);
            $request->session()->regenerate();
            $response['success'] = "true";
+           if($user->profileUpdate == 1)
+           {
            $response['url'] = url('profile');
+           }
+           else
+           {
+             $response['url'] = url('edit-profile');
+           }
            $response['delayTime']       = 3000;
            $response['success_message'] = 'Login successfully.';
            return response($response);

@@ -88,7 +88,7 @@ class RegisterController extends Controller
            'firstName' => 'required|string',
            'lastName' => 'required|string',
            'password' => 'required|string|confirmed',
-           'phone' => 'required',
+           'phone' => 'required|unique:users',
            'gender' => 'required',
 
        ]);
