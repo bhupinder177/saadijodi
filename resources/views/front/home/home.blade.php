@@ -99,7 +99,12 @@
 
       <div class="col-md-12">
         <div class="btn_get_start">
-          <button type="button" class="btns_gradient">Get Started</button>
+          @if (!empty(Auth::user()))
+          <a href="{{URL::to('/listing')}}" class="btns_gradient">Get Started</a>
+          @endif
+        @if (!Auth::user())
+          <a href="{{URL::to('/login')}}" class="btns_gradient">Get Started</a>
+          @endif
         </div>
       </div>
 
