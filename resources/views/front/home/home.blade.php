@@ -99,12 +99,7 @@
 
       <div class="col-md-12">
         <div class="btn_get_start">
-          @if (!empty(Auth::user()))
-          <a href="{{URL::to('/listing')}}" class="btns_gradient">Get Started</a>
-          @endif
-        @if (!Auth::user())
           <a href="{{URL::to('/login')}}" class="btns_gradient">Get Started</a>
-          @endif
         </div>
       </div>
 
@@ -288,7 +283,12 @@
       <div class="col-md-12">
         <div class="show_macth_text">
           <h3>Community Matchmaking, Trusted by Parents</h3>
-          <button type="button" class="show_btn">Show Matches</button>
+          @if (!empty(Auth::user()))
+          <a href="{{URL::to('/listing')}}" class="show_btn">Show Matches</a>
+          @endif
+        @if (!Auth::user())
+          <a href="{{URL::to('/login')}}" class="show_btn">Show Matches</a>
+          @endif
         </div>
       </div>
     </div>
