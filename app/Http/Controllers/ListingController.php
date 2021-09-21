@@ -118,14 +118,21 @@ class ListingController extends Controller
 
         $gender = UserBasicDetails::where('userId',Auth::user()->id)->first();
 
-        if($gender->gender == 1)
+        if(!empty($request->gender))
         {
-          $gender = 2;
+          $gender = $request->gender;
         }
-        else if($gender->gender == 2)
+        else
         {
-           $gender = 1;
-        }
+          if($gender->gender == 1)
+          {
+            $gender = 2;
+          }
+          else if($gender->gender == 2)
+          {
+            $gender = 1;
+           }
+         }
 
         $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('profileUpdate',1)->whereHas('UserBasicDetail',function($w)use($gender){
           $w->where('gender',$gender);
@@ -241,7 +248,7 @@ class ListingController extends Controller
 
         $allreligion = Religion::get();
         $allcountry = Country::get();
-        return view('front.listing.listing',['users'=>$user,'allcountry'=>$allcountry,'allstates'=>$allstates,'allcity'=>$allcity,'countryId'=>$countryId,'relation'=>$relation,'allreligion'=>$allreligion,'stateId'=>$stateId,'cityId'=>$cityId]);
+        return view('front.listing.listing',['gender'=>$gender,'users'=>$user,'allcountry'=>$allcountry,'allstates'=>$allstates,'allcity'=>$allcity,'countryId'=>$countryId,'relation'=>$relation,'allreligion'=>$allreligion,'stateId'=>$stateId,'cityId'=>$cityId]);
     }
 
 

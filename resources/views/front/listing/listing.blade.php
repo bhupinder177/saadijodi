@@ -12,6 +12,18 @@
 		                  <div class="">
 												<form action="{{URL::to('/listing')}}"  method="GET">
 
+
+													<div class="mt-2 mb-2 pl-2">
+													 <div class="form_group_wrap">
+															<label>Gender</label>
+														 <select name="gender"  id="category-1">
+													 <option  value="">Select Gender</option>
+													 <option @if($gender == 1) selected @endif  value="1" >Male</option>
+													 <option @if($gender == 2) selected @endif  value="2" >Female</option>
+											 </select>
+													 </div>
+												 </div>
+
 			                  <div class="mt-2 mb-2 pl-2">
 													<div class="form_group_wrap">
                             <label>Religion</label>

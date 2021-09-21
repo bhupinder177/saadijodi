@@ -277,27 +277,27 @@ rules:
   about: {
     required: true,
   },
-  diet: {
-    required: true,
-  },
-  fatherStatus: {
-    required: true,
-  },
-  motherStatus: {
-    required: true,
-  },
-  familyLocation: {
-    required: true,
-  },
-  nativePlace: {
-    required: true,
-  },
-  familyType: {
-    required: true,
-  },
-  bloodGroup: {
-    required: true,
-  },
+  // diet: {
+  //   required: true,
+  // },
+  // fatherStatus: {
+  //   required: true,
+  // },
+  // motherStatus: {
+  //   required: true,
+  // },
+  // familyLocation: {
+  //   required: true,
+  // },
+  // nativePlace: {
+  //   required: true,
+  // },
+  // familyType: {
+  //   required: true,
+  // },
+  // bloodGroup: {
+  //   required: true,
+  // },
   highestQualification: {
     required: true,
   },
@@ -337,15 +337,15 @@ rules:
   grewUp: {
     required: true,
   },
-  birthCountry: {
-    required: true,
-  },
-  birthCity: {
-    required: true,
-  },
-  manglik: {
-    required: true,
-  },
+  // birthCountry: {
+  //   required: true,
+  // },
+  // birthCity: {
+  //   required: true,
+  // },
+  // manglik: {
+  //   required: true,
+  // },
 },
 messages:
 {
@@ -367,27 +367,27 @@ messages:
   about: {
     required: "Please enter about",
   },
-  diet: {
-    required: "Please select diet",
-  },
-  fatherStatus: {
-    required: "Please select father status",
-  },
-  motherStatus: {
-    required: "Please select mother status",
-  },
-  familyLocation: {
-    required: "Please enter family location",
-  },
-  nativePlace: {
-    required: "Please enter native place",
-  },
-  familyType: {
-    required: "Please select family type",
-  },
-  bloodGroup: {
-    required: "Please select blood group",
-  },
+  // diet: {
+  //   required: "Please select diet",
+  // },
+  // fatherStatus: {
+  //   required: "Please select father status",
+  // },
+  // motherStatus: {
+  //   required: "Please select mother status",
+  // },
+  // familyLocation: {
+  //   required: "Please enter family location",
+  // },
+  // nativePlace: {
+  //   required: "Please enter native place",
+  // },
+  // familyType: {
+  //   required: "Please select family type",
+  // },
+  // bloodGroup: {
+  //   required: "Please select blood group",
+  // },
   highestQualification: {
     required: "Please select education",
   },
@@ -427,15 +427,15 @@ messages:
   pincode: {
     required: "Please enter pincode",
   },
-  birthCountry: {
-    required: "Please select birth country",
-  },
-  birthCity: {
-    required: "Please enter birth city",
-  },
-  manglik: {
-    required: "This is required",
-  },
+  // birthCountry: {
+  //   required: "Please select birth country",
+  // },
+  // birthCity: {
+  //   required: "Please enter birth city",
+  // },
+  // manglik: {
+  //   required: "This is required",
+  // },
 },
 submitHandler: function (form)
 {
@@ -463,9 +463,9 @@ rules:
  maritalStatus: {
    required: true,
  },
- diet: {
-   required: true,
- },
+ // diet: {
+ //   required: true,
+ // },
  highestQualification: {
    required: true,
  },
@@ -475,9 +475,9 @@ rules:
  workingAs: {
    required: true,
  },
- income: {
-   required: true,
- },
+ // income: {
+ //   required: true,
+ // },
  religion: {
    required: true,
  },
@@ -505,9 +505,9 @@ messages:
  maritalStatus: {
    required: "Please select martial status",
  },
- diet: {
-   required: "Please select diet",
- },
+ // diet: {
+ //   required: "Please select diet",
+ // },
  highestQualification: {
    required: "Please select education",
  },
@@ -517,9 +517,9 @@ messages:
  workingAs: {
    required: "Please select working as",
  },
- income: {
-   required: "Please select income",
- },
+ // income: {
+ //   required: "Please select income",
+ // },
  religion: {
    required: "Please select religion",
  },

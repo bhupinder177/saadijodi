@@ -160,10 +160,14 @@
               <h4><i class="fa fa-phone"></i>Contact Details</h4>
 
               <div class="about_here_wrap">
+                @if($phoneshowing == 1)
                 @if(isset($user->UserContactDetails->mobile))<p>Contact Number <span class="num">{{$user->UserContactDetails->mobile ?? ""}}</span></p>@endif
                 <p>Email ID @if($phoneshowing == 1)<span class="num">{{$user->email }}</span> @else <span class="num">---</span> @endif</p>
                 @if(!empty($user->UserContactDetail))
                 <p>Phone Number @if($phoneshowing == 1)<span class="num">{{ $user->UserContactDetail->mobile }}</span>@else <span class="num">---</span> @endif</p>
+                @endif
+                @else
+                <p>if you want to access contact detail you need to buy membership</p>
                 @endif
               </div>
 
