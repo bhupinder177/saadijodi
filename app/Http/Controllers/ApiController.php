@@ -762,6 +762,73 @@ class ApiController extends Controller
        exit;
     }
 
+    public function getContactDetail(Request $request)
+    {
+          $res =  UserContactDetails::where('userId',$request->user()->id)->first();
+         if($res)
+         {
+           return response()->json([
+            "success"=>"true",
+            'message' => 'contact detail',
+            'result'=>$res,
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'message' => 'no data'
+            ]);
+          }
+    }
+
+    public function ContactDetailsSave(Request $request)
+    {
+      try{
+      $validator = Validator::make($request->all(),[
+              'mobile' => 'required',
+              'nameContactPerson' => 'required',
+              'relationWithMember' => 'required',
+          ]);
+          if ($validator->fails())
+          {
+            return response()->json(['success'=>'false','error'=>$validator->errors()]);
+          }
+          else
+         {
+          $user = new UserContactDetails([
+               'userId' =>$request->user()->id,
+               'relationWithMember' =>$request->relationWithMember,
+               'nameContactPerson' =>$request->nameContactPerson,
+               'mobile' =>$request->mobile,
+           ]);
+
+          $res =  $user->save();
+         if($res)
+         {
+           return response()->json([
+            "success"=>"true",
+            'message' => 'Contact details saved successfully'
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'message' => 'Contact details not save'
+            ]);
+          }
+        }
+      }
+      catch(\Exception $e)
+       {
+         return response()->json([
+           "success"=>"false",
+           'message'=>$e->getMessage(),
+          ]);
+       }
+    }
+
 
 
 
