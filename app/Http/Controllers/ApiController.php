@@ -870,11 +870,15 @@ class ApiController extends Controller
             ]);
            }
          }
-         else{
-           return response()->json([
-             "success"=>"false",
-             'message' => 'User already added in favorite list'
-            ]);
+         else
+         {
+           $res = Favourite::where(array("userId"=>$request->user()->id,"favoriteUserId"=>$request->userId))->delete();
+
+            return response()->json([
+             "success"=>"true",
+             'message' => 'User Removed from favourite list'
+             ]);
+             
            }
         }
       }
