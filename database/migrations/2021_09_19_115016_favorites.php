@@ -14,8 +14,9 @@ class Favorites extends Migration
     public function up()
     {
       Schema::create('favourites', function (Blueprint $table) {
-          $table->increments('userId');
-          $table->string('favoriteUserId')->nullable();
+          $table->increments('id');
+          $table->integer('userId')->nullable();
+          $table->integer('favoriteUserId')->nullable();
           $table->timestamps();
       });
     }

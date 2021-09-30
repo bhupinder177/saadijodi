@@ -40,8 +40,12 @@ use Illuminate\Http\Request;
         Route::post('getCity', 'ApiController@getCity');
         Route::post('favouriteSave', 'ApiController@favouriteSave');
         Route::post('favouriteList', 'ApiController@favouriteList');
+        Route::post('favouriteRemove', 'ApiController@favouriteRemove');
         Route::get('getContactDetail', 'ApiController@getContactDetail');
         Route::post('contactDetailsSave', 'ApiController@ContactDetailsSave');
+        Route::get('getPartnerPerference', 'ApiController@getPartnerPerference');
+        Route::post('partnerPerferenceSave', 'ApiController@partnerPerferenceSave');
+
 
 
     });

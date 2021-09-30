@@ -41,7 +41,7 @@ class ApiController extends Controller
 
     public function signup(Request $request)
     {
-
+      try{
       $validator = Validator::make($request->all(),[
               'email' => 'required|string|email|unique:users',
               'firstName' => 'required|string',
@@ -123,12 +123,20 @@ class ApiController extends Controller
          ]);
        }
      }
+   }
+   catch(\Exception $e)
+    {
+      return response()->json([
+        "success"=>"false",
+        'message'=>$e->getMessage(),
+       ]);
+     }
     }
 
 
     public function login(Request $request)
     {
-
+        try{
         $validator = Validator::make($request->all(),[
             'email' => 'required|email',
             'password' => 'required|string',
@@ -180,6 +188,14 @@ class ApiController extends Controller
         }
       }
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
 
     public function logout(Request $request)
@@ -203,6 +219,7 @@ class ApiController extends Controller
 
     public function forgetPassword(Request $request)
     {
+       try{
        $validator = Validator::make($request->all(), [
        'email' => 'required|string'
        ]);
@@ -247,9 +264,18 @@ class ApiController extends Controller
        }
       }
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function changePassword(Request $request)
     {
+       try{
       $validator = Validator::make($request->all(),[
               'currentpassword' => 'required|string',
               'password' => 'required|string|confirmed',
@@ -295,10 +321,20 @@ class ApiController extends Controller
       }
            echo json_encode($output);
            exit;
+         }
+         catch(\Exception $e)
+          {
+            return response()->json([
+              "success"=>"false",
+              'message'=>$e->getMessage(),
+             ]);
+           }
     }
 
     public function toDayMatchListing(Request $request)
     {
+      try
+      {
       $page= $request['page'];
      	$pageCount = 10;
       $gender = UserBasicDetails::where('userId',$request->user()->id)->first();
@@ -370,10 +406,19 @@ class ApiController extends Controller
        }
        echo json_encode($output);
        exit;
+     }
+     catch(\Exception $e)
+      {
+        return response()->json([
+          "success"=>"false",
+          'message'=>$e->getMessage(),
+         ]);
+       }
     }
 
     public function profileDetail(Request $request)
     {
+      try{
       $validator = Validator::make($request->all(),[
               'userId' => 'required|string',
 
@@ -413,9 +458,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function connectSave(Request $request)
     {
+      try{
         $package = UserPackage::where(array('userId'=>$request->user()->id,"status"=>1))->first();
         if(!empty($package) && $package->connects != 0)
         {
@@ -476,12 +530,20 @@ class ApiController extends Controller
           $response['message']= "package not Available";
           return response($response);
          }
-
+       }
+       catch(\Exception $e)
+        {
+          return response()->json([
+            "success"=>"false",
+            'message'=>$e->getMessage(),
+           ]);
+         }
 
     }
 
     public function getPackage(Request $request)
     {
+      try{
       $user = Package::get();
 
       if($user)
@@ -499,9 +561,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function allreligion(Request $request)
     {
+      try{
       $user = Religion::get();
 
       if($user)
@@ -519,9 +590,19 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+
+    }
 
     public function allcommunity(Request $request)
     {
+      try{
       $user = Community::get();
 
       if($user)
@@ -539,9 +620,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function allmothertongue(Request $request)
     {
+      try{
       $user = MotherTongue::get();
 
       if($user)
@@ -559,9 +649,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function allheight(Request $request)
     {
+      try{
       $user = Height::get();
 
       if($user)
@@ -579,9 +678,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+     catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function allqualification(Request $request)
     {
+      try{
       $user = Qualification::get();
 
       if($user)
@@ -598,10 +706,19 @@ class ApiController extends Controller
 
       echo json_encode($output);
       exit;
+     }
+     catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
     }
 
     public function allWorkingSectors(Request $request)
     {
+      try{
       $user = WorkingSectors::get();
 
       if($user)
@@ -619,9 +736,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+     catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function allCountry(Request $request)
     {
+      try{
       $user = Country::get();
 
       if($user)
@@ -639,9 +765,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+      }
+    }
 
     public function getState(Request $request)
     {
+      try{
       $user = States::where('country_id',$request->id)->get();
 
       if($user)
@@ -659,9 +794,18 @@ class ApiController extends Controller
       echo json_encode($output);
       exit;
     }
+    catch(\Exception $e)
+     {
+       return response()->json([
+         "success"=>"false",
+         'message'=>$e->getMessage(),
+        ]);
+     }
+    }
 
     public function getCity(Request $request)
     {
+      try{
       $user = Cities::where('state_id',$request->id)->get();
 
       if($user)
@@ -675,9 +819,18 @@ class ApiController extends Controller
          $output['success'] ="true";
          $output['message'] ="No record found";
        }
+       echo json_encode($output);
+       exit;
+     }
+     catch(\Exception $e)
+      {
+        return response()->json([
+          "success"=>"false",
+          'message'=>$e->getMessage(),
+         ]);
+      }
 
-      echo json_encode($output);
-      exit;
+
     }
 
 
@@ -693,6 +846,9 @@ class ApiController extends Controller
           }
           else
          {
+          $check = Favourite::where(array("userId"=>$request->user()->id,"favoriteUserId"=>$request->userId))->first();
+          if(!$check)
+          {
           $user = new Favourite([
                'userId' =>$request->user()->id,
                'favoriteUserId' =>$request->userId,
@@ -707,12 +863,19 @@ class ApiController extends Controller
             ]);
          }
          else
-        {
+         {
            return response()->json([
              "success"=>"false",
              'message' => 'User is not add in favorite list'
             ]);
-          }
+           }
+         }
+         else{
+           return response()->json([
+             "success"=>"false",
+             'message' => 'User already added in favorite list'
+            ]);
+           }
         }
       }
       catch(\Exception $e)
@@ -726,6 +889,8 @@ class ApiController extends Controller
 
     public function favouriteList(Request $request)
     {
+      try
+      {
       $page= $request['page'];
      	$pageCount = 10;
 
@@ -760,10 +925,59 @@ class ApiController extends Controller
        }
        echo json_encode($output);
        exit;
+     }
+     catch(\Exception $e)
+      {
+        return response()->json([
+          "success"=>"false",
+          'message'=>$e->getMessage(),
+         ]);
+      }
+
+    }
+
+    public function favouriteRemove(Request $request)
+    {
+      try{
+      $validator = Validator::make($request->all(),[
+              'userId' => 'required',
+          ]);
+          if ($validator->fails())
+          {
+            return response()->json(['success'=>'false','error'=>$validator->errors()]);
+          }
+          else
+         {
+          $res = Favourite::where(array("userId"=>$request->user()->id,"favoriteUserId"=>$request->userId))->delete();
+
+         if($res)
+         {
+           return response()->json([
+            "success"=>"true",
+            'message' => 'User Removed from favourite list'
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'message' => 'User does not remove from favorite list'
+            ]);
+          }
+        }
+      }
+      catch(\Exception $e)
+       {
+         return response()->json([
+           "success"=>"false",
+           'message'=>$e->getMessage(),
+          ]);
+       }
     }
 
     public function getContactDetail(Request $request)
     {
+      try{
           $res =  UserContactDetails::where('userId',$request->user()->id)->first();
          if($res)
          {
@@ -780,6 +994,14 @@ class ApiController extends Controller
              'message' => 'no data'
             ]);
           }
+        }
+        catch(\Exception $e)
+         {
+           return response()->json([
+             "success"=>"false",
+             'message'=>$e->getMessage(),
+            ]);
+         }
     }
 
     public function ContactDetailsSave(Request $request)
@@ -816,6 +1038,92 @@ class ApiController extends Controller
            return response()->json([
              "success"=>"false",
              'message' => 'Contact details not save'
+            ]);
+          }
+        }
+      }
+      catch(\Exception $e)
+       {
+         return response()->json([
+           "success"=>"false",
+           'message'=>$e->getMessage(),
+          ]);
+       }
+    }
+
+    public function getPartnerPerference(Request $request)
+    {
+      try{
+         $result = PartnerPreferences::with('countrydetail','statedetail','citydetail','religiondetail','communitydetail','motherTonguedetail','educationdetail','workingAsdetail')->where('userId',$request->user()->id)->first();
+
+         if($result)
+        {
+         return response()->json([
+          "success"=>"true",
+          'message' => 'partner preference',
+           'result'=>$result,
+           ]);
+         }
+        else
+        {
+          return response()->json([
+           "success"=>"false",
+           'message' => 'no data'
+            ]);
+          }
+        }
+        catch(\Exception $e)
+         {
+           return response()->json([
+             "success"=>"false",
+             'message'=>$e->getMessage(),
+            ]);
+         }
+    }
+
+    public function partnerPerferenceSave(Request $request)
+    {
+      try{
+      $validator = Validator::make($request->all(),[
+              'maritalStatus' => 'required',
+              'country' => 'required',
+              'state' => 'required',
+              'city' => 'required',
+          ]);
+          if ($validator->fails())
+          {
+            return response()->json(['success'=>'false','error'=>$validator->errors()]);
+          }
+          else
+         {
+          $user = new PartnerPreferences([
+               'userId' =>$request->user()->id,
+               'maritalStatus' =>$request->maritalStatus,
+               'country' =>$request->country,
+               'state' =>$request->state,
+               'city' =>$request->city,
+               'highestQualification' =>$request->highestQualification,
+               'workingWith' =>$request->workingWith,
+               'income' =>$request->income,
+               'diet' =>$request->diet,
+               'religion' =>$request->religion,
+               'community' =>$request->community,
+               'motherTongue' =>$request->motherTongue,
+           ]);
+
+          $res =  $user->save();
+         if($res)
+         {
+           return response()->json([
+            "success"=>"true",
+            'message' => 'Partner Perference saved successfully'
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'message' => 'Partner Perference not save'
             ]);
           }
         }
