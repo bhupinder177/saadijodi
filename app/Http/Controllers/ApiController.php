@@ -878,7 +878,7 @@ class ApiController extends Controller
              "success"=>"true",
              'message' => 'User Removed from favourite list'
              ]);
-             
+
            }
         }
       }
@@ -1138,6 +1138,141 @@ class ApiController extends Controller
            "success"=>"false",
            'message'=>$e->getMessage(),
           ]);
+       }
+    }
+
+    public function listingFilter(Request $request)
+    {
+      try
+      {
+      $page= $request['page'];
+     	$pageCount = 10;
+
+      $gender = UserBasicDetails::where('userId',$request->user()->id)->first();
+
+      if($gender->gender == 1)
+      {
+        $gender = 2;
+      }
+      else if($gender->gender == 2)
+      {
+         $gender = 1;
+      }
+
+      $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+        $w->where('gender',$gender);
+      });
+
+      if(!empty($request->religion))
+      {
+        $relation = $request->religion;
+        $query->WhereHas('UserReligious',function($query) use($relation){
+          $query->whereIn('religion',$relation);
+        });
+      }
+
+      if(!empty($request->community))
+      {
+        $community = $request->community;
+        $query->WhereHas('UserReligious',function($query) use($community){
+          $query->whereIn('community',$community);
+        });
+      }
+
+      if(!empty($request->motherTongue))
+      {
+        $motherTongue = $request->motherTongue;
+        $query->WhereHas('UserReligious',function($query) use($motherTongue){
+          $query->whereIn('motherTongue',$motherTongue);
+        });
+      }
+
+      if(!empty($request->workingSector))
+      {
+        $workingSector = $request->workingSector;
+        $query->WhereHas('UserEducation',function($query) use($workingSector){
+          $query->whereIn('workingAs',$workingSector);
+        });
+      }
+
+      if(!empty($request->country))
+      {
+        $country = $request->country;
+        $query->WhereHas('UserLocation',function($query) use($country){
+          $query->whereIn('country',$country);
+        });
+      }
+
+      if(!empty($request->state))
+      {
+        $state = $request->state;
+        $query->WhereHas('UserLocation',function($query) use($state){
+          $query->whereIn('state',$state);
+        });
+      }
+
+      if(!empty($request->city))
+      {
+        $city = $request->city;
+        $query->WhereHas('UserLocation',function($query) use($city){
+          $query->whereIn('city',$city);
+        });
+      }
+
+      if(!empty($request->firstName))
+      {
+          $query->where('firstName', 'like', '%' . $request->firstName . '%');
+      }
+      if(!empty($request->lastName))
+      {
+          $query->where('lastName', 'like', '%' . $request->lastName . '%');
+      }
+
+      if(!empty($request->age))
+      {
+        $relation = $request->age;
+           $y = Date('Y') - $request->age;
+        $query->WhereHas('UserBasicDetail',function($query) use($y){
+          $query->whereYear('dateOfBirth',$y);
+        });
+      }
+
+      $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+
+      if(count($user) > 0)
+      {
+        foreach($user as $k=>$us)
+        {
+          if(!empty($us['user_image']))
+          {
+            foreach($us['user_image'] as $k1=>$u)
+            {
+            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
+            }
+          }
+        }
+      }
+
+      if(count($user) > 0)
+       {
+         $output['success'] ="true";
+         $output['message'] ="filter listing";
+         $output['result'] = $user;
+       }
+       else
+       {
+         $output['success'] ="true";
+         $output['message'] ="No record found";
+       }
+       echo json_encode($output);
+       exit;
+     }
+     catch(\Exception $e)
+      {
+        return response()->json([
+          "success"=>"false",
+          'message'=>$e->getMessage(),
+         ]);
        }
     }
 
