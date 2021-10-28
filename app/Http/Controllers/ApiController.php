@@ -379,20 +379,23 @@ class ApiController extends Controller
 
       $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
 
-      if(count($user) > 0)
+      $user = $user->toArray();
+
+      if(count($user['data']) > 0)
       {
-        foreach($user as $k=>$us)
+        foreach($user['data'] as $k=>$us)
         {
           if(!empty($us['user_image']))
           {
             foreach($us['user_image'] as $k1=>$u)
             {
-            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
+              $image = url("profiles/".$u['image']);
+              $user['data'][$k]['user_image'][$k1]['image'] = $image;
             }
           }
         }
       }
-
+      
       if(count($user) > 0)
        {
          $output['success'] ="true";
@@ -1146,8 +1149,8 @@ class ApiController extends Controller
 
     public function listingFilter(Request $request)
     {
-      // try
-      // {
+      try
+      {
       $page= $request['page'];
      	$pageCount = 10;
 
@@ -1271,14 +1274,14 @@ class ApiController extends Controller
        }
        echo json_encode($output);
        exit;
-     // }
-     // catch(\Exception $e)
-     //  {
-     //    return response()->json([
-     //      "success"=>"false",
-     //      'message'=>$e->getMessage(),
-     //     ]);
-     //   }
+     }
+     catch(\Exception $e)
+      {
+        return response()->json([
+          "success"=>"false",
+          'message'=>$e->getMessage(),
+         ]);
+       }
     }
 
 
