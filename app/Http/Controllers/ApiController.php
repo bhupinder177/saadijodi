@@ -902,19 +902,22 @@ class ApiController extends Controller
     $user=Favourite::with('userdetail','userdetail.UserBasicDetail','userdetail.UserBasicDetail.heightdetail','userdetail.UserBirthDetail','userdetail.UserContactDetail','userdetail.UserEducation','userdetail.UserEducation.educationdetail','userdetail.UserEducation.workingAsdetail','userdetail.UserFamilyDetail','userdetail.UserImage','userdetail.UserLocation','userdetail.UserReligious','userdetail.UserReligious.religiondetail','userdetail.UserReligious.communitydetail','userdetail.UserReligious.motherTonguedetail')->where('userId',$request->user()->id)->paginate($pageCount,['*'],'page',$page);
 
 
-      if(count($user) > 0)
+    $user = $user->toArray();
+
+    if(count($user['data']) > 0)
+    {
+      foreach($user['data'] as $k=>$us)
       {
-        foreach($user as $k=>$us)
+        if(!empty($us['user_image']))
         {
-          if(!empty($us['user_image']))
+          foreach($us['user_image'] as $k1=>$u)
           {
-            foreach($us['user_image'] as $k1=>$u)
-            {
-            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
-            }
+            $image = url("profiles/".$u['image']);
+            $user['data'][$k]['user_image'][$k1]['image'] = $image;
           }
         }
       }
+    }
 
       if(count($user) > 0)
        {
@@ -1143,8 +1146,8 @@ class ApiController extends Controller
 
     public function listingFilter(Request $request)
     {
-      try
-      {
+      // try
+      // {
       $page= $request['page'];
      	$pageCount = 10;
 
@@ -1238,16 +1241,18 @@ class ApiController extends Controller
       }
 
       $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+      $user = $user->toArray();
 
-      if(count($user) > 0)
+      if(count($user['data']) > 0)
       {
-        foreach($user as $k=>$us)
+        foreach($user['data'] as $k=>$us)
         {
           if(!empty($us['user_image']))
           {
             foreach($us['user_image'] as $k1=>$u)
             {
-            $user[$k]['user_image'][$k1]['image'] = url("profiles/".$u->image);
+              $image = url("profiles/".$u['image']);
+              $user['data'][$k]['user_image'][$k1]['image'] = $image;
             }
           }
         }
@@ -1266,14 +1271,14 @@ class ApiController extends Controller
        }
        echo json_encode($output);
        exit;
-     }
-     catch(\Exception $e)
-      {
-        return response()->json([
-          "success"=>"false",
-          'message'=>$e->getMessage(),
-         ]);
-       }
+     // }
+     // catch(\Exception $e)
+     //  {
+     //    return response()->json([
+     //      "success"=>"false",
+     //      'message'=>$e->getMessage(),
+     //     ]);
+     //   }
     }
 
 
