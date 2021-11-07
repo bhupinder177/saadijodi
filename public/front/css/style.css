@@ -2064,6 +2064,7 @@ footer {
 	background-position: bottom center;
 	height: 400px;
 	margin-top: -165px;
+	background-size: cover !important;
 }
 .baner_title {
 	padding-top: 80%;
@@ -2099,6 +2100,7 @@ footer {
 	.go-home {
 		margin-bottom: 20px;
 	}
+
 }
 
 

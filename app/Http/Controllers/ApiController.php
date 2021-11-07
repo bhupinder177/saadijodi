@@ -348,36 +348,57 @@ class ApiController extends Controller
          $gender = 1;
       }
 
+      if($request->type == 1)
+      {
       $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
         $w->where('gender',$gender);
       });
 
-      if(!empty($request->religion))
-      {
-        $relation = $request->religion;
-        $query->WhereHas('UserReligious',function($query) use($relation){
-          $query->where('religion',$relation);
-        });
-      }
-
-      if(!empty($request->firstName))
-      {
-          $query->where('firstName', 'like', '%' . $request->firstName . '%');
-      }
-      if(!empty($request->lastName))
-      {
-          $query->where('lastName', 'like', '%' . $request->lastName . '%');
-      }
-      if(!empty($request->age))
-      {
-        $relation = $request->age;
-           $y = Date('Y') - $request->age;
-        $query->WhereHas('UserBasicDetail',function($query) use($y){
-          $query->whereYear('dateOfBirth',$y);
-        });
-      }
-
       $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+      }
+      else if($request->type == 2)
+      {
+        $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+          $w->where('gender',$gender);
+        });
+
+        $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+      }
+      else if($request->type == 3)
+      {
+        $query = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->whereHas('UserBasicDetail',function($w)use($gender){
+          $w->where('gender',$gender);
+        });
+
+        $user = $query->orderby('id','desc')->paginate($pageCount,['*'],'page',$page);
+      }
+
+
+      // if(!empty($request->religion))
+      // {
+      //   $relation = $request->religion;
+      //   $query->WhereHas('UserReligious',function($query) use($relation){
+      //     $query->where('religion',$relation);
+      //   });
+      // }
+
+      // if(!empty($request->firstName))
+      // {
+      //     $query->where('firstName', 'like', '%' . $request->firstName . '%');
+      // }
+      // if(!empty($request->lastName))
+      // {
+      //     $query->where('lastName', 'like', '%' . $request->lastName . '%');
+      // }
+      // if(!empty($request->age))
+      // {
+      //   $relation = $request->age;
+      //      $y = Date('Y') - $request->age;
+      //   $query->WhereHas('UserBasicDetail',function($query) use($y){
+      //     $query->whereYear('dateOfBirth',$y);
+      //   });
+      // }
+
 
       $user = $user->toArray();
 
@@ -395,11 +416,11 @@ class ApiController extends Controller
           }
         }
       }
-      
+
       if(count($user) > 0)
        {
          $output['success'] ="true";
-         $output['message'] ="today match listing";
+         $output['message'] ="listing";
          $output['result'] = $user;
        }
        else
@@ -436,16 +457,23 @@ class ApiController extends Controller
         else
        {
       $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$request->userId)->first();
-      if(!empty($user))
+      $user = $user->toArray();
+
+      if(count($user['data']) > 0)
       {
-        if($user['user_image'])
+        foreach($user['data'] as $k=>$us)
         {
-          foreach($us['user_image'] as $k1=>$u)
+          if(!empty($us['user_image']))
           {
-          $user['user_image'][$k1]['image'] = url("profiles/".$u['image']);
+            foreach($us['user_image'] as $k1=>$u)
+            {
+              $image = url("profiles/".$u['image']);
+              $user['data'][$k]['user_image'][$k1]['image'] = $image;
+            }
           }
         }
       }
+
       if($user)
        {
          $output['success'] ="true";
@@ -1281,6 +1309,51 @@ class ApiController extends Controller
           "success"=>"false",
           'message'=>$e->getMessage(),
          ]);
+       }
+    }
+
+    public function getOurProfile(Request $request)
+    {
+      try{
+
+        $id = $request->user()->id;
+        $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')->where('id',$id)->first();
+        $user = $user->toArray();
+
+
+
+
+            if(!empty($user['user_image']))
+            {
+              foreach($user['user_image'] as $k1=>$u)
+              {
+                $image = url("profiles/".$u['image']);
+                $user['user_image'][$k1]['image'] = $image;
+              }
+            }
+
+
+         if($user)
+         {
+           return response()->json([
+            "success"=>"true",
+            'result' => $user
+            ]);
+         }
+         else
+        {
+           return response()->json([
+             "success"=>"false",
+             'result' => ''
+            ]);
+          }
+      }
+      catch(\Exception $e)
+       {
+         return response()->json([
+           "success"=>"false",
+           'message'=>$e->getMessage(),
+          ]);
        }
     }
 

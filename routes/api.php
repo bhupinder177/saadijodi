@@ -46,6 +46,7 @@ use Illuminate\Http\Request;
         Route::get('getPartnerPerference', 'ApiController@getPartnerPerference');
         Route::post('partnerPerferenceSave', 'ApiController@partnerPerferenceSave');
         Route::post('listingFilter','ApiController@listingFilter');
+        Route::get('getOurProfile','ApiController@getOurProfile');
 
 
 
