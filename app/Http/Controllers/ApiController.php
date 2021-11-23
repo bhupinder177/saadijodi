@@ -333,8 +333,8 @@ class ApiController extends Controller
 
     public function toDayMatchListing(Request $request)
     {
-      try
-      {
+      // try
+      // {
       $page= $request['page'];
      	$pageCount = 10;
       $gender = UserBasicDetails::where('userId',$request->user()->id)->first();
@@ -406,6 +406,15 @@ class ApiController extends Controller
       {
         foreach($user['data'] as $k=>$us)
         {
+          $favourite  = Favourite::where(array("userId"=>$request->user()->id,"favoriteUserId"=>$us['id']))->first();
+          if(!empty($favourite))
+          {
+            $user['data'][$k]['favorite'] = true;
+          }
+          else
+          {
+            $user['data'][$k]['favorite'] = false;
+          }
           if(!empty($us['user_image']))
           {
             foreach($us['user_image'] as $k1=>$u)
@@ -430,14 +439,14 @@ class ApiController extends Controller
        }
        echo json_encode($output);
        exit;
-     }
-     catch(\Exception $e)
-      {
-        return response()->json([
-          "success"=>"false",
-          'message'=>$e->getMessage(),
-         ]);
-       }
+     // }
+     // catch(\Exception $e)
+     //  {
+     //    return response()->json([
+     //      "success"=>"false",
+     //      'message'=>$e->getMessage(),
+     //     ]);
+     //   }
     }
 
     public function profileDetail(Request $request)
@@ -1278,6 +1287,16 @@ class ApiController extends Controller
       {
         foreach($user['data'] as $k=>$us)
         {
+          $favourite  = Favourite::where(array("userId"=>$request->user()->id,"favoriteUserId"=>$us['id']))->first();
+          if(!empty($favourite))
+          {
+            $user['data'][$k]['favorite'] = true;
+          }
+          else
+          {
+            $user['data'][$k]['favorite'] = false;
+          }
+
           if(!empty($us['user_image']))
           {
             foreach($us['user_image'] as $k1=>$u)
@@ -1355,6 +1374,124 @@ class ApiController extends Controller
            'message'=>$e->getMessage(),
           ]);
        }
+    }
+
+    public function profileUpdate(Request $request)
+    {
+      $detail['height'] = $request->height;
+      $detail['maritalStatus'] = $request->maritalStatus;
+      $detail['profilecreatedby'] = $request->profilecreatedby;
+      $detail['gender'] = $request->gender;
+      $detail['diet'] = $request->diet;
+      $detail['about'] = $request->about;
+      $detail['bloodGroup'] = $request->bloodGroup;
+      $detail['dateOfBirth'] = date("Y-m-d", strtotime($request->dateOfBirth));
+       User::where(array("id"=>Auth::User()->id))->update(array("profileUpdate"=>1));
+      $res = UserBasicDetails::updateOrCreate(array("userId"=>Auth::User()->id),$detail);
+      if($res)
+      {
+        if($files=$request->file('images'))
+        {
+          foreach($files as $k=>$file)
+          {
+            if(!empty($request->images[$k]))
+            {
+             $file = $request->images[$k];
+             $nameimg = 'profile-'.time().rand(100,999).'.'.$file->extension();
+             $file->move(public_path().'/profiles/', $nameimg);
+              $img = new UserImages([
+                'userId' =>Auth::User()->id,
+                'image' =>$nameimg,
+                'isProfile'=>0,
+              ]);
+              $imagesUpdate =  $img->save();
+              }
+           }
+         }
+      }
+
+      if($res)
+      {
+        if (!empty($request->profile))
+        {
+            if (preg_match('/^(?:[data]{4}:(text|image|application)\/[a-z]*)/', $request->profile))
+            {
+              $folderPath = public_path().'/profiles/';
+              $image_parts = explode(";base64,", $request->profile);
+              $image_type_aux = explode("image/", $image_parts[0]);
+              $image_type = $image_type_aux[1];
+              $image_base64 = base64_decode($image_parts[1]);
+              $file = time().uniqid() . '.'.$image_type;
+              $file1 = $folderPath .$file;
+              file_put_contents($file1, $image_base64);
+              $pro['image'] = $file;
+              $pro['userId'] = Auth::User()->id;
+              $pro['isProfile'] = 1;
+              $fupdate = UserImages::updateOrCreate(array("userId"=>Auth::User()->id,"isProfile"=>1),$pro);
+            }
+        }
+      }
+
+      if($res)
+      {
+        $family['fatherStatus'] = $request->fatherStatus;
+        $family['motherStatus'] = $request->motherStatus;
+        $family['familyLocation'] = $request->familyLocation;
+        $family['nativePlace'] = $request->nativePlace;
+        $family['sibling'] = $request->sibling;
+        $family['familyType'] = $request->familyType;
+        $fupdate = UserFamilyDetails::updateOrCreate(array("userId"=>Auth::User()->id),$family);
+      }
+      if($fupdate)
+      {
+        $education['highestQualification'] = $request->highestQualification;
+        $education['workingWith'] = $request->workingWith;
+        $education['workingAs'] = $request->workingAs;
+        $education['employerName'] = $request->employerName;
+        $education['income'] = $request->income;
+        $eupdate = UserEducations::updateOrCreate(array("userId"=>Auth::User()->id),$education);
+      }
+      if($eupdate)
+      {
+       $religion['religion'] = $request->religion;
+       $religion['motherTongue'] = $request->motherTongue;
+       $religion['community'] = $request->community;
+       $religion['subCommunity'] = $request->subCommunity;
+       $rupdate = UserReligious::updateOrCreate(array("userId"=>Auth::User()->id),$religion);
+      }
+      if($rupdate)
+      {
+        $location['country'] = $request->country;
+        $location['state'] = $request->state;
+        $location['city'] = $request->city;
+        $location['pincode'] = $request->pincode;
+        $location['grewUp'] = $request->grewUp;
+       $locationupdate =  UserLocations::updateOrCreate(array("userId"=>Auth::User()->id),$location);
+      }
+      if($locationupdate)
+      {
+        $b['birthCountry'] = $request->birthCountry;
+        $b['birthCity'] = $request->birthCity;
+        $b['manglik'] = $request->manglik;
+        $b['birthHours'] = $request->birthHours;
+        $b['birthminute'] = $request->birthminute;
+        $b['birthAmPm'] = $request->birthAmPm;
+       $updatebirth = UserBirthDetails::updateOrCreate(array("userId"=>Auth::User()->id),$b);
+      }
+      if($res)
+      {
+        return response()->json([
+         "success"=>"true",
+         'message' =>'Profile Updated Successfully'
+         ]);
+      }
+      else
+      {
+        return response()->json([
+         "success"=>"false",
+         'message' =>'Profile Is not update'
+         ]);
+      }
     }
 
 

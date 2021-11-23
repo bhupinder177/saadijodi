@@ -70,6 +70,12 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Model\UserReligious','userId','id');
     }
+
+    public function favourites()
+    {
+        return $this->hasOne('App\Model\Favoruite','favoriteUserId','id');
+    }
+
     public function UserOnline()
     {
         return $this->hasOne('App\Model\UserOnline','userId','id');
@@ -78,5 +84,7 @@ class User extends Authenticatable
     public function online(){
       return $this->belongsTo('App\Model\UserOnline','id','userId');
     }
+
+
 
 }

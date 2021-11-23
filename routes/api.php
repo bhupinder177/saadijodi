@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
         Route::get('user', 'ApiController@user');
         Route::post('toDayMatchListing', 'ApiController@toDayMatchListing');
         Route::post('profileDetail', 'ApiController@profileDetail');
+        Route::post('profileUpdate', 'ApiController@profileUpdate');
         Route::post('connectSave', 'ApiController@connectSave');
         Route::get('getPackage', 'ApiController@getPackage');
         Route::get('allreligion', 'ApiController@allreligion');
@@ -47,7 +48,5 @@ use Illuminate\Http\Request;
         Route::post('partnerPerferenceSave', 'ApiController@partnerPerferenceSave');
         Route::post('listingFilter','ApiController@listingFilter');
         Route::get('getOurProfile','ApiController@getOurProfile');
-
-
 
     });
