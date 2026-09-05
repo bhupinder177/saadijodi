@@ -77,9 +77,8 @@ class MessageController extends Controller
     $messages =  $messages->reverse();
     if(count($messages) > 0)
     {
-      $count = count($messages);
-      $count = $count - 1;
-      $offset = $messages[$count]->id;
+      // paging cursor = oldest message currently loaded
+      $offset = $messages->min('id');
     }
 
     }
@@ -153,7 +152,8 @@ class MessageController extends Controller
     }
 
     $roomId = $request->data_room;
-    $offset = 10;
+    // paging cursor = oldest message currently loaded for this thread
+    $offset = count($messages) > 0 ? $messages->min('id') : 0;
 
     $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
     $array = [];
@@ -177,7 +177,7 @@ class MessageController extends Controller
     $returnHTML = view('front.chat.chat-thread', compact('messages','user','roomId','offset','timezone','allunread'))->render();
      # udpate the chat message to is_read = true
     $message_ids = $messages->pluck('id');
-   return new JsonResponse(['rhtml' => $returnHTML,'user'=>$user->firstName,'image'=>$img]);
+   return new JsonResponse(['rhtml' => $returnHTML,'user'=>$user->firstName,'image'=>$img,'offset'=>$offset]);
   }
 
 
@@ -335,14 +335,12 @@ class MessageController extends Controller
      }
     }
 
-    $messages = Message::where('roomId',$request->data_room)->where('id','<',$request->data_offset)->orderBy('id','desc')->limit(10)->get();
-    if(count($messages) > 0)
-    {
+    $limit = 10;
+    $messages = Message::where('roomId',$request->data_room)->where('id','<',$request->data_offset)->orderBy('id','desc')->limit($limit)->get();
     $messages = $messages->reverse();
-    $count = count($messages);
-    $count = $count - 1;
-    $offset = $messages[$count]->id;
-    }
+    // new paging cursor = oldest message in this batch; nothing older left once we get a short page
+    $offset = count($messages) > 0 ? $messages->min('id') : $request->data_offset;
+    $nomore = count($messages) < $limit;
 
     $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
     $array = [];
@@ -364,7 +362,7 @@ class MessageController extends Controller
    $allunread = Message::whereIn('userId',$array)->where('is_read',0)->count();
 
     $returnHTML = view('front.chat.chat-oldhistory', compact('messages','timezone','offset','allunread'))->render();
-   return new JsonResponse(['rhtml' => $returnHTML,'offset'=>$offset]);
+   return new JsonResponse(['rhtml' => $returnHTML,'offset'=>$offset,'nomore'=>$nomore]);
   }
 
   public function gettime(Request $request)

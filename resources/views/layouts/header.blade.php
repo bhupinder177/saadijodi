@@ -81,7 +81,7 @@
 							<li class="nav-item">
 								<?php $count = App\Helpers\GlobalFunctions::getnotificationCount(Auth::User()->id); ?>
 
-								<a class="nav-link" href="{{URL::to('/notification')}}">Notification <?php if($count > 0){ echo '('. $count .')'; } ?></a>
+								<a class="nav-link" href="{{URL::to('/notification')}}">Notification <span class="@if($count == 0) d-none @endif header-badge notif-count">{{ $count }}</span></a>
 							</li>
 
 							@php $unreadmsg = App\Helpers\GlobalFunctions::unreadmessageHeader(Auth::User()->id); @endphp

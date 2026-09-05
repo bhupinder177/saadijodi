@@ -104,15 +104,12 @@ var sender =  '{{ isset($allrooms[0])?$allrooms[0]->oppositeUser->id:'' }}';
 @endif
 @endif
 
-<?php
-// if(request()->segment(1) == "message")
-// {
-	?>
+@php
+  $socketHost = env('SOCKET_HOST', '127.0.0.1');
+  $socketPort = env('SOCKET_PORT', '3000');
+@endphp
+<script src="{{ 'http://'.$socketHost.':'.$socketPort.'/socket.io/socket.io.js' }}"></script>
 <script src="{{ asset('front/js/socket-front.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="https://app.saadijodi.com/socket.io/socket.io.js"></script>
-<?php
- // }
-?>
 
 <script>
 $( function() {

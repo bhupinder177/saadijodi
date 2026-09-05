@@ -213,25 +213,14 @@ class GlobalFunctions {
 
       public static function unreadmessageHeader($id)
       {
-         $rooms = MessageRoom::where('userId',$id)->orwhere('oppositeUserId',$id)->get();
-         $array = [];
+         // room ids the current user is part of
+         $roomIds = MessageRoom::where('userId',$id)->orWhere('oppositeUserId',$id)->pluck('roomId');
 
-         if(count($rooms) > 0)
-         {
-           foreach($rooms as $r)
-           {
-             if($r->userId != $id)
-             {
-               $array[] = $r->userId;
-             }
-             if($r->oppositeUserId != $id)
-             {
-               $array[] = $r->oppositeUserId;
-             }
-           }
-         }
-        $allunread = Message::whereIn('userId',$array)->where('is_read',0)->count();
-
+         // unread messages in those rooms that were sent by the other person
+         return Message::whereIn('roomId',$roomIds)
+                 ->where('userId','!=',$id)
+                 ->where('is_read',0)
+                 ->count();
       }
 
 

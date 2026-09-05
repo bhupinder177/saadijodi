@@ -1,9 +1,24 @@
 $(function () {
-  // var dybSocket = location.protocol+'//'+host+':'+port+'';
-  var dybSocket = location.protocol+'//'+host+':'+port+'';
-  // var socket = io('http://127.0.0.1:3000');
- //var socket = io(dybSocket);
-  var socket = io('https://app.saadijodi.com');
+  var socketHost = (typeof host !== 'undefined' && host) ? host : '127.0.0.1';
+  var socketPort = (typeof port !== 'undefined' && port) ? port : '3000';
+  var socket = io(location.protocol + '//' + socketHost + ':' + socketPort);
+
+  // guards for the "load older messages on scroll up" feature
+  var loadingOld = false;
+  var lastScrollTop = 0;
+
+  // move a conversation to the top of the chat sidebar
+  function moveRoomToTop(room) {
+    if (!room) return;
+    room = $.trim(String(room));
+    var $contacts = $('.contacts');
+    var $li = $contacts.children('li.person').filter(function () {
+      return $.trim($(this).attr('data-room')) === room;
+    });
+    if ($li.length && $contacts.children('li.person').get(0) !== $li.get(0)) {
+      $contacts.prepend($li);
+    }
+  }
 
   /*************************** chat**********************/
   // chat submit
@@ -17,6 +32,7 @@ $(function () {
       data_offset += 1;
     $('.chat-active').attr('data-offset',data_offset);
     $('.nochat').remove();
+    moveRoomToTop(room);
     if(senderId == sender)
     {
 
@@ -203,12 +219,25 @@ $.ajax({
     }
   }
 
+  // action menu (kebab) in the chat header
+  $(document).on('click', '#action_menu_btn', function (e) {
+    e.stopPropagation();
+    $('.action_menu').toggle();
+  });
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.action_menu, #action_menu_btn').length) {
+      $('.action_menu').hide();
+    }
+  });
+
   // click event on chat person
   $(document).on('click', '.person', function (event) {
     var sender = $(this).attr('data-sender');
     var receiver = $(this).attr('data-receiver');
     var room = $(this).attr('data-room');
     var room_key = $(this).attr('data-room-key');
+    var uniqueid = $(this).attr('data-uniqueid');
+    if (uniqueid) $('.viewProfileLink').attr('href', SITE_URL + '/user-profile/' + uniqueid);
     $(this).removeClass('un-read-message');
     $('.person').removeClass('active');
     $(this).addClass('active');
@@ -236,7 +265,12 @@ $.ajax({
 
         let ele = $(document).find('.msg_card_body');
         ele.html(data.rhtml);
-        ele.attr('data-offset', '10');
+        ele.removeAttr('data-nomore');
+        // seed the paging cursor with the oldest message actually loaded
+        var seedOffset = (data.offset != null && data.offset !== 0)
+          ? data.offset
+          : (ele.find('[data-mes]').first().attr('data-mes') || 0);
+        ele.attr('data-offset', seedOffset);
         $(".chatWith").text('Chat with '+data.user);
         $(".chatwithimage").attr('src',data.image);
         $('.chat-active').attr('data-room',room);
@@ -268,10 +302,11 @@ $.ajax({
     if($('#message-to-send').val() != '')
     {
 
-      var roomId = $('.active-chat').attr('data-room');
+      var roomId = $('.chat-active').attr('data-room');
       event.preventDefault();
       socket.emit('sendchat', $('#message-to-send').val());
       $('#message-to-send').val('');
+      moveRoomToTop(roomId);
     }
     return false;
   });
@@ -280,10 +315,11 @@ $.ajax({
     if(e.which == 13) {
       if($('#message-to-send').val() != '')
       {
-        var roomId = $('.active-chat').attr('data-room');
+        var roomId = $('.chat-active').attr('data-room');
         event.preventDefault();
         socket.emit('sendchat', $('#message-to-send').val());
         $('#message-to-send').val('');
+        moveRoomToTop(roomId);
       }
       return false;
     }
@@ -297,48 +333,57 @@ $.ajax({
     socket.emit('showtyping',roomId,sender);
   });
 
-  // get preview message on scroll up
-  $('.msg_card_body').scroll(function () {
-    let className = $('.msg_card_body:first-child').attr('data-mes');
+  // load older messages when the user scrolls to the top of the thread
+  $('.msg_card_body').on('scroll', function () {
+    var box = this;
+    var $box = $(this);
+    var st = $box.scrollTop();
+    var goingUp = st < lastScrollTop;
+    lastScrollTop = st;
 
-    if($(this).scrollTop() < 1 && (className)) {
-      console.log("gggg");
-      let ele = $(this);
-      let data_offset = parseInt($(this).attr('data-offset'));
-      let data_room = $(this).attr('data-room');
-      $.ajax({
-        url: SITE_URL + '/getoldMessage',
-        type: "post",
-        data: {
-          'data_offset': data_offset,
-          'data_room' : data_room,
-        },
-        headers     : {
-       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-        success: function (data)
-        {
-          ele.prepend(data.rhtml);
-          ele.attr('data-offset',data.offset);
-          if(data.allunread)
-          {
-          $('.unreadheadermessage').removeClass('d-none');
-          $('.unreadheadermessage').html(data.allunread);
-          }
-          else
-          {
-            $('.unreadheadermessage').addClass('d-none');
-            $('.unreadheadermessage').html(data.allunread);
-          }
-          isOnScreen(ele,data_offset);
-        },
-        error: function (data) {
-          console.log(data);
+    if (loadingOld || st > 3 || !goingUp) return;
+    if ($box.attr('data-nomore') === '1') return;
+
+    var data_offset = parseInt($box.attr('data-offset'), 10);
+    var data_room = $.trim($box.attr('data-room'));
+    if (!data_room || !(data_offset > 0)) return;
+
+    loadingOld = true;
+    var prevHeight = box.scrollHeight;
+    $.ajax({
+      url: SITE_URL + '/getoldMessage',
+      type: 'post',
+      data: { 'data_offset': data_offset, 'data_room': data_room },
+      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+      success: function (data) {
+        if (data.rhtml && $.trim(data.rhtml) !== '') {
+          $box.prepend(data.rhtml);
+          // anchor the viewport to the message that was on top before prepending
+          box.scrollTop = box.scrollHeight - prevHeight;
+          lastScrollTop = box.scrollTop;
+          if (data.offset) $box.attr('data-offset', data.offset);
         }
-      });
+        if (data.nomore) $box.attr('data-nomore', '1');
+        if (data.allunread) {
+          $('.unreadheadermessage').removeClass('d-none').html(data.allunread);
+        } else {
+          $('.unreadheadermessage').addClass('d-none').html(data.allunread);
+        }
+        loadingOld = false;
+      },
+      error: function (data) {
+        console.log(data);
+        loadingOld = false;
+      }
+    });
+  });
 
-    }
-  })
+  // start each thread scrolled to the newest message
+  if ($('.msg_card_body').length) {
+    var _mcb = $('.msg_card_body')[0];
+    _mcb.scrollTop = _mcb.scrollHeight;
+    lastScrollTop = _mcb.scrollTop;
+  }
 
   $('.btn-back').on('click', function(){
     $('.right-mobile').hide();

@@ -25,7 +25,7 @@
                           @if($room->user->id == Auth::user()->id)
                            @php $unread = App\Helpers\GlobalFunctions::unreadmessage($room->oppositeUser->id,$room->roomId); @endphp
                            @php $image = App\Helpers\GlobalFunctions::getImage($room->oppositeUser->id); @endphp
-                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->oppositeUser->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->oppositeUser->id }}" data-room="{{ $room->roomId}}">
+                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->oppositeUser->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->oppositeUser->id }}" data-uniqueid="{{ $room->oppositeUser->uniqueId }}" data-room="{{ $room->roomId}}">
                               <div class="d-flex bd-highlight">
                                   <div class="img_cont">
                                     @if(!empty($image))
@@ -66,7 +66,7 @@
                            @php $unread = App\Helpers\GlobalFunctions::unreadmessage($room->user->id,$room->roomId); @endphp
                            @php $image = App\Helpers\GlobalFunctions::getImage($room->user->id); @endphp
 
-                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->user->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->user->id }}" data-room="{{ $room->roomId}}">
+                          <li class="person @if($key == 0) active @endif chat-div personli{{ $room->user->id }}{{ $room->roomId }}" data-sender="{{ Auth::user()->id }}" data-room-key="{{ $key }}" data-receiver="{{ $room->user->id }}" data-uniqueid="{{ $room->user->uniqueId }}" data-room="{{ $room->roomId}}">
                               <div class="d-flex bd-highlight">
                                   <div class="img_cont">
                                     @if(!empty($image))
@@ -184,17 +184,21 @@
 
                   <span id="action_menu_btn"><i class="fa fa-ellipsis-v"></i></span>
 
+                  @php
+                    $partnerUniqueId = '';
+                    if(count($rooms) > 0){
+                      $partnerUniqueId = ($rooms[0]->user->id == Auth::user()->id) ? $rooms[0]->oppositeUser->uniqueId : $rooms[0]->user->uniqueId;
+                    }
+                  @endphp
                   <div class="action_menu">
                       <ul>
-                          <li><i class="fa fa-user-circle"></i> View profile</li>
-                          <li><i class="fa fa-users"></i> Add to close friends</li>
-                          <li><i class="fa fa-plus"></i> Add to group</li>
+                          <li><a class="viewProfileLink" href="{{ $partnerUniqueId ? URL::to('/user-profile/'.$partnerUniqueId) : '#' }}" target="_blank" rel="noopener"><i class="fa fa-user-circle"></i> View profile</a></li>
                           <li><i class="fa fa-ban"></i> Block</li>
                       </ul>
                   </div>
               </div>
 
-              <div class="card-body msg_card_body chat-active @if(count($rooms) > 0) msg_card_body{{ $rooms[0]->roomId }} @endif" data-offset="{{ $offset }}" @if(count($rooms) > 0) @if($rooms[0]->oppositeUser->id == Auth::user()->id) data-receiver="{{ $rooms[0]->user->id }}" @endif @if($rooms[0]->user->id == Auth::user()->id) data-receiver="{{ $rooms[0]->oppositeUser->id }}" @endif @endif data-room="@if(count($rooms) > 0){{ $rooms[0]->roomId }} @endif">
+              <div class="card-body msg_card_body chat-active @if(count($rooms) > 0) msg_card_body{{ $rooms[0]->roomId }} @endif" data-offset="{{ $offset }}" @if(count($rooms) > 0) @if($rooms[0]->oppositeUser->id == Auth::user()->id) data-receiver="{{ $rooms[0]->user->id }}" @endif @if($rooms[0]->user->id == Auth::user()->id) data-receiver="{{ $rooms[0]->oppositeUser->id }}" @endif @endif data-room="@if(count($rooms) > 0){{ $rooms[0]->roomId }}@endif">
                   @if(count($messages) > 0)
                   @foreach($messages as $m)
                   @if($m->userId == Auth::user()->id)
