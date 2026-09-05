@@ -266,21 +266,24 @@
     </div>
   </div>
 </section>
-@if(count($rooms) > 0)
 <script>
 var messagesId = "{{$messagesId ?? ''}}";
 var host = '{{ env('SOCKET_HOST') }}';
 var port = '{{ env('SOCKET_PORT') }}';
 var user = '{{ Auth::user()->firstName }}';
 var SITE_URL = '{{ URL::to('/') }}';
-var roomIdd =  '{{ isset($rooms[0])?$rooms[0]->roomId:'' }}';
+var roomIdd = '';
+var sender = '{{ Auth::user()->id }}';
+var receiver = '';
+@if(count($rooms) > 0)
+roomIdd = '{{ $rooms[0]->roomId }}';
 @if ($rooms[0]->user->id == Auth::user()->id)
-var sender =  '{{ isset($rooms[0])?$rooms[0]->user->id:'' }}';
-var receiver =  '{{ isset($rooms[0])?$rooms[0]->oppositeUser->id:'' }}';
+sender = '{{ $rooms[0]->user->id }}';
+receiver = '{{ $rooms[0]->oppositeUser->id }}';
 @else
-var receiver =  '{{ isset($rooms[0])?$rooms[0]->user->id:'' }}';
-var sender =  '{{ isset($rooms[0])?$rooms[0]->oppositeUser->id:'' }}';
+receiver = '{{ $rooms[0]->user->id }}';
+sender = '{{ $rooms[0]->oppositeUser->id }}';
+@endif
 @endif
 </script>
-@endif
 @include('layouts.footer')
