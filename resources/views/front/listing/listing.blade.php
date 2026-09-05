@@ -213,7 +213,7 @@
 													</a>
 												</div>
 												<div class="ListItemStyles__Bios">
-												@if(!empty($user->UserBasicDetail->about))	{{ str_limit($user->UserBasicDetail->about, $limit = 150, $end = '...')  }} @endif
+												@if(!empty($user->UserBasicDetail->about))	{{ \Illuminate\Support\Str::limit($user->UserBasicDetail->about, 150, '...')  }} @endif
 													<a class="ListItemStyles__ReadMoreLink" href="{{URL::to('/user-profile/'.$user->uniqueId)}}">More</a>
 												</div>
 											</div>
