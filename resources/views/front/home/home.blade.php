@@ -1,5 +1,5 @@
 @include('layouts.header')
-<section class="top_banner" style="background: url({{ asset('home/'.$home->image) }}) center top no-repeat;">
+<section class="top_banner" style="background: url({{ asset('home/'.($home->image ?? '')) }}) center top no-repeat;">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
