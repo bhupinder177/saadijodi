@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth','agent']], function () {
   Route::post('/contactDetailUpdate','ProfileController@contactDetailUpdate');
   Route::post('/partnerPreferenceUpdate','ProfileController@partnerPreferenceUpdate');
   Route::get('/listing','ListingController@index');
+  Route::get('/connections','ListingController@connections');
   Route::post('/deleteImages','ProfileController@deleteImages');
   Route::get('/user-profile/{id}','ProfileController@userProfile');
   Route::get('/notification','ProfileController@notification');

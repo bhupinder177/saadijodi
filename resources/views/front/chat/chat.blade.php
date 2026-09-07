@@ -1,6 +1,86 @@
 
 @include('layouts.header')
 
+<style>
+  /* ===================== Chat — light / pink retheme (markup unchanged) ===================== */
+  .chat_wrapp{
+    --pink:#e5006d; --violet:#7b2ff7; --navy:#14213d; --muted:#8b93a7;
+    --line:#e7eaf3; --field:#f6f7fb;
+    background:#eef1f8 !important; padding:34px 0 56px !important; font-family:'Poppins',sans-serif;
+  }
+  .chat_wrapp .card{
+    height:560px !important; border:1px solid var(--line) !important; border-radius:16px !important;
+    background-color:#fff !important; box-shadow:0 12px 34px rgba(20,33,61,.07) !important; overflow:hidden;
+  }
+  .chat_wrapp .card-header,
+  .chat_wrapp .card-footer{background:#fff !important; border-color:var(--line) !important;}
+  .chat_wrapp .card-header.msg_head{border-bottom:1px solid var(--line) !important; padding:14px 18px;}
+  .chat_wrapp .card-footer{border-top:1px solid var(--line) !important; padding:12px 14px;}
+  .chat_wrapp .contacts_body{padding:10px !important;}
+
+  /* Contacts list */
+  .chat_wrapp .contacts li{padding:10px 12px; margin-bottom:6px !important; border-radius:12px; cursor:pointer; transition:background .15s;}
+  .chat_wrapp .contacts li:hover{background:var(--field);}
+  .chat_wrapp .active,
+  .chat_wrapp .contacts li.active{background:linear-gradient(90deg,rgba(229,0,109,.12),rgba(123,47,247,.12)) !important;}
+  .chat_wrapp .user_img{height:52px; width:52px; border:2px solid #fff; box-shadow:0 2px 8px rgba(20,33,61,.12);}
+  .chat_wrapp .img_cont{height:52px; width:52px;}
+  .chat_wrapp .user_info{margin-left:12px;}
+  .chat_wrapp .user_info span{font-size:15px; font-weight:600; color:var(--navy);}
+  .chat_wrapp .user_info span.msg_count{display:inline-flex; align-items:center; justify-content:center;
+    min-width:20px; height:20px; padding:0 6px; margin-left:8px; font-size:11px; font-weight:700; color:#fff;
+    background:var(--pink); border-radius:20px;}
+  .chat_wrapp .chatWith{font-size:16px; font-weight:700; color:var(--navy);}
+
+  /* Presence dots */
+  .chat_wrapp .online_icon{height:13px; width:13px; background-color:#22c55e; bottom:0; right:2px; border:2px solid #fff;}
+  .chat_wrapp .offline_icon{position:absolute; height:13px; width:13px; background-color:#c2c8d4;
+    border-radius:50%; bottom:0; right:2px; border:2px solid #fff;}
+
+  /* Message area */
+  .chat_wrapp .msg_card_body{padding:20px 18px; background:#f8f9fc;}
+  .chat_wrapp .user_img_msg{height:34px; width:34px; border:2px solid #fff; box-shadow:0 2px 6px rgba(20,33,61,.12);}
+  .chat_wrapp .img_cont_msg{height:34px; width:34px;}
+  .chat_wrapp .msg_cotainer{margin-left:10px; border-radius:14px 14px 14px 4px; background:#fff;
+    border:1px solid var(--line); color:var(--navy); padding:10px 13px; font-size:13.5px; max-width:70%; box-shadow:0 3px 10px rgba(20,33,61,.05);}
+  .chat_wrapp .msg_cotainer_send{margin-right:10px; border-radius:14px 14px 4px 14px;
+    background:linear-gradient(135deg,var(--pink),var(--violet)); color:#fff; padding:10px 13px; font-size:13.5px; max-width:70%;
+    box-shadow:0 6px 16px rgba(123,47,247,.22);}
+  .chat_wrapp .msg_time,
+  .chat_wrapp .msg_time_send{color:var(--muted); font-size:10.5px;}
+  .chat_wrapp .nochat{text-align:center; color:var(--muted); font-size:14px; font-weight:600; padding:60px 0;}
+
+  /* Composer */
+  .chat_wrapp .type_msg{background-color:var(--field) !important; border:1px solid var(--line) !important;
+    color:var(--navy) !important; border-radius:12px !important; height:48px !important; resize:none;}
+  .chat_wrapp .type_msg:focus{background:#fff !important; border-color:var(--pink) !important; box-shadow:0 0 0 3px rgba(229,0,109,.12) !important;}
+  .chat_wrapp .type_msg::placeholder{color:var(--muted);}
+  .chat_wrapp .chatinputForm .input-group{gap:10px; align-items:center; flex-wrap:nowrap;}
+  .chat_wrapp .send_btn{border-radius:12px !important; background:linear-gradient(135deg,var(--pink),var(--violet)) !important;
+    border:0 !important; color:#fff !important; width:48px; height:48px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 18px rgba(123,47,247,.28);}
+
+  /* Header action menu */
+  .chat_wrapp #action_menu_btn{color:var(--muted); font-size:18px;}
+  .chat_wrapp #action_menu_btn:hover{color:var(--pink);}
+  .chat_wrapp .action_menu{background:#fff; color:var(--navy); border:1px solid var(--line);
+    box-shadow:0 12px 30px rgba(20,33,61,.15); border-radius:12px; padding:8px 0;}
+  .chat_wrapp .action_menu ul li{padding:9px 16px; font-size:13px;}
+  .chat_wrapp .action_menu ul li a{color:var(--navy); text-decoration:none;}
+  .chat_wrapp .action_menu ul li i{color:var(--pink);}
+  .chat_wrapp .action_menu ul li:hover{background:var(--field);}
+
+  /* Scrollbars */
+  .chat_wrapp .msg_card_body::-webkit-scrollbar,
+  .chat_wrapp .contacts_body::-webkit-scrollbar{width:7px;}
+  .chat_wrapp .msg_card_body::-webkit-scrollbar-thumb,
+  .chat_wrapp .contacts_body::-webkit-scrollbar-thumb{background:#d4d9e6; border-radius:20px;}
+
+  @media (max-width:767px){
+    .chat_wrapp .card{height:auto !important; min-height:420px;}
+  }
+</style>
+
 <!-- <div id="cometchat"></div> -->
 <section class="chat_wrapp">
   <div class="container">
@@ -206,7 +286,7 @@
                   <div class="d-flex justify-content-end mb-4" data-mes="{{ $m->id }}">
                       <div class="msg_cotainer_send">
                           {{ $m->message }}
-                          <span class="msg_time_send">{{ $a = date('h:i A',strtotime($timezone, strtotime($m->created_at))) }}, {{ $z = date('d M, Y',strtotime($m->created_at)) }}</span>
+                          <span class="msg_time_send">{{ optional($m->created_at)->format('h:i A') }}, {{ optional($m->created_at)->format('d M, Y') }}</span>
                       </div>
                       <div class="img_cont_msg">
                         @php $profile = App\Helpers\GlobalFunctions::getImage($m->userId); @endphp
@@ -232,7 +312,7 @@
                      </div>
                      <div class="msg_cotainer">
                          {{ $m->message }}
-                         <span class="msg_time">{{ $a = date('h:i A',strtotime($timezone, strtotime($m->created_at))) }}, {{ $z = date('d M, Y',strtotime($m->created_at)) }}</span>
+                         <span class="msg_time">{{ optional($m->created_at)->format('h:i A') }}, {{ optional($m->created_at)->format('d M, Y') }}</span>
                      </div>
                  </div>
                  @endif

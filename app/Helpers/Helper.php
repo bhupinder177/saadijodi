@@ -12,6 +12,7 @@ use App\Model\Notification;
 use App\Model\Message;
 use App\Model\MessageRoom;
 use App\Model\UserImages;
+use App\Model\UserConnects;
 
 
 class GlobalFunctions {
@@ -198,6 +199,24 @@ class GlobalFunctions {
       public static function getnotificationInvite($userId,$to)
       {
         return $notification = Notification::where(array("notificationFrom"=>$userId,"notificationTo"=>$to))->first();
+      }
+
+      /**
+       * Ids of every user the given user is connected with (invite sent or received),
+       * regardless of the direction the invitation travelled.
+       */
+      public static function connectedUserIds($userId)
+      {
+        return UserConnects::where('userId',$userId)
+                ->orWhere('sendTo',$userId)
+                ->get()
+                ->map(function($row) use($userId){
+                  return $row->userId == $userId ? $row->sendTo : $row->userId;
+                })
+                ->filter()
+                ->unique()
+                ->values()
+                ->all();
       }
 
       public static function getnotificationCount($userId)

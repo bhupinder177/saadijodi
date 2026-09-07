@@ -1,68 +1,65 @@
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="footer_wrap">
-          <p>
-            Saadi Jodi is the leading matrimonial website, founded with an aim to please people with their perfect match. It is a social networking site helps you to connect different religion and region. We are here to serve worldwide customers and successfully we’ve touched more than 1000+ lives.
+<footer class="sj-site-footer">
+  <div class="container">
+    <div class="sj-footer-grid">
 
-          </p>
-          <h3>Follow Us</h3>
-          <ul>
-            <li>
-              <a target="_blank" href="http://www.facebook.com/saadijodii">
-              <i class="fa fa-facebook-square"></i>
-            </a>
-            </li>
-            <li>
-              <i class="fa fa-twitter-square"></i>
-            </li>
-            <li>
-              <i class="fa fa-linkedin"></i>
-            </li>
-            <li>
-              <a target="_blank" href="http://www.instagram.com/saadijodi">
-              <i class="fa fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div class="sj-footer-about">
+        <a href="{{URL::to('/')}}" class="sj-footer-brand">
+          <img src="{{ asset('front/images/logo.png') }}" alt="Saadi Jodi">
+        </a>
+        <p>
+          Saadi Jodi is the leading matrimonial website, founded with an aim to please people with
+          their perfect match. It is a social networking site helping you to connect different religion
+          and region. We are here to serve worldwide customers and successfully we've touched more than
+          1000+ lives.
+        </p>
+        <h3>Follow Us</h3>
+        <ul class="sj-footer-social">
+          <li><a target="_blank" href="http://www.facebook.com/saadijodii"><i class="fa fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          <li><a target="_blank" href="http://www.instagram.com/saadijodi"><i class="fa fa-instagram"></i></a></li>
+        </ul>
       </div>
-      <div class="col-md-3">
-        <div class="footer_mainu">
-          <h2>Help & Support</h2>
-          <ul>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/contact-us')}}">Contact us</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/faqs')}}">FAQs</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/term-conditions')}}">Terms and Conditions</a>
-            </li>
 
-          </ul>
-        </div>
+      <div class="sj-footer-col">
+        <h2>Help &amp; Support</h2>
+        <ul>
+          <li><a href="{{URL::to('/contact-us')}}"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+          <li><a href="{{URL::to('/faqs')}}"><i class="fa fa-angle-right"></i> FAQs</a></li>
+          <li><a href="{{URL::to('/term-conditions')}}"><i class="fa fa-angle-right"></i> Terms and Conditions</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i> Sitemap</a></li>
+        </ul>
       </div>
-      <div class="col-md-3">
-        <div class="footer_mainu">
-          <h2>Information</h2>
-          <ul>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/about-us')}}">About Us</a>
-            </li>
-            <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/privacy-policy')}}">Privacy Policy</a>
-            </li>
-            <!-- <li>
-              <i class="fa fa-angle-right"></i><a href="{{URL::to('/refund-policy')}}">Refund Policy</a>
-            </li> -->
 
-
-          </ul>
-        </div>
+      <div class="sj-footer-col">
+        <h2>Information</h2>
+        <ul>
+          <li><a href="{{URL::to('/about-us')}}"><i class="fa fa-angle-right"></i> About Us</a></li>
+          <li><a href="{{URL::to('/privacy-policy')}}"><i class="fa fa-angle-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i> Success Stories</a></li>
+          <li><a href="#"><i class="fa fa-angle-right"></i> Blog</a></li>
+        </ul>
       </div>
+
+      <div class="sj-footer-col sj-footer-news">
+        <h2>Subscribe to Newsletter</h2>
+        <p>Get updates on new members and premium offers.</p>
+        <form class="sj-news-form" onsubmit="event.preventDefault();">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit" aria-label="Subscribe"><i class="fa fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="sj-footer-bottom">
+    <div class="container">
+      <span>&copy; {{ date('Y') }} Saadi Jodi. All Rights Reserved.</span>
+      <span class="sj-footer-legal">
+        <a href="{{URL::to('/privacy-policy')}}">Privacy Policy</a>
+        <a href="{{URL::to('/term-conditions')}}">Terms &amp; Conditions</a>
+      </span>
     </div>
   </div>
 </footer>
@@ -113,19 +110,23 @@ var sender =  '{{ isset($allrooms[0])?$allrooms[0]->oppositeUser->id:'' }}';
 
 <script>
 $( function() {
- $( "#slider-range" ).slider({
-   range: true,
-   min: 18,
-   max: 45,
-   values: [ 23,30],
-   slide: function( event, ui ) {
-     $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-     $('.ageMin').val(ui.values[0]);
-     $('.ageMax').val(ui.value[1]);
-   }
- });
- $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
-   " - " + $( "#slider-range" ).slider( "values", 1 ) );
+ if ( $( "#slider-range" ).length ) {
+   var startMin = parseInt( $('.ageMin').val(), 10 ) || 23;
+   var startMax = parseInt( $('.ageMax').val(), 10 ) || 30;
+   $( "#slider-range" ).slider({
+     range: true,
+     min: 18,
+     max: 45,
+     values: [ startMin, startMax ],
+     slide: function( event, ui ) {
+       $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+       $('.ageMin').val(ui.values[0]);
+       $('.ageMax').val(ui.values[1]);
+     }
+   });
+   $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
+     " - " + $( "#slider-range" ).slider( "values", 1 ) );
+ }
 } );
 
 </script>

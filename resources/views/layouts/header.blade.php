@@ -16,6 +16,8 @@
 		<title>Saadi jodi</title>
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
 	</head>
 	<body>
 		<input type="hidden" value="{{ URL::to('/') }}" class="base_url">
@@ -24,49 +26,30 @@
      <div class="loader"></div>
     </div>
 
-		<header>
-			<div class="top-header">
+		<header class="sj-site-header">
+			<div class="sj-topbar">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="telephone_cont">
-								<p><i class="fa fa-envelope"></i> info@saadijodi.com</p>
-							</div>
+					<div class="sj-topbar-inner">
+						<div class="sj-topbar-contact">
+							<a href="mailto:info@saadijodi.com"><i class="fa fa-envelope"></i> info@saadijodi.com</a>
+							<span class="sj-divider">|</span>
+							<a href="tel:+919876543210"><i class="fa fa-phone"></i> +91 98765 43210</a>
 						</div>
-						<div class="col-md-6">
-							<div class="follow_icons">
-								<span class="follow_fa">
-									<a target="_blank" href="http://www.facebook.com/saadijodii">
-									<i class="fa fa-facebook-f"></i>
-								 </a>
-								</span>
-								<span class="follow_fa">
-									<i class="fa fa-twitter"></i>
-								</span>
-								<span class="follow_fa">
-									<i class="fa fa-google-plus"></i>
-								</span>
-								<span class="follow_fa">
-									<i class="fa fa-linkedin"></i>
-								</span>
-								<!-- <span class="follow_fa">
-									<i class="fa fa-pinterest-p"></i>
-								</span> -->
-								<span class="follow_fa">
-									<a target="_blank" href="http://www.instagram.com/saadijodi">
-									<i class="fa fa-instagram"></i>
-								  </a>
-								</span>
-							</div>
+						<div class="sj-topbar-social">
+							<a target="_blank" href="http://www.facebook.com/saadijodii"><i class="fa fa-facebook-f"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-google-plus"></i></a>
+							<a href="#"><i class="fa fa-linkedin"></i></a>
+							<a target="_blank" href="http://www.instagram.com/saadijodi"><i class="fa fa-instagram"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<nav class="navbar navbar-expand-lg static-top header_bg">
+			<nav class="navbar navbar-expand-lg static-top sj-navbar">
 				<div class="container">
 					<a class="navbar-brand" href="{{URL::to('/')}}">
-						<img src="{{ asset('front/images/logo.png') }}" alt="">
+						<img src="{{ asset('front/images/logo.png') }}" alt="Saadi Jodi">
 					</a>
 					<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarResponsive">
 						<i class="fa fa-bars"></i>
@@ -74,50 +57,58 @@
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 
 						@if (!empty(Auth::user()))
-						<ul class="navbar-nav ml-auto custom_cc">
+						<ul class="navbar-nav ml-auto sj-nav-links">
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/listing')}}">Lisitng </a>
+								<a class="nav-link" href="{{URL::to('/listing')}}">Listings</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{URL::to('/connections')}}">Connections</a>
 							</li>
 							<li class="nav-item">
 								<?php $count = App\Helpers\GlobalFunctions::getnotificationCount(Auth::User()->id); ?>
-
-								<a class="nav-link" href="{{URL::to('/notification')}}">Notification <span class="@if($count == 0) d-none @endif header-badge notif-count">{{ $count }}</span></a>
+								<a class="nav-link" href="{{URL::to('/notification')}}">Notifications <span class="sj-badge @if($count == 0) d-none @endif header-badge notif-count">{{ $count }}</span></a>
 							</li>
 
 							@php $unreadmsg = App\Helpers\GlobalFunctions::unreadmessageHeader(Auth::User()->id); @endphp
 
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/message')}}">Inbox <span class="@if($unreadmsg == 0) d-none @endif unreadheadermessage unreadheadermessage{{ Auth::user()->id }}">{{ $unreadmsg }}</span> </a>
+								<a class="nav-link" href="{{URL::to('/message')}}">Inbox <span class="sj-badge @if($unreadmsg == 0) d-none @endif unreadheadermessage unreadheadermessage{{ Auth::user()->id }}">{{ $unreadmsg }}</span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/membership')}}">Membership </a>
+								<a class="nav-link" href="{{URL::to('/membership')}}">Membership</a>
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{URL::to('/change-password')}}">Change Password </a>
-							</li>
+						
 						</ul>
-						@endif
 
-						<ul class="navbar-nav ml-auto custom_cc_b">
-							  @if (!Auth::user())
-							<li class="nav-item">
-								<a class="nav-link login_rg-b" href="{{URL::to('/register')}}">Register </a>
+						<ul class="navbar-nav sj-nav-user">
+							<li class="nav-item dropdown">
+								<a class="nav-link sj-user-toggle" href="#" id="sjUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="sj-avatar-circle"><i class="fa fa-user"></i></span>
+									{{ Auth::user()->firstName }} <i class="fa fa-caret-down"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="sjUserMenu">
+									<a class="dropdown-item" href="{{URL::to('/profile')}}">My Profile</a>
+									<a class="dropdown-item" href="{{URL::to('/change-password')}}">Change Password</a>
+									<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+								</div>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link login_rg-b mr-0" href="{{URL::to('/login')}}">Login</a>
-							</li>
-							@else
-							<li class="nav-item">
-								<a class="nav-link login_rg-b" href="{{URL::to('/profile')}}">{{ Auth::user()->firstName }}</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link login_rg-b mr-0" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+								<a class="nav-link sj-logout-btn" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
 								</form>
 							</li>
-							@endif
 						</ul>
+						@else
+						<ul class="navbar-nav ml-auto sj-nav-user">
+							<li class="nav-item">
+								<a class="nav-link sj-login-link" href="{{URL::to('/register')}}">Register</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link sj-logout-btn" href="{{URL::to('/login')}}">Login</a>
+							</li>
+						</ul>
+						@endif
 					</div>
 				</div>
 			</nav>

@@ -244,11 +244,47 @@ class ListingController extends Controller
         $allcity = Cities::where('state_id',$stateId)->get();
         }
 
+        // hide people the user is already connected with - they live on /connections
+        $connectedIds = \App\Helpers\GlobalFunctions::connectedUserIds(Auth::user()->id);
+        if(!empty($connectedIds))
+        {
+          $query->whereNotIn('id',$connectedIds);
+        }
+
         $user = $query->orderby('id','desc')->paginate($perpage);
 
         $allreligion = Religion::get();
         $allcountry = Country::get();
         return view('front.listing.listing',['gender'=>$gender,'users'=>$user,'allcountry'=>$allcountry,'allstates'=>$allstates,'allcity'=>$allcity,'countryId'=>$countryId,'relation'=>$relation,'allreligion'=>$allreligion,'stateId'=>$stateId,'cityId'=>$cityId]);
+    }
+
+    /**
+     * People the logged-in user is already connected with.
+     */
+    public function connections(Request $request)
+    {
+        $perpage = 10;
+
+        $connectedIds = \App\Helpers\GlobalFunctions::connectedUserIds(Auth::user()->id);
+
+        $with = ['UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail',
+                 'UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail',
+                 'UserFamilyDetail','UserImage','UserLocation','UserReligious','UserReligious.religiondetail',
+                 'UserReligious.communitydetail','UserReligious.motherTonguedetail'];
+
+        if(empty($connectedIds))
+        {
+            $users = User::with($with)->whereRaw('1 = 0')->paginate($perpage);
+        }
+        else
+        {
+            $users = User::with($with)
+                        ->whereIn('id',$connectedIds)
+                        ->orderByRaw('FIELD(id, '.implode(',', $connectedIds).') DESC')
+                        ->paginate($perpage);
+        }
+
+        return view('front.connection.connection',['users'=>$users]);
     }
 
 

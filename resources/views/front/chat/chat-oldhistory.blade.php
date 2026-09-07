@@ -5,7 +5,7 @@
 <div class="d-flex justify-content-end mb-4" data-mes="{{ $m->id }}">
     <div class="msg_cotainer_send">
         {{ $m->message }}
-        <span class="msg_time_send">{{ $a = date('h:i A',strtotime($timezone, strtotime($m->created_at))) }}, {{ $z = date('d M, Y',strtotime($m->created_at)) }}</span>
+        <span class="msg_time_send">{{ optional($m->created_at)->format('h:i A') }}, {{ optional($m->created_at)->format('d M, Y') }}</span>
     </div>
     <div class="img_cont_msg">
       @php $profile = App\Helpers\GlobalFunctions::getImage($m->userId); @endphp
@@ -31,7 +31,7 @@
    </div>
    <div class="msg_cotainer">
        {{ $m->message }}
-       <span class="msg_time">{{ $a = date('h:i A',strtotime($timezone, strtotime($m->created_at))) }}, {{ $z = date('d M, Y',strtotime($m->created_at)) }}</span>
+       <span class="msg_time">{{ optional($m->created_at)->format('h:i A') }}, {{ optional($m->created_at)->format('d M, Y') }}</span>
    </div>
 </div>
 @endif

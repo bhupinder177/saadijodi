@@ -400,8 +400,20 @@ class ProfileController extends Controller
       {
         $phoneshowing = 1;
       }
-      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail','UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail','UserFamilyDetail','UserImage','UserLocation','UserReligious')->where('uniqueId',$id)->first();
-      return view('front.userprofile.userProfile',['user'=>$user,'phoneshowing'=>$phoneshowing]);
+      $user = User::with('UserBasicDetail','UserBasicDetail.heightdetail','UserBirthDetail','UserContactDetail',
+                         'UserEducation','UserEducation.educationdetail','UserEducation.workingAsdetail',
+                         'UserFamilyDetail','UserImage',
+                         'UserLocation','UserLocation.countrydetail','UserLocation.statedetail','UserLocation.citydetail','UserLocation.grewUpdetail',
+                         'UserReligious','UserReligious.religiondetail','UserReligious.communitydetail','UserReligious.motherTonguedetail')
+                  ->where('uniqueId',$id)->first();
+
+      if(empty($user)){
+        abort(404);
+      }
+
+      $connect = \App\Helpers\GlobalFunctions::getnotificationInvite(Auth::User()->id, $user->id);
+
+      return view('front.userprofile.userProfile',['user'=>$user,'phoneshowing'=>$phoneshowing,'connect'=>$connect]);
     }
 
     public function notification()

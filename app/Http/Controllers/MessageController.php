@@ -272,7 +272,7 @@ class MessageController extends Controller
              {
 
                  $this->response['success'] ="true";
-                 $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i A")))).','.date('d M, Y');
+                 $this->response['time'] = $chat->created_at->format('h:i A').', '.$chat->created_at->format('d M, Y');
                  $this->response['image'] = $img;
              }
              else
@@ -423,7 +423,7 @@ class MessageController extends Controller
     // if($timezone)
     // {
       $this->response['success'] ="true";
-      $this->response['time'] = date('h:i A',strtotime($timezone, strtotime(Date("h:i A")))).','.date('d M, Y');
+      $this->response['time'] = now()->format('h:i A').', '.now()->format('d M, Y');
       $this->response['image'] = $img;
     // }
     // else
